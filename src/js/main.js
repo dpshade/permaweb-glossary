@@ -5,11 +5,17 @@ const GLOSSARY_URL = '../src/data/glossary.json';
 let searchIndex = null;
 let glossaryData = null;
 let searchTimeout = null;
+let activeIndex = 0;
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('results');
 const loadingStatus = document.getElementById('loading-status');
+
+// Helper functions
+function isIframeEmbed() {
+    return document.body.classList.contains('iframe-embed');
+}
 
 // Initialize the application
 async function init() {
@@ -70,6 +76,17 @@ async function init() {
         // Initialize keyboard navigation
         if (window.keyboardNav) {
             window.keyboardNav.init();
+        }
+        
+        // Add unified keyboard navigation for iframe mode
+        if (isIframeEmbed()) {
+            document.addEventListener('keydown', (e) => {
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                    e.preventDefault();
+                    const direction = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : -1;
+                    navigateResults(direction);
+                }
+            });
         }
         
         searchInput.focus();
@@ -449,85 +466,127 @@ function displayResults(results) {
         return;
     }
     
-    results.forEach((result, index) => {
-        // Create related terms tags if available
-        const relatedTermsHtml = result.related && result.related.length > 0 
-            ? `
-                <div class="related-terms">
-                    Related: ${result.related.map(term => 
-                        `<span class="related-tag">${term}</span>`
-                    ).join('')}
-                </div>`
-            : '';
+    // Store results in a global variable for navigation
+    window.currentResults = results;
+    window.currentResultIndex = 0;
+
+    if (document.body.classList.contains('iframe-embed')) {
+        // iframe mode: Show one result at a time with navigation
+        const resultContainer = document.createElement('div');
+        resultContainer.className = 'result-container';
+
+        // Create result displays
+        results.forEach((result, index) => {
+            const resultDisplay = document.createElement('div');
+            resultDisplay.className = `result-display${index === 0 ? ' active' : ''}`;
             
-        const aliasesHtml = result.aliases && result.aliases.length > 0
-            ? `<p class="aliases">Also known as: ${result.aliases.join(', ')}</p>`
-            : '';
+            resultDisplay.innerHTML = `
+                <div class="term">${result.term}</div>
+                <div class="category">Category: ${result.category}</div>
+                <div class="definition">${result.definition}</div>
+                ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
+                ${result.related && result.related.length > 0 ? `
+                    <div class="related-terms">
+                        ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                    </div>
+                ` : ''}
+                ${result.docs && result.docs.length > 0 ? `
+                    <div class="docs-link">
+                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                    </div>
+                ` : ''}
+                <div class="result-count">Result ${index + 1} of ${results.length}</div>
+            `;
             
-        // Add documentation link if available
-        const docsHtml = result.docs && result.docs.length > 0
-            ? `<div class="docs-link">Documentation: <a href="${result.docs[0]}" target="_blank">${result.docs[0]}</a></div>`
-            : '';
-            
-        const resultItem = document.createElement('div');
-        resultItem.className = 'result-item';
-        resultItem.setAttribute('data-index', index);
-        
-        resultItem.innerHTML = `
-            <div class="term">${result.term}</div>
-            <div class="category">Category: ${result.category}</div>
-            <div class="definition">${result.definition}</div>
-            ${aliasesHtml}
-            ${relatedTermsHtml}
-            ${docsHtml}
-            <div class="score">Relevance: ${Math.round(result.score * 100)}%</div>
-        `;
-        
-        resultItem.addEventListener('click', () => {
-            // If docs are available, open the first one
-            if (result.docs && result.docs.length > 0) {
-                window.open(result.docs[0], '_blank');
-            } else {
-                // Otherwise, copy to clipboard
-                copyToClipboard(result, index);
-            }
+            resultContainer.appendChild(resultDisplay);
         });
-        
-        resultsContainer.appendChild(resultItem);
-    });
-    
+
+        // Add navigation buttons
+        const prevButton = document.createElement('button');
+        prevButton.className = 'nav-button prev';
+        prevButton.innerHTML = '←';
+        prevButton.disabled = true;
+        prevButton.onclick = () => navigateResults(-1);
+
+        const nextButton = document.createElement('button');
+        nextButton.className = 'nav-button next';
+        nextButton.innerHTML = '→';
+        nextButton.disabled = results.length <= 1;
+        nextButton.onclick = () => navigateResults(1);
+
+        resultContainer.appendChild(prevButton);
+        resultContainer.appendChild(nextButton);
+        resultsContainer.appendChild(resultContainer);
+
+        // Ensure first result is visible
+        const firstResult = resultContainer.querySelector('.result-display');
+        if (firstResult) {
+            firstResult.classList.add('active');
+            // Force reflow
+            firstResult.offsetHeight;
+        }
+
+        // Keyboard navigation is now handled in init function
+    } else {
+        // Original standalone mode: Show all results
+        results.forEach((result, index) => {
+            const resultItem = document.createElement('div');
+            resultItem.className = 'result-item';
+            resultItem.setAttribute('data-index', index);
+            
+            resultItem.innerHTML = `
+                <div class="term">${result.term}</div>
+                <div class="category">Category: ${result.category}</div>
+                <div class="definition">${result.definition}</div>
+                ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
+                ${result.related && result.related.length > 0 ? `
+                    <div class="related-terms">
+                        ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                    </div>
+                ` : ''}
+                ${result.docs && result.docs.length > 0 ? `
+                    <div class="docs-link">
+                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                    </div>
+                ` : ''}
+            `;
+            
+            resultsContainer.appendChild(resultItem);
+        });
+    }
+
     resultsContainer.classList.add('has-results');
     document.querySelector('.search-container').classList.add('has-results');
-    
-    // Reset keyboard navigation and auto-select first result
-    if (window.keyboardNav) {
-        window.keyboardNav.reset();
-        window.keyboardNav.addMouseHandlers();
-    }
 }
 
-// Copy term and definition to clipboard
-function copyToClipboard(result, index) {
-    const text = `${result.term}: ${result.definition}`;
-    
-    navigator.clipboard.writeText(text)
-        .then(() => {
-            // Show a temporary "copied" message
-            const resultItem = document.querySelector(`.result-item[data-index="${index}"]`);
-            if (resultItem) {
-                const copiedMsg = document.createElement('div');
-                copiedMsg.className = 'copied-message';
-                copiedMsg.textContent = 'Copied to clipboard!';
-                resultItem.appendChild(copiedMsg);
-                
-                setTimeout(() => {
-                    copiedMsg.remove();
-                }, 2000);
-            }
-        })
-        .catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+function navigateResults(direction) {
+    const results = document.querySelectorAll('.result-display');
+    if (!results.length) return;
+
+    const currentIndex = window.currentResultIndex || 0;
+    const newIndex = (currentIndex + direction + results.length) % results.length;
+
+    const currentResult = results[currentIndex];
+    if (currentResult) {
+        currentResult.classList.remove('active');
+        currentResult.style.display = 'none'; // Explicitly hide to ensure consistency
+    }
+
+    const nextResult = results[newIndex];
+    if (nextResult) {
+        nextResult.classList.add('active');
+        // CSS will handle display: flex !important, no need for inline style
+    }
+
+    window.currentResultIndex = newIndex;
+    updateNavigationState(newIndex, results.length);
+
+    // Debug logging
+    console.log('Navigation:', {
+        direction,
+        newIndex,
+        activeResult: nextResult ? 'visible' : 'not found'
+    });
 }
 
 // Add click handler to close results when clicking outside
@@ -537,6 +596,126 @@ document.addEventListener('click', (e) => {
         resultsContainer.classList.remove('has-results');
         document.querySelector('.search-container').classList.remove('has-results');
     }
+});
+
+function updateNavigationState(currentIndex, totalResults) {
+    const prevButton = document.querySelector('.nav-button.prev');
+    const nextButton = document.querySelector('.nav-button.next');
+    
+    if (prevButton) {
+        prevButton.disabled = currentIndex === 0;
+        prevButton.setAttribute('aria-label', currentIndex === 0 ? 'No previous results' : 'Previous result');
+    }
+    if (nextButton) {
+        nextButton.disabled = currentIndex === totalResults - 1;
+        nextButton.setAttribute('aria-label', currentIndex === totalResults - 1 ? 'No more results' : 'Next result');
+    }
+}
+
+function updateDisplay(results, currentIndex = 0) {
+    const resultsContainer = document.getElementById('results');
+    if (!resultsContainer) return;
+
+    // Clear existing results
+    resultsContainer.innerHTML = '';
+
+    if (results.length === 0) {
+        resultsContainer.innerHTML = `
+            <div class="no-results">
+                No matching terms found
+            </div>
+        `;
+        return;
+    }
+
+    // Create result container
+    const resultContainer = document.createElement('div');
+    resultContainer.className = 'result-container';
+
+    // Create result displays
+    results.forEach((result, index) => {
+        const resultDisplay = document.createElement('div');
+        resultDisplay.className = `result-display${index === currentIndex ? ' active' : ''}`;
+        
+        resultDisplay.innerHTML = `
+            <div class="term">${result.term}</div>
+            <div class="category">${result.category}</div>
+            <div class="definition">${result.definition}</div>
+            ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases}</div>` : ''}
+            ${result.relatedTerms && result.relatedTerms.length > 0 ? `
+                <div class="related-terms">
+                    ${result.relatedTerms.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                </div>
+            ` : ''}
+            ${result.docsLink ? `
+                <div class="docs-link">
+                    <a href="${result.docsLink}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                </div>
+            ` : ''}
+            <div class="result-count">Result ${index + 1} of ${results.length}</div>
+        `;
+        
+        resultContainer.appendChild(resultDisplay);
+    });
+
+    // Add navigation buttons
+    const prevButton = document.createElement('button');
+    prevButton.className = 'nav-button prev';
+    prevButton.innerHTML = '←';
+    prevButton.disabled = currentIndex === 0;
+    prevButton.onclick = () => navigateResults(-1);
+
+    const nextButton = document.createElement('button');
+    nextButton.className = 'nav-button next';
+    nextButton.innerHTML = '→';
+    nextButton.disabled = currentIndex === results.length - 1;
+    nextButton.onclick = () => navigateResults(1);
+
+    // Add navigation buttons
+    resultContainer.appendChild(prevButton);
+    resultContainer.appendChild(nextButton);
+
+    // Add the result container to the results container
+    resultsContainer.appendChild(resultContainer);
+
+    // Initialize active index and ensure visibility
+    activeIndex = currentIndex;
+    
+    // Force reflow to ensure transition works
+    const activeResult = resultContainer.querySelector('.result-display.active');
+    if (activeResult) {
+        activeResult.style.display = 'flex';
+        // Force reflow
+        activeResult.offsetHeight;
+        activeResult.style.opacity = '1';
+    }
+
+    // Add debug logging
+    console.log('Results updated:', {
+        totalResults: results.length,
+        activeIndex: currentIndex,
+        activeResult: activeResult ? 'found' : 'not found'
+    });
+}
+
+// Add visibility check on load
+document.addEventListener('DOMContentLoaded', () => {
+    const checkVisibility = setInterval(() => {
+        const results = document.querySelectorAll('.result-display');
+        const activeResult = document.querySelector('.result-display.active');
+        
+        console.log('Visibility check:', {
+            results: results.length,
+            activeResult: activeResult ? 'found' : 'not found'
+        });
+        
+        if (activeResult && activeResult.style.opacity !== '1') {
+            activeResult.style.display = 'flex';
+            activeResult.style.opacity = '1';
+        }
+        
+        if (results.length) clearInterval(checkVisibility);
+    }, 500);
 });
 
 // Start the application
