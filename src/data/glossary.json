@@ -921,6 +921,14 @@
       "docs": ["https://www.communitylabs.com/"]
     },
     {
+      "term": "LiquidOps",
+      "definition": "An over collateralised lending and borrowing protocol built on Arweave and AO.",
+      "category": "DeFi",
+      "related": ["Community Labs", "Botega", "Permaswap"],
+      "aliases": ["Arweave lending", "Yield"],
+      "docs": ["https://www.liquidops.io/"]
+    },
+    {
       "term": "Dexi",
       "definition": "A decentralized exchange interface for interacting with multiple blockchain networks.",
       "category": "Decentralized Applications",
