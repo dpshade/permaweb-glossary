@@ -565,6 +565,19 @@ function displayResults(results) {
             const resultDisplay = document.createElement('div');
             resultDisplay.className = `result-display${index === 0 ? ' active' : ''}`;
             
+            // Create navigation buttons
+            const prevButton = document.createElement('button');
+            prevButton.className = 'nav-button prev';
+            prevButton.innerHTML = '←';
+            prevButton.disabled = index === 0;
+            prevButton.onclick = () => navigateResults(-1);
+
+            const nextButton = document.createElement('button');
+            nextButton.className = 'nav-button next';
+            nextButton.innerHTML = '→';
+            nextButton.disabled = index === results.length - 1;
+            nextButton.onclick = () => navigateResults(1);
+            
             resultDisplay.innerHTML = `
                 <div class="term">${result.term}</div>
                 <div class="category">Category: ${result.category}</div>
@@ -580,27 +593,21 @@ function displayResults(results) {
                         <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
                     </div>
                 ` : ''}
-                <div class="result-count">Result ${index + 1} of ${results.length}</div>
+                <div class="result-footer">
+                    <div class="result-count">Result ${index + 1} of ${results.length}</div>
+                </div>
             `;
+            
+            // Add navigation buttons to the footer
+            const resultFooter = resultDisplay.querySelector('.result-footer');
+            if (resultFooter) {
+                resultFooter.appendChild(prevButton);
+                resultFooter.appendChild(nextButton);
+            }
             
             resultContainer.appendChild(resultDisplay);
         });
 
-        // Add navigation buttons
-        const prevButton = document.createElement('button');
-        prevButton.className = 'nav-button prev';
-        prevButton.innerHTML = '←';
-        prevButton.disabled = true;
-        prevButton.onclick = () => navigateResults(-1);
-
-        const nextButton = document.createElement('button');
-        nextButton.className = 'nav-button next';
-        nextButton.innerHTML = '→';
-        nextButton.disabled = results.length <= 1;
-        nextButton.onclick = () => navigateResults(1);
-
-        resultContainer.appendChild(prevButton);
-        resultContainer.appendChild(nextButton);
         resultsContainer.appendChild(resultContainer);
 
         // Ensure first result is visible
@@ -670,7 +677,25 @@ function navigateResults(direction) {
     }
 
     window.currentResultIndex = newIndex;
-    updateNavigationState(newIndex, results.length);
+    
+    // Update all navigation buttons
+    results.forEach((result, index) => {
+        const footer = result.querySelector('.result-footer');
+        if (footer) {
+            const prevButton = footer.querySelector('.nav-button.prev');
+            const nextButton = footer.querySelector('.nav-button.next');
+            
+            if (prevButton) {
+                prevButton.disabled = index === 0;
+                prevButton.setAttribute('aria-label', index === 0 ? 'No previous results' : 'Previous result');
+            }
+            
+            if (nextButton) {
+                nextButton.disabled = index === results.length - 1;
+                nextButton.setAttribute('aria-label', index === results.length - 1 ? 'No more results' : 'Next result');
+            }
+        }
+    });
 
     // Debug logging
     console.log('Navigation:', {
@@ -688,20 +713,6 @@ document.addEventListener('click', (e) => {
         document.querySelector('.search-container').classList.remove('has-results');
     }
 });
-
-function updateNavigationState(currentIndex, totalResults) {
-    const prevButton = document.querySelector('.nav-button.prev');
-    const nextButton = document.querySelector('.nav-button.next');
-    
-    if (prevButton) {
-        prevButton.disabled = currentIndex === 0;
-        prevButton.setAttribute('aria-label', currentIndex === 0 ? 'No previous results' : 'Previous result');
-    }
-    if (nextButton) {
-        nextButton.disabled = currentIndex === totalResults - 1;
-        nextButton.setAttribute('aria-label', currentIndex === totalResults - 1 ? 'No more results' : 'Next result');
-    }
-}
 
 function updateDisplay(results, currentIndex = 0) {
     const resultsContainer = document.getElementById('results');
@@ -728,6 +739,19 @@ function updateDisplay(results, currentIndex = 0) {
         const resultDisplay = document.createElement('div');
         resultDisplay.className = `result-display${index === currentIndex ? ' active' : ''}`;
         
+        // Create navigation buttons
+        const prevButton = document.createElement('button');
+        prevButton.className = 'nav-button prev';
+        prevButton.innerHTML = '←';
+        prevButton.disabled = index === 0;
+        prevButton.onclick = () => navigateResults(-1);
+
+        const nextButton = document.createElement('button');
+        nextButton.className = 'nav-button next';
+        nextButton.innerHTML = '→';
+        nextButton.disabled = index === results.length - 1;
+        nextButton.onclick = () => navigateResults(1);
+        
         resultDisplay.innerHTML = `
             <div class="term">${result.term}</div>
             <div class="category">${result.category}</div>
@@ -743,28 +767,20 @@ function updateDisplay(results, currentIndex = 0) {
                     <a href="${result.docsLink}" target="_blank" rel="noopener noreferrer">Learn more →</a>
                 </div>
             ` : ''}
-            <div class="result-count">Result ${index + 1} of ${results.length}</div>
+            <div class="result-footer">
+                <div class="result-count">Result ${index + 1} of ${results.length}</div>
+            </div>
         `;
+        
+        // Add navigation buttons to the footer
+        const resultFooter = resultDisplay.querySelector('.result-footer');
+        if (resultFooter) {
+            resultFooter.appendChild(prevButton);
+            resultFooter.appendChild(nextButton);
+        }
         
         resultContainer.appendChild(resultDisplay);
     });
-
-    // Add navigation buttons
-    const prevButton = document.createElement('button');
-    prevButton.className = 'nav-button prev';
-    prevButton.innerHTML = '←';
-    prevButton.disabled = currentIndex === 0;
-    prevButton.onclick = () => navigateResults(-1);
-
-    const nextButton = document.createElement('button');
-    nextButton.className = 'nav-button next';
-    nextButton.innerHTML = '→';
-    nextButton.disabled = currentIndex === results.length - 1;
-    nextButton.onclick = () => navigateResults(1);
-
-    // Add navigation buttons
-    resultContainer.appendChild(prevButton);
-    resultContainer.appendChild(nextButton);
 
     // Add the result container to the results container
     resultsContainer.appendChild(resultContainer);
