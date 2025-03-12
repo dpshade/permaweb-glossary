@@ -1,0 +1,33 @@
+{
+  "name": "permaweb-glossary-search",
+  "version": "1.0.0",
+  "description": "A lightweight client-side search for the Permaweb Glossary using FlexSearch",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "bun run server.js",
+    "dev": "bun --watch run server.js",
+    "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src dist/",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "search",
+    "glossary",
+    "permaweb",
+    "javascript",
+    "flexsearch"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bun": "^1.0.20"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "bun": ">=1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/permaweb-glossary-search"
+  }
+} 
