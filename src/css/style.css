@@ -227,7 +227,7 @@ body {
   .related-tag {
     display: inline-block;
     background-color: var(--ao-tag-bg);
-    color: var(--ao-category-bg);
+    color: var(--ao-tag-text);
     padding: 4px 10px;
     margin-right: 8px;
     margin-bottom: 8px;
@@ -427,10 +427,21 @@ body {
     display: flex !important;
   }
   
+  /* Navigation buttons container */
+  .iframe-embed .nav-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid var(--ao-border-color);
+    padding-top: 12px;
+  }
+  
   .iframe-embed .nav-button {
-    position: absolute;
-    top: 85%;
-    transform: translateY(-50%);
+    position: relative;
     width: 32px;
     height: 32px;
     padding: 0;
@@ -445,6 +456,7 @@ body {
     justify-content: center;
     z-index: 2;
     transition: opacity 0.2s ease;
+    margin-left: 8px;
   }
   
   .iframe-embed .nav-button:disabled {
@@ -452,12 +464,11 @@ body {
     cursor: not-allowed;
   }
   
-  .iframe-embed .nav-button.prev {
-    left: 8px;
-  }
-  
+  /* Remove absolute positioning styles */
+  .iframe-embed .nav-button.prev,
   .iframe-embed .nav-button.next {
-    right: 8px;
+    position: static;
+    transform: none;
   }
   
   .iframe-embed .term {
@@ -513,13 +524,19 @@ body {
     color: var(--ao-link-color);
   }
   
-  .iframe-embed .result-count {
-    font-size: 11px;
-    color: var(--ao-secondary-text);
-    text-align: right;
+  .iframe-embed .result-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-top: auto;
     padding-top: 8px;
     border-top: 1px solid var(--ao-border-color);
+  }
+  
+  .iframe-embed .result-count {
+    font-size: 11px;
+    color: var(--ao-secondary-text);
+    flex-grow: 1;
   }
   
   /* Responsive adjustments */
@@ -555,6 +572,35 @@ body {
     .iframe-embed .docs-link {
         display: none;
     }
+    
+    .iframe-embed .result-footer {
+        padding-top: 6px;
+        margin-top: 6px;
+    }
+    
+    .iframe-embed .nav-button {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        margin-left: 6px;
+    }
+  }
+  
+  /* Additional media query for very small screens */
+  @media (max-width: 480px) {
+    .iframe-embed .result-footer {
+        padding-top: 6px;
+    }
+    
+    .iframe-embed .nav-button {
+        width: 28px;
+        height: 28px;
+        margin-left: 4px;
+    }
+    
+    .iframe-embed .result-display {
+        padding: 16px 24px;
+    }
   }
   
   /* Remove float-related styles as they're not needed */
@@ -565,7 +611,7 @@ body {
   }
   
   .iframe-embed .result-item:hover {
-    background-color: var(--ao-hover-bg);
+    background-color: var(--ao-result-hover);
   }
   
   .iframe-embed .result-item.selected {
