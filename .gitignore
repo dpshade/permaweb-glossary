@@ -31,3 +31,6 @@ Thumbs.db
 
 # Permaweb
 permaweb-glossary/
+
+# Test directory
+test/
