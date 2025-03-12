@@ -113,6 +113,61 @@ Edit the `src/data/glossary.json` file to add, modify, or remove terms. The JSON
    </div>
    ```
 
+## Color Customization
+
+The glossary supports extensive color customization through URL parameters. This is especially useful when embedding the glossary in different websites with varying color schemes.
+
+### Basic Color Parameters
+
+Add these parameters to the iframe URL to customize the colors:
+
+```
+?bg-color=%23121212&text-color=%23e0e0e0&link-color=%238ab4f8
+```
+
+Note: Color values must be URL-encoded (e.g., `#` becomes `%23`).
+
+### Available Color Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `bg-color` | Background color | `#ffffff` |
+| `text-color` | Main text color | `#111111` |
+| `link-color` | Hyperlink color | `#3498db` |
+| `border-color` | Border color | `#000000` |
+| `hover-bg` | Background color on hover | `#f0f0f0` |
+| `category-bg` | Category badge background | `#f0f0f0` |
+| `category-text` | Category badge text | `#555555` |
+| `input-bg` | Search input background | Same as `bg-color` |
+| `tag-bg` | Related tag background | Same as `border-color` |
+| `tag-text` | Related tag text | Same as `text-color` |
+| `button-bg` | Button background | Same as `border-color` |
+| `button-text` | Button text | Same as `bg-color` |
+| `accent-color` | Accent color for highlights | `#4a90e2` |
+| `secondary-text` | Secondary text color | `#666666` |
+
+### Example Color Schemes
+
+#### Dark Mode
+```
+?bg-color=%23121212&text-color=%23e0e0e0&link-color=%238ab4f8&border-color=%23333333&hover-bg=%23222222
+```
+
+#### High Contrast
+```
+?bg-color=%23000000&text-color=%23ffffff&link-color=%23ffff00&border-color=%23ffffff
+```
+
+#### Solarized Dark
+```
+?bg-color=%23002b36&text-color=%23839496&link-color=%23268bd2&heading-color=%23b58900
+```
+
+#### GitHub-inspired
+```
+?bg-color=%230d1117&text-color=%23c9d1d9&link-color=%2358a6ff&tag-bg=%23238636
+```
+
 ## Performance Considerations
 
 - The application loads quickly as it uses a lightweight search library
