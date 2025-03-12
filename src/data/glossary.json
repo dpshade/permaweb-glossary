@@ -2,10 +2,10 @@
   "terms": [
     {
       "term": "ANS-104",
-      "definition": "A standard for bundled data on Arweave, allowing for efficient storage of multiple pieces of data in a single transaction.",
+      "definition": "A standard for bundled data on Arweave, allowing for efficient storage of multiple pieces of data in a single transaction. It forms the basis for scalable data storage and retrieval on the network.",
       "category": "Arweave Technology",
-      "related": ["Bundling", "Transaction", "Data Storage"],
-      "aliases": ["Bundled Data Standard"],
+      "related": ["Bundling", "Transaction", "Data Storage", "Base Layer Transaction"],
+      "aliases": ["Bundled Data Standard", "Arweave Network Standard 104"],
       "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
     },
     {
@@ -51,41 +51,41 @@
     {
       "term": "HyperBEAM",
       "definition": "The distributed execution engine that powers AO, built on Erlang/OTP. It provides distributed computation, deterministic execution, message scheduling, and WASM runtime capabilities.",
-      "category": "AO Infrastructure",
-      "related": ["AO-Core", "Compute Unit", "Scheduler Unit"],
-      "aliases": ["AO Execution Engine"],
+      "category": "AO Core Infrastructure",
+      "related": ["AO Computer", "AO-Core", "Compute Unit", "Scheduler Unit"],
+      "aliases": ["AO Execution Engine", "Distributed Runtime"],
       "docs": []
     },
     {
       "term": "AO-Core",
       "definition": "The process orchestration layer in AO that sits between applications and HyperBEAM, handling process management, message routing, state management, and security controls.",
-      "category": "AO Infrastructure",
-      "related": ["HyperBEAM", "Process", "Message Routing"],
-      "aliases": ["AO Process Manager"],
+      "category": "AO Core Infrastructure",
+      "related": ["AO Computer", "HyperBEAM", "Process", "Message Routing", "State Management"],
+      "aliases": ["AO Process Manager", "Core Layer"],
       "docs": []
     },
     {
       "term": "Compute Unit",
       "definition": "A node in the AO network responsible for executing process code and managing state. CUs offer the service of resolving process state in competition with one another.",
       "category": "AO Infrastructure",
-      "related": ["Scheduler Unit", "Messenger Unit", "HyperBEAM"],
-      "aliases": ["CU"],
+      "related": ["HyperBEAM", "Scheduler Unit", "Messenger Unit", "Process", "State Management"],
+      "aliases": ["CU", "AO Compute Node"],
       "docs": []
     },
     {
       "term": "Scheduler Unit",
       "definition": "A node in the AO network responsible for the single assignment of atomically incrementing slot numberings to messages sent to a process, ensuring deterministic ordering.",
       "category": "AO Infrastructure",
-      "related": ["Compute Unit", "Messenger Unit", "Message"],
-      "aliases": ["SU"],
+      "related": ["Compute Unit", "Messenger Unit", "Message", "Message Ordering"],
+      "aliases": ["SU", "AO Scheduler Node"],
       "docs": []
     },
     {
       "term": "Messenger Unit",
       "definition": "A node in the AO network that relays messages around the system, serving as the entry point for users to interact with processes within AO.",
       "category": "AO Infrastructure",
-      "related": ["Compute Unit", "Scheduler Unit", "Message"],
-      "aliases": ["MU"],
+      "related": ["Compute Unit", "Scheduler Unit", "Message", "Process Communication"],
+      "aliases": ["MU", "AO Message Node"],
       "docs": []
     },
     {
@@ -114,51 +114,51 @@
     },
     {
       "term": "Arweave",
-      "definition": "A decentralized storage network that allows users to store data permanently and sustainably.",
-      "category": "Infrastructure",
-      "related": ["Permaweb", "Blockweave", "AR Token"],
-      "aliases": ["AR Network"],
+      "definition": "A decentralized storage network that allows users to store data permanently and sustainably. It serves as the foundation layer for the permaweb ecosystem.",
+      "category": "Arweave Core Infrastructure",
+      "related": ["Blockweave", "Permaweb", "AR Token", "Proof of Access", "ANS-104"],
+      "aliases": ["AR Network", "Permanent Storage Network"],
       "docs": []
     },
     {
       "term": "Blockweave",
-      "definition": "The data structure used by Arweave to store and validate data.",
-      "category": "Arweave Technology",
-      "related": ["Arweave", "Proof of Access", "Data Storage"],
-      "aliases": ["Weave"],
+      "definition": "The data structure used by Arweave to store and validate data. Unlike traditional blockchains, it enables efficient access to historical data through its unique weave structure.",
+      "category": "Arweave Core Infrastructure",
+      "related": ["Arweave", "Proof of Access", "SPoRA", "Data Storage", "Weave"],
+      "aliases": ["Weave Structure", "AR Blockweave"],
       "docs": []
     },
     {
       "term": "Permaweb",
-      "definition": "A permanent, decentralized web built on top of the Arweave network, allowing for the creation of websites and applications that are accessible forever.",
+      "definition": "A permanent, decentralized web built on top of the Arweave network, allowing for the creation of websites and applications that are accessible forever. It represents the user-facing layer of the Arweave ecosystem.",
       "category": "Arweave Ecosystem",
-      "related": ["Arweave", "AR.IO", "Permanent Storage"],
-      "aliases": ["Permanent Web"],
+      "related": ["Arweave", "AR.IO", "Gateway", "ArNS", "Permanent Storage"],
+      "aliases": ["Permanent Web", "Decentralized Web"],
       "docs": []
     },
     {
       "term": "AR.IO",
-      "definition": "The input and output layer for Arweave (Arweave I/O), providing gateway services for accessing and storing data on the Arweave network through a decentralized gateway network.",
-      "category": "Arweave Ecosystem",
-      "related": ["Gateway", "Arweave", "ARIO Token"],
+      "definition": "The input and output layer for Arweave (Arweave I/O), providing gateway services for accessing and storing data on the Arweave network through a decentralized gateway network. As a Layer 2 infrastructure, it forms a critical part of the permaweb ecosystem.",
+      "category": "AR.IO Infrastructure",
+      "related": ["Gateway", "Gateway Address Registry", "Protocol Balance", "Wayfinder Protocol", "Layer 2 Infrastructure"],
       "aliases": ["Arweave I/O"],
       "docs": ["https://ar.io/"]
     },
     {
       "term": "Gateway",
-      "definition": "A server that provides access to data stored on the Arweave network. AR.IO operates a decentralized network of gateways to serve permanent data.",
-      "category": "Arweave Ecosystem",
-      "related": ["AR.IO", "Arweave", "Data Retrieval"],
-      "aliases": ["Arweave Gateway"],
+      "definition": "A server that provides access to data stored on the Arweave network. Part of the AR.IO network's decentralized infrastructure for serving permanent data and managing network traffic.",
+      "category": "AR.IO Infrastructure",
+      "related": ["AR.IO", "Gateway Address Registry", "Wayfinder Protocol", "Data Retrieval"],
+      "aliases": ["Arweave Gateway", "AR.IO Gateway"],
       "docs": ["https://docs.ar.io/build/gateways#overview"]
     },
     {
       "term": "Bundling",
-      "definition": "A feature in Arweave that groups multiple data transactions together, processing them as Layer-1 transactions to improve efficiency and reduce costs.",
+      "definition": "A feature in Arweave that groups multiple data transactions together, processing them as Layer-1 transactions to improve efficiency and reduce costs. This is implemented through the ANS-104 standard.",
       "category": "Arweave Technology",
-      "related": ["Transaction", "Data Upload", "AR.IO"],
-      "aliases": ["Transaction Bundling"],
-      "docs": ["https://docs.ar.io/build/bundling#overview"]
+      "related": ["ANS-104", "Transaction", "Base Layer Transaction", "Data Upload"],
+      "aliases": ["Transaction Bundling", "Data Bundling"],
+      "docs": []
     },
     {
       "term": "AO Token",
@@ -227,9 +227,9 @@
     {
       "term": "AO Computer",
       "definition": "The AO Computer is an actor-oriented machine on the Arweave network, creating a unified computing environment across diverse nodes. It supports many parallel processes through an open message-passing layer, linking independent processes into a cohesive system, similar to how websites are interconnected via hyperlinks.",
-      "category": "AO Core Concepts",
-      "related": ["Process", "Actor Model", "Message"],
-      "aliases": ["AO"],
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "AO-Core", "Process", "Actor Model", "Message"],
+      "aliases": ["AO", "Actor-Oriented Computer"],
       "docs": []
     },
     {
@@ -250,18 +250,18 @@
     },
     {
       "term": "Base Layer Transaction",
-      "definition": "One of up to 1,000 transactions that make up a single Arweave block. A base layer transaction may contain bundled data items.",
-      "category": "Arweave Technology",
-      "related": ["Bundling", "Transaction", "Block"],
-      "aliases": ["L1 Transaction"],
+      "definition": "One of up to 1,000 transactions that make up a single Arweave block. These transactions form the foundation of the Arweave network's data structure and can contain bundled data items.",
+      "category": "Arweave Core Infrastructure",
+      "related": ["Bundling", "Transaction", "Block", "ANS-104", "Blockweave"],
+      "aliases": ["L1 Transaction", "Core Transaction"],
       "docs": []
     },
     {
       "term": "Bundled Data Item",
-      "definition": "A data item / transaction nested within an ANS-104 bundled transaction.",
+      "definition": "A data item or transaction nested within an ANS-104 bundled transaction. These items enable efficient storage and retrieval of multiple data pieces within the Arweave network.",
       "category": "Arweave Technology",
-      "related": ["Bundling", "Base Layer Transaction", "ANS-104"],
-      "aliases": ["BDI"],
+      "related": ["ANS-104", "Bundling", "Base Layer Transaction", "Data Storage"],
+      "aliases": ["BDI", "Nested Transaction"],
       "docs": []
     },
     {
@@ -298,10 +298,10 @@
     },
     {
       "term": "Gateway Address Registry",
-      "definition": "A decentralized directory maintained in the AR.IO smart contract. It serves as the authoritative list of all registered gateways on the AR.IO Network. The registry provides detailed metadata about each gateway to facilitate discovery, health monitoring, and data sharing among apps, users and other infrastructure.",
-      "category": "Arweave Ecosystem",
-      "related": ["Gateway", "AR.IO", "Smart Contract"],
-      "aliases": ["GAR"],
+      "definition": "A decentralized directory maintained in the AR.IO smart contract. It serves as the authoritative list of all registered gateways on the AR.IO Network, facilitating discovery, health monitoring, and data sharing.",
+      "category": "AR.IO Infrastructure",
+      "related": ["AR.IO", "Gateway", "Protocol Balance", "Staking"],
+      "aliases": ["GAR", "AR.IO Registry"],
       "docs": []
     },
     {
@@ -394,18 +394,18 @@
     },
     {
       "term": "Protocol Balance",
-      "definition": "The primary sink and source of ARIO tokens circulating through the AR.IO Network. This balance is akin to a central vault or wallet programmatically encoded into the network's smart contract from which ArNS revenue is accumulated and incentive rewards are distributed.",
-      "category": "Arweave Ecosystem",
-      "related": ["ARIO Token", "AR.IO", "Protocol Rewards"],
-      "aliases": [],
+      "definition": "The primary sink and source of ARIO tokens circulating through the AR.IO Network. This balance functions as a programmatically encoded vault in the network's smart contract for managing ArNS revenue and incentive rewards distribution.",
+      "category": "AR.IO Economics",
+      "related": ["ARIO Token", "AR.IO", "Protocol Rewards", "Staking"],
+      "aliases": ["AR.IO Treasury", "Network Balance"],
       "docs": []
     },
     {
       "term": "Protocol Rewards",
-      "definition": "ARIO Token incentive rewards distributed by the protocol to the network's eligible users and gateway operators.",
-      "category": "Arweave Ecosystem",
-      "related": ["ARIO Token", "Protocol Balance", "Gateway"],
-      "aliases": [],
+      "definition": "ARIO Token incentive rewards distributed by the AR.IO protocol to eligible users and gateway operators, forming part of the network's economic incentive structure.",
+      "category": "AR.IO Economics",
+      "related": ["ARIO Token", "Protocol Balance", "Gateway", "Staking"],
+      "aliases": ["AR.IO Rewards", "Gateway Rewards"],
       "docs": []
     },
     {
