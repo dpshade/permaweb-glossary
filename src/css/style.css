@@ -227,7 +227,7 @@ body {
   .related-tag {
     display: inline-block;
     background-color: var(--ao-tag-bg);
-    color: var(--ao-text-color);
+    color: var(--ao-category-bg);
     padding: 4px 10px;
     margin-right: 8px;
     margin-bottom: 8px;
