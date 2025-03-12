@@ -24,7 +24,6 @@ body {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    height: 100%;
     padding: 16px;
     box-sizing: border-box;
     z-index: 1;
@@ -33,8 +32,9 @@ body {
   .search-container.has-results {
     position: absolute;
     top: 0;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 10%);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 80%;
   }
   
   h1 {

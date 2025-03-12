@@ -85,6 +85,18 @@ async function init() {
                     e.preventDefault();
                     const direction = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : -1;
                     navigateResults(direction);
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    // Get the currently active result
+                    const activeResult = document.querySelector('.result-display.active');
+                    if (activeResult) {
+                        // Find the documentation link in the active result
+                        const docLink = activeResult.querySelector('.docs-link a');
+                        if (docLink) {
+                            // Navigate to the documentation link
+                            window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                        }
+                    }
                 }
             });
         }
@@ -553,6 +565,12 @@ function displayResults(results) {
             
             resultsContainer.appendChild(resultItem);
         });
+        
+        // Auto-select the first result in standalone mode
+        if (window.keyboardNav) {
+            window.keyboardNav.addMouseHandlers();
+            window.keyboardNav.reset();
+        }
     }
 
     resultsContainer.classList.add('has-results');

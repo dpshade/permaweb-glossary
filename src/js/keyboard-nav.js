@@ -56,11 +56,24 @@ function handleKeyNavigation(event) {
                 const selectedResult = resultItems[selectedResultIndex];
                 const resultIndex = parseInt(selectedResult.getAttribute('data-index'));
                 
-                // Trigger click on the selected item
-                selectedResult.click();
+                // Find the documentation link in the selected result
+                const docLink = selectedResult.querySelector('.docs-link a');
+                if (docLink) {
+                    // Navigate to the documentation link
+                    window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                } else {
+                    // If no documentation link, just trigger click on the selected item
+                    selectedResult.click();
+                }
             } else if (resultCount > 0) {
-                // If no item is selected but we have results, select the first one
-                resultItems[0].click();
+                // If no item is selected but we have results, select the first one and navigate to its doc link
+                const firstResult = resultItems[0];
+                const docLink = firstResult.querySelector('.docs-link a');
+                if (docLink) {
+                    window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                } else {
+                    firstResult.click();
+                }
             }
             break;
             
