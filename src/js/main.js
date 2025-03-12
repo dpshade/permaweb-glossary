@@ -1,5 +1,6 @@
 // Constants for the application
 const GLOSSARY_URL = '../src/data/glossary.json';
+const ARWEAVE_GRAPHQL_URL = 'https://arweave-search.goldsky.com/graphql';
 
 // State variables
 let searchIndex = null;
@@ -272,8 +273,241 @@ function handleSearch(event) {
     
     // Debounce search to avoid too many requests
     searchTimeout = setTimeout(() => {
-        performSearch(query);
+        // Check if input is an Arweave transaction ID (43 characters, no spaces)
+        if (query.length === 43 && !query.includes(' ')) {
+            fetchArweaveTx(query);
+        } else {
+            performSearch(query);
+        }
     }, 150); // Even faster response time
+}
+
+// Fetch Arweave transaction data
+async function fetchArweaveTx(txId) {
+    try {
+        resultsContainer.innerHTML = '<div class="loading-tx">Fetching transaction data...</div>';
+        resultsContainer.classList.add('has-results');
+        document.querySelector('.search-container').classList.add('has-results');
+        
+        const query = `{
+            transactions(ids: ["${txId}"]) {
+                edges {
+                    node {
+                        id
+                        tags {
+                            name
+                            value
+                        }
+                        owner {
+                            address
+                        }
+                        block {
+                            height
+                            timestamp
+                        }
+                        data {
+                            size
+                            type
+                        }
+                    }
+                }
+            }
+        }`;
+        
+        const response = await fetch(ARWEAVE_GRAPHQL_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query })
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Network error: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.errors) {
+            throw new Error(result.errors[0].message);
+        }
+        
+        displayTxResults(result.data);
+    } catch (error) {
+        console.error('Transaction fetch error:', error);
+        resultsContainer.innerHTML = `<div class="error-message">Error fetching transaction: ${error.message}</div>`;
+    }
+}
+
+// Display transaction results
+function displayTxResults(data) {
+    resultsContainer.innerHTML = '';
+    
+    if (!data || !data.transactions || data.transactions.edges.length === 0) {
+        resultsContainer.innerHTML = '<div class="no-results">Transaction not found</div>';
+        resultsContainer.classList.add('has-results');
+        document.querySelector('.search-container').classList.add('has-results');
+        return;
+    }
+    
+    const txNode = data.transactions.edges[0].node;
+    
+    // Format timestamp if available
+    let timestamp = 'Pending';
+    if (txNode.block && txNode.block.timestamp) {
+        const date = new Date(txNode.block.timestamp * 1000);
+        timestamp = date.toLocaleString();
+    }
+    
+    // Format data size
+    const dataSize = formatBytes(txNode.data.size);
+    
+    // Extract Content-Type tag if available
+    let contentType = 'Unknown';
+    if (txNode.tags && txNode.tags.length > 0) {
+        const contentTypeTag = txNode.tags.find(tag => tag.name.toLowerCase() === 'content-type');
+        if (contentTypeTag) {
+            contentType = contentTypeTag.value;
+        }
+    }
+    
+    // Create metadata items with clear structure
+    const metadataItems = [
+        {
+            label: 'Owner',
+            value: `<span class="tx-owner">${txNode.owner.address}</span>`
+        },
+        {
+            label: 'Block',
+            value: txNode.block ? txNode.block.height : 'Pending'
+        },
+        {
+            label: 'Timestamp',
+            value: timestamp
+        },
+        {
+            label: 'Data Size',
+            value: dataSize
+        }
+    ];
+    
+    // Generate metadata HTML
+    const metadataHtml = metadataItems.map(item => `
+        <div class="tx-meta-item">
+            <span class="tx-label">${item.label}</span>
+            <span>${item.value}</span>
+        </div>
+    `).join('');
+    
+    // Check if we're in iframe embed mode
+    if (document.body.classList.contains('iframe-embed')) {
+        // iframe mode: Show transaction in iframe format
+        const resultContainer = document.createElement('div');
+        resultContainer.className = 'result-container';
+        
+        const resultDisplay = document.createElement('div');
+        resultDisplay.className = 'result-display active';
+        
+        // Create a scrollable container for transaction content
+        resultDisplay.innerHTML = `
+            <div class="term">${txNode.id}</div>
+            <div class="category">Transaction: ${contentType}</div>
+            <div class="definition">
+                ${metadataHtml}
+            </div>
+            ${txNode.tags && txNode.tags.length > 0 ? `
+                <div class="related-terms tx-tags">
+                    ${txNode.tags.map(tag => `
+                        <span class="related-tag tx-tag">
+                            <span class="tag-name">${tag.name}</span>: 
+                            <span class="tag-value">${tag.value}</span>
+                        </span>
+                    `).join('')}
+                </div>
+            ` : ''}
+            <div class="docs-link tx-links">
+                <a href="https://viewblock.io/arweave/tx/${txNode.id}" target="_blank" rel="noopener noreferrer">View on ViewBlock</a>
+                <a href="https://arweave.net/${txNode.id}" target="_blank" rel="noopener noreferrer">View on Gateway</a>
+            </div>
+            <div class="result-footer">
+                <div class="result-count">Transaction Details</div>
+            </div>
+        `;
+        
+        resultContainer.appendChild(resultDisplay);
+        resultsContainer.appendChild(resultContainer);
+        
+        // Ensure result is visible
+        resultDisplay.classList.add('active');
+        // Force reflow
+        resultDisplay.offsetHeight;
+    } else {
+        // Standard mode: Show transaction as a result item
+        const txResult = document.createElement('div');
+        txResult.className = 'result-item tx-result';
+        txResult.setAttribute('tabindex', '0'); // Make focusable for keyboard navigation
+        
+        // Create transaction content
+        txResult.innerHTML = `
+            <div class="term">${txNode.id}</div>
+            <div class="category">Transaction: ${contentType}</div>
+            <div class="definition">
+                ${metadataHtml}
+            </div>
+        `;
+        
+        // Add tags section (similar to related terms)
+        if (txNode.tags && txNode.tags.length > 0) {
+            const tagsContainer = document.createElement('div');
+            tagsContainer.className = 'related-terms tx-tags';
+            
+            txNode.tags.forEach(tag => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'related-tag tx-tag';
+                tagElement.innerHTML = `
+                    <span class="tag-name">${tag.name}</span>: 
+                    <span class="tag-value">${tag.value}</span>
+                `;
+                tagsContainer.appendChild(tagElement);
+            });
+            
+            txResult.appendChild(tagsContainer);
+        }
+        
+        // Add links section (similar to docs link)
+        const linksContainer = document.createElement('div');
+        linksContainer.className = 'docs-link tx-links';
+        linksContainer.innerHTML = `
+            <a href="https://viewblock.io/arweave/tx/${txNode.id}" target="_blank" rel="noopener noreferrer">View on ViewBlock</a>
+            <a href="https://arweave.net/${txNode.id}" target="_blank" rel="noopener noreferrer">View on Gateway</a>
+        `;
+        
+        txResult.appendChild(linksContainer);
+        
+        // Add to results container
+        resultsContainer.appendChild(txResult);
+    }
+    
+    // Add has-results class to containers
+    resultsContainer.classList.add('has-results');
+    document.querySelector('.search-container').classList.add('has-results');
+    
+    // Initialize keyboard navigation for transaction results
+    if (window.keyboardNav) {
+        window.keyboardNav.reset();
+        window.keyboardNav.addMouseHandlers();
+    }
+}
+
+// Format bytes to human-readable format
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+    
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
 // Perform search using FlexSearch with enhanced options
@@ -826,4 +1060,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Start the application
-document.addEventListener('DOMContentLoaded', init); 
+document.addEventListener('DOMContentLoaded', init);
+
+// Export functions for testing
+export { fetchArweaveTx, displayTxResults, formatBytes }; 
