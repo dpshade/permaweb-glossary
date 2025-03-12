@@ -10,7 +10,8 @@
     "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src dist/",
     "clean": "rm -rf dist",
     "deploy-main": "bun run deploy.js",
-    "deploy-staging": "bun run deploy.js --staging"
+    "deploy-staging": "bun run deploy.js --staging",
+    "test": "bun test"
   },
   "keywords": [
     "search",
@@ -23,7 +24,9 @@
   "license": "MIT",
   "devDependencies": {
     "bun": "^1.0.20",
-    "permaweb-deploy": "^1.1.10"
+    "permaweb-deploy": "^1.1.10",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "engines": {
     "node": ">=16.0.0",
@@ -35,5 +38,12 @@
   },
   "dependencies": {
     "dotenv": "^16.4.7"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "moduleFileExtensions": ["js", "json", "jsx"]
   }
 }

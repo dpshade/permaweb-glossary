@@ -1,6 +1,7 @@
 // Keyboard navigation for search results
 let selectedResultIndex = -1; // Track the currently selected result
 let isKeyboardActive = false; // Track if keyboard navigation is active
+let isTxResult = false; // Track if the current result is a transaction
 
 // Initialize keyboard navigation
 function initKeyboardNavigation() {
@@ -24,7 +25,14 @@ function handleKeyNavigation(event) {
         return;
     }
     
-    const resultItems = resultsContainer.querySelectorAll('.result-item');
+    // Check if we're dealing with transaction results
+    isTxResult = resultsContainer.querySelector('.tx-result') !== null;
+    
+    // Get the appropriate result items based on type
+    const resultItems = isTxResult 
+        ? resultsContainer.querySelectorAll('.tx-result')
+        : resultsContainer.querySelectorAll('.result-item');
+    
     const resultCount = resultItems.length;
     
     // If no results, exit
@@ -54,25 +62,43 @@ function handleKeyNavigation(event) {
             if (selectedResultIndex >= 0 && selectedResultIndex < resultCount) {
                 // Get the selected result
                 const selectedResult = resultItems[selectedResultIndex];
-                const resultIndex = parseInt(selectedResult.getAttribute('data-index'));
                 
-                // Find the documentation link in the selected result
-                const docLink = selectedResult.querySelector('.docs-link a');
-                if (docLink) {
-                    // Navigate to the documentation link
-                    window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                if (isTxResult) {
+                    // For transaction results, open on ViewBlock
+                    const txId = selectedResult.querySelector('.term').textContent.trim();
+                    window.open(`https://viewblock.io/arweave/tx/${txId}`, '_blank', 'noopener,noreferrer');
                 } else {
-                    // If no documentation link, just trigger click on the selected item
-                    selectedResult.click();
+                    // For regular results, handle as before
+                    const resultIndex = parseInt(selectedResult.getAttribute('data-index'));
+                    
+                    // Find the documentation link in the selected result
+                    const docLink = selectedResult.querySelector('.docs-link a');
+                    if (docLink) {
+                        // Navigate to the documentation link
+                        window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                    } else {
+                        // If no documentation link, just trigger click on the selected item
+                        selectedResult.click();
+                    }
                 }
             } else if (resultCount > 0) {
-                // If no item is selected but we have results, select the first one and navigate to its doc link
-                const firstResult = resultItems[0];
-                const docLink = firstResult.querySelector('.docs-link a');
-                if (docLink) {
-                    window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                // If no item is selected but we have results, select the first one
+                selectedResultIndex = 0;
+                updateSelectedResult(resultItems);
+                
+                if (isTxResult) {
+                    // For transaction results, open on ViewBlock
+                    const txId = resultItems[0].querySelector('.term').textContent.trim();
+                    window.open(`https://viewblock.io/arweave/tx/${txId}`, '_blank', 'noopener,noreferrer');
                 } else {
-                    firstResult.click();
+                    // For regular results, handle as before
+                    const firstResult = resultItems[0];
+                    const docLink = firstResult.querySelector('.docs-link a');
+                    if (docLink) {
+                        window.open(docLink.href, '_blank', 'noopener,noreferrer');
+                    } else {
+                        firstResult.click();
+                    }
                 }
             }
             break;
@@ -113,8 +139,15 @@ function resetSelection() {
     // Auto-select first result when keyboard is active
     selectedResultIndex = isKeyboardActive ? 0 : -1;
     
+    // Check if we're dealing with transaction results
+    const resultsContainer = document.getElementById('results');
+    isTxResult = resultsContainer.querySelector('.tx-result') !== null;
+    
     // Apply the selection to the first result if keyboard is active
-    const resultItems = document.querySelectorAll('.result-item');
+    const resultItems = isTxResult 
+        ? resultsContainer.querySelectorAll('.tx-result')
+        : resultsContainer.querySelectorAll('.result-item');
+    
     if (resultItems.length > 0 && isKeyboardActive) {
         updateSelectedResult(resultItems);
     }
@@ -122,7 +155,14 @@ function resetSelection() {
 
 // Add minimal mouse handlers to result items
 function addMouseHandlers() {
-    const resultItems = document.querySelectorAll('.result-item');
+    // Check if we're dealing with transaction results
+    const resultsContainer = document.getElementById('results');
+    isTxResult = resultsContainer.querySelector('.tx-result') !== null;
+    
+    // Get the appropriate result items based on type
+    const resultItems = isTxResult 
+        ? resultsContainer.querySelectorAll('.tx-result')
+        : resultsContainer.querySelectorAll('.result-item');
     
     resultItems.forEach((item, index) => {
         // Only update selection on click, not hover
@@ -134,6 +174,14 @@ function addMouseHandlers() {
             selectedResultIndex = index;
             updateSelectedResult(resultItems);
         });
+        
+        // For transaction results, add double-click to open on ViewBlock
+        if (isTxResult) {
+            item.addEventListener('dblclick', () => {
+                const txId = item.querySelector('.term').textContent.trim();
+                window.open(`https://viewblock.io/arweave/tx/${txId}`, '_blank', 'noopener,noreferrer');
+            });
+        }
     });
 }
 
