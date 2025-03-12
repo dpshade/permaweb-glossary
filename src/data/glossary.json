@@ -1,12 +1,20 @@
 {
   "terms": [
     {
+      "term": "ANS-104",
+      "definition": "A standard for bundled data on Arweave, allowing for efficient storage of multiple pieces of data in a single transaction.",
+      "category": "Arweave Technology",
+      "related": ["Bundling", "Transaction", "Data Storage"],
+      "aliases": ["Bundled Data Standard"],
+      "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
+    },
+    {
       "term": "Process",
       "definition": "A computational unit in AO that can receive and send messages. Processes are represented by a log of interacting messages stored on Arweave, as well as an initialization data item.",
       "category": "AO Core Concepts",
       "related": ["Message", "Spawn", "Process ID", "Actor Model"],
       "aliases": ["AO Process", "Actor", "Smart Contract"],
-      "docs": []
+      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html#ethereum-signed-process-or-module"]
     },
     {
       "term": "Message",
@@ -14,7 +22,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Tags", "Handler", "Outbox"],
       "aliases": ["AO Message"],
-      "docs": []
+      "docs": ["https://cookbook_ao.arweave.net/concepts/messages.html"]
     },
     {
       "term": "Handler",
@@ -22,7 +30,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "Pattern Matching"],
       "aliases": ["Message Handler"],
-      "docs": []
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Spawn",
@@ -90,10 +98,10 @@
     },
     {
       "term": "Holographic State",
-      "definition": "A state management approach in AO where process state is distributed across the network, allowing any part to be reconstructed from fragments for efficient verification.",
-      "category": "AO Features",
-      "related": ["Lazy Evaluation", "Merkle Tree", "State Management"],
-      "aliases": ["Distributed State"],
+      "definition": "A state management approach in AO where consensus is achieved on message inputs rather than computation outputs. This allows process state to be reconstructed from message logs without requiring all nodes to execute every computation.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "State Management"],
+      "aliases": ["Holographic Computation", "State Projection"],
       "docs": []
     },
     {
@@ -106,17 +114,17 @@
     },
     {
       "term": "Arweave",
-      "definition": "A decentralized storage network that provides permanent data storage through a novel consensus mechanism. AO processes store their state and messages on Arweave for permanence.",
+      "definition": "A decentralized storage network that allows users to store data permanently and sustainably.",
       "category": "Infrastructure",
       "related": ["Permaweb", "Blockweave", "AR Token"],
-      "aliases": ["AR"],
+      "aliases": ["AR Network"],
       "docs": []
     },
     {
       "term": "Blockweave",
-      "definition": "Arweave's unique data structure that extends blockchain technology for efficient and permanent data storage, linking new blocks to multiple previous blocks.",
+      "definition": "The data structure used by Arweave to store and validate data.",
       "category": "Arweave Technology",
-      "related": ["Blockchain", "Proof of Access", "Arweave"],
+      "related": ["Arweave", "Proof of Access", "Data Storage"],
       "aliases": ["Weave"],
       "docs": []
     },
@@ -194,11 +202,27 @@
     },
     {
       "term": "ArNS",
-      "definition": "The Arweave Name System, which allows assigning human-readable names to data stored on Arweave, making files and websites easily accessible across AR.IO gateways.",
+      "definition": "A decentralized domain name system for the permaweb.",
       "category": "Arweave Ecosystem",
-      "related": ["AR.IO", "Gateway", "Permaweb"],
+      "related": ["Permaweb", "Gateway", "AR.IO"],
       "aliases": ["Arweave Name System"],
       "docs": []
+    },
+    {
+      "term": "Assignments",
+      "definition": "A mechanism in AO that enables processes to access and share data from Arweave. Assignments allow processes to request specific data items by their transaction IDs and distribute messages to multiple processes. They are implemented through the ao module's assign and send functions, supporting features like data loading and cross-process message sharing.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "ao Module", "Data Access"],
+      "aliases": ["Process Assignments", "Message Assignment"],
+      "docs": ["https://cookbook_ao.arweave.net/references/data.html"]
+    },
+    {
+      "term": "ao Module",
+      "definition": "A core library in AO that provides essential functionality for process communication and management. It includes functions for sending messages (ao.send), spawning processes (ao.spawn), managing assignments, and handling process state. The module maintains process environment information and manages message routing through an outbox system.",
+      "category": "AO Development",
+      "related": ["Process", "Message", "Assignments", "Environment"],
+      "aliases": ["AO Library", "Core Module"],
+      "docs": ["https://cookbook_ao.arweave.net/references/ao-module.html"]
     },
     {
       "term": "AO Computer",
@@ -265,6 +289,14 @@
       "docs": []
     },
     {
+      "term": "Eval",
+      "definition": "An onboard handler in AO processes that evaluates new code and verifies message origin. It processes incoming code, determines appropriate actions, and can be manually triggered to evaluate the Data field from messages. The Eval handler is also used internally by functions like .load to evaluate file contents.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Handler", "Message", "Security Model"],
+      "aliases": ["Eval Handler", "Code Evaluator"],
+      "docs": ["https://cookbook_ao.arweave.net/concepts/eval.html"]
+    },
+    {
       "term": "Gateway Address Registry",
       "definition": "A decentralized directory maintained in the AR.IO smart contract. It serves as the authoritative list of all registered gateways on the AR.IO Network. The registry provides detailed metadata about each gateway to facilitate discovery, health monitoring, and data sharing among apps, users and other infrastructure.",
       "category": "Arweave Ecosystem",
@@ -294,7 +326,7 @@
       "category": "Arweave Technology",
       "related": ["Path Manifest", "Transaction ID", "Content Mapping"],
       "aliases": ["Path Manifest", "Arweave Manifest"],
-      "docs": []
+      "docs": ["https://github.com/ar-io/specs/blob/c338593c618aa8dd5c3dfcd180eecf49e68b4ded/manifests/path-manifest-schema.md"]
     },
     {
       "term": "Mempool",
@@ -446,6 +478,390 @@
       "category": "Arweave Ecosystem",
       "related": ["Gateway", "ArNS", "AR.IO"],
       "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Bootloader",
+      "definition": "A feature in AO that enables users to include a script to evaluate when spawning a process. The script can be included either with the Data property or with a txId specified on the On-Boot Tag.",
+      "category": "AO Development",
+      "related": ["Process", "Spawn", "Module"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Coroutine",
+      "definition": "A programming feature in AO similar to async/await or generators, allowing processes to pause execution (yield) and resume later. Used for handling asynchronous operations and message passing.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Handler"],
+      "aliases": ["Yield", "Resume"],
+      "docs": []
+    },
+    {
+      "term": "Handler Pattern",
+      "definition": "A mechanism in AO for matching and processing incoming messages based on their attributes. Can be defined using strings, tables, or functions to match message properties like Action tags.",
+      "category": "AO Development",
+      "related": ["Handler", "Message", "Pattern Matching"],
+      "aliases": ["Message Pattern", "Pattern Matcher"],
+      "docs": []
+    },
+    {
+      "term": "Resolver",
+      "definition": "A special table in AO handlers where each key is a pattern matching table and its corresponding value is a function that executes when that pattern matches, enabling conditional execution based on message attributes.",
+      "category": "AO Development",
+      "related": ["Handler", "Handler Pattern", "Pattern Matching"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "WeaveDrive",
+      "definition": "A feature in AO that enables access to data items from Arweave with attestations. It allows processes to access and verify data through authorized attestors and supports L2 data item headers.",
+      "category": "AO Features",
+      "related": ["Attestor", "Data Item", "L2 Headers"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Attestor",
+      "definition": "An Arweave wallet address authorized to create attestation data items that grant access to specific Arweave data items using WeaveDrive.",
+      "category": "AO Security",
+      "related": ["WeaveDrive", "Data Item", "Security Model"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Token Subledger",
+      "definition": "A process type in AO that implements the full messaging protocol of token contracts and enables splitting tokens from a parent process into a child process while maintaining fungibility.",
+      "category": "AO Economics",
+      "related": ["Token", "Process", "Message Protocol"],
+      "aliases": ["Child Token Process"],
+      "docs": []
+    },
+    {
+      "term": "Message Reference",
+      "definition": "A unique identifier assigned to messages in AO that enables tracking message chains and responses across processes, facilitating request-response patterns and message forwarding.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Handler", "Process"],
+      "aliases": ["X-Reference", "Reference Tag"],
+      "docs": []
+    },
+    {
+      "term": "Message Forward",
+      "definition": "A mechanism in AO that enables passing messages between multiple processes while maintaining reference chains and origin information, useful for creating multi-step processing pipelines.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Message Reference", "Process"],
+      "aliases": ["Forward", "Message Pipeline"],
+      "docs": []
+    },
+    {
+      "term": "Assignment Check",
+      "definition": "A security feature in AO that provides whitelisted assignment protection for processes by verifying the trustworthiness of message assignments.",
+      "category": "AO Security",
+      "related": ["Process", "Message", "Security Model"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "AO Environment",
+      "definition": "The core runtime environment in AO that manages process state, message handling, and execution context. It includes process identification, module references, authorities, and outbox management for coordinating process communication.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Module", "Outbox"],
+      "aliases": ["ao.env", "Process Environment"],
+      "docs": []
+    },
+    {
+      "term": "Process Authority",
+      "definition": "A security mechanism in AO that defines which entities (identified by their addresses) are trusted to interact with a process. Authorities can send messages that will be accepted and processed by the process.",
+      "category": "AO Security",
+      "related": ["Process", "Security Model", "Trust-minimization"],
+      "aliases": ["Authority", "Trusted Entity"],
+      "docs": []
+    },
+    {
+      "term": "Process Outbox",
+      "definition": "A component of an AO process that temporarily stores outgoing messages, spawns, and assignments before they are processed by the network. The outbox manages the process's communication with other processes.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Message Forward"],
+      "aliases": ["Message Queue", "Output Buffer"],
+      "docs": []
+    },
+    {
+      "term": "Message Tags",
+      "definition": "Metadata attached to AO messages that provide context and instructions for message processing. Tags can be extractable or non-extractable, and forwardable or non-forwardable, affecting how messages are processed and routed.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Message Forward", "Process"],
+      "aliases": ["Message Metadata", "Message Attributes"],
+      "docs": []
+    },
+    {
+      "term": "Message Normalization",
+      "definition": "The process of standardizing message format in AO by extracting tags into a consistent structure and ensuring proper handling of message attributes. This enables reliable message processing across the network.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Message Tags", "Message Forward"],
+      "aliases": ["Tag Extraction", "Message Standardization"],
+      "docs": []
+    },
+    {
+      "term": "Message Sanitization",
+      "definition": "A security feature in AO that removes non-forwardable tags from messages before forwarding, ensuring that sensitive or system-specific information is not inappropriately propagated through the network.",
+      "category": "AO Security",
+      "related": ["Message", "Message Tags", "Message Forward"],
+      "aliases": ["Tag Filtering", "Message Cleaning"],
+      "docs": []
+    },
+    {
+      "term": "Process Inbox",
+      "definition": "A component of an AO process that stores incoming messages for processing. The inbox has a maximum capacity and implements overflow protection to prevent memory issues while maintaining message order.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Handler"],
+      "aliases": ["Message Queue", "Input Buffer"],
+      "docs": []
+    },
+    {
+      "term": "Process Module",
+      "definition": "A reusable component in AO that defines the behavior and capabilities of a process. Modules can be referenced and reused across different processes, providing standardized functionality and interfaces.",
+      "category": "AO Development",
+      "related": ["Process", "Spawn", "Handler"],
+      "aliases": ["AO Module", "Process Template"],
+      "docs": []
+    },
+    {
+      "term": "Handler Pipeline",
+      "definition": "A sequential processing system in AO where multiple handlers can be chained together to process messages. The pipeline supports pattern matching, conditional execution, and message transformation at each step.",
+      "category": "AO Development",
+      "related": ["Handler", "Handler Pattern", "Message"],
+      "aliases": ["Message Pipeline", "Processing Chain"],
+      "docs": []
+    },
+    {
+      "term": "Process Result",
+      "definition": "The output of an AO process execution, including any generated messages, spawned processes, assignments, and error information. Results are used to coordinate process communication and manage state changes.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Spawn"],
+      "aliases": ["Execution Result", "Process Output"],
+      "docs": []
+    },
+    {
+      "term": "Single System Image",
+      "definition": "A unified computing environment in AO that creates a cohesive system across diverse nodes in a distributed network. This allows processes to operate independently while maintaining a unified user experience, similar to how websites on different servers are connected via hyperlinks.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Actor Model", "Distributed Computing"],
+      "aliases": ["SSI", "Unified Computing Environment"],
+      "docs": []
+    },
+    {
+      "term": "Stake-Exclusivity Period",
+      "definition": "A time window in AO during which staked collateral is exclusively reserved for a specific message transmission, preventing it from being reused. This mechanism ensures stake availability for potential slashing if discrepancies are found in the message.",
+      "category": "AO Economics",
+      "related": ["Staking", "Message", "Security Model"],
+      "aliases": ["Lock Period", "Stake Lock"],
+      "docs": []
+    },
+    {
+      "term": "Time Value of Stake",
+      "definition": "The economic cost in AO associated with locking stake capital for a specific duration to secure message transmission. This value is calculated based on the opportunity cost of the locked capital and expected annual return rates.",
+      "category": "AO Economics",
+      "related": ["Stake-Exclusivity Period", "Staking", "Message"],
+      "aliases": ["Stake Time Value", "Capital Lock Cost"],
+      "docs": []
+    },
+    {
+      "term": "Permissionless Ecosystem Funding",
+      "definition": "A token issuance mechanism in AO that allows developers to fund their applications by receiving AO tokens from users who bridge assets into their protocols. The funding rate automatically adjusts with the token emission curve.",
+      "category": "AO Economics",
+      "related": ["AO Token", "Bridge", "Ecosystem Development"],
+      "aliases": ["PEF", "Protocol Funding"],
+      "docs": []
+    },
+    {
+      "term": "Permaweb Ecosystem Development Guild",
+      "definition": "An alliance of organizations and builders in AO that develop and maintain core infrastructure, funded through native yield generated by bridged assets. The funding naturally decreases with token emission rate.",
+      "category": "AO Economics",
+      "related": ["Ecosystem Development", "Bridge", "AO Token"],
+      "aliases": ["PEDG", "Development Guild"],
+      "docs": []
+    },
+    {
+      "term": "Pushing",
+      "definition": "The process in AO where Messenger Units relay messages through the network, coordinating with Scheduler Units for message ordering and Compute Units for state calculation. This continues recursively until there are no more messages to process.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Messenger Unit", "Scheduler Unit"],
+      "aliases": ["Message Pushing", "Message Relay"],
+      "docs": []
+    },
+    {
+      "term": "State Attestation",
+      "definition": "A cryptographically signed statement by a Compute Unit in AO verifying the results of process state computation. These attestations can be published and optionally sold to other nodes for a fee.",
+      "category": "AO Security",
+      "related": ["Compute Unit", "Process", "State Management"],
+      "aliases": ["Computation Attestation", "State Verification"],
+      "docs": []
+    },
+    {
+      "term": "Bridge",
+      "definition": "A system in AO that enables assets from other networks to be represented and used within AO. Consists of smart contracts on both the native chain and AO network, generating derivative tokens that represent the bridged assets.",
+      "category": "AO Infrastructure",
+      "related": ["Token", "Cross-chain", "Asset Transfer"],
+      "aliases": ["Asset Bridge", "Token Bridge"],
+      "docs": []
+    },
+    {
+      "term": "Cast Message",
+      "definition": "A type of message in AO that is sent to a Scheduler Unit without waiting for a response, enabling one-way communication patterns. This allows for more efficient message passing when immediate responses aren't needed.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Scheduler Unit", "Message Forward"],
+      "aliases": ["One-way Message", "Fire-and-forget Message"],
+      "docs": []
+    },
+    {
+      "term": "aos console",
+      "definition": "A command-line interface tool for interacting with AO networks. It allows developers to deploy processes, send messages, and manage AO resources through terminal commands.",
+      "category": "AO Development",
+      "related": ["AOS", "Process", "Message"],
+      "aliases": ["AO Console"],
+      "docs": []
+    },
+    {
+      "term": "DataItemSigner",
+      "definition": "A function used to cryptographically sign data items before they're submitted to the AO network, ensuring authenticity and ownership.",
+      "category": "AO Development",
+      "related": ["Message", "Security Model", "Process"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "dryrun Parameter",
+      "definition": "An API parameter that allows execution of operations without committing them to the blockchain, useful for testing and validation.",
+      "category": "AO Development",
+      "related": ["Process", "Message", "Handler"],
+      "aliases": ["Test Mode"],
+      "docs": []
+    },
+    {
+      "term": "Relay Operator",
+      "definition": "An entity that facilitates message transmission in the AO network, often requiring payment in the form of tokens to relay messages.",
+      "category": "AO Infrastructure",
+      "related": ["Messenger Unit", "Message", "AO Token"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Tag System",
+      "definition": "The structured protocol for message routing in AO using key-value pairs. Common patterns include Action-Target-Quantity for token transfers and other operations.",
+      "category": "AO Core Concepts",
+      "related": ["Message Tags", "Message", "Handler Pattern"],
+      "aliases": ["Tagging Protocol"],
+      "docs": []
+    },
+    {
+      "term": "Balances Implementation",
+      "definition": "The pattern for implementing token balances within AO processes, typically using a Lua table with wallet addresses as keys.",
+      "category": "AO Development",
+      "related": ["Process", "Token", "AO Token"],
+      "aliases": ["Token Ledger"],
+      "docs": []
+    },
+    {
+      "term": "Blueprints",
+      "definition": "Templates in AOS that streamline the development of distributed applications by providing a framework for creating consistent and efficient processes across the AO network.",
+      "category": "AO Development",
+      "related": ["AOS", "Process", "Process Module", "Handler Pattern"],
+      "aliases": ["AOS Blueprints", "Process Templates"],
+      "docs": []
+    },
+    {
+      "term": "AR Token",
+      "definition": "The native cryptocurrency of the Arweave network used for transaction fees and rewards.",
+      "category": "Arweave Technology",
+      "related": ["Arweave", "Transaction", "Mining"],
+      "aliases": ["AR"],
+      "docs": []
+    },
+    {
+      "term": "Atomic Assets",
+      "definition": "A unique data type on Arweave, linking data, metadata, and a smart contract under one identifier.",
+      "category": "Arweave Technology",
+      "related": ["SmartWeave", "Transaction", "Data Storage"],
+      "aliases": ["Atomic Data"],
+      "docs": []
+    },
+    {
+      "term": "Gateways",
+      "definition": "Nodes that provide HTTP access to data stored on the Arweave network.",
+      "category": "Arweave Ecosystem",
+      "related": ["AR.IO", "Arweave", "Data Retrieval"],
+      "aliases": ["Arweave Gateway"],
+      "docs": []
+    },
+    {
+      "term": "Proof of Access",
+      "definition": "Arweave's consensus mechanism that combines proof of work with proof of storage.",
+      "category": "Arweave Technology",
+      "related": ["SPoRA", "Mining", "Blockweave"],
+      "aliases": ["PoA"],
+      "docs": []
+    },
+    {
+      "term": "SmartWeave",
+      "definition": "A smart contract platform for Arweave that uses lazy-evaluation.",
+      "category": "Arweave Technology",
+      "related": ["Arweave", "Warp", "Smart Contract"],
+      "aliases": ["Arweave Smart Contracts"],
+      "docs": []
+    },
+    {
+      "term": "Succinct Proof of Random Access",
+      "definition": "Arweave's current mining mechanism that combines proof of work with proof of storage.",
+      "category": "Arweave Technology",
+      "related": ["Proof of Access", "Mining", "Blockweave"],
+      "aliases": ["SPoRA"],
+      "docs": []
+    },
+    {
+      "term": "Universal Data License",
+      "definition": "Arweave's on-chain content licensing system.",
+      "category": "Arweave Technology",
+      "related": ["Data Storage", "SmartWeave", "Permaweb"],
+      "aliases": ["UDL"],
+      "docs": []
+    },
+    {
+      "term": "Verifiable Delay Function",
+      "definition": "A cryptographic clock that provides a unique identifier to every node each second in the Arweave network.",
+      "category": "Arweave Technology",
+      "related": ["Mining", "Network Synchronization", "Security"],
+      "aliases": ["VDF"],
+      "docs": []
+    },
+    {
+      "term": "Wallet",
+      "definition": "A software application that allows users to store, send, and receive AR tokens, as well as interact with Arweave applications.",
+      "category": "Arweave Technology",
+      "related": ["AR Token", "Transaction", "Public Key"],
+      "aliases": ["AR Wallet", "Arweave Wallet"],
+      "docs": []
+    },
+    {
+      "term": "Warp",
+      "definition": "A smart contract execution environment for Arweave.",
+      "category": "Arweave Technology",
+      "related": ["SmartWeave", "Smart Contract", "Arweave"],
+      "aliases": ["Warp Contracts"],
+      "docs": []
+    },
+    {
+      "term": "Weave",
+      "definition": "The collective data stored on the Arweave network.",
+      "category": "Arweave Technology",
+      "related": ["Blockweave", "Data Storage", "Arweave"],
+      "aliases": ["Arweave Weave"],
+      "docs": []
+    },
+    {
+      "term": "Wildfire",
+      "definition": "Arweave's self-sustaining network participation reward system.",
+      "category": "Arweave Technology",
+      "related": ["Mining", "Network Incentives", "AR Token"],
+      "aliases": ["Network Rewards"],
       "docs": []
     }
   ]
