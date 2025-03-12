@@ -9,8 +9,8 @@
     "dev": "bun --watch run server.js",
     "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src dist/",
     "clean": "rm -rf dist",
-    "deploy-main": "bun run build && permaweb-deploy --ant-process",
-    "deploy-staging": "bun run build && permaweb-deploy --ant-process --env staging"
+    "deploy-main": "bun run deploy.js",
+    "deploy-staging": "bun run deploy.js --staging"
   },
   "keywords": [
     "search",
@@ -32,5 +32,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/yourusername/permaweb-glossary-search"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
