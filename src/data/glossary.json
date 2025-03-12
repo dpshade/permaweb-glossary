@@ -925,7 +925,7 @@
       "definition": "An over collateralised lending and borrowing protocol built on Arweave and AO.",
       "category": "DeFi",
       "related": ["Community Labs", "Botega", "Permaswap"],
-      "aliases": ["LO"],
+      "aliases": ["Arweave lending", "Yield"],
       "docs": ["https://www.liquidops.io/"]
     },
     {
