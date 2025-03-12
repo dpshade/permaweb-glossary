@@ -414,12 +414,12 @@ function displayTxResults(data) {
                 ${metadataHtml}
             </div>
             ${txNode.tags && txNode.tags.length > 0 ? `
-                <div class="related-terms tx-tags">
+                <div class="tx-tags">
                     ${txNode.tags.map(tag => `
-                        <span class="related-tag tx-tag">
+                        <div class="tx-tag">
                             <span class="tag-name">${tag.name}</span>: 
                             <span class="tag-value">${tag.value}</span>
-                        </span>
+                        </div>
                     `).join('')}
                 </div>
             ` : ''}
