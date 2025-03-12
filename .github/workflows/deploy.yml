@@ -22,4 +22,5 @@ jobs:
       - name: Deploy to Permaweb
         run: bun run deploy-main
         env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }} 
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          ANT_PROCESS: ${{ secrets.ANT_PROCESS }} 
