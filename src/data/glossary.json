@@ -203,7 +203,7 @@
     {
       "term": "ArNS",
       "definition": "A decentralized domain name system for the permaweb.",
-      "category": "Arweave Ecosystem",
+      "category": "AR.IO Ecosystem",
       "related": ["Permaweb", "Gateway", "AR.IO"],
       "aliases": ["Arweave Name System"],
       "docs": []
@@ -1033,12 +1033,12 @@
       "docs": ["https://cookbook_ao.arweave.net/references/lua.html"]
     },
     {
-      "term": "WASM (WebAssembly)",
-      "definition": "A binary instruction format used by web browsers and other environments, including AO. In AO, WASM is supported as a runtime environment for executing process code, allowing developers to write processes in languages that compile to WASM.",
-      "category": "AO Infrastructure",
-      "related": ["AO Process", "Runtime Environment", "HyperBEAM"],
-      "aliases": ["WebAssembly"],
-      "docs": ["https://cookbook_ao.arweave.net/references/wasm.html"]
+      "term": "Under_names",
+      "definition": "ANT owners and controllers can configure multiple subdomains for their registered ArNS name known as “under_names” or more easily written “undernames”. These undernames are assigned individually at the time of registration or can be added on to any registered name at any time. Under_names use an underscore “_” in place of a more typically used dot “.” to separate the subdomain from the main ArNS domain.",
+      "category": "AR.IO Ecosystem",
+      "related": ["ArNS", "Subdomains", "ANT"],
+      "aliases": ["Undernames"],
+      "docs": ["https://docs.ar.io/arns"]
     }        
   ]
 }
