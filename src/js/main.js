@@ -143,9 +143,17 @@ function updateLoadingStatus(message, isError = false) {
     }
 }
 
+// Clean search query by removing punctuation at the end and extra whitespace
+function cleanSearchQuery(query) {
+    return query
+        .replace(/[.,\/#!$%\^&\*;:{}=_`~()'"]+$/, '') // Remove punctuation only at the end
+        .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+        .trim(); // Remove leading/trailing whitespace
+}
+
 // Handle search input with debounce
 function handleSearch(event) {
-    const query = event.target.value.trim();
+    const query = cleanSearchQuery(event.target.value);
     
     // Clear previous timeout
     if (searchTimeout) {
@@ -264,6 +272,7 @@ function processSearchResults(results, query) {
     // Flatten and deduplicate results
     const flatResults = [];
     const seenIds = new Set();
+    const verbatimMatches = []; // Store verbatim matches separately
     
     // Process results from each field
     results.forEach(resultSet => {
@@ -275,21 +284,59 @@ function processSearchResults(results, query) {
                 // Get the original glossary item
                 const glossaryItem = glossaryData[parseInt(id)];
                 
+                // Check for verbatim match first
+                const isVerbatimMatch = checkVerbatimMatch(glossaryItem, query);
+                
                 // Calculate a semantic-like relevance score (0-1)
                 let score = calculateSemanticLikeScore(glossaryItem, query);
                 
-                flatResults.push({
-                    ...glossaryItem,
-                    score: score
-                });
+                // Boost score for verbatim matches
+                if (isVerbatimMatch) {
+                    score = 2.0; // Ensure verbatim matches always appear first
+                    verbatimMatches.push({
+                        ...glossaryItem,
+                        score: score
+                    });
+                } else {
+                    flatResults.push({
+                        ...glossaryItem,
+                        score: score
+                    });
+                }
             }
         });
     });
     
+    // Combine verbatim matches with other results
+    const combinedResults = [...verbatimMatches, ...flatResults];
+    
     // Sort by score (highest first) and take top results
-    return flatResults
+    return combinedResults
         .sort((a, b) => b.score - a.score)
         .slice(0, 5);
+}
+
+// Check for verbatim/keyword matches
+function checkVerbatimMatch(item, query) {
+    const queryLower = query.toLowerCase();
+    
+    // Check exact term match
+    if (item.term.toLowerCase() === queryLower) {
+        return true;
+    }
+    
+    // Check aliases for exact matches
+    if (item.aliases && item.aliases.some(alias => alias.toLowerCase() === queryLower)) {
+        return true;
+    }
+    
+    // Check if query is a complete word in the term
+    const termWords = item.term.toLowerCase().split(/[-\s]+/);
+    if (termWords.includes(queryLower)) {
+        return true;
+    }
+    
+    return false;
 }
 
 // Calculate a semantic-like relevance score
@@ -310,6 +357,10 @@ function calculateSemanticLikeScore(item, query) {
     // Prefix match in term
     else if (termLower.startsWith(queryLower)) {
         exactMatchScore = 0.9;
+    }
+    // Term contains query as a complete word
+    else if (termLower.split(/[-\s]+/).includes(queryLower)) {
+        exactMatchScore = 0.85;
     }
     // Term contains query
     else if (termLower.includes(queryLower)) {
@@ -333,7 +384,9 @@ function calculateSemanticLikeScore(item, query) {
     // Check for aliases match
     if (item.aliases && item.aliases.length > 0) {
         const aliasesLower = item.aliases.map(a => a.toLowerCase());
-        if (aliasesLower.some(alias => alias.includes(queryLower))) {
+        if (aliasesLower.some(alias => alias === queryLower)) {
+            partialMatchScore += 0.4; // Boost exact alias matches
+        } else if (aliasesLower.some(alias => alias.includes(queryLower))) {
             partialMatchScore += 0.3;
         }
     }
@@ -341,7 +394,9 @@ function calculateSemanticLikeScore(item, query) {
     // Check for related terms match
     if (item.related && item.related.length > 0) {
         const relatedLower = item.related.map(r => r.toLowerCase());
-        if (relatedLower.some(rel => rel.includes(queryLower))) {
+        if (relatedLower.some(rel => rel === queryLower)) {
+            contextMatchScore += 0.3; // Boost exact related term matches
+        } else if (relatedLower.some(rel => rel.includes(queryLower))) {
             contextMatchScore += 0.2;
         }
     }

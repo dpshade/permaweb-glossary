@@ -1,11 +1,18 @@
 // Keyboard navigation for search results
 let selectedResultIndex = -1; // Track the currently selected result
+let isKeyboardActive = false; // Track if keyboard navigation is active
 
 // Initialize keyboard navigation
 function initKeyboardNavigation() {
     // Add keyboard navigation event listener to search input
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('keydown', handleKeyNavigation);
+    
+    // Add input event listener to detect typing
+    searchInput.addEventListener('input', () => {
+        isKeyboardActive = true;
+        document.body.classList.add('keyboard-active');
+    });
 }
 
 // Handle keyboard navigation
@@ -28,12 +35,16 @@ function handleKeyNavigation(event) {
     switch (event.key) {
         case 'ArrowDown':
             event.preventDefault(); // Prevent scrolling the page
+            isKeyboardActive = true;
+            document.body.classList.add('keyboard-active');
             selectedResultIndex = (selectedResultIndex + 1) % resultCount;
             updateSelectedResult(resultItems);
             break;
             
         case 'ArrowUp':
             event.preventDefault(); // Prevent scrolling the page
+            isKeyboardActive = true;
+            document.body.classList.add('keyboard-active');
             selectedResultIndex = (selectedResultIndex - 1 + resultCount) % resultCount;
             updateSelectedResult(resultItems);
             break;
@@ -59,6 +70,8 @@ function handleKeyNavigation(event) {
             resultsContainer.classList.remove('has-results');
             document.querySelector('.search-container').classList.remove('has-results');
             selectedResultIndex = -1;
+            isKeyboardActive = false;
+            document.body.classList.remove('keyboard-active');
             break;
     }
 }
@@ -84,29 +97,34 @@ function updateSelectedResult(resultItems) {
 
 // Reset selection when displaying new results
 function resetSelection() {
-    // Set to 0 to select the first result by default
-    selectedResultIndex = 0;
+    // Auto-select first result when keyboard is active
+    selectedResultIndex = isKeyboardActive ? 0 : -1;
     
-    // Apply the selection to the first result immediately
+    // Apply the selection to the first result if keyboard is active
     const resultItems = document.querySelectorAll('.result-item');
-    if (resultItems.length > 0) {
+    if (resultItems.length > 0 && isKeyboardActive) {
         updateSelectedResult(resultItems);
     }
 }
 
-// Add mouseover handlers to result items
+// Add minimal mouse handlers to result items
 function addMouseHandlers() {
     const resultItems = document.querySelectorAll('.result-item');
     
     resultItems.forEach((item, index) => {
-        item.addEventListener('mouseover', () => {
+        // Only update selection on click, not hover
+        item.addEventListener('mousedown', () => {
+            if (isKeyboardActive) {
+                isKeyboardActive = false;
+                document.body.classList.remove('keyboard-active');
+            }
             selectedResultIndex = index;
             updateSelectedResult(resultItems);
         });
     });
 }
 
-// Export functions
+// Export the functions needed by other modules
 window.keyboardNav = {
     init: initKeyboardNavigation,
     reset: resetSelection,

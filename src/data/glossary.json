@@ -14,7 +14,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "Spawn", "Process ID", "Actor Model"],
       "aliases": ["AO Process", "Actor", "Smart Contract"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html#ethereum-signed-process-or-module"]
+      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "Message",
@@ -169,11 +169,11 @@
       "docs": []
     },
     {
-      "term": "Pi Token",
+      "term": "Pi Token (π)",
       "definition": "A token in the AO ecosystem representing ownership of key permaweb assets, including AO, AR, and fair-launch projects, serving as a default means of exchange.",
       "category": "AO Economics",
       "related": ["AO Token", "AR Token", "Permaweb Index"],
-      "aliases": ["PI", "Permaweb Index"],
+      "aliases": ["PI", "π", "Permaweb Index"],
       "docs": []
     },
     {
@@ -355,7 +355,7 @@
     {
       "term": "Observer",
       "definition": "A gateway selected to evaluate the performance of peer gateways in resolving ArNS names. Observers assess and report on the operational efficacy of other gateways.",
-      "category": "Arweave Ecosystem",
+      "category": "AR.IO Ecosystem",
       "related": ["Gateway", "ArNS", "Performance Assessment"],
       "aliases": [],
       "docs": []
@@ -625,14 +625,6 @@
       "docs": []
     },
     {
-      "term": "Handler Pipeline",
-      "definition": "A sequential processing system in AO where multiple handlers can be chained together to process messages. The pipeline supports pattern matching, conditional execution, and message transformation at each step.",
-      "category": "AO Development",
-      "related": ["Handler", "Handler Pattern", "Message"],
-      "aliases": ["Message Pipeline", "Processing Chain"],
-      "docs": []
-    },
-    {
       "term": "Process Result",
       "definition": "The output of an AO process execution, including any generated messages, spawned processes, assignments, and error information. Results are used to coordinate process communication and manage state changes.",
       "category": "AO Core Concepts",
@@ -787,7 +779,7 @@
     {
       "term": "Gateways",
       "definition": "Nodes that provide HTTP access to data stored on the Arweave network.",
-      "category": "Arweave Ecosystem",
+      "category": "AR.IO Ecosystem",
       "related": ["AR.IO", "Arweave", "Data Retrieval"],
       "aliases": ["Arweave Gateway"],
       "docs": []
@@ -820,7 +812,7 @@
       "term": "Universal Data License",
       "definition": "Arweave's on-chain content licensing system.",
       "category": "Arweave Technology",
-      "related": ["Data Storage", "SmartWeave", "Permaweb"],
+      "related": ["Data Storage"],
       "aliases": ["UDL"],
       "docs": []
     },
@@ -863,6 +855,182 @@
       "related": ["Mining", "Network Incentives", "AR Token"],
       "aliases": ["Network Rewards"],
       "docs": []
-    }
+    },
+    {
+      "term": "AO Package Manager",
+      "definition": "A package manager for AO, enabling developers to manage and distribute AO modules and dependencies.",
+      "category": "AO Development",
+      "related": ["BetterIDEa", "AO Modules", "Process Module"],
+      "aliases": ["APM"],
+      "docs": ["https://apm_betteridea.arweave.net/"]
+    },
+    {
+      "term": "AO Ventures",
+      "definition": "A venture capital firm investing in projects within the AO ecosystem.",
+      "category": "Organizations",
+      "related": ["AO Ecosystem", "Venture Capital", "Ecosystem Development"],
+      "aliases": ["AO VC"],
+      "docs": ["https://www.aoventures.io/"]
+    },
+    {
+      "term": "Arlink",
+      "definition": "A decentralized data linking service utilizing Arweave for permanent data storage and retrieval.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "Data Linking"],
+      "aliases": ["Permanent Data Links"],
+      "docs": ["https://arlink.arweave.net/"]
+    },
+    {
+      "term": "Autonomous Finance",
+      "definition": "A decentralized finance initiative utilizing AO technologies for autonomous financial operations.",
+      "category": "Decentralized Finance",
+      "related": ["AO Technologies", "Decentralized Finance", "Smart Contract"],
+      "aliases": ["AO Finance", "Autonomous DeFi"],
+      "docs": ["https://docs.autonomous.finance/"]
+    },
+    {
+      "term": "Bazar",
+      "definition": "A decentralized marketplace leveraging Arweave for data storage and management.",
+      "category": "Decentralized Applications",
+      "related": ["Marketplace", "Arweave"],
+      "aliases": ["Decentralized Market"],
+      "docs": ["https://bazar.arweave.net/"]
+    },
+    {
+      "term": "BetterIDEa",
+      "definition": "A native web-based IDE for AO development, featuring Lua language server integration and AO Package Manager support.",
+      "category": "AO Development",
+      "related": ["AO Package Manager", "Lua", "Development Tools"],
+      "aliases": ["AO IDE", "Web IDE"],
+      "docs": ["https://betteridea.dev/"]
+    },
+    {
+      "term": "Botega",
+      "definition": "A decentralized marketplace for digital goods and services.",
+      "category": "Decentralized Applications",
+      "related": ["Marketplace", "Digital Goods"],
+      "aliases": ["Digital Marketplace"],
+      "docs": ["https://botega.arweave.net"]
+    },
+    {
+      "term": "Community Labs",
+      "definition": "A collaborative group dedicated to advancing the permaweb ecosystem.",
+      "category": "Organizations",
+      "related": ["Permaweb Ecosystem", "Development", "Infrastructure"],
+      "aliases": ["CL"],
+      "docs": ["https://www.communitylabs.com/"]
+    },
+    {
+      "term": "Dexi",
+      "definition": "A decentralized exchange interface for interacting with multiple blockchain networks.",
+      "category": "Decentralized Applications",
+      "related": ["Blockchain", "Decentralized Exchange", "DEX", "Cross-chain"],
+      "aliases": ["DEX Interface"],
+      "docs": ["https://dexi.arweave.net/"]
+    },
+    {
+      "term": "Forward Research",
+      "definition": "A research organization exploring and expanding the capabilities of the AO network.",
+      "category": "Organizations",
+      "related": ["AO Network", "Research", "Development"],
+      "aliases": ["FWD Research"],
+      "docs": ["https://fwd.arweave.net/"]
+    },
+    {
+      "term": "Longview Labs",
+      "definition": "An organization focused on developing decentralized technologies and applications.",
+      "category": "Organizations",
+      "related": ["Decentralized Technologies", "Development", "Infrastructure"],
+      "aliases": ["OnlyArweave"],
+      "docs": ["https://www.longviewlabs.co/"]
+    },
+    {
+      "term": "Odysee",
+      "definition": "A decentralized video platform utilizing blockchain for content distribution. Currently being migrated to Arweave/AO via ArFleet.",
+      "category": "Decentralized Applications",
+      "related": ["ArFleet", "Content Distribution", "Video Platform"],
+      "aliases": ["Video Platform"],
+      "docs": ["https://odysee.com/"]
+    },
+    {
+      "term": "Permaswap",
+      "definition": "A decentralized exchange built on the Arweave network, supporting transactions within the permaweb ecosystem.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "Decentralized Exchange"],
+      "aliases": ["Permanent DEX"],
+      "docs": []
+    },
+    {
+      "term": "Redstone",
+      "definition": "A decentralized data analytics platform built on Arweave.",
+      "category": "Decentralized Applications",
+      "related": ["Arweave", "Data Analytics", "Oracle"],
+      "aliases": ["Data Oracle"],
+      "docs": ["https://ar.io/case-studies/redstone"]
+    },
+    {
+      "term": "Trackgood",
+      "definition": "A decentralized supply chain management system using Arweave for data integrity.",
+      "category": "Decentralized Applications",
+      "related": ["Supply Chain Management", "Arweave", "Data Integrity"],
+      "aliases": ["Supply Chain Platform"],
+      "docs": ["https://ar.io/case-studies/trackgood"]
+    },
+    {
+      "term": "Wander",
+      "definition": "A non-custodial Arweave and AO native wallet with extensive features. Wander is available as a browser extension, mobile application, and embedded smart account.",
+      "category": "Wallets and Tools",
+      "related": ["Arweave", "Wallet", "ArNS"],
+      "aliases": ["ArConnect", "Wander Wallet"],
+      "docs": ["https://www.wander.app/"]
+    },
+    {
+      "term": "Beacon",
+      "definition": "The most secure wallet for AO and AR networks, offering features such as two-factor authentication (2FA), multi-signature capabilities, passkeys, recovery options, and more to ensure robust security.",
+      "category": "Wallets and Tools",
+      "related": ["Blockchain", "Wallet", "Security"],
+      "aliases": ["Multi-chain Wallet", "Advanced Security Wallet"],
+      "docs": ["https://beaconwallet.app/"]
+    },
+    {
+      "term": "GraphQL for Arweave",
+      "definition": "A query language used to interact with Arweave data in a flexible and efficient manner, allowing developers to specify exactly what data they need.",
+      "category": "Arweave Technology",
+      "related": ["Query Language", "Data Retrieval", "Indexing", "Gateway"],
+      "aliases": ["Arweave GraphQL", "AR GraphQL"],
+      "docs": ["https://cookbook.arweave.net/concepts/queryTransactions.html"]
+    },
+    {
+      "term": "Multi-sig",
+      "definition": "A multi-signature wallet or smart contract that requires multiple signatures or approvals from different parties before executing a transaction or action. This enhances security and control by distributing decision-making authority.",
+      "category": "Wallets and Tools",
+      "related": ["Wallet", "Smart Contract", "Security"],
+      "aliases": ["Multi-signature"],
+      "docs": []
+    },
+    {
+      "term": "Permaweb Journal",
+      "definition": "An on-chain publication and knowledge hub focused on the Arweave and AO ecosystem. It serves as a central resource for news, insights, and developments within the permaweb community.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "AO Ecosystem", "On-chain Publication"],
+      "aliases": [],
+      "docs": ["https://permaweb-journal.arweave.net"]
+    },
+    {
+      "term": "Lua",
+      "definition": "A lightweight, embeddable scripting language used in AO for process development. Lua is utilized within the AO environment for writing process code and interacting with the AO system.",
+      "category": "AO Development",
+      "related": ["AO Process", "Scripting Language", "BetterIDEa"],
+      "aliases": [],
+      "docs": ["https://cookbook_ao.arweave.net/references/lua.html"]
+    },
+    {
+      "term": "WASM (WebAssembly)",
+      "definition": "A binary instruction format used by web browsers and other environments, including AO. In AO, WASM is supported as a runtime environment for executing process code, allowing developers to write processes in languages that compile to WASM.",
+      "category": "AO Infrastructure",
+      "related": ["AO Process", "Runtime Environment", "HyperBEAM"],
+      "aliases": ["WebAssembly"],
+      "docs": ["https://cookbook_ao.arweave.net/references/wasm.html"]
+    }        
   ]
 }

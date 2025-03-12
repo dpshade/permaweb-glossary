@@ -9,14 +9,27 @@ body {
   }
   
   .search-container {
-    max-width: 650px;
-    margin: 40px auto;
+    max-width: 750px;
+    width: 90%;
+    margin: 0 auto;
     padding: 32px;
     background-color: white;
     border-radius: 2px;
     box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.8);
-    position: relative;
     border: 2px solid #000;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .search-container.has-results {
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 0);
+    margin: 40px auto;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   h1 {
@@ -89,7 +102,6 @@ body {
   .result-item {
     padding: 16px 20px;
     border-bottom: 2px solid #000;
-    transition: background-color 0.2s ease;
     cursor: pointer;
     position: relative;
   }
@@ -98,15 +110,21 @@ body {
     border-bottom: none;
   }
   
+  /* Simplified hover state - only background change */
   .result-item:hover {
     background-color: #f0f0f0;
   }
   
-  /* Style for keyboard-selected result item */
+  /* Enhanced keyboard selection state */
   .result-item.selected {
     background-color: #f0f0f0;
     border-left: 4px solid #000;
     padding-left: 16px;
+  }
+  
+  /* Remove hover effect when keyboard navigation is active */
+  .keyboard-active .result-item:hover:not(.selected) {
+    background-color: transparent;
   }
   
   /* Improved styling for no matching items */
@@ -229,13 +247,26 @@ body {
   
   @media (max-width: 768px) {
     .search-container {
-      margin: 0;
-      border-radius: 0;
-      border-width: 0;
-      border-top-width: 2px;
-      box-shadow: none;
-      max-width: 100%;
-      min-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        border-width: 0;
+        border-top-width: 2px;
+        box-shadow: none;
+        width: 100%;
+        max-width: 100%;
+        min-height: 100vh;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+    }
+
+    .search-container.has-results {
+        position: relative;
+        transform: none;
+        left: 0;
+        margin: 0;
+        min-height: auto;
     }
   }
   

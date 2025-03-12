@@ -8,7 +8,9 @@
     "start": "bun run server.js",
     "dev": "bun --watch run server.js",
     "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src dist/",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "deploy-main": "bun run build && permaweb-deploy --ant-process",
+    "deploy-staging": "bun run build && permaweb-deploy --ant-process --env staging"
   },
   "keywords": [
     "search",
@@ -20,7 +22,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "bun": "^1.0.20"
+    "bun": "^1.0.20",
+    "permaweb-deploy": "^1.1.10"
   },
   "engines": {
     "node": ">=16.0.0",
@@ -30,4 +33,4 @@
     "type": "git",
     "url": "https://github.com/yourusername/permaweb-glossary-search"
   }
-} 
+}
