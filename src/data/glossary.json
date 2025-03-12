@@ -141,7 +141,7 @@
       "definition": "The input and output layer for Arweave (Arweave I/O), providing gateway services for accessing and storing data on the Arweave network through a decentralized gateway network. As a Layer 2 infrastructure, it forms a critical part of the permaweb ecosystem.",
       "category": "AR.IO Infrastructure",
       "related": ["Gateway", "Gateway Address Registry", "Protocol Balance", "Wayfinder Protocol", "Layer 2 Infrastructure"],
-      "aliases": ["Arweave I/O"],
+      "aliases": ["Arweave I/O", "ARIO"],
       "docs": ["https://ar.io/"]
     },
     {

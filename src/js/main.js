@@ -17,10 +17,83 @@ function isIframeEmbed() {
     return document.body.classList.contains('iframe-embed');
 }
 
+// Function to check URL parameters for color customization
+function checkUrlParamsForColors() {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log('URL Parameters:', window.location.search);
+    
+    const colorParams = {
+        '--ao-bg-color': urlParams.get('bg-color'),
+        '--ao-text-color': urlParams.get('text-color'),
+        '--ao-border-color': urlParams.get('border-color'),
+        '--ao-input-bg': urlParams.get('input-bg') || urlParams.get('bg-color'),
+        '--ao-hover-bg': urlParams.get('hover-bg'),
+        '--ao-category-bg': urlParams.get('category-bg'),
+        '--ao-category-text': urlParams.get('category-text'),
+        '--ao-link-color': urlParams.get('link-color'),
+        '--ao-result-bg': urlParams.get('result-bg') || urlParams.get('bg-color'),
+        '--ao-result-hover': urlParams.get('result-hover') || urlParams.get('hover-bg'),
+        '--ao-heading-color': urlParams.get('heading-color') || urlParams.get('text-color'),
+        '--ao-tag-bg': urlParams.get('tag-bg') || urlParams.get('border-color'),
+        '--ao-tag-text': urlParams.get('tag-text') || urlParams.get('bg-color'),
+        '--ao-button-bg': urlParams.get('button-bg') || urlParams.get('border-color'),
+        '--ao-button-text': urlParams.get('button-text') || urlParams.get('bg-color'),
+        '--ao-accent-color': urlParams.get('accent-color') || urlParams.get('link-color'),
+        '--ao-secondary-text': urlParams.get('secondary-text') || urlParams.get('category-text')
+    };
+    
+    console.log('Parsed color parameters:', colorParams);
+    
+    // Apply any colors that were provided as URL parameters
+    const root = document.documentElement;
+    let colorsApplied = false;
+    let appliedColors = {};
+    
+    Object.entries(colorParams).forEach(([varName, value]) => {
+        if (value) {
+            // Validate that the value is a valid hex color
+            if (/^#([0-9A-F]{3}){1,2}$/i.test(value)) {
+                root.style.setProperty(varName, value);
+                colorsApplied = true;
+                appliedColors[varName] = value;
+            } else {
+                console.warn(`Invalid color value for ${varName}:`, value);
+            }
+        }
+    });
+    
+    if (colorsApplied) {
+        console.log('Successfully applied colors:', appliedColors);
+    } else {
+        console.log('No valid colors found in URL parameters');
+    }
+    
+    // Log current CSS variables
+    const computedStyle = getComputedStyle(document.documentElement);
+    console.log('Current CSS variables:', {
+        '--ao-bg-color': computedStyle.getPropertyValue('--ao-bg-color'),
+        '--ao-text-color': computedStyle.getPropertyValue('--ao-text-color'),
+        '--ao-link-color': computedStyle.getPropertyValue('--ao-link-color')
+    });
+}
+
 // Initialize the application
 async function init() {
     try {
         updateLoadingStatus('Loading glossary data...');
+        checkUrlParamsForColors();
+        
+        // Apply colors from URL parameters automatically
+        if (isIframeEmbed()) {
+            
+            // Listen for messages from parent page for resize events only
+            window.addEventListener('message', (event) => {
+                if (event.data && event.data.type === 'resize') {
+                    // Handle resize events
+                    console.log('Received resize event:', event.data);
+                }
+            });
+        }
         
         // Load glossary data
         const response = await fetch(GLOSSARY_URL);
