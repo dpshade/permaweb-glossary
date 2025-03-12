@@ -145,11 +145,11 @@
       "docs": ["https://ar.io/"]
     },
     {
-      "term": "Gateway",
+      "term": "AR.IO Gateway",
       "definition": "A server that provides access to data stored on the Arweave network. Part of the AR.IO network's decentralized infrastructure for serving permanent data and managing network traffic.",
       "category": "AR.IO Infrastructure",
       "related": ["AR.IO", "Gateway Address Registry", "Wayfinder Protocol", "Data Retrieval"],
-      "aliases": ["Arweave Gateway", "AR.IO Gateway"],
+      "aliases": [],
       "docs": ["https://docs.ar.io/build/gateways#overview"]
     },
     {
@@ -777,10 +777,10 @@
       "docs": []
     },
     {
-      "term": "Gateways",
+      "term": "Arweave Gateway",
       "definition": "Nodes that provide HTTP access to data stored on the Arweave network.",
-      "category": "AR.IO Ecosystem",
-      "related": ["AR.IO", "Arweave", "Data Retrieval"],
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "Data Retrieval"],
       "aliases": ["Arweave Gateway"],
       "docs": []
     },
