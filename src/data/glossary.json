@@ -510,7 +510,7 @@
       "category": "AO Development",
       "related": ["Handler", "Handler Pattern", "Pattern Matching"],
       "aliases": [],
-      "docs": []
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html#resolvers"]
     },
     {
       "term": "WeaveDrive",
