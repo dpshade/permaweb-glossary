@@ -1103,8 +1103,6 @@
       "related": ["USDA", "AO Process", "DeFi", "Stablecoin"],
       "aliases": ["Astro"],
       "docs": ["https://docs.astrousd.com/"]
-<<<<<<< HEAD
-=======
     },
     {
       "term": "Data Item",
@@ -1209,7 +1207,6 @@
       "related": ["Arweave", "AO Computer", "Permaweb", "Forward Research"],
       "aliases": ["Arweave Founder", "AO Creator"],
       "docs": ["https://www.arweave.org/team"]
->>>>>>> c093a95 (hyperBEAM & community labs products)
     }
   ]
 }
