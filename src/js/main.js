@@ -774,12 +774,154 @@ function calculateStringSimilarity(str1, str2) {
     return matches / maxLength;
 }
 
+// Function to make terms in definitions clickable
+function makeTermsClickable(definition, allTerms) {
+    // Create a map of terms for quick lookup
+    const termMap = new Map();
+    const aliasMap = new Map(); // Track which term an alias belongs to
+    
+    allTerms.forEach(term => {
+        termMap.set(term.term.toLowerCase(), term.term);
+        
+        // Also add aliases
+        if (term.aliases && term.aliases.length > 0) {
+            term.aliases.forEach(alias => {
+                termMap.set(alias.toLowerCase(), term.term);
+                aliasMap.set(alias.toLowerCase(), { 
+                    originalTerm: term.term,
+                    isAlias: true,
+                    aliasText: alias
+                });
+            });
+        }
+    });
+    
+    // Sort terms by length (longest first) to avoid partial replacements
+    const sortedTerms = Array.from(termMap.keys())
+        .filter(term => term.length > 2) // Only consider terms with more than 2 characters
+        .sort((a, b) => b.length - a.length);
+    
+    // Create a temporary element to hold the definition
+    const tempElement = document.createElement('div');
+    tempElement.innerHTML = definition;
+    
+    // Process text nodes only (to preserve HTML structure)
+    function processTextNodes(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            const text = node.textContent;
+            
+            // Find all term matches in the text
+            let matches = [];
+            sortedTerms.forEach(termLower => {
+                const originalTerm = termMap.get(termLower);
+                // Use regex to find the term with word boundaries
+                const regex = new RegExp(`\\b${termLower}\\b`, 'gi');
+                let match;
+                while ((match = regex.exec(text)) !== null) {
+                    const aliasInfo = aliasMap.get(termLower);
+                    matches.push({
+                        index: match.index,
+                        length: match[0].length,
+                        matchedText: match[0],
+                        originalTerm: originalTerm,
+                        isAlias: aliasInfo ? true : false,
+                        aliasText: aliasInfo ? aliasInfo.aliasText : null
+                    });
+                }
+            });
+            
+            // Sort matches by index (to process from end to beginning)
+            matches.sort((a, b) => b.index - a.index);
+            
+            // Filter out overlapping matches, keeping only the longest ones
+            const filteredMatches = [];
+            for (const match of matches) {
+                // Check if this match overlaps with any existing filtered match
+                const overlaps = filteredMatches.some(existing => {
+                    // Check for overlap
+                    const matchEnd = match.index + match.length;
+                    const existingEnd = existing.index + existing.length;
+                    return (match.index < existingEnd && existing.index < matchEnd);
+                });
+                
+                // Only add if it doesn't overlap with any existing match
+                if (!overlaps) {
+                    filteredMatches.push(match);
+                }
+            }
+            
+            // Only replace if we found matches
+            if (filteredMatches.length > 0) {
+                // Create a document fragment to hold the new content
+                const fragment = document.createDocumentFragment();
+                let lastIndex = text.length;
+                
+                // Process matches from end to beginning to avoid index shifts
+                for (const match of filteredMatches) {
+                    // Add text after this match and before the next match
+                    if (match.index + match.length < lastIndex) {
+                        const textAfter = document.createTextNode(
+                            text.substring(match.index + match.length, lastIndex)
+                        );
+                        fragment.prepend(textAfter);
+                    }
+                    
+                    // Add the clickable span for this match
+                    const clickableSpan = document.createElement('span');
+                    clickableSpan.className = 'clickable-term';
+                    clickableSpan.setAttribute('data-term', match.originalTerm);
+                    
+                    // If it's an alias, add a data attribute to indicate this
+                    if (match.isAlias) {
+                        clickableSpan.setAttribute('data-is-alias', 'true');
+                        clickableSpan.setAttribute('data-alias-text', match.aliasText);
+                    }
+                    
+                    clickableSpan.textContent = match.matchedText; // Preserve exact matched text
+                    fragment.prepend(clickableSpan);
+                    
+                    lastIndex = match.index;
+                }
+                
+                // Add any remaining text at the beginning
+                if (lastIndex > 0) {
+                    const textBefore = document.createTextNode(text.substring(0, lastIndex));
+                    fragment.prepend(textBefore);
+                }
+                
+                // Replace the original node with our fragment
+                node.parentNode.replaceChild(fragment, node);
+            }
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            // Skip processing if this is already a clickable term
+            if (node.classList && node.classList.contains('clickable-term')) {
+                return;
+            }
+            
+            // Process child nodes
+            Array.from(node.childNodes).forEach(processTextNodes);
+        }
+    }
+    
+    // Process all text nodes in the definition
+    Array.from(tempElement.childNodes).forEach(processTextNodes);
+    
+    return tempElement.innerHTML;
+}
+
 // Display search results in the UI
 function displayResults(results) {
+    // Clear previous results
     resultsContainer.innerHTML = '';
     
-    if (results.length === 0) {
-        resultsContainer.innerHTML = '<div class="no-results">No matching terms found</div>';
+    // If no results, show a message
+    if (!results || results.length === 0) {
+        resultsContainer.innerHTML = `
+            <div class="no-results">
+                <p>No matching terms found.</p>
+                <p>Try a different search term or check your spelling.</p>
+            </div>
+        `;
         resultsContainer.classList.add('has-results');
         document.querySelector('.search-container').classList.add('has-results');
         return;
@@ -788,8 +930,8 @@ function displayResults(results) {
     // Store results in a global variable for navigation
     window.currentResults = results;
     window.currentResultIndex = 0;
-
-    if (document.body.classList.contains('iframe-embed')) {
+    
+    if (isIframeEmbed()) {
         // iframe mode: Show one result at a time with navigation
         const resultContainer = document.createElement('div');
         resultContainer.className = 'result-container';
@@ -812,19 +954,22 @@ function displayResults(results) {
             nextButton.disabled = index === results.length - 1;
             nextButton.onclick = () => navigateResults(1);
             
+            // Create the content with clickable terms
+            const definitionWithClickableTerms = makeTermsClickable(result.definition, glossaryData);
+            
             resultDisplay.innerHTML = `
                 <div class="term">${result.term}</div>
-                <div class="category">Category: ${result.category}</div>
-                <div class="definition">${result.definition}</div>
-                ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
+                <div class="category">${result.category}</div>
+                <div class="definition">${definitionWithClickableTerms}</div>
+                ${result.aliases && result.aliases.length > 0 ? `<div class="aliases"><strong>Also known as:</strong> ${result.aliases.join(', ')}</div>` : ''}
                 ${result.related && result.related.length > 0 ? `
                     <div class="related-terms">
-                        ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                        <strong>Related:</strong> ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
                     </div>
                 ` : ''}
                 ${result.docs && result.docs.length > 0 ? `
                     <div class="docs-link">
-                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Documentation</a>
                     </div>
                 ` : ''}
                 <div class="result-footer">
@@ -851,44 +996,134 @@ function displayResults(results) {
             // Force reflow
             firstResult.offsetHeight;
         }
-
-        // Keyboard navigation is now handled in init function
     } else {
         // Original standalone mode: Show all results
+        // Create a container for the results
+        const resultsList = document.createElement('div');
+        resultsList.className = 'results-list';
+        
+        // Add each result to the list
         results.forEach((result, index) => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
             resultItem.setAttribute('data-index', index);
             
-            resultItem.innerHTML = `
-                <div class="term">${result.term}</div>
-                <div class="category">Category: ${result.category}</div>
-                ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
-                <div class="definition">${result.definition}</div>
-                ${result.related && result.related.length > 0 ? `
-                    <div class="related-terms">
-                        ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
-                    </div>
-                ` : ''}
-                ${result.docs && result.docs.length > 0 ? `
-                    <div class="docs-link">
-                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
-                    </div>
-                ` : ''}
-            `;
+            // Create the result content
+            const resultContent = document.createElement('div');
+            resultContent.className = 'result-content';
             
-            resultsContainer.appendChild(resultItem);
+            // Add the term
+            const termElement = document.createElement('div');
+            termElement.className = 'term';
+            termElement.textContent = result.term;
+            resultContent.appendChild(termElement);
+            
+            // Add the category
+            const categoryElement = document.createElement('div');
+            categoryElement.className = 'category';
+            categoryElement.textContent = result.category;
+            resultContent.appendChild(categoryElement);
+            
+            // Add the definition
+            const definitionElement = document.createElement('div');
+            definitionElement.className = 'definition';
+            
+            // Make terms in the definition clickable
+            definitionElement.innerHTML = makeTermsClickable(result.definition, glossaryData);
+            resultContent.appendChild(definitionElement);
+            
+            // Add aliases if available
+            if (result.aliases && result.aliases.length > 0) {
+                const aliasesElement = document.createElement('div');
+                aliasesElement.className = 'aliases';
+                aliasesElement.innerHTML = `<strong>Also known as:</strong> ${result.aliases.join(', ')}`;
+                resultContent.appendChild(aliasesElement);
+            }
+            
+            // Add related terms if available
+            if (result.related && result.related.length > 0) {
+                const relatedElement = document.createElement('div');
+                relatedElement.className = 'related-terms';
+                
+                const relatedTitle = document.createElement('strong');
+                relatedTitle.textContent = 'Related: ';
+                relatedElement.appendChild(relatedTitle);
+                
+                // Add each related term as a clickable tag
+                result.related.forEach(relatedTerm => {
+                    const relatedTag = document.createElement('span');
+                    relatedTag.className = 'related-tag';
+                    relatedTag.textContent = relatedTerm;
+                    relatedTag.setAttribute('data-term', relatedTerm);
+                    relatedElement.appendChild(relatedTag);
+                });
+                
+                resultContent.appendChild(relatedElement);
+            }
+            
+            // Add documentation links if available
+            if (result.docs && result.docs.length > 0) {
+                const docsElement = document.createElement('div');
+                docsElement.className = 'docs-link';
+                
+                result.docs.forEach(docLink => {
+                    if (docLink) {
+                        const link = document.createElement('a');
+                        link.href = docLink;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        link.textContent = 'Documentation';
+                        docsElement.appendChild(link);
+                    }
+                });
+                
+                resultContent.appendChild(docsElement);
+            }
+            
+            resultItem.appendChild(resultContent);
+            resultsList.appendChild(resultItem);
         });
+        
+        // Add the results to the container
+        resultsContainer.appendChild(resultsList);
         
         // Auto-select the first result in standalone mode
         if (window.keyboardNav) {
             window.keyboardNav.addMouseHandlers();
-            window.keyboardNav.reset();
+            window.keyboardNav.selectResult(0);
         }
     }
 
     resultsContainer.classList.add('has-results');
     document.querySelector('.search-container').classList.add('has-results');
+    
+    // Add event listeners for clickable terms
+    document.querySelectorAll('.clickable-term').forEach(element => {
+        element.addEventListener('click', function() {
+            const term = this.getAttribute('data-term');
+            if (term) {
+                searchInput.value = term;
+                // Directly perform the search without waiting for the input event
+                performSearch(term);
+                // Manually trigger the input event to ensure UI is updated
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+    });
+    
+    // Add event listeners for related tags
+    document.querySelectorAll('.related-tag').forEach(element => {
+        element.addEventListener('click', function() {
+            const term = this.getAttribute('data-term');
+            if (term) {
+                searchInput.value = term;
+                // Directly perform the search without waiting for the input event
+                performSearch(term);
+                // Manually trigger the input event to ensure UI is updated
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+    });
 }
 
 function navigateResults(direction) {
@@ -958,7 +1193,8 @@ function updateDisplay(results, currentIndex = 0) {
     if (results.length === 0) {
         resultsContainer.innerHTML = `
             <div class="no-results">
-                No matching terms found
+                <p>No matching terms found.</p>
+                <p>Try a different search term or check your spelling.</p>
             </div>
         `;
         return;
@@ -986,19 +1222,22 @@ function updateDisplay(results, currentIndex = 0) {
         nextButton.disabled = index === results.length - 1;
         nextButton.onclick = () => navigateResults(1);
         
+        // Create the content with clickable terms
+        const definitionWithClickableTerms = makeTermsClickable(result.definition, glossaryData);
+        
         resultDisplay.innerHTML = `
             <div class="term">${result.term}</div>
             <div class="category">${result.category}</div>
-            ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
-            <div class="definition">${result.definition}</div>
+            ${result.aliases && result.aliases.length > 0 ? `<div class="aliases"><strong>Also known as:</strong> ${result.aliases.join(', ')}</div>` : ''}
+            <div class="definition">${definitionWithClickableTerms}</div>
             ${result.related && result.related.length > 0 ? `
                 <div class="related-terms">
-                    ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                    <strong>Related:</strong> ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
                 </div>
             ` : ''}
             ${result.docs && result.docs.length > 0 ? `
                 <div class="docs-link">
-                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Documentation</a>
                 </div>
             ` : ''}
             <div class="result-footer">
@@ -1016,26 +1255,34 @@ function updateDisplay(results, currentIndex = 0) {
         resultContainer.appendChild(resultDisplay);
     });
 
-    // Add the result container to the results container
     resultsContainer.appendChild(resultContainer);
 
-    // Initialize active index and ensure visibility
-    activeIndex = currentIndex;
+    // Add event listeners for clickable terms
+    document.querySelectorAll('.clickable-term').forEach(element => {
+        element.addEventListener('click', function() {
+            const term = this.getAttribute('data-term');
+            if (term) {
+                searchInput.value = term;
+                // Directly perform the search without waiting for the input event
+                performSearch(term);
+                // Manually trigger the input event to ensure UI is updated
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
+    });
     
-    // Force reflow to ensure transition works
-    const activeResult = resultContainer.querySelector('.result-display.active');
-    if (activeResult) {
-        activeResult.style.display = 'flex';
-        // Force reflow
-        activeResult.offsetHeight;
-        activeResult.style.opacity = '1';
-    }
-
-    // Add debug logging
-    console.log('Results updated:', {
-        totalResults: results.length,
-        activeIndex: currentIndex,
-        activeResult: activeResult ? 'found' : 'not found'
+    // Add event listeners for related tags
+    document.querySelectorAll('.related-tag').forEach(element => {
+        element.addEventListener('click', function() {
+            const term = this.getAttribute('data-term');
+            if (term) {
+                searchInput.value = term;
+                // Directly perform the search without waiting for the input event
+                performSearch(term);
+                // Manually trigger the input event to ensure UI is updated
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+            }
+        });
     });
 }
 
