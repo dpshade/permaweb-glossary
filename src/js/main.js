@@ -1094,7 +1094,7 @@ function displayResults(results) {
         // Auto-select the first result in standalone mode
         if (window.keyboardNav) {
             window.keyboardNav.addMouseHandlers();
-            window.keyboardNav.selectResult(0);
+            window.keyboardNav.reset();
         }
     }
 
