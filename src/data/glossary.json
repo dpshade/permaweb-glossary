@@ -52,16 +52,8 @@
       "term": "HyperBEAM",
       "definition": "The distributed execution engine that powers AO, built on Erlang/OTP. It provides distributed computation, deterministic execution, message scheduling, and WASM runtime capabilities.",
       "category": "AO Core Infrastructure",
-      "related": ["AO Computer", "AO-Core", "Compute Unit", "Scheduler Unit"],
+      "related": ["AO Computer", "AO-Core Protocol", "Compute Unit", "Scheduler Unit"],
       "aliases": ["AO Execution Engine", "Distributed Runtime"],
-      "docs": []
-    },
-    {
-      "term": "AO-Core",
-      "definition": "The process orchestration layer in AO that sits between applications and HyperBEAM, handling process management, message routing, state management, and security controls.",
-      "category": "AO Core Infrastructure",
-      "related": ["AO Computer", "HyperBEAM", "Process", "Message Routing", "State Management"],
-      "aliases": ["AO Process Manager", "Core Layer"],
       "docs": []
     },
     {
@@ -92,9 +84,9 @@
       "term": "Cron",
       "definition": "A time-based job scheduler in AO that enables processes to execute functions on a schedule, allowing for autonomous contract execution.",
       "category": "AO Features",
-      "related": ["Process", "Autonomous Execution"],
+      "related": ["Process", "Autonomous Execution", "Agent"],
       "aliases": ["Scheduled Execution"],
-      "docs": []
+      "docs": ["https://cookbook_ao.arweave.net/references/cron.html"]
     },
     {
       "term": "Holographic State",
@@ -108,7 +100,7 @@
       "term": "AOS",
       "definition": "The AO operating system, which serves as a reference model for software creation on AO. It allows developers to initiate processes, install packages, and edit code within a live environment.",
       "category": "AO Development",
-      "related": ["AO-Core", "Process", "Lua"],
+      "related": ["AO-Core Protocol", "Process", "Lua"],
       "aliases": ["AO Operating System"],
       "docs": []
     },
@@ -228,7 +220,7 @@
       "term": "AO Computer",
       "definition": "The AO Computer is an actor-oriented machine on the Arweave network, creating a unified computing environment across diverse nodes. It supports many parallel processes through an open message-passing layer, linking independent processes into a cohesive system, similar to how websites are interconnected via hyperlinks.",
       "category": "AO Core Infrastructure",
-      "related": ["HyperBEAM", "AO-Core", "Process", "Actor Model", "Message"],
+      "related": ["HyperBEAM", "AO-Core Protocol", "Process", "Actor Model", "Message"],
       "aliases": ["AO", "Actor-Oriented Computer"],
       "docs": []
     },
@@ -514,11 +506,11 @@
     },
     {
       "term": "WeaveDrive",
-      "definition": "A feature in AO that enables access to data items from Arweave with attestations. It allows processes to access and verify data through authorized attestors and supports L2 data item headers.",
-      "category": "AO Features",
-      "related": ["Attestor", "Data Item", "L2 Headers"],
-      "aliases": [],
-      "docs": []
+      "definition": "A protocol (AOP-5) that provides virtual file system support for AO processes to efficiently read data directly from Arweave. It enables processes to access and manipulate data stored on Arweave through a standardized file system interface, with support for lazy loading, caching, and deterministic data access patterns. The protocol includes mechanisms for data attestation, availability verification, and process boot loading.",
+      "category": "AO Core Infrastructure",
+      "related": ["AO Process", "Arweave", "Data Protocol", "Attestation", "File System"],
+      "aliases": ["AOP-5", "WeaveDrive Protocol"],
+      "docs": ["https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html"]
     },
     {
       "term": "Attestor",
@@ -719,6 +711,22 @@
       "related": ["Message", "Scheduler Unit", "Message Forward"],
       "aliases": ["One-way Message", "Fire-and-forget Message"],
       "docs": []
+    },
+    {
+      "term": "aoconnect",
+      "definition": "A JavaScript/TypeScript library that enables interaction with the AO system from Node.js or browser environments. It provides a comprehensive set of tools and utilities for developers to interact with AO processes, send messages, and manage AO resources programmatically.",
+      "category": "AO Development",
+      "related": ["AO Process", "Message", "JavaScript", "TypeScript", "Node.js"],
+      "aliases": ["AO Connect", "AO Client Library"],
+      "docs": ["https://cookbook_ao.arweave.net/guides/aoconnect/aoconnect.html"]
+    },
+    {
+      "term": "AO Dev-Cli",
+      "definition": "A command-line tool for building AO WebAssembly modules, supporting both Lua and C/C++ development. It provides a streamlined workflow for initializing projects, building modules, and deploying them to the AO network. The tool features configurable build settings, external library support, and predefined memory presets for different use cases.",
+      "category": "AO Development",
+      "related": ["WebAssembly", "WASM", "Lua", "C/C++", "Module", "Build Tool"],
+      "aliases": ["AO CLI", "AO Development CLI"],
+      "docs": ["https://cookbook_ao.arweave.net/guides/dev-cli/index.html"]
     },
     {
       "term": "aos console",
@@ -1095,6 +1103,113 @@
       "related": ["USDA", "AO Process", "DeFi", "Stablecoin"],
       "aliases": ["Astro"],
       "docs": ["https://docs.astrousd.com/"]
+<<<<<<< HEAD
+=======
+    },
+    {
+      "term": "Data Item",
+      "definition": "A standardized data format defined in the ANS-104 bundle specification, used as the preferred storage format for Arweave bundles. Data items are signed pieces of data that can be bundled together for efficient storage on Arweave. In AO, messages are implemented as data items with specific protocol tags, making them the foundation of process communication and state management.",
+      "category": "Arweave Technology",
+      "related": ["ANS-104", "Bundle", "AO Message", "Arweave", "Data Storage"],
+      "aliases": ["ANS-104 Data Item", "Bundled Data Item", "DataItem"],
+      "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
+    },
+    {
+      "term": "AO Link",
+      "definition": "A fully decentralized transaction explorer for the AO network (accessible at aolink.ar.io or ao.link) that provides real-time visualization and interaction with on-chain messages and computations. It features message exploration, graphical visualization of message relationships, manual message interaction capabilities, and real-time streaming of network activity. The platform enables users to view token balances, process inboxes, and inspect process code, offering comprehensive insight into the AO network's operations.",
+      "category": "AO Development",
+      "related": ["Message", "Process", "Transaction", "Gateway", "Explorer"],
+      "aliases": ["AOLink", "ao.link", "AO Explorer", "AO Transaction Explorer"],
+      "docs": ["https://ao.link"]
+    },
+    {
+      "term": "AO Teal",
+      "definition": "A typed version of Lua for AO development, similar to TypeScript for JavaScript, that adds static type checking and annotations to enhance code safety and reliability. It includes features for secure coding practices and integrates with a biginteger implementation for precise handling of large numbers in financial applications. Teal enables developers to write more robust and maintainable code for AO processes.",
+      "category": "AO Development",
+      "related": ["Lua", "TypeScript", "AO Process", "Development Tools", "Type System"],
+      "aliases": ["Teal", "Typed Lua", "AO Typed Lua"],
+      "docs": ["https://cookbook_ao.arweave.net/references/lua.html"]
+    },
+    {
+      "term": "AO Form",
+      "definition": "A declarative infrastructure management tool for the AO ecosystem, similar to Terraform, that enables developers to deploy and upgrade multiprocess systems through a single configuration file. It provides state management for deployments, efficient component upgrades, and streamlined infrastructure maintenance, making it essential for managing complex AO process networks and optimizing development workflows.",
+      "category": "AO Development",
+      "related": ["Process", "Infrastructure Management", "Deployment", "State Management", "Configuration"],
+      "aliases": ["AOForm", "AO Infrastructure as Code", "AO Deployment Tool"],
+      "docs": ["https://docs.autonomous.finance/products/ecosystem-tooling/ao-form"]
+    },
+    {
+      "term": "Basejump",
+      "definition": "A social gaming platform built on AO that features an AI-powered gaming substrate called Action, enabling players to create and customize their own games. Positioned as 'the space between games', it provides a flexible environment for game development and social interaction within the AO ecosystem.",
+      "category": "Decentralized Applications",
+      "related": ["AI", "Gaming", "Social Platform", "Game Development", "AO Process"],
+      "aliases": ["Basejump.xyz", "Action Gaming Platform"],
+      "docs": ["https://www.basejump.xyz/"]
+    },
+    {
+      "term": "AO-Core Protocol",
+      "definition": "The underlying protocol that HyperBEAM implements, enabling decentralized computing and communication between nodes. AO-Core provides a framework into which any number of different computational models, encapsulated as primitive devices, can be attached.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Device", "Decentralized Computing"],
+      "aliases": ["Core Protocol"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "Asynchronous Message Passing",
+      "definition": "A communication paradigm where senders don't wait for receivers to be ready, allowing for non-blocking operations and better scalability. This enables efficient process communication in distributed systems.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Process", "Communication"],
+      "aliases": ["Non-blocking Communication"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "Checkpoint",
+      "definition": "A saved state of a process that can be used to resume execution from a known point, used for persistence and recovery. This enables process state preservation and restoration capabilities.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "State Management", "Recovery"],
+      "aliases": ["State Checkpoint", "Process Snapshot"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "Decentralized Execution",
+      "definition": "The ability to run processes across a distributed network without centralized control or coordination. This enables truly distributed computing capabilities in the HyperBEAM ecosystem.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Node", "Distributed Computing"],
+      "aliases": ["Distributed Execution"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "Erlang",
+      "definition": "The programming language used to implement the HyperBEAM core, known for its robustness and support for building distributed, fault-tolerant applications. It provides the foundation for HyperBEAM's reliable message passing and process management.",
+      "category": "AO Development",
+      "related": ["HyperBEAM", "Message Passing", "Process Management"],
+      "aliases": [],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "~json-iface@1.0",
+      "definition": "A device in HyperBEAM that offers a translation layer between the JSON-encoded message format used by legacy versions and HyperBEAM's native HTTP message format.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Message", "Protocol"],
+      "aliases": ["JSON Interface Device"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "~p4@1.0",
+      "definition": "A device that runs as a pre-processor and post-processor in HyperBEAM, enabling a framework for node operators to sell usage of their machine's hardware to execute AO-Core devices.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Hardware", "Node Operator"],
+      "aliases": ["Hardware Access Device"],
+      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+    },
+    {
+      "term": "Sam Williams",
+      "definition": "The founder of Arweave and the creator of the AO Computer concept. He pioneered the development of the permaweb and decentralized storage technologies, leading the creation of both the Arweave network and the AO ecosystem. His vision has been instrumental in advancing decentralized computing and permanent data storage solutions.",
+      "category": "People",
+      "related": ["Arweave", "AO Computer", "Permaweb", "Forward Research"],
+      "aliases": ["Arweave Founder", "AO Creator"],
+      "docs": ["https://www.arweave.org/team"]
+>>>>>>> c093a95 (hyperBEAM & community labs products)
     }
   ]
 }
