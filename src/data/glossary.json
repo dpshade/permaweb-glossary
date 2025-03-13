@@ -138,7 +138,7 @@
     },
     {
       "term": "AR.IO",
-      "definition": "The input and output layer for Arweave (Arweave I/O), providing gateway services for accessing and storing data on the Arweave network through a decentralized gateway network. As a Layer 2 infrastructure, it forms a critical part of the permaweb ecosystem.",
+      "definition": "The first permanent cloud network. No 404s, no lost dependencies, no subscriptions - just reliable access to applications and data for site and app hosting.",
       "category": "AR.IO Infrastructure",
       "related": ["Gateway", "Gateway Address Registry", "Protocol Balance", "Wayfinder Protocol", "Layer 2 Infrastructure"],
       "aliases": ["Arweave I/O", "ARIO"],
@@ -690,11 +690,27 @@
     },
     {
       "term": "Bridge",
-      "definition": "A system in AO that enables assets from other networks to be represented and used within AO. Consists of smart contracts on both the native chain and AO network, generating derivative tokens that represent the bridged assets.",
+      "definition": "A system that enables assets from other networks to be represented and used within AO. Bridges consist of smart contracts on both the native chain and AO network, generating derivative tokens that represent the bridged assets. They facilitate cross-chain interoperability and asset transfer between different blockchain networks.",
       "category": "AO Infrastructure",
-      "related": ["Token", "Cross-chain", "Asset Transfer"],
-      "aliases": ["Asset Bridge", "Token Bridge"],
+      "related": ["Token", "Cross-chain", "Asset Transfer", "AOX", "Quantum"],
+      "aliases": ["Asset Bridge", "Token Bridge", "Cross-chain Bridge"],
       "docs": []
+    },
+    {
+      "term": "AOX",
+      "definition": "A general-purpose bridge that facilitates the transfer of assets from traditional exchanges and Ethereum to the AO network. It enables users to bring their assets from external networks into the AO ecosystem, expanding the range of assets available for use within AO.",
+      "category": "AO Infrastructure",
+      "related": ["Bridge", "Token", "Cross-chain", "Asset Transfer"],
+      "aliases": ["AO Exchange Bridge"],
+      "docs": ["https://aox.xyz/"]
+    },
+    {
+      "term": "Quantum",
+      "definition": "A bridge developed by Astro Protocol that enables the transfer of AR tokens from the Arweave network to the AO network. It facilitates seamless movement of Arweave's native token into the AO ecosystem, enabling users to leverage their AR holdings within AO-based applications and protocols.",
+      "category": "AO Infrastructure",
+      "related": ["Bridge", "Astro Protocol", "AR Token", "Asset Transfer"],
+      "aliases": ["AR-AO Bridge"],
+      "docs": ["https://bridge.astrousd.com/"]
     },
     {
       "term": "Cast Message",
@@ -1047,6 +1063,38 @@
       "related": ["Permaweb", "Arweave", "AO Ecosystem", "Documentation", "Embedding"],
       "aliases": ["AO Glossary", "Arweave Glossary", "Embeddable Glossary"],
       "docs": ["https://github.com/dpshade/permaweb-glossary"]
+    },
+    {
+      "term": "Protocol.Land",
+      "definition": "Decentralized, source controlled, code collaboration where you own your code.",
+      "category": "Arweave Ecosystem",
+      "related": ["Code Collaboration", "Source Control", "Decentralized Development"],
+      "aliases": ["Protocol Land", "Arweave Github"],
+      "docs": ["https://protocol.land/"]
+    },
+    {
+      "term": "Stablecoin",
+      "definition": "A type of cryptocurrency designed to maintain a stable value relative to a specific asset or basket of assets, typically a fiat currency like the US dollar. Stablecoins provide price stability while leveraging the benefits of blockchain technology, making them useful for trading, payments, and as a store of value in the crypto ecosystem.",
+      "category": "DeFi",
+      "related": ["USDA", "Cryptocurrency", "DeFi", "Token"],
+      "aliases": ["Stable Token", "Price-stable Cryptocurrency"],
+      "docs": []
+    },
+    {
+      "term": "USDA",
+      "definition": "Astro USD, or USDA, is an AO-native stablecoin used to transact, facilitate, and interact with various other DeFi protocols in the ecosystem, while acting as a store of value, a medium of exchange, and a unit of account. USDA is a stablecoin backed by assets within the Arweave and AO ecosystems. It leverages Arweave's decentralized storage and AO's smart contract-like processes for secure and efficient value exchange, balancing transparency and decentralization.",
+      "category": "Stablecoin",
+      "related": ["Astro Protocol", "AO Token", "DeFi", "Stablecoin"],
+      "aliases": ["Astro USD"],
+      "docs": ["https://docs.astrousd.com/astro-protocol/what-is-usda"]
+    },
+    {
+      "term": "Astro Protocol",
+      "definition": "A blockchain-based framework that enables the minting of stablecoins and synthetic assets, backed by on-chain collateral stored and managed by processes developed within the AO compute environment. Astro introduces dynamic liquidation processes and stability modules to enhance system resilience and user trust.",
+      "category": "DeFi",
+      "related": ["USDA", "AO Process", "DeFi", "Stablecoin"],
+      "aliases": ["Astro"],
+      "docs": ["https://docs.astrousd.com/"]
     }
   ]
 }
