@@ -7,11 +7,12 @@
   "scripts": {
     "start": "bun run server.js",
     "dev": "bun --watch run server.js",
-    "build": "mkdir -p dist && cp -r public/* dist/ && cp -r src dist/",
+    "build": "mkdir -p dist && cp -r public/* dist/ && mkdir -p dist/src && cp -r src/* dist/src/",
     "clean": "rm -rf dist",
     "deploy-main": "bun run deploy.js",
     "deploy-staging": "bun run deploy.js --staging",
-    "test": "bun test"
+    "test": "bun test",
+    "start:prod": "bun run build && bun run prod-server.js"
   },
   "keywords": [
     "search",

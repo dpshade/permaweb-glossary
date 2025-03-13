@@ -1,5 +1,6 @@
 import { serve } from "bun";
 import { join } from "path";
+import { existsSync } from "fs";
 
 // Create a simple file server
 const server = serve({
@@ -13,20 +14,28 @@ const server = serve({
     
     // Default to index.html for root path
     if (path === "/") {
-      path = "/public/index.html";
-    }
-    
-    // Handle favicon.ico requests to prevent errors
-    if (path === "/favicon.ico") {
-      // Return an empty response with 204 No Content
-      return new Response(null, { status: 204 });
+      path = "/index.html";
     }
     
     // Try to serve the requested file
     try {
-      // Remove leading slash for relative path
-      const relativePath = path.startsWith('/') ? path.substring(1) : path;
-      const file = Bun.file(relativePath);
+      // Determine the file path - check in different directories
+      let filePath;
+      
+      // First check if the file exists in public directory
+      if (path.startsWith('/')) {
+        filePath = join('public', path);
+        
+        // If file doesn't exist in public, check if it's in src directory
+        if (!existsSync(filePath) && (path.startsWith('/src/'))) {
+          // For src paths, look at the root level
+          filePath = path.substring(1); // Remove leading slash
+        }
+      } else {
+        filePath = path;
+      }
+      
+      const file = Bun.file(filePath);
       
       // Check if the file exists before returning it
       return file.exists().then(exists => {
@@ -41,11 +50,19 @@ const server = serve({
             headers.set('Content-Type', 'text/html');
           } else if (path.endsWith('.json')) {
             headers.set('Content-Type', 'application/json');
+          } else if (path.endsWith('.svg')) {
+            headers.set('Content-Type', 'image/svg+xml');
+          } else if (path.endsWith('.png')) {
+            headers.set('Content-Type', 'image/png');
+          } else if (path.endsWith('.ico')) {
+            headers.set('Content-Type', 'image/x-icon');
+          } else if (path.endsWith('.webmanifest')) {
+            headers.set('Content-Type', 'application/manifest+json');
           }
           
           return new Response(file, { headers });
         } else {
-          console.error(`File not found: ${path}`);
+          console.error(`File not found: ${filePath}`);
           return new Response("Not Found", { status: 404 });
         }
       });
