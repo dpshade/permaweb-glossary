@@ -487,7 +487,7 @@ body {
     display: inline-block;
     font-size: 12px;
     padding: 4px 8px;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     background-color: var(--ao-category-bg);
     color: var(--ao-category-text);
   }

@@ -781,7 +781,7 @@
       "definition": "Nodes that provide HTTP access to data stored on the Arweave network.",
       "category": "Arweave Ecosystem",
       "related": ["Arweave", "Data Retrieval"],
-      "aliases": ["Arweave Gateway"],
+      "aliases": [],
       "docs": []
     },
     {

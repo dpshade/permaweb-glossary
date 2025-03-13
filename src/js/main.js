@@ -816,7 +816,7 @@ function displayResults(results) {
                 <div class="term">${result.term}</div>
                 <div class="category">Category: ${result.category}</div>
                 <div class="definition">${result.definition}</div>
-                ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
+                ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
                 ${result.related && result.related.length > 0 ? `
                     <div class="related-terms">
                         ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
@@ -863,8 +863,8 @@ function displayResults(results) {
             resultItem.innerHTML = `
                 <div class="term">${result.term}</div>
                 <div class="category">Category: ${result.category}</div>
+                ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
                 <div class="definition">${result.definition}</div>
-                ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
                 ${result.related && result.related.length > 0 ? `
                     <div class="related-terms">
                         ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
@@ -989,16 +989,16 @@ function updateDisplay(results, currentIndex = 0) {
         resultDisplay.innerHTML = `
             <div class="term">${result.term}</div>
             <div class="category">${result.category}</div>
+            ${result.aliases && result.aliases.length > 0 ? `<div class="aliases">Also known as: ${result.aliases.join(', ')}</div>` : ''}
             <div class="definition">${result.definition}</div>
-            ${result.aliases ? `<div class="aliases">Also known as: ${result.aliases}</div>` : ''}
-            ${result.relatedTerms && result.relatedTerms.length > 0 ? `
+            ${result.related && result.related.length > 0 ? `
                 <div class="related-terms">
-                    ${result.relatedTerms.map(term => `<span class="related-tag">${term}</span>`).join('')}
+                    ${result.related.map(term => `<span class="related-tag">${term}</span>`).join('')}
                 </div>
             ` : ''}
-            ${result.docsLink ? `
+            ${result.docs && result.docs.length > 0 ? `
                 <div class="docs-link">
-                    <a href="${result.docsLink}" target="_blank" rel="noopener noreferrer">Learn more →</a>
+                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
                 </div>
             ` : ''}
             <div class="result-footer">
