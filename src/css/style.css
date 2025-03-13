@@ -692,7 +692,6 @@ body {
   
   .tx-tag .tag-name {
     font-weight: bold;
-    margin-right: 0.25rem;
   }
   
   .tx-tag .tag-value {
@@ -703,6 +702,7 @@ body {
     text-overflow: clip;
     white-space: normal;
     word-break: break-word;
+    margin-left: 0.25rem;
   }
   
   /* Transaction links styling (extends docs-link) */
