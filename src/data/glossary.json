@@ -18,10 +18,10 @@
     },
     {
       "term": "Message",
-      "definition": "The fundamental unit of communication in AO. Every interaction with a process is represented by a message, which are ANS-104 compliant data items that can be sent between processes or from users to processes.",
+      "definition": "The fundamental unit of communication in AO and the Converge Protocol. In AO, messages are ANS-104 compliant data items that can be sent between processes or from users to processes. In the Converge Protocol, every item on the permaweb is described as a Message, interpretable as either a map of named functions or as a concrete binary term. Messages can be called through the creation of another message, providing a map of arguments to the execution. Both systems use messages as the primary mechanism for communication and state management.",
       "category": "AO Core Concepts",
-      "related": ["Process", "Tags", "Handler", "Outbox"],
-      "aliases": ["AO Message"],
+      "related": ["Process", "Tags", "Handler", "Outbox", "Converge Protocol", "Device", "Hashpath", "Path"],
+      "aliases": ["AO Message", "Converge Message"],
       "docs": ["https://cookbook_ao.arweave.net/concepts/messages.html"]
     },
     {
@@ -115,7 +115,7 @@
     {
       "term": "Blockweave",
       "definition": "The data structure used by Arweave to store and validate data. Unlike traditional blockchains, it enables efficient access to historical data through its unique weave structure.",
-      "category": "Arweave Core Infrastructure",
+      "category": "Arweave Technology",
       "related": ["Arweave", "Proof of Access", "SPoRA", "Data Storage", "Weave"],
       "aliases": ["Weave Structure", "AR Blockweave"],
       "docs": []
@@ -179,7 +179,7 @@
     {
       "term": "ArFleet",
       "definition": "A framework in AO designed to facilitate the purchase of time-limited data storage from permissionless peers without requiring third-party enforcement.",
-      "category": "AO Features",
+      "category": "AO Core Concepts",
       "related": ["Storage Provider", "Storage Client", "Deal Process"],
       "aliases": ["Time-limited Storage"],
       "docs": []
@@ -243,7 +243,7 @@
     {
       "term": "Base Layer Transaction",
       "definition": "One of up to 1,000 transactions that make up a single Arweave block. These transactions form the foundation of the Arweave network's data structure and can contain bundled data items.",
-      "category": "Arweave Core Infrastructure",
+      "category": "Arweave Technology",
       "related": ["Bundling", "Transaction", "Block", "ANS-104", "Blockweave"],
       "aliases": ["L1 Transaction", "Core Transaction"],
       "docs": []
@@ -307,7 +307,7 @@
     {
       "term": "Layer 2 Infrastructure",
       "definition": "Technology / infrastructure stack built 'above' a base layer. In this use, the AR.IO Network would be considered Layer 2 infrastructure to the base Arweave protocol.",
-      "category": "Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Base Layer Transaction", "AR.IO", "Protocol"],
       "aliases": ["L2"],
       "docs": []
@@ -371,7 +371,7 @@
     {
       "term": "Permanent Cloud Network",
       "definition": "A decentralized network that securely stores, distributes, and serves data and applications in a timeless, tamper-proof, and universally accessible way. Unlike traditional clouds, it ensures data permanence and user sovereignty by eliminating reliance on centralized providers and creating a resilient, censorship-resistant infrastructure.",
-      "category": "Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Permaweb", "Decentralization", "Data Storage"],
       "aliases": [],
       "docs": []
@@ -387,7 +387,7 @@
     {
       "term": "Protocol Balance",
       "definition": "The primary sink and source of ARIO tokens circulating through the AR.IO Network. This balance functions as a programmatically encoded vault in the network's smart contract for managing ArNS revenue and incentive rewards distribution.",
-      "category": "AR.IO Economics",
+      "category": "AR.IO Infrastructure",
       "related": ["ARIO Token", "AR.IO", "Protocol Rewards", "Staking"],
       "aliases": ["AR.IO Treasury", "Network Balance"],
       "docs": []
@@ -451,7 +451,7 @@
     {
       "term": "Trust-minimization",
       "definition": "Relates to enacting network security by minimizing the number of entities and the degree to which they must be trusted to achieve reliable network interactions. A network with trust-minimizing mechanisms means that it has reduced exposure to undesirable third-party actions and built-in incentives to reward good behavior while punishing bad behavior.",
-      "category": "Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Security", "Decentralization", "Network"],
       "aliases": [],
       "docs": []
@@ -674,16 +674,16 @@
     },
     {
       "term": "State Attestation",
-      "definition": "A cryptographically signed statement by a Compute Unit in AO verifying the results of process state computation. These attestations can be published and optionally sold to other nodes for a fee.",
+      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the Converge Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
       "category": "AO Security",
-      "related": ["Compute Unit", "Process", "State Management"],
-      "aliases": ["Computation Attestation", "State Verification"],
+      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "Converge Protocol"],
+      "aliases": ["State Attestation", "Computation Attestation"],
       "docs": []
     },
     {
       "term": "Bridge",
       "definition": "A system that enables assets from other networks to be represented and used within AO. Bridges consist of smart contracts on both the native chain and AO network, generating derivative tokens that represent the bridged assets. They facilitate cross-chain interoperability and asset transfer between different blockchain networks.",
-      "category": "AO Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Token", "Cross-chain", "Asset Transfer", "AOX", "Quantum"],
       "aliases": ["Asset Bridge", "Token Bridge", "Cross-chain Bridge"],
       "docs": []
@@ -691,7 +691,7 @@
     {
       "term": "AOX",
       "definition": "A general-purpose bridge that facilitates the transfer of assets from traditional exchanges and Ethereum to the AO network. It enables users to bring their assets from external networks into the AO ecosystem, expanding the range of assets available for use within AO.",
-      "category": "AO Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Bridge", "Token", "Cross-chain", "Asset Transfer"],
       "aliases": ["AO Exchange Bridge"],
       "docs": ["https://aox.xyz/"]
@@ -699,7 +699,7 @@
     {
       "term": "Quantum",
       "definition": "A bridge developed by Astro Protocol that enables the transfer of AR tokens from the Arweave network to the AO network. It facilitates seamless movement of Arweave's native token into the AO ecosystem, enabling users to leverage their AR holdings within AO-based applications and protocols.",
-      "category": "AO Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Bridge", "Astro Protocol", "AR Token", "Asset Transfer"],
       "aliases": ["AR-AO Bridge"],
       "docs": ["https://bridge.astrousd.com/"]
@@ -755,7 +755,7 @@
     {
       "term": "Relay Operator",
       "definition": "An entity that facilitates message transmission in the AO network, often requiring payment in the form of tokens to relay messages.",
-      "category": "AO Infrastructure",
+      "category": "AO Core Infrastructure",
       "related": ["Messenger Unit", "Message", "AO Token"],
       "aliases": [],
       "docs": []
@@ -1011,7 +1011,7 @@
     {
       "term": "Wander",
       "definition": "A non-custodial Arweave and AO native wallet with extensive features. Wander is available as a browser extension, mobile application, and embedded smart account.",
-      "category": "Wallets and Tools",
+      "category": "Decentralized Applications",
       "related": ["Arweave", "Wallet", "ArNS"],
       "aliases": ["ArConnect", "Wander Wallet"],
       "docs": ["https://www.wander.app/"]
@@ -1019,7 +1019,7 @@
     {
       "term": "Beacon",
       "definition": "The most secure wallet for AO and AR networks, offering features such as two-factor authentication (2FA), multi-signature capabilities, passkeys, recovery options, and more to ensure robust security.",
-      "category": "Wallets and Tools",
+      "category": "Decentralized Applications",
       "related": ["Blockchain", "Wallet", "Security"],
       "aliases": ["Multi-chain Wallet", "Advanced Security Wallet"],
       "docs": ["https://beaconwallet.app/"]
@@ -1035,7 +1035,7 @@
     {
       "term": "Multi-sig",
       "definition": "A multi-signature wallet or smart contract that requires multiple signatures or approvals from different parties before executing a transaction or action. This enhances security and control by distributing decision-making authority.",
-      "category": "Wallets and Tools",
+      "category": "Decentralized Applications",
       "related": ["Wallet", "Smart Contract", "Security"],
       "aliases": ["Multi-signature"],
       "docs": []
@@ -1091,7 +1091,7 @@
     {
       "term": "USDA",
       "definition": "Astro USD, or USDA, is an AO-native stablecoin used to transact, facilitate, and interact with various other DeFi protocols in the ecosystem, while acting as a store of value, a medium of exchange, and a unit of account. USDA is a stablecoin backed by assets within the Arweave and AO ecosystems. It leverages Arweave's decentralized storage and AO's smart contract-like processes for secure and efficient value exchange, balancing transparency and decentralization.",
-      "category": "Stablecoin",
+      "category": "DeFi",
       "related": ["Astro Protocol", "AO Token", "DeFi", "Stablecoin"],
       "aliases": ["Astro USD"],
       "docs": ["https://docs.astrousd.com/astro-protocol/what-is-usda"]
@@ -1207,6 +1207,166 @@
       "related": ["Arweave", "AO Computer", "Permaweb", "Forward Research"],
       "aliases": ["Arweave Founder", "AO Creator"],
       "docs": ["https://sam_metalinks.arweave.net/"]
+    },
+    {
+      "term": "Fair Launch",
+      "definition": "A cryptocurrency distribution method that ensures equal access to new tokens or cryptocurrencies for all interested participants, without preferential treatment or early access for specific investor groups. This approach promotes transparency, decentralization, and equitable distribution by avoiding pre-allocation, pre-mining, or insider advantages. Fair launches typically involve public token sales at fixed prices and transparent exchange listings, fostering trust and preventing token concentration in the hands of a few.",
+      "category": "Cryptocurrency",
+      "related": ["Token Distribution", "Decentralization", "Transparency", "Token Sale", "Exchange Listing"],
+      "aliases": ["Fair Token Distribution", "Equitable Launch"],
+      "docs": ["https://mirror.xyz/0x1e444D0F55Faad65F5217C168352A65e1EEfF25a/FADVqBaCw_GhglwyuB9lK_eVcf6Zyz4OgZYfAhIiXc0"]
+    },
+    {
+      "term": "Converge Protocol",
+      "definition": "A minimal computation model that enables the permaweb to be interpreted as both a flat, permanent ledger of data and a mutable, reactive computation environment. It provides a single, shared system image that can be accessed and added to permissionlessly, focusing on the simplest possible representation of data and computation upon that data, tailored for Arweave's distributed environment and HTTP access methods.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "AO", "Message", "Device", "Hashpath"],
+      "aliases": ["Converge"],
+      "docs": ["https://github.com/permaweb/HyperBEAM/tree/main/docs"]
+    },
+    {
+      "term": "Device",
+      "definition": "A component in the Converge Protocol that specifies how a message should be interpreted. Each message may optionally state a Device which should be used by Converge-compatible systems to interpret its contents. If no Device is explicitly stated, it must be inferred as 'Message'. Every Device must implement functions with the names 'ID' and 'Keys'.",
+      "category": "AO Core Infrastructure",
+      "related": ["Converge Protocol", "Message", "HyperBEAM", "Stack Device"],
+      "aliases": ["Converge Device"],
+      "docs": []
+    },
+    {
+      "term": "Hashpath",
+      "definition": "A cryptographic memoization of the tree of executions that were the source of a given piece of data in the Converge Protocol. It is derived by cryptographically mixing two prior commitments, resulting in a short (32 bytes with SHA2-256) but verifiable reference to the entire computation tree.",
+      "category": "AO Core Infrastructure",
+      "related": ["Converge Protocol", "Message", "Attestation", "Path"],
+      "aliases": ["Computation Path"],
+      "docs": []
+    },
+    {
+      "term": "Stack Device",
+      "definition": "A special device in HyperBEAM that combines a series of devices on a message into a single 'stack' of executable transformations. When added as the highest Device tag on a message, it scans the remainder of the message's tags looking for and loading other messages it finds, passing through each element of the stack in turn during execution.",
+      "category": "AO Core Infrastructure",
+      "related": ["Device", "HyperBEAM", "Converge Protocol"],
+      "aliases": ["Device Stack"],
+      "docs": []
+    },
+    {
+      "term": "Attestation",
+      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the Converge Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
+      "category": "AO Security",
+      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "Converge Protocol"],
+      "aliases": ["State Attestation", "Computation Attestation"],
+      "docs": []
+    },
+    {
+      "term": "Path",
+      "definition": "A way to reference messages in the Converge Protocol that starts from a given message and applies a series of additional messages on top of it. Each resulting message must have an ID resolvable via its device, enabling additional paths to be described atop the intermediate message. Paths are designed to be compatible with HTTP protocols.",
+      "category": "AO Core Infrastructure",
+      "related": ["Message", "Hashpath", "Converge Protocol"],
+      "aliases": ["Message Path"],
+      "docs": []
+    },
+    {
+      "term": "Permissionlessness",
+      "definition": "A property of computation systems where no actor in the ecosystem may be denied the ability to use the network by any other actor or group. This is a fundamental property of decentralized computation machines, though it can only be offered in degrees rather than absolutely.",
+      "category": "AO Core Concepts",
+      "related": ["Trustlessness", "Decentralization", "Converge Protocol"],
+      "aliases": ["Permissionless Access"],
+      "docs": []
+    },
+    {
+      "term": "Trustlessness",
+      "definition": "A property of computation systems where users can participate in the network without needing to trust other parties are not acting maliciously. Like permissionlessness, this is a fundamental property of decentralized computation machines that can only be offered in degrees rather than absolutely.",
+      "category": "AO Core Concepts",
+      "related": ["Permissionlessness", "Security", "Converge Protocol"],
+      "aliases": ["Trustless Operation"],
+      "docs": []
+    },
+    {
+      "term": "~meta@1.0",
+      "definition": "A configuration device in HyperBEAM that provides an interface for specifying a node's hardware, supported devices, metering, and payments information. It allows external clients to find and validate node configurations in the network, serving as the primary configuration mechanism for HyperBEAM nodes.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Device", "Node Configuration", "Hardware"],
+      "aliases": ["Meta Device", "Configuration Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~relay@1.0",
+      "definition": "A device in HyperBEAM used to relay messages between nodes and the wider HTTP network. It provides an interface for sending and receiving messages using various execution strategies, facilitating communication across the network.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Message", "HTTP Network", "Communication"],
+      "aliases": ["Relay Device", "Message Relay"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~wasm64@1.0",
+      "definition": "A device in HyperBEAM that executes WebAssembly code using the Web Assembly Micro-Runtime (WAMR). It enables the execution of WASM modules from any other device and supports devices written in languages like Rust, C, and C++.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "WebAssembly", "WASM", "WAMR", "Runtime"],
+      "aliases": ["WASM Device", "WebAssembly Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~compute-lite@1.0",
+      "definition": "A lightweight device in HyperBEAM that wraps a local WASM executor, used for executing legacy AO processes. It enables compatibility with older AO network processes within the HyperBEAM environment.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "WASM", "Legacy AO", "Process"],
+      "aliases": ["Compute Lite Device", "Legacy Executor"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~snp@1.0",
+      "definition": "A device in HyperBEAM used to generate and validate proofs that a node is executing inside a Trusted Execution Environment (TEE). It enables trust-minimized attestations of AO-Core executions using ephemeral key pairs that exist only within the TEE.",
+      "category": "AO Security",
+      "related": ["HyperBEAM", "TEE", "Attestation", "Security"],
+      "aliases": ["SNP Device", "TEE Proof Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "Trustless Execution",
+      "definition": "A property of computation systems where users can participate in the network without needing to trust other parties are not acting maliciously. Like permissionlessness, this is a fundamental property of decentralized computation machines that can only be offered in degrees rather than absolutely.",
+      "category": "AO Core Concepts",
+      "related": ["Permissionlessness", "Security", "Converge Protocol"],
+      "aliases": ["Trustless Operation"],
+      "docs": []
+    },
+    {
+      "term": "~simple-pay@1.0",
+      "definition": "A simple, flexible pricing device in HyperBEAM that can be used with p4@1.0 to offer flat-fees for the execution of AO-Core messages. It provides a straightforward mechanism for monetizing node services.",
+      "category": "AO Economics",
+      "related": ["HyperBEAM", "p4@1.0", "Pricing", "Node Services"],
+      "aliases": ["Simple Payment Device", "Flat-fee Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~faff@1.0",
+      "definition": "A simple pricing and ledger device for p4@1.0 in HyperBEAM that allows nodes to offer access to their services only to a specific set of users. It's useful for personal use or servicing specific applications.",
+      "category": "AO Economics",
+      "related": ["HyperBEAM", "p4@1.0", "Pricing", "Access Control"],
+      "aliases": ["FAFF Device", "Restricted Access Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "scheduler@1.0",
+      "definition": "A device in HyperBEAM used to assign a linear hashpath to an execution, ensuring deterministic ordering that all users can access. It enables the creation of executions that mirror traditional smart contracting networks when used with other AO-Core devices.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Hashpath", "Execution", "Ordering"],
+      "aliases": ["Scheduler Device", "Execution Scheduler", "Scheduler", "Scheduler Unit"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "stack@1.0",
+      "definition": "A device in HyperBEAM used to execute an ordered set of devices over the same inputs. It allows users to create complex combinations of other devices and apply them as a single unit with a single hashpath.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Device", "Hashpath", "Execution"],
+      "aliases": ["Stack Device", "Device Stack"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "~process@1.0",
+      "definition": "A device in HyperBEAM that enables users to create persistent, shared executions accessible by multiple users. It allows customization of execution and scheduler devices, supporting various execution patterns. It includes a push key for moving messages from a process's execution outbox into another execution's schedule.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Process", "Execution", "Message"],
+      "aliases": ["Process Device", "Shared Execution Device"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
     }
   ]
 }
