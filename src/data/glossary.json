@@ -1193,6 +1193,14 @@
       "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
     },
     {
+      "term": "HTTP Message Signature",
+      "definition": "A standardized method (RFC9421) for creating, encoding, and verifying digital signatures within HTTP messages, crucial for the security model of HyperBEAM and the AO-Core protocol. In HyperBEAM, HTTP Signed Messages are used to authenticate node configuration changes, verify message integrity, and establish trust between nodes. The hb_message module in HyperBEAM provides functionality to convert between different message formats, including HTTP Signed Messages, enabling secure communication across the decentralized network. This signature mechanism is fundamental to the attestation system that allows nodes to cryptographically prove the correctness of computations without requiring full recomputation.",
+      "category": "AO Security",
+      "related": ["HyperBEAM", "Message", "Attestation", "Security Model", "AO-Core Protocol", "Converge Protocol"],
+      "aliases": ["HTTP Signatures", "RFC9421", "HTTP Signed Message"],
+      "docs": ["https://datatracker.ietf.org/doc/html/rfc9421", "https://github.com/permaweb/HyperBEAM"]
+    },
+    {
       "term": "~p4@1.0",
       "definition": "A device that runs as a pre-processor and post-processor in HyperBEAM, enabling a framework for node operators to sell usage of their machine's hardware to execute AO-Core devices.",
       "category": "AO Core Infrastructure",
