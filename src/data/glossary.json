@@ -214,7 +214,7 @@
       "category": "AO Development",
       "related": ["Process", "Message", "Assignments", "Environment"],
       "aliases": ["AO Library", "Core Module"],
-      "docs": ["https://cookbook_ao.arweave.net/references/ao-module.html"]
+      "docs": ["https://cookbook_ao.arweave.net/references/ao.html"]
     },
     {
       "term": "AO Computer",
