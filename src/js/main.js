@@ -1076,7 +1076,7 @@ function displayResults(results) {
                         link.href = docLink;
                         link.target = '_blank';
                         link.rel = 'noopener noreferrer';
-                        link.textContent = 'Documentation';
+                        link.textContent = 'Learn more →';
                         docsElement.appendChild(link);
                     }
                 });
