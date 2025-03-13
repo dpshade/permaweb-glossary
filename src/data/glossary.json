@@ -61,7 +61,7 @@
       "definition": "A node in the AO network responsible for executing process code and managing state. CUs offer the service of resolving process state in competition with one another.",
       "category": "AO Infrastructure",
       "related": ["HyperBEAM", "Scheduler Unit", "Messenger Unit", "Process", "State Management"],
-      "aliases": ["CU", "AO Compute Node"],
+      "aliases": ["CU", "Compute Units"],
       "docs": []
     },
     {
@@ -69,7 +69,7 @@
       "definition": "A node in the AO network responsible for the single assignment of atomically incrementing slot numberings to messages sent to a process, ensuring deterministic ordering.",
       "category": "AO Infrastructure",
       "related": ["Compute Unit", "Messenger Unit", "Message", "Message Ordering"],
-      "aliases": ["SU", "AO Scheduler Node"],
+      "aliases": ["SU", "AO Scheduler Node", "Scheduler Units"],
       "docs": []
     },
     {
@@ -77,7 +77,7 @@
       "definition": "A node in the AO network that relays messages around the system, serving as the entry point for users to interact with processes within AO.",
       "category": "AO Infrastructure",
       "related": ["Compute Unit", "Scheduler Unit", "Message", "Process Communication"],
-      "aliases": ["MU", "AO Message Node"],
+      "aliases": ["MU", "AO Message Node", "Messenger Units"],
       "docs": []
     },
     {

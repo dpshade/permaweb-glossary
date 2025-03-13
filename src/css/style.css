@@ -110,12 +110,14 @@ body {
     border-top: none;
     box-shadow: 6px 6px 0 var(--ao-shadow-color);
     z-index: 10;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
     box-sizing: border-box;
     margin-top: -2px; /* Fix the connection artifact */
     position: absolute;
     top: 100%;
     left: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
   
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -130,7 +132,8 @@ body {
   }
   
   #results.has-results {
-    display: block;
+    opacity: 1;
+    visibility: visible;
   }
   
   .result-item {
@@ -1035,5 +1038,20 @@ body {
   .tx-iframe-content::-webkit-scrollbar-thumb:hover,
   .tx-iframe-fallback::-webkit-scrollbar-thumb:hover {
     background: var(--ao-border-color);
+  }
+  
+  /* Clickable terms in definitions */
+  .clickable-term {
+    color: var(--ao-link-color);
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+    transition: all 0.2s ease;
+  }
+  
+  .clickable-term:hover {
+    opacity: 0.8;
+    text-decoration-style: solid;
   }
   
