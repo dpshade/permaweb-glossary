@@ -1034,11 +1034,19 @@
     },
     {
       "term": "Under_names",
-      "definition": "ANT owners and controllers can configure multiple subdomains for their registered ArNS name known as “under_names” or more easily written “undernames”. These undernames are assigned individually at the time of registration or can be added on to any registered name at any time. Under_names use an underscore “_” in place of a more typically used dot “.” to separate the subdomain from the main ArNS domain.",
+      "definition": "ANT owners and controllers can configure multiple subdomains for their registered ArNS name known as \"under_names\" or more easily written \"undernames\". These undernames are assigned individually at the time of registration or can be added on to any registered name at any time. Under_names use an underscore \"_\" in place of a more typically used dot \".\" to separate the subdomain from the main ArNS domain.",
       "category": "AR.IO Ecosystem",
       "related": ["ArNS", "Subdomains", "ANT"],
       "aliases": ["Undernames"],
       "docs": ["https://docs.ar.io/arns"]
-    }        
+    },
+    {
+      "term": "Permaweb Glossary",
+      "definition": "A comprehensive reference guide for the Arweave and AO ecosystem, providing detailed explanations of key terms, concepts, and technologies. It serves as an educational resource for developers, users, and community members to better understand the permaweb ecosystem. A key feature is its portability - the glossary can be embedded in other websites and applications via iframes, making it easily accessible across the permaweb.",
+      "category": "Arweave Ecosystem",
+      "related": ["Permaweb", "Arweave", "AO Ecosystem", "Documentation", "Embedding"],
+      "aliases": ["AO Glossary", "Arweave Glossary", "Embeddable Glossary"],
+      "docs": ["https://github.com/dpshade/permaweb-glossary"]
+    }
   ]
 }

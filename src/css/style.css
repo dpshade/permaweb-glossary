@@ -419,6 +419,7 @@ body {
     left: 0;
     opacity: 1;
     display: flex !important;
+    scrollbar-width: none;
   }
   
   .iframe-embed .result-container {
@@ -494,17 +495,19 @@ body {
   .iframe-embed .definition {
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 12px;
+    margin: 0;
     color: var(--ao-text-color);
     max-height: none;
     overflow: visible;
   }
   
   .iframe-embed .aliases {
-    font-size: 14px;
-    margin-bottom: 12px;
-    color: var(--ao-text-color);
+    font-size: 12px;
+    margin: 0;
+    color: var(--ao-secondary-text);
+    opacity: 0.9;
   }
+  
   
   .iframe-embed .related-terms {
     margin-bottom: 12px;
@@ -645,6 +648,7 @@ body {
     gap: 0.5rem;
     margin-bottom: 0.75rem;
     position: relative;
+    overflow-x: hidden;
   }
   
   /* Add dividers between columns */
@@ -654,6 +658,7 @@ body {
     margin-bottom: 0.5rem;
     padding: 0.5rem;
     border-radius: 4px;
+    overflow-x: hidden;
   }
   
   .tx-label {
@@ -669,6 +674,7 @@ body {
     font-family: monospace;
     font-size: 0.9rem;
     word-break: break-all;
+    overflow-x: hidden;
   }
   
   /* Transaction tags styling (extends related-terms) */
@@ -698,9 +704,9 @@ body {
     font-family: monospace;
     font-size: 0.85rem;
     max-width: none;
-    overflow: visible;
-    text-overflow: clip;
-    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     word-break: break-word;
     margin-left: 0.25rem;
   }

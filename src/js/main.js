@@ -408,7 +408,7 @@ function displayTxResults(data) {
         
         // Create a scrollable container for transaction content
         resultDisplay.innerHTML = `
-            <div class="term">${txNode.id}</div>
+            <div class="term"> ${txNode.id}</div>
             <div class="category">Transaction: ${contentType}</div>
             <div class="definition">
                 ${metadataHtml}
@@ -649,7 +649,7 @@ function processSearchResults(results, query) {
     // Sort by score (highest first) and take top results
     return combinedResults
         .sort((a, b) => b.score - a.score)
-        .slice(0, 5);
+        .slice(0, 15);
 }
 
 // Check for verbatim/keyword matches
