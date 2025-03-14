@@ -154,9 +154,9 @@
     },
     {
       "term": "AO Token",
-      "definition": "The native token of the AO ecosystem, used for resource allocation, governance, and payments within the network.",
+      "definition": "The native token of the AO ecosystem, used for resource allocation, governance, and payments within the network. One AO is equal to one trillion (1,000,000,000,000) Armstrongs, which is the smallest unit of the token. When specifying token quantities in transactions, the amount is typically expressed in Armstrongs rather than AO (e.g., 1,000,000 Armstrongs = 0.0000001 AO).",
       "category": "AO Economics",
-      "related": ["Pi Token", "Delegation", "Compute Payment"],
+      "related": ["Pi Token", "Delegation", "Compute Payment", "Armstrong"],
       "aliases": ["$AO"],
       "docs": []
     },
@@ -786,9 +786,9 @@
     },
     {
       "term": "AR Token",
-      "definition": "The native cryptocurrency of the Arweave network used for transaction fees, data storage payments, and mining rewards. AR tokens are required to store data on the network, incentivize miners to maintain the blockweave, and participate in network governance. The token has a fixed maximum supply and its value is tied to the network's storage capacity.",
+      "definition": "The native cryptocurrency of the Arweave network used for transaction fees, data storage payments, and mining rewards. AR tokens are required to store data on the network, incentivize miners to maintain the blockweave, and participate in network governance. The token has a fixed maximum supply and its value is tied to the network's storage capacity. One AR is equal to one trillion (1,000,000,000,000) Winstons, which is the smallest unit of the token.",
       "category": "Arweave Technology",
-      "related": ["Arweave", "Transaction", "Mining", "Storage Endowment", "Proof of Access"],
+      "related": ["Arweave", "Transaction", "Mining", "Storage Endowment", "Proof of Access", "Winston"],
       "aliases": ["AR", "$AR"],
       "docs": []
     },
@@ -1375,6 +1375,38 @@
       "related": ["HyperBEAM", "Process", "Execution", "Message"],
       "aliases": ["Process Device", "Shared Execution Device"],
       "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "ARIO Token",
+      "definition": "The native cryptocurrency of the AR.IO Network that powers the world's first Permanent Cloud. With a fixed supply of 1 billion tokens, ARIO serves multiple functions: powering ecosystem operations, facilitating transactions, and incentivizing network participation. It enables critical operations like gateway staking, ArNS domain registrations, and protocol rewards distribution. The token follows a non-inflationary model where network revenue is recycled to fund rewards rather than minting new tokens. Each ARIO is divisible into 1,000,000 micro-ARIO (µARIO) units to support a wide range of transactions.",
+      "category": "AR.IO Economics",
+      "related": ["AR.IO", "Protocol Balance", "Protocol Rewards", "Staking", "Gateway", "ArNS"],
+      "aliases": ["$ARIO"],
+      "docs": ["https://ar.io/articles/ario-tokenomics-guide"]
+    },
+    {
+      "term": "Armstrong",
+      "definition": "The smallest unit of the AO Token. One AO is equal to one trillion (1,000,000,000,000) Armstrongs. When specifying token quantities in AO transactions, the amount is typically expressed in Armstrongs rather than AO tokens.",
+      "category": "AO Economics",
+      "related": ["AO Token", "Compute Payment", "Transaction"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "Winston",
+      "definition": "The smallest unit of the AR Token (Arweave). One AR is equal to one trillion (1,000,000,000,000) Winstons. This denomination is similar to satoshis in Bitcoin and is used for precise calculations and transactions within the Arweave network.",
+      "category": "Arweave Technology",
+      "related": ["AR Token", "Transaction", "Data Storage", "Mining"],
+      "aliases": [],
+      "docs": []
+    },
+    {
+      "term": "micro-ARIO",
+      "definition": "The smallest unit of the ARIO Token. One ARIO is equal to one million (1,000,000) micro-ARIO. This subunit allows for precise calculations and transactions within the AR.IO Network, enabling granular token operations for services like gateway staking and ArNS domain registrations.",
+      "category": "AR.IO Economics",
+      "related": ["ARIO Token", "AR.IO", "Protocol Balance", "Staking", "ArNS"],
+      "aliases": ["µARIO"],
+      "docs": []
     }
   ]
 }
