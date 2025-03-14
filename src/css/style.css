@@ -264,7 +264,6 @@ h1 {
 }
 
 .docs-link {
-  margin-top: 10px;
   font-size: 14px;
 }
 
@@ -420,7 +419,6 @@ html.translucent-bg .search-container {
   box-shadow: none;
   border: none;
   transition: none;
-  padding: 16px;
   height: auto;
   overflow: visible;
   box-sizing: border-box;
@@ -433,7 +431,7 @@ html.translucent-bg .search-container {
   position: relative;
   flex-shrink: 0;
   margin-bottom: 0;
-  width: 90%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -467,7 +465,7 @@ html.translucent-bg .search-container {
   left: 0;
   opacity: 1;
   width: 100%;
-  padding: 20px 40px;
+  padding: 12px;
   border: none;
   background-color: var(--ao-bg-color);
   box-sizing: border-box;
@@ -577,7 +575,6 @@ html.translucent-bg .search-container {
 
 
 .iframe-embed .related-terms {
-  margin-bottom: 12px;
   color: var(--ao-text-color);
 }
 
@@ -594,7 +591,6 @@ html.translucent-bg .search-container {
 
 .iframe-embed .docs-link {
   font-size: 14px;
-  margin-top: 12px;
 }
 
 .iframe-embed .docs-link a {
