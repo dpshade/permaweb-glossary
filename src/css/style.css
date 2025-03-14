@@ -60,7 +60,7 @@ body {
   max-width: var(--container-max-width);
   width: var(--container-width);
   margin: 0 auto;
-  padding: var(--container-padding);
+  padding: 16px 32px 8px 32px;
   background-color: var(--ao-bg-color);
   border-radius: 2px;
   box-shadow: var(--container-shadow);
