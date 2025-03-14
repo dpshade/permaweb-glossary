@@ -1028,7 +1028,7 @@ function displayResults(results) {
                 ${result.aliases && result.aliases.length > 0 ? `<div class="aliases"><strong>Also known as:</strong> ${result.aliases.join(', ')}</div>` : ''}
                 ${result.related && result.related.length > 0 ? `
                     <div class="related-terms">
-                        <strong>Related:</strong> ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
+                        ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
                     </div>
                 ` : ''}
                 ${result.docs && result.docs.length > 0 ? `
@@ -1108,10 +1108,6 @@ function displayResults(results) {
             if (result.related && result.related.length > 0) {
                 const relatedElement = document.createElement('div');
                 relatedElement.className = 'related-terms';
-                
-                const relatedTitle = document.createElement('strong');
-                relatedTitle.textContent = 'Related: ';
-                relatedElement.appendChild(relatedTitle);
                 
                 // Add each related term as a clickable tag
                 result.related.forEach(relatedTerm => {
@@ -1335,7 +1331,7 @@ function updateDisplay(results, currentIndex = 0) {
             <div class="definition">${definitionWithClickableTerms}</div>
             ${result.related && result.related.length > 0 ? `
                 <div class="related-terms">
-                    <strong>Related:</strong> ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
+                    ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
                 </div>
             ` : ''}
             ${result.docs && result.docs.length > 0 ? `
