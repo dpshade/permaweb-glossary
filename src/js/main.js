@@ -1033,7 +1033,7 @@ function displayResults(results) {
                 ` : ''}
                 ${result.docs && result.docs.length > 0 ? `
                     <div class="docs-link">
-                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Documentation</a>
+                        <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
                     </div>
                 ` : ''}
                 <div class="result-footer">
@@ -1340,7 +1340,7 @@ function updateDisplay(results, currentIndex = 0) {
             ` : ''}
             ${result.docs && result.docs.length > 0 ? `
                 <div class="docs-link">
-                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Documentation</a>
+                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
                 </div>
             ` : ''}
             <div class="result-footer">
