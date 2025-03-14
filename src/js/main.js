@@ -1481,16 +1481,49 @@ function createRandomTermTags() {
         // Clear existing tags
         termsContainer.innerHTML = '';
         
-        // Add tags to container and measure width
-        const tagWidth = 100; // Increased width estimate to account for full tag size
-        const containerWidth = searchContainer.clientWidth - 60; // More padding to prevent edge cutoff
-        const maxNumTags = Math.max(3, Math.floor(containerWidth / tagWidth) - 1); // Subtract 1 to ensure no overflow
+        // Get container width
+        const containerWidth = searchContainer.clientWidth - 60; // Allow padding
         
-        // Select only enough terms to fit in one row
-        const termsToShow = shuffledTerms.slice(0, maxNumTags);
+        // Create a temporary container to measure tag widths
+        const tempContainer = document.createElement('div');
+        tempContainer.style.visibility = 'hidden';
+        tempContainer.style.position = 'absolute';
+        tempContainer.style.display = 'flex';
+        document.body.appendChild(tempContainer);
         
-        // Create tags for each term
-        termsToShow.forEach(term => {
+        // Start with a reasonable minimum number of tags
+        const minTags = 3;
+        let tagsToShow = [];
+        let currentWidth = 0;
+        
+        // Try adding tags one by one until we run out of space
+        for (let i = 0; i < shuffledTerms.length; i++) {
+            const term = shuffledTerms[i];
+            
+            // Create a temp tag to measure its width
+            const tempTag = document.createElement('span');
+            tempTag.className = 'related-tag';
+            tempTag.textContent = term;
+            tempContainer.appendChild(tempTag);
+            
+            // Get the actual width including margins
+            const tagWidth = tempTag.offsetWidth + 6; // Add margin (3px on each side)
+            
+            // Check if adding this tag would exceed the container width
+            if (currentWidth + tagWidth > containerWidth && tagsToShow.length >= minTags) {
+                break; // Stop adding tags if we've reached the minimum and would overflow
+            }
+            
+            // Otherwise, add this tag
+            tagsToShow.push(term);
+            currentWidth += tagWidth;
+        }
+        
+        // Clean up the temporary container
+        document.body.removeChild(tempContainer);
+        
+        // Create the actual visible tags
+        tagsToShow.forEach(term => {
             const tag = document.createElement('span');
             tag.className = 'related-tag';
             tag.textContent = term;
