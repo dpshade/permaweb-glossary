@@ -1218,10 +1218,10 @@
     },
     {
       "term": "Fair Launch",
-      "definition": "A cryptocurrency distribution method that ensures equal access to new tokens or cryptocurrencies for all interested participants, without preferential treatment or early access for specific investor groups. This approach promotes transparency, decentralization, and equitable distribution by avoiding pre-allocation, pre-mining, or insider advantages. Fair launches typically involve public token sales at fixed prices and transparent exchange listings, fostering trust and preventing token concentration in the hands of a few.",
+      "definition": "A cryptocurrency distribution method that ensures equal access and sustainable funding for projects without traditional gatekeepers or early investor advantages. In the AO ecosystem, fair launches enable projects to receive funding through the Permaweb Index, where users can allocate their AO yield to support development. This model promotes transparency and decentralization by avoiding pre-allocation, pre-mining, or insider advantages, while ensuring builders can secure sustainable funding. Projects launched this way receive tokens based on community allocation of yield, creating a more equitable system where success is tied directly to community support and utility rather than speculative investment.",
       "category": "Cryptocurrency",
-      "related": ["Token Distribution", "Decentralization", "Transparency", "Token Sale", "Exchange Listing"],
-      "aliases": ["Fair Token Distribution", "Equitable Launch"],
+      "related": ["Token Distribution", "Decentralization", "Transparency", "Permaweb Index", "AO Yield", "Pi Token"],
+      "aliases": ["Fair Token Distribution", "Equitable Launch", "Fair Launch Projects"],
       "docs": ["https://mirror.xyz/0x1e444D0F55Faad65F5217C168352A65e1EEfF25a/FADVqBaCw_GhglwyuB9lK_eVcf6Zyz4OgZYfAhIiXc0"]
     },
     {
@@ -1438,6 +1438,22 @@
       "category": "Blockchain Technology",
       "related": ["Hashpath", "Transaction", "Block", "Converge Protocol", "Data Verification"],
       "aliases": ["Merkle Tree", "Hash Tree", "Merkle"],
+      "docs": []
+    },
+    {
+      "term": "AO Yield",
+      "definition": "A customizable reward system in the AO ecosystem that allows users to earn tokens based on their Arweave (AR) holdings and deposited assets (like stETH and DAI). Users can allocate their yield to different options: PI (receiving diversified exposure through the Permaweb Index), AO (continuing to earn AO tokens), AR (converting yield to Arweave tokens), or specific fair launch projects. When allocated to ecosystem projects, the yield helps fund development while users receive project tokens in return. The system operates through trustless, audited contracts on Ethereum for bridged assets, with deposits remaining withdrawable at any time.",
+      "category": "AO Economics",
+      "related": ["AO Token", "Pi Token", "Permaweb Index", "Fair Launch", "Bridge", "AOX"],
+      "aliases": ["Yield Allocation", "AO Rewards"],
+      "docs": []
+    },
+    {
+      "term": "Permaweb Index",
+      "definition": "A fair launch funding mechanism for the permaweb ecosystem, launched on Pi Day (3.14). It introduces a new model for funding crypto projects where users can allocate their AO yield to support ecosystem development. The index is represented by the PI token, which provides diversified exposure to key permaweb assets: 33.3% AO, 33.3% Arweave (AR), and 33.3% fair launch projects. This structure enables builders to secure sustainable development funding while allowing community members to support projects they believe in, all while maintaining broad exposure to the ecosystem's growth through a single token.",
+      "category": "AO Economics",
+      "related": ["Pi Token", "AO Token", "AO Yield", "Fair Launch", "Ecosystem Development"],
+      "aliases": ["PI", "Permaweb Token Index"],
       "docs": []
     }
   ]
