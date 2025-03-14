@@ -1126,16 +1126,15 @@ function displayResults(results) {
                 const docsElement = document.createElement('div');
                 docsElement.className = 'docs-link';
                 
-                result.docs.forEach(docLink => {
-                    if (docLink) {
-                        const link = document.createElement('a');
-                        link.href = docLink;
-                        link.target = '_blank';
-                        link.rel = 'noopener noreferrer';
-                        link.textContent = 'Learn more →';
-                        docsElement.appendChild(link);
-                    }
-                });
+                // Add the primary "Learn more" link
+                if (result.docs[0]) {
+                    const mainLink = document.createElement('a');
+                    mainLink.href = result.docs[0];
+                    mainLink.target = '_blank';
+                    mainLink.rel = 'noopener noreferrer';
+                    mainLink.textContent = 'Learn more →';
+                    docsElement.appendChild(mainLink);
+                }
                 
                 resultContent.appendChild(docsElement);
             }
