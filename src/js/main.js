@@ -2,6 +2,7 @@
 const GLOSSARY_URL = '../src/data/glossary.json';
 const ARWEAVE_GRAPHQL_URL = 'https://arweave-search.goldsky.com/graphql';
 const DEBUG = false; // Debug flag for logging
+const NUM_RANDOM_TAGS = 8; // Number of random term tags to display
 
 // State variables
 let searchIndex = null;
@@ -9,6 +10,8 @@ let glossaryData = null;
 let searchTimeout = null;
 let activeIndex = 0;
 let isNavigatingBetweenTerms = false; // Flag to track term navigation
+let shuffledTerms = []; // Global variable to store shuffled terms
+let hideRecommendations = false; // Flag to track if recommendations should be hidden
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
@@ -31,6 +34,14 @@ function applyQueryParameters() {
     if (hideHeader === 'true' || hideHeader === '1') {
         document.documentElement.classList.add('hide-header');
         if (DEBUG) console.log('Header hidden based on URL parameter');
+    }
+    
+    // Handle hide-recommendations parameter
+    const hideRecommendationsParam = urlParams.get('hide-recommendations');
+    if (hideRecommendationsParam === 'true' || hideRecommendationsParam === '1') {
+        hideRecommendations = true;
+        document.documentElement.classList.add('hide-recommendations');
+        if (DEBUG) console.log('Recommendations hidden based on URL parameter');
     }
     
     // Handle translucent background parameter
@@ -215,6 +226,11 @@ async function init() {
             });
         }
         
+        // Create and display random term tags unless explicitly hidden
+        if (!hideRecommendations) {
+            createRandomTermTags();
+        }
+        
         searchInput.focus();
         
         console.log('Search index initialized successfully');
@@ -311,6 +327,12 @@ function handleSearch(event) {
             resultsContainer.classList.remove('has-results');
             document.querySelector('.search-container').classList.remove('has-results');
         }
+        
+        // Refresh random term tags when search is cleared (unless recommendations are hidden)
+        if (!hideRecommendations) {
+            reshuffleTermTags();
+        }
+        
         return;
     }
     
@@ -321,6 +343,11 @@ function handleSearch(event) {
             fetchArweaveTx(query);
         } else {
             performSearch(query);
+        }
+        
+        // Refresh random term tags after search (unless recommendations are hidden)
+        if (!hideRecommendations) {
+            reshuffleTermTags();
         }
     }, 150); // Even faster response time
 }
@@ -1432,31 +1459,117 @@ document.addEventListener('DOMContentLoaded', () => {
 // Start the application
 document.addEventListener('DOMContentLoaded', init);
 
-// Export functions for testing
-export { 
-    fetchArweaveTx, 
-    displayTxResults, 
-    formatBytes,
-    applyQueryParameters // Export for testing
-}; 
+// Function to create and display random term tags
+function createRandomTermTags() {
+    if (!glossaryData || glossaryData.length === 0) return;
+    
+    // Create the container for random term tags
+    const searchContainer = document.querySelector('.search-container');
+    if (!searchContainer) return;
+    
+    const tagsContainer = document.createElement('div');
+    tagsContainer.className = 'random-terms-container';
+    
+    const termsContainer = document.createElement('div');
+    termsContainer.className = 'related-terms random-terms';
+    
+    // Get initial shuffled terms
+    shuffledTerms = getShuffledTerms(glossaryData);
+    
+    // Function to calculate and render the appropriate number of tags
+    function renderTags() {
+        // Clear existing tags
+        termsContainer.innerHTML = '';
+        
+        // Add tags to container and measure width
+        const tagWidth = 100; // Increased width estimate to account for full tag size
+        const containerWidth = searchContainer.clientWidth - 60; // More padding to prevent edge cutoff
+        const maxNumTags = Math.max(3, Math.floor(containerWidth / tagWidth) - 1); // Subtract 1 to ensure no overflow
+        
+        // Select only enough terms to fit in one row
+        const termsToShow = shuffledTerms.slice(0, maxNumTags);
+        
+        // Create tags for each term
+        termsToShow.forEach(term => {
+            const tag = document.createElement('span');
+            tag.className = 'related-tag';
+            tag.textContent = term;
+            tag.setAttribute('data-term', term);
+            
+            // Add click event to populate search bar
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Set search input value to this term
+                searchInput.value = term;
+                // Directly perform the search
+                performSearch(term);
+                
+                // Focus the search input
+                searchInput.focus();
+            });
+            
+            termsContainer.appendChild(tag);
+        });
+    }
+    
+    // Store render function globally so it can be called when search changes
+    window.renderRandomTags = renderTags;
+    
+    // Initial render
+    renderTags();
+    
+    // Add window resize listener to update tags on window resize
+    window.addEventListener('resize', debounce(renderTags, 200));
+    
+    tagsContainer.appendChild(termsContainer);
+    
+    // Insert after the search input container
+    const searchInputContainer = searchContainer.querySelector('.search-input');
+    if (searchInputContainer) {
+        searchInputContainer.insertAdjacentElement('afterend', tagsContainer);
+    } else {
+        searchContainer.appendChild(tagsContainer);
+    }
+}
 
-// Simple unit tests for query parameter handling (when in development mode)
-function runQueryParamTests() {
-    if (process.env.NODE_ENV !== 'development') return;
+// Function to reshuffle and update term tags
+function reshuffleTermTags() {
+    if (!glossaryData || glossaryData.length === 0) return;
     
-    console.log('Running query parameter tests...');
+    // Reshuffle the terms
+    shuffledTerms = getShuffledTerms(glossaryData);
     
-    // Test cases
-    const testCases = [
-        { params: '?hide-header=true', expected: { hideHeader: true, translucent: false } },
-        { params: '?translucent=0.8', expected: { hideHeader: false, translucent: true, opacity: 0.8 } },
-        { params: '?hide-header=1&translucent=true', expected: { hideHeader: true, translucent: true } },
-        { params: '?translucent=true&bg-color=#ff0000', expected: { hideHeader: false, translucent: true, bgColor: true } }
-    ];
+    // Render the new tags if the render function exists
+    if (window.renderRandomTags) {
+        window.renderRandomTags();
+    }
+}
+
+// Simple debounce function for resize events
+function debounce(func, wait) {
+    let timeout;
+    return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            func.apply(context, args);
+        }, wait);
+    };
+}
+
+// Function to get shuffled terms from the glossary data
+function getShuffledTerms(glossary) {
+    // Create a copy of the glossary items to avoid modifying the original
+    const terms = [...glossary].map(item => item.term);
     
-    // Run tests
-    testCases.forEach((test, index) => {
-        console.log(`Test ${index + 1}: ${test.params}`);
-        // TODO: Implement actual test verification in a test environment
-    });
+    // Shuffle the terms array using Fisher-Yates algorithm
+    for (let i = terms.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [terms[i], terms[j]] = [terms[j], terms[i]];
+    }
+    
+    return terms;
 } 

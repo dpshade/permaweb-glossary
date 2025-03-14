@@ -9,6 +9,110 @@
       "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
     },
     {
+      "term": "Messaging Patterns",
+      "definition": "Communication frameworks in AO that define how processes exchange information through message passing. These patterns include asynchronous fire-and-forget messaging (ao.send), request-response cycles (ao.send().receive()), message forwarding chains (msg.forward), and various blocking and non-blocking communication models. Messaging patterns provide structured approaches for inter-process communication, enabling complex distributed systems to coordinate effectively.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "Process", "ao.send", "msg.reply", "msg.forward", "Reference"],
+      "aliases": ["Communication Patterns", "Message Exchange Patterns"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "ao.send",
+      "definition": "A non-blocking function in AO for asynchronous message sending that enables fire-and-forget communication between processes. It returns immediately after sending, allowing the sending process to continue execution without waiting for a response. The function returns a promise-like object that can be chained with .receive() for request-response patterns when needed.",
+      "category": "AO Development",
+      "related": ["Message", "Process", "ao.send().receive()", "Non-blocking Communication"],
+      "aliases": ["Send Function", "Asynchronous Send"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "ao.send().receive()",
+      "definition": "A blocking message pattern in AO that combines sending a message and waiting for a specific reply, enabling request-response cycles between processes. It only matches messages linked by X-Reference and can specify a target process ID to indicate which process will reply. This pattern is essential for synchronous interactions in the otherwise asynchronous AO environment.",
+      "category": "AO Development",
+      "related": ["ao.send", "Message", "X-Reference", "Blocking Communication"],
+      "aliases": ["Request-Response Pattern", "Blocking Receive"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "msg.reply",
+      "definition": "A non-blocking function in AO handlers used to respond to incoming messages with automatic reference tracking. It enables asynchronous request-response patterns by automatically linking the response to the original message via X-Reference and setting the Target to the original sender or Reply-To address if specified.",
+      "category": "AO Development",
+      "related": ["Message", "Handler", "X-Reference", "Reply-To"],
+      "aliases": ["Reply Function", "Message Response"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "msg.forward",
+      "definition": "A non-blocking function in AO for message routing across multiple processes that creates a sanitized copy of the original message. It preserves Reply-To and X-Reference properties for complete message tracking and sets X-Origin to the original sender, enabling final services to reply directly to the originator. This function is key for creating multi-step processing pipelines (A → B → C → A patterns).",
+      "category": "AO Development",
+      "related": ["Message", "X-Reference", "X-Origin", "Message Forwarding"],
+      "aliases": ["Forward Function", "Message Routing"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Receive",
+      "definition": "A blocking function in AO (with capital R) that pauses execution until any message matching a specified pattern arrives from any sender. Unlike the lowercase .receive() method, it's not bound to a specific conversation and can match messages from any process, making it useful for synchronous message processing flows or event listening.",
+      "category": "AO Development",
+      "related": ["Message", "Pattern Matching", "Blocking Communication"],
+      "aliases": ["Capital-R Receive", "Pattern Matcher"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Handlers.utils.reply",
+      "definition": "A utility function in AO that creates a handler function that automatically replies with a fixed response. It serves as a wrapper around msg.reply for common use cases, enabling concise creation of simple response handlers without writing full handler functions.",
+      "category": "AO Development",
+      "related": ["Handler", "msg.reply", "Message"],
+      "aliases": ["Auto-reply Utility", "Reply Handler Creator"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Reference",
+      "definition": "A unique identifier automatically assigned to each message in AO that enables tracking message history and relationships. References form the foundation of AO's message correlation system, allowing processes to maintain conversation context across asynchronous communications.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "X-Reference", "Message Chain"],
+      "aliases": ["Message ID", "Message Reference"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Reply-To",
+      "definition": "A message property in AO that explicitly specifies the destination for responses, overriding the default behavior of replying to the original sender. This enables more flexible routing patterns where responses can be directed to different processes than the message originator.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "msg.reply", "Message Routing"],
+      "aliases": ["Response Destination", "Reply Address"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "X-Reference",
+      "definition": "A special message property in AO that maintains conversation chains across replies and forwards. It links related messages together in a conversation, enabling processes to track which response corresponds to which request, even in complex multi-step processing pipelines.",
+      "category": "AO Core Concepts",
+      "related": ["Reference", "Message", "Message Chain", "X-Origin"],
+      "aliases": ["Conversation Reference", "Message Chain ID"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "X-Origin",
+      "definition": "A message property in AO that tracks the original sender of a message through forwarding chains. It enables final services in a processing pipeline to reply directly to the conversation originator without knowing its specific identity in advance, facilitating multi-step processing workflows.",
+      "category": "AO Core Concepts",
+      "related": ["Message", "msg.forward", "X-Reference"],
+      "aliases": ["Original Sender", "Message Originator"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Blocking Communication",
+      "definition": "A messaging approach in AO where the sending process pauses execution until a response is received. This pattern is implemented through functions like Receive and ao.send().receive(), creating synchronous interaction points in an otherwise asynchronous system. Blocking is useful for scenarios requiring guaranteed order of operations or direct response handling.",
+      "category": "AO Core Concepts",
+      "related": ["Receive", "ao.send().receive()", "Non-blocking Communication"],
+      "aliases": ["Synchronous Communication", "Blocking Messaging"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
+      "term": "Non-blocking Communication",
+      "definition": "A messaging approach in AO where the sending process continues execution immediately after sending a message, without waiting for responses. Implemented through functions like ao.send, msg.reply, and msg.forward, this pattern enables parallel processing and higher throughput in distributed systems by avoiding execution pauses.",
+      "category": "AO Core Concepts",
+      "related": ["ao.send", "msg.reply", "msg.forward", "Blocking Communication"],
+      "aliases": ["Asynchronous Communication", "Non-blocking Messaging"],
+      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+    },
+    {
       "term": "Process",
       "definition": "A computational unit in AO that can receive and send messages. Processes are represented by a log of interacting messages stored on Arweave, as well as an initialization data item.",
       "category": "AO Core Concepts",
@@ -31,6 +135,70 @@
       "related": ["Process", "Message", "Pattern Matching"],
       "aliases": ["Message Handler"],
       "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Resolvers",
+      "definition": "Special tables in AO handlers where each key is a pattern matching table and its corresponding value is a function that executes when that pattern matches. Resolvers enable conditional execution based on additional pattern matching, creating switch/case-like structures where different functions are triggered based on which pattern matches the incoming message.",
+      "category": "AO Development",
+      "related": ["Handler", "Pattern Matching Tables", "Message", "Handler Pattern"],
+      "aliases": ["Handler Resolvers", "Conditional Handlers"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Pattern Matching Tables",
+      "definition": "Declarative structures in AO that define how to match incoming messages based on their attributes. These tables support simple tag matching, wildcard matching with underscore ('_'), Lua string pattern matching (similar to regex), and function-based validation. They provide a flexible way to filter messages for processing by specific handlers.",
+      "category": "AO Development",
+      "related": ["Handler", "Message", "Handler Pattern", "Resolvers"],
+      "aliases": ["Message Matching Tables", "Tag Matching Patterns"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Handlers.utils.hasMatchingData",
+      "definition": "A utility function in AO that returns a pattern matching function for checking if a message's Data field contains a specified string. This helper simplifies creating handlers that respond to specific message content rather than just tags, enabling content-based message routing and processing.",
+      "category": "AO Development",
+      "related": ["Handler", "Message", "Handlers.utils.reply", "Handlers.utils.hasMatchingTag"],
+      "aliases": ["Data Matcher", "Content Matcher"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Handlers.utils.hasMatchingTag",
+      "definition": "A utility function in AO that returns a pattern matching function for checking if a message has a tag with a specified name and value. This helper enables precise matching of messages based on their tag attributes, facilitating targeted message handling and routing in AO processes.",
+      "category": "AO Development",
+      "related": ["Handler", "Message", "Handlers.utils.reply", "Handlers.utils.hasMatchingData"],
+      "aliases": ["Tag Matcher", "Tag Validator"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Handlers.add",
+      "definition": "A core function in AO for registering message handlers that takes a name, pattern, and handler function as arguments. It adds or updates a handler in the process's handler list, enabling processes to respond to specific message patterns. The pattern can be a table, function, or string (in AOS 2.0+), and the handler can be a function or resolver table for conditional execution.",
+      "category": "AO Development",
+      "related": ["Handler", "Pattern Matching Tables", "Resolvers", "Message"],
+      "aliases": ["Add Handler", "Register Handler"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Handlers.once",
+      "definition": "A specialized handler registration function in AO that creates a handler which runs only once when its pattern is matched, then is automatically removed. This is equivalent to setting maxRuns = 1 and is useful for one-time initialization or handling unique events that should trigger only a single response.",
+      "category": "AO Development",
+      "related": ["Handler", "Handlers.add", "Pattern Matching Tables", "Message"],
+      "aliases": ["Single-Run Handler", "One-Time Handler"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "Handler Execution Flow",
+      "definition": "The process by which AO determines which handlers to run when a message arrives. Handlers are executed in sequential order as they appear in the Handlers.list, with pattern functions determining whether to: skip the handler (false), process the message and continue checking subsequent handlers (\"continue\"), or process the message and stop checking further handlers (\"break\"). This flow control enables sophisticated message processing pipelines within AO processes.",
+      "category": "AO Core Concepts",
+      "related": ["Handler", "Message", "Pattern Matching Tables", "Handlers.add"],
+      "aliases": ["Handler Pipeline", "Execution Order", "Handler Processing Flow"],
+      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+    },
+    {
+      "term": "ArFS",
+      "definition": "A data modeling, storage, and retrieval protocol designed to emulate common file system operations on Arweave's permanent storage. ArFS solves key challenges by implementing a hierarchical file structure, metadata management, file permissions (public and private with encryption), file versioning, data deduplication, search capabilities, and interoperability with other decentralized applications. It works around Arweave's immutable nature by using an append-only transaction data model with tags in Arweave Transaction headers, enabling features like file renaming and organization despite the underlying permanent storage.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "Data Storage", "Metadata", "Tags", "Transaction", "Permanent Storage", "ArDrive"],
+      "aliases": ["Arweave File System"],
+      "docs": ["https://cookbook.ar.io/concepts/arfs/arfs.html", "https://ardrive.io/arfs/"]
     },
     {
       "term": "Spawn",
@@ -1206,7 +1374,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Hardware", "Node Operator"],
       "aliases": ["Hardware Access Device"],
-      "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary/#p410"]
     },
     {
       "term": "Sam Williams",
@@ -1294,7 +1462,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Device", "Node Configuration", "Hardware"],
       "aliases": ["Meta Device", "Configuration Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "~relay@1.0",
@@ -1302,7 +1470,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Message", "HTTP Network", "Communication"],
       "aliases": ["Relay Device", "Message Relay"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "~wasm64@1.0",
@@ -1310,7 +1478,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "WebAssembly", "WASM", "WAMR", "Runtime"],
       "aliases": ["WASM Device", "WebAssembly Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary/#wasm6410"]
     },
     {
       "term": "~compute-lite@1.0",
@@ -1318,7 +1486,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "WASM", "Legacy AO", "Process"],
       "aliases": ["Compute Lite Device", "Legacy Executor"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary/#compute-lite10"]
     },
     {
       "term": "~snp@1.0",
@@ -1326,7 +1494,7 @@
       "category": "AO Security",
       "related": ["HyperBEAM", "TEE", "Attestation", "Security"],
       "aliases": ["SNP Device", "TEE Proof Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "Trustless Execution",
@@ -1342,7 +1510,7 @@
       "category": "AO Economics",
       "related": ["HyperBEAM", "p4@1.0", "Pricing", "Node Services"],
       "aliases": ["Simple Payment Device", "Flat-fee Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "~faff@1.0",
@@ -1350,7 +1518,7 @@
       "category": "AO Economics",
       "related": ["HyperBEAM", "p4@1.0", "Pricing", "Access Control"],
       "aliases": ["FAFF Device", "Restricted Access Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "scheduler@1.0",
@@ -1358,7 +1526,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Hashpath", "Execution", "Ordering"],
       "aliases": ["Scheduler Device", "Execution Scheduler", "Scheduler", "Scheduler Unit"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "stack@1.0",
@@ -1366,7 +1534,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Device", "Hashpath", "Execution"],
       "aliases": ["Stack Device", "Device Stack"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "~process@1.0",
@@ -1374,7 +1542,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Process", "Execution", "Message"],
       "aliases": ["Process Device", "Shared Execution Device"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "docs": ["https://permaweb.github.io/HyperBEAM/reference/glossary"]
     },
     {
       "term": "ARIO Token",

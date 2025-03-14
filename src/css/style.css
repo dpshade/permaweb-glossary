@@ -1119,4 +1119,67 @@ html.translucent-bg .search-container {
   opacity: 0.8;
   text-decoration-style: solid;
 }
+
+/* Styles for random term tags container */
+.random-terms-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 12px 0;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+.random-terms {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  margin: 0;
+  justify-content: center;
+}
+
+.random-terms .related-tag {
+  margin: 0 3px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.random-terms .related-tag:hover {
+  background-color: var(--ao-accent-color);
+  color: var(--ao-tag-text);
+  transform: translateY(-1px);
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .random-terms-container {
+    margin: 10px 0;
+  }
+  
+  .random-terms {
+    justify-content: center;
+  }
+  
+  .random-terms .related-tag {
+    margin: 0 2px;
+  }
+}
+
+/* Hide recommendations only when explicitly set */
+html.hide-recommendations .random-terms-container {
+  display: none;
+}
+
+/* Adjust iframe-specific styling for recommendations */
+.iframe-embed .random-terms-container {
+  margin: 8px 0;
+}
+
+.iframe-embed .random-terms .related-tag {
+  font-size: 11px;
+  padding: 3px 8px;
+}
   
