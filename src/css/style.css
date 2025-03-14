@@ -407,7 +407,6 @@ html.translucent-bg body {
 html.translucent-bg .search-container {
   background-color: var(--translucent-bg-color);
   border-color: var(--translucent-border-color);
-  box-shadow: 4px 4px 0 var(--translucent-shadow-color);
 }
 
 .iframe-embed .search-container {
