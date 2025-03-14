@@ -45,7 +45,7 @@
       "definition": "The computational paradigm that AO is based on, where each process (actor) is an independent unit with its own state that communicates exclusively through message passing.",
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "Concurrency"],
-      "aliases": ["Actor-Oriented Programming"],
+      "aliases": ["Actor-Oriented", "Actor Oriented", "Actor-Oriented Programming"],
       "docs": []
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       "term": "Arweave",
-      "definition": "A decentralized storage network that allows users to store data permanently and sustainably. It serves as the foundation layer for the permaweb ecosystem.",
+      "definition": "A decentralized storage network that allows users to store data permanently and sustainably. It serves as the foundation layer for the permaweb ecosystem and has its own native cryptocurrency called AR Token that powers the network's economic model.",
       "category": "Arweave Core Infrastructure",
       "related": ["Blockweave", "Permaweb", "AR Token", "Proof of Access", "ANS-104"],
       "aliases": ["AR Network", "Permanent Storage Network"],
@@ -165,7 +165,7 @@
       "definition": "A token in the AO ecosystem representing ownership of key permaweb assets, including AO, AR, and fair-launch projects, serving as a default means of exchange.",
       "category": "AO Economics",
       "related": ["AO Token", "AR Token", "Permaweb Index"],
-      "aliases": ["PI", "π", "Permaweb Index"],
+      "aliases": ["$PI", "$π", "Permaweb Index"],
       "docs": []
     },
     {
@@ -786,10 +786,10 @@
     },
     {
       "term": "AR Token",
-      "definition": "The native cryptocurrency of the Arweave network used for transaction fees and rewards.",
+      "definition": "The native cryptocurrency of the Arweave network used for transaction fees, data storage payments, and mining rewards. AR tokens are required to store data on the network, incentivize miners to maintain the blockweave, and participate in network governance. The token has a fixed maximum supply and its value is tied to the network's storage capacity.",
       "category": "Arweave Technology",
-      "related": ["Arweave", "Transaction", "Mining"],
-      "aliases": ["AR"],
+      "related": ["Arweave", "Transaction", "Mining", "Storage Endowment", "Proof of Access"],
+      "aliases": ["AR", "$AR"],
       "docs": []
     },
     {
@@ -1149,7 +1149,7 @@
       "definition": "The underlying protocol that HyperBEAM implements, enabling decentralized computing and communication between nodes. AO-Core provides a framework into which any number of different computational models, encapsulated as primitive devices, can be attached.",
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Device", "Decentralized Computing"],
-      "aliases": ["Core Protocol"],
+      "aliases": ["AO-Core", "AO Core", "Core Protocol"],
       "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
     },
     {

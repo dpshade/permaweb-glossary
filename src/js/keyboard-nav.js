@@ -128,7 +128,7 @@ function updateSelectedResult(resultItems) {
         
         // Ensure the selected item is visible (scroll into view if needed)
         resultItems[selectedResultIndex].scrollIntoView({
-            behavior: 'smooth',
+            behavior: 'auto',
             block: 'nearest'
         });
     }

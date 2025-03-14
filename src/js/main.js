@@ -950,6 +950,7 @@ function displayResults(results) {
                 <p>Try a different search term or check your spelling.</p>
             </div>
         `;
+        // Always ensure the container is visible when displaying results
         resultsContainer.classList.add('has-results');
         document.querySelector('.search-container').classList.add('has-results');
         return;
@@ -1122,53 +1123,58 @@ function displayResults(results) {
         }
     }
 
-    // Only add the has-results class if we're not navigating between terms
-    // This prevents the closing/reopening animation
-    if (!isNavigatingBetweenTerms) {
-        resultsContainer.classList.add('has-results');
-        document.querySelector('.search-container').classList.add('has-results');
-    }
+    // Always ensure the container is visible when displaying results
+    resultsContainer.classList.add('has-results');
+    document.querySelector('.search-container').classList.add('has-results');
     
-    // Add event listeners for clickable terms
+    // First instance - clickable terms
     document.querySelectorAll('.clickable-term').forEach(element => {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function(e) {
+            // Prevent the default behavior and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            
             const term = this.getAttribute('data-term');
             if (term) {
                 // Set the flag to indicate we're navigating between terms
                 isNavigatingBetweenTerms = true;
                 
+                // Ensure the container stays open
+                resultsContainer.classList.add('has-results');
+                document.querySelector('.search-container').classList.add('has-results');
+                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
-                // Manually trigger the input event to ensure UI is updated
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 
-                // Reset the flag after a short delay
-                setTimeout(() => {
-                    isNavigatingBetweenTerms = false;
-                }, 100);
+                // Reset the flag immediately - no need for delay since we removed animations
+                isNavigatingBetweenTerms = false;
             }
         });
     });
     
-    // Add event listeners for related tags
+    // Second instance - related tags
     document.querySelectorAll('.related-tag').forEach(element => {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function(e) {
+            // Prevent the default behavior and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            
             const term = this.getAttribute('data-term');
             if (term) {
                 // Set the flag to indicate we're navigating between terms
                 isNavigatingBetweenTerms = true;
                 
+                // Ensure the container stays open
+                resultsContainer.classList.add('has-results');
+                document.querySelector('.search-container').classList.add('has-results');
+                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
-                // Manually trigger the input event to ensure UI is updated
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 
-                // Reset the flag after a short delay
-                setTimeout(() => {
-                    isNavigatingBetweenTerms = false;
-                }, 100);
+                // Reset the flag immediately - no need for delay since we removed animations
+                isNavigatingBetweenTerms = false;
             }
         });
     });
@@ -1177,6 +1183,10 @@ function displayResults(results) {
 function navigateResults(direction) {
     const results = document.querySelectorAll('.result-display');
     if (!results.length) return;
+
+    // Ensure the container stays visible
+    resultsContainer.classList.add('has-results');
+    document.querySelector('.search-container').classList.add('has-results');
 
     const currentIndex = window.currentResultIndex || 0;
     const newIndex = (currentIndex + direction + results.length) % results.length;
@@ -1227,6 +1237,9 @@ document.addEventListener('click', (e) => {
     // Don't close results if we're navigating between terms
     if (isNavigatingBetweenTerms) return;
     
+    // Don't close if clicking on a clickable term or related tag
+    if (e.target.classList.contains('clickable-term') || e.target.classList.contains('related-tag')) return;
+    
     if (!resultsContainer.contains(e.target) && e.target !== searchInput) {
         resultsContainer.innerHTML = '';
         resultsContainer.classList.remove('has-results');
@@ -1248,6 +1261,9 @@ function updateDisplay(results, currentIndex = 0) {
                 <p>Try a different search term or check your spelling.</p>
             </div>
         `;
+        // Always ensure the container is visible
+        resultsContainer.classList.add('has-results');
+        document.querySelector('.search-container').classList.add('has-results');
         return;
     }
 
@@ -1310,44 +1326,53 @@ function updateDisplay(results, currentIndex = 0) {
 
     // Add event listeners for clickable terms
     document.querySelectorAll('.clickable-term').forEach(element => {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function(e) {
+            // Prevent the default behavior and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            
             const term = this.getAttribute('data-term');
             if (term) {
                 // Set the flag to indicate we're navigating between terms
                 isNavigatingBetweenTerms = true;
                 
+                // Ensure the container stays open
+                resultsContainer.classList.add('has-results');
+                document.querySelector('.search-container').classList.add('has-results');
+                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
-                // Manually trigger the input event to ensure UI is updated
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 
-                // Reset the flag after a short delay
-                setTimeout(() => {
-                    isNavigatingBetweenTerms = false;
-                }, 100);
+                // Reset the flag immediately - no need for delay since we removed animations
+                isNavigatingBetweenTerms = false;
             }
         });
     });
     
     // Add event listeners for related tags
     document.querySelectorAll('.related-tag').forEach(element => {
-        element.addEventListener('click', function() {
+        element.addEventListener('click', function(e) {
+            // Prevent the default behavior and stop propagation
+            e.preventDefault();
+            e.stopPropagation();
+            
             const term = this.getAttribute('data-term');
             if (term) {
                 // Set the flag to indicate we're navigating between terms
                 isNavigatingBetweenTerms = true;
                 
+                // Ensure the container stays open
+                resultsContainer.classList.add('has-results');
+                document.querySelector('.search-container').classList.add('has-results');
+                
+                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
-                // Manually trigger the input event to ensure UI is updated
-                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
                 
-                // Reset the flag after a short delay
-                setTimeout(() => {
-                    isNavigatingBetweenTerms = false;
-                }, 100);
+                // Reset the flag immediately - no need for delay since we removed animations
+                isNavigatingBetweenTerms = false;
             }
         });
     });

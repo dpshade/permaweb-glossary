@@ -45,7 +45,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -57,7 +57,7 @@ body {
     position: absolute;
     top: 0;
     transform: translate(-50%, 10%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: none;
     height: 80%;
   }
   
