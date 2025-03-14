@@ -247,7 +247,7 @@ h1 {
 }
 
 .related-terms {
-  margin: 12px 0;
+  margin: 12px 0 6px 0;
 }
 
 .related-tag {
@@ -594,6 +594,7 @@ html.translucent-bg .search-container {
 
 .iframe-embed .docs-link {
   font-size: 14px;
+  margin-bottom: 12px;
 }
 
 .iframe-embed .docs-link a {
@@ -604,7 +605,6 @@ html.translucent-bg .search-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
   padding-top: 8px;
   border-top: 1px solid var(--ao-border-color);
 }
