@@ -345,6 +345,43 @@ body {
     color: var(--ao-text-color);
   }
   
+  /* Hide header when hide-header parameter is used */
+  html.hide-header .search-container h1 {
+    display: none;
+  }
+  
+  /* Adjust spacing when header is hidden */
+  html.hide-header .search-container {
+    padding-top: 8px;
+  }
+  
+  /* Translucent background styles */
+  html.translucent-bg {
+    --translucent-opacity: 0.92; /* Default opacity if not set via JS */
+    --translucent-bg-color: rgba(255, 255, 255, var(--translucent-opacity));
+    --translucent-border-color: rgba(0, 0, 0, calc(var(--translucent-opacity) * 0.3));
+    --translucent-shadow-color: rgba(0, 0, 0, calc(var(--translucent-opacity) * 0.4));
+  }
+  
+  /* Dark mode detection for translucent background */
+  @media (prefers-color-scheme: dark) {
+    html.translucent-bg {
+      --translucent-bg-color: rgba(30, 30, 30, var(--translucent-opacity));
+      --translucent-border-color: rgba(255, 255, 255, calc(var(--translucent-opacity) * 0.3));
+      --translucent-shadow-color: rgba(0, 0, 0, calc(var(--translucent-opacity) * 0.6));
+    }
+  }
+  
+  html.translucent-bg body {
+    background-color: var(--translucent-bg-color);
+  }
+  
+  html.translucent-bg .search-container {
+    background: transparent;
+    border-color: var(--translucent-border-color);
+    box-shadow: 4px 4px 0 var(--translucent-shadow-color);
+  }
+  
   .iframe-embed .search-container {
     position: relative;
     top: 0;

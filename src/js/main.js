@@ -16,7 +16,58 @@ const loadingStatus = document.getElementById('loading-status');
 
 // Helper functions
 function isIframeEmbed() {
-    return document.body.classList.contains('iframe-embed');
+    // More reliable iframe detection - check if window.self is different from window.top
+    return window.self !== window.top || document.body.classList.contains('iframe-embed');
+}
+
+// Function to apply query parameters for visual customization
+function applyQueryParameters() {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log('URL search params:', window.location.search);
+    
+    // Handle hide-header parameter
+    const hideHeader = urlParams.get('hide-header');
+    if (hideHeader === 'true' || hideHeader === '1') {
+        document.documentElement.classList.add('hide-header');
+        console.log('Header hidden based on URL parameter');
+    }
+    
+    // Handle translucent background parameter
+    const translucent = urlParams.get('translucent');
+    if (translucent) {
+        document.documentElement.classList.add('translucent-bg');
+        
+        // Apply custom opacity if numeric value is provided
+        const opacity = parseFloat(translucent);
+        if (!isNaN(opacity) && opacity >= 0 && opacity <= 1) {
+            document.documentElement.style.setProperty('--translucent-opacity', opacity);
+            console.log(`Translucent background applied with opacity: ${opacity}`);
+        } else if (translucent === 'true' || translucent === '1') {
+            console.log('Translucent background applied with default opacity');
+        }
+        
+        // Apply custom background color if specified
+        const bgColor = urlParams.get('bg-color');
+        if (bgColor && /^#([0-9A-F]{3}){1,2}$/i.test(bgColor)) {
+            // Convert hex to rgba
+            let r, g, b;
+            
+            // Handle both 3-digit and 6-digit hex colors
+            if (bgColor.length === 4) {
+                r = parseInt(bgColor[1] + bgColor[1], 16);
+                g = parseInt(bgColor[2] + bgColor[2], 16);
+                b = parseInt(bgColor[3] + bgColor[3], 16);
+            } else {
+                r = parseInt(bgColor.slice(1, 3), 16);
+                g = parseInt(bgColor.slice(3, 5), 16);
+                b = parseInt(bgColor.slice(5, 7), 16);
+            }
+            
+            const a = document.documentElement.style.getPropertyValue('--translucent-opacity') || 0.92;
+            document.documentElement.style.setProperty('--translucent-bg-color', `rgba(${r}, ${g}, ${b}, ${a})`);
+            console.log(`Custom background color applied: ${bgColor} with opacity ${a}`);
+        }
+    }
 }
 
 // Function to check URL parameters for color customization
@@ -85,8 +136,16 @@ async function init() {
         updateLoadingStatus('Loading glossary data...');
         checkUrlParamsForColors();
         
-        // Apply colors from URL parameters automatically
+        // Apply query parameters for visual customization
+        applyQueryParameters();
+        
+        // Apply iframe-specific behavior
         if (isIframeEmbed()) {
+            // Ensure iframe class is added if detected via window.self !== window.top
+            if (window.self !== window.top) {
+                document.documentElement.classList.add('iframe-embed');
+                console.log('Added iframe-embed class via script');
+            }
             
             // Listen for messages from parent page for resize events only
             window.addEventListener('message', (event) => {
@@ -1169,6 +1228,7 @@ function displayResults(results) {
                 resultsContainer.classList.add('has-results');
                 document.querySelector('.search-container').classList.add('has-results');
                 
+                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
@@ -1402,4 +1462,30 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', init);
 
 // Export functions for testing
-export { fetchArweaveTx, displayTxResults, formatBytes }; 
+export { 
+    fetchArweaveTx, 
+    displayTxResults, 
+    formatBytes,
+    applyQueryParameters // Export for testing
+}; 
+
+// Simple unit tests for query parameter handling (when in development mode)
+function runQueryParamTests() {
+    if (process.env.NODE_ENV !== 'development') return;
+    
+    console.log('Running query parameter tests...');
+    
+    // Test cases
+    const testCases = [
+        { params: '?hide-header=true', expected: { hideHeader: true, translucent: false } },
+        { params: '?translucent=0.8', expected: { hideHeader: false, translucent: true, opacity: 0.8 } },
+        { params: '?hide-header=1&translucent=true', expected: { hideHeader: true, translucent: true } },
+        { params: '?translucent=true&bg-color=#ff0000', expected: { hideHeader: false, translucent: true, bgColor: true } }
+    ];
+    
+    // Run tests
+    testCases.forEach((test, index) => {
+        console.log(`Test ${index + 1}: ${test.params}`);
+        // TODO: Implement actual test verification in a test environment
+    });
+} 
