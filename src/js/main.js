@@ -612,7 +612,9 @@ function processSearchResults(results, query) {
     // Flatten and deduplicate results
     const flatResults = [];
     const seenIds = new Set();
-    const verbatimMatches = []; // Store verbatim matches separately
+    const exactTermMatches = []; // Store exact term matches (highest priority)
+    const exactAliasMatches = []; // Store exact alias matches (second priority)
+    const partialMatches = []; // Store partial matches (third priority)
     
     // Process results from each field
     results.forEach(resultSet => {
@@ -624,20 +626,33 @@ function processSearchResults(results, query) {
                 // Get the original glossary item
                 const glossaryItem = glossaryData[parseInt(id)];
                 
-                // Check for verbatim match first
-                const isVerbatimMatch = checkVerbatimMatch(glossaryItem, query);
+                // Check for verbatim match first (returns 2 for exact term, 1 for exact alias, 0.9 for word match, 0 for no match)
+                const verbatimMatchScore = checkVerbatimMatch(glossaryItem, query);
                 
                 // Calculate a semantic-like relevance score (0-1)
                 let score = calculateSemanticLikeScore(glossaryItem, query);
                 
-                // Boost score for verbatim matches
-                if (isVerbatimMatch) {
-                    score = 2.0; // Ensure verbatim matches always appear first
-                    verbatimMatches.push({
+                // Categorize based on match type
+                if (verbatimMatchScore === 2) {
+                    // Exact term match (highest priority)
+                    exactTermMatches.push({
                         ...glossaryItem,
-                        score: score
+                        score: 2.0 // Ensure exact term matches always appear first
+                    });
+                } else if (verbatimMatchScore === 1) {
+                    // Exact alias match (second priority)
+                    exactAliasMatches.push({
+                        ...glossaryItem,
+                        score: 1.5 // Ensure exact alias matches appear after exact term matches
+                    });
+                } else if (verbatimMatchScore === 0.9) {
+                    // Word match in term (third priority)
+                    partialMatches.push({
+                        ...glossaryItem,
+                        score: 1.0 + score * 0.1 // Ensure word matches appear after exact matches
                     });
                 } else {
+                    // Regular match
                     flatResults.push({
                         ...glossaryItem,
                         score: score
@@ -647,8 +662,13 @@ function processSearchResults(results, query) {
         });
     });
     
-    // Combine verbatim matches with other results
-    const combinedResults = [...verbatimMatches, ...flatResults];
+    // Combine all results in priority order
+    const combinedResults = [
+        ...exactTermMatches,
+        ...exactAliasMatches,
+        ...partialMatches,
+        ...flatResults
+    ];
     
     // Sort by score (highest first) and take top results
     return combinedResults
@@ -662,21 +682,25 @@ function checkVerbatimMatch(item, query) {
     
     // Check exact term match
     if (item.term.toLowerCase() === queryLower) {
-        return true;
+        // Return 2 for exact term match (highest priority)
+        return 2;
     }
     
     // Check aliases for exact matches
     if (item.aliases && item.aliases.some(alias => alias.toLowerCase() === queryLower)) {
-        return true;
+        // Return 1 for exact alias match (second priority)
+        return 1;
     }
     
     // Check if query is a complete word in the term
     const termWords = item.term.toLowerCase().split(/[-\s]+/);
     if (termWords.includes(queryLower)) {
-        return true;
+        // Return 0.9 for word match in term (third priority)
+        return 0.9;
     }
     
-    return false;
+    // No verbatim match
+    return 0;
 }
 
 // Calculate a semantic-like relevance score
@@ -696,15 +720,15 @@ function calculateSemanticLikeScore(item, query) {
     } 
     // Prefix match in term
     else if (termLower.startsWith(queryLower)) {
-        exactMatchScore = 0.9;
+        exactMatchScore = 0.8;
     }
     // Term contains query as a complete word
     else if (termLower.split(/[-\s]+/).includes(queryLower)) {
-        exactMatchScore = 0.85;
+        exactMatchScore = 0.7;
     }
     // Term contains query
     else if (termLower.includes(queryLower)) {
-        exactMatchScore = 0.8;
+        exactMatchScore = 0.6;
     }
     
     // Check for word matches in definition
@@ -718,7 +742,7 @@ function calculateSemanticLikeScore(item, query) {
     });
     
     if (queryWords.length > 0) {
-        partialMatchScore = wordMatchCount / queryWords.length * 0.6;
+        partialMatchScore = wordMatchCount / queryWords.length * 0.5;
     }
     
     // Check for aliases match
@@ -743,7 +767,7 @@ function calculateSemanticLikeScore(item, query) {
     
     // Calculate character-level similarity for fuzzy matching
     const similarity = calculateStringSimilarity(termLower, queryLower);
-    const fuzzySimilarityScore = similarity * 0.5;
+    const fuzzySimilarityScore = similarity * 0.4;
     
     // Combine scores with appropriate weights
     const finalScore = Math.min(1.0, 

@@ -157,7 +157,7 @@
       "definition": "The native token of the AO ecosystem, used for resource allocation, governance, and payments within the network.",
       "category": "AO Economics",
       "related": ["Pi Token", "Delegation", "Compute Payment"],
-      "aliases": ["AO"],
+      "aliases": ["$AO"],
       "docs": []
     },
     {
