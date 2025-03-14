@@ -8,7 +8,7 @@
   --ao-shadow-color: rgba(0, 0, 0, 0.8);
   --ao-category-bg: #f0f0f0;
   --ao-category-text: #555;
-  --ao-link-color: #3498db;
+  --ao-link-color: #4CAF50;
   
   /* Additional color variables */
   --ao-result-bg: var(--ao-bg-color);
@@ -18,7 +18,7 @@
   --ao-tag-text: var(--ao-bg-color);
   --ao-button-bg: var(--ao-border-color);
   --ao-button-text: var(--ao-bg-color);
-  --ao-accent-color: #4a90e2;
+  --ao-accent-color: #4fad53;
   --ao-secondary-text: #666;
 }
 
