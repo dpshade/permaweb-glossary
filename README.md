@@ -139,23 +139,40 @@ Note: Color values must be URL-encoded (e.g., `#` becomes `%23`).
 | `category-bg` | Category badge background | `#f0f0f0` |
 | `category-text` | Category badge text | `#555555` |
 | `input-bg` | Search input background | Same as `bg-color` |
+| `result-bg` | Search results background | Same as `bg-color` |
+| `result-hover` | Search results hover background | Same as `hover-bg` |
+| `heading-color` | Heading text color | Same as `text-color` |
 | `tag-bg` | Related tag background | Same as `border-color` |
-| `tag-text` | Related tag text | Same as `text-color` |
+| `tag-text` | Related tag text | Same as `bg-color` |
 | `button-bg` | Button background | Same as `border-color` |
 | `button-text` | Button text | Same as `bg-color` |
 | `accent-color` | Accent color for highlights | `#4a90e2` |
 | `secondary-text` | Secondary text color | `#666666` |
 
+### UI Visibility Parameters
+
+In addition to color customization, you can control UI elements visibility:
+
+| Parameter | Description | Values | Default |
+|-----------|-------------|--------|---------|
+| `hide-header` | Hide the glossary header | `true`, `1`, or `false` | `false` |
+| `translucent` | Make background translucent | `true`, `1`, or a value between 0-1 for opacity | Not applied |
+
+Example with UI parameters:
+```
+?hide-header=true&translucent=0.8&bg-color=%23121212
+```
+
 ### Example Color Schemes
 
 #### Dark Mode
 ```
-?bg-color=%23121212&text-color=%23e0e0e0&link-color=%238ab4f8&border-color=%23333333&hover-bg=%23222222
+?bg-color=%23121212&text-color=%23e0e0e0&link-color=%238ab4f8&border-color=%23333333&hover-bg=%23222222&heading-color=%23ffffff
 ```
 
 #### High Contrast
 ```
-?bg-color=%23000000&text-color=%23ffffff&link-color=%23ffff00&border-color=%23ffffff
+?bg-color=%23000000&text-color=%23ffffff&link-color=%23ffff00&border-color=%23ffffff&heading-color=%23ffff00
 ```
 
 #### Solarized Dark
@@ -165,7 +182,7 @@ Note: Color values must be URL-encoded (e.g., `#` becomes `%23`).
 
 #### GitHub-inspired
 ```
-?bg-color=%230d1117&text-color=%23c9d1d9&link-color=%2358a6ff&tag-bg=%23238636
+?bg-color=%230d1117&text-color=%23c9d1d9&link-color=%2358a6ff&tag-bg=%23238636&heading-color=%23f0f6fc
 ```
 
 ## Performance Considerations
@@ -180,4 +197,4 @@ MIT
 
 ## Credits
 
-- [FlexSearch](https://github.com/nextapps-de/flexsearch) - For the fast and fuzzy search capabilities 
+- [FlexSearch](https://github.com/nextapps-de/flexsearch) - For the fast and fuzzy search capabilities

@@ -1,6 +1,7 @@
 // Constants for the application
 const GLOSSARY_URL = '../src/data/glossary.json';
 const ARWEAVE_GRAPHQL_URL = 'https://arweave-search.goldsky.com/graphql';
+const DEBUG = false; // Debug flag for logging
 
 // State variables
 let searchIndex = null;
@@ -16,20 +17,20 @@ const loadingStatus = document.getElementById('loading-status');
 
 // Helper functions
 function isIframeEmbed() {
-    // More reliable iframe detection - check if window.self is different from window.top
-    return window.self !== window.top || document.body.classList.contains('iframe-embed');
+    return window.self !== window.top;
 }
 
 // Function to apply query parameters for visual customization
 function applyQueryParameters() {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log('URL search params:', window.location.search);
+    if (DEBUG) console.log('URL search params:', window.location.search);
     
+    // ===== UI VISIBILITY PARAMETERS =====
     // Handle hide-header parameter
     const hideHeader = urlParams.get('hide-header');
     if (hideHeader === 'true' || hideHeader === '1') {
         document.documentElement.classList.add('hide-header');
-        console.log('Header hidden based on URL parameter');
+        if (DEBUG) console.log('Header hidden based on URL parameter');
     }
     
     // Handle translucent background parameter
@@ -41,40 +42,11 @@ function applyQueryParameters() {
         const opacity = parseFloat(translucent);
         if (!isNaN(opacity) && opacity >= 0 && opacity <= 1) {
             document.documentElement.style.setProperty('--translucent-opacity', opacity);
-            console.log(`Translucent background applied with opacity: ${opacity}`);
-        } else if (translucent === 'true' || translucent === '1') {
-            console.log('Translucent background applied with default opacity');
-        }
-        
-        // Apply custom background color if specified
-        const bgColor = urlParams.get('bg-color');
-        if (bgColor && /^#([0-9A-F]{3}){1,2}$/i.test(bgColor)) {
-            // Convert hex to rgba
-            let r, g, b;
-            
-            // Handle both 3-digit and 6-digit hex colors
-            if (bgColor.length === 4) {
-                r = parseInt(bgColor[1] + bgColor[1], 16);
-                g = parseInt(bgColor[2] + bgColor[2], 16);
-                b = parseInt(bgColor[3] + bgColor[3], 16);
-            } else {
-                r = parseInt(bgColor.slice(1, 3), 16);
-                g = parseInt(bgColor.slice(3, 5), 16);
-                b = parseInt(bgColor.slice(5, 7), 16);
-            }
-            
-            const a = document.documentElement.style.getPropertyValue('--translucent-opacity') || 0.92;
-            document.documentElement.style.setProperty('--translucent-bg-color', `rgba(${r}, ${g}, ${b}, ${a})`);
-            console.log(`Custom background color applied: ${bgColor} with opacity ${a}`);
+            if (DEBUG) console.log(`Translucent background applied with opacity: ${opacity}`);
         }
     }
-}
-
-// Function to check URL parameters for color customization
-function checkUrlParamsForColors() {
-    const urlParams = new URLSearchParams(window.location.search);
-    console.log('URL Parameters:', window.location.search);
     
+    // ===== COLOR PARAMETERS =====
     const colorParams = {
         '--ao-bg-color': urlParams.get('bg-color'),
         '--ao-text-color': urlParams.get('text-color'),
@@ -95,8 +67,6 @@ function checkUrlParamsForColors() {
         '--ao-secondary-text': urlParams.get('secondary-text') || urlParams.get('category-text')
     };
     
-    console.log('Parsed color parameters:', colorParams);
-    
     // Apply any colors that were provided as URL parameters
     const root = document.documentElement;
     let colorsApplied = false;
@@ -109,49 +79,59 @@ function checkUrlParamsForColors() {
                 root.style.setProperty(varName, value);
                 colorsApplied = true;
                 appliedColors[varName] = value;
+                
+                // Special handling for bg-color when translucent is enabled
+                if (varName === '--ao-bg-color' && translucent) {
+                    // Convert hex to rgba for translucent background
+                    let r, g, b;
+                    
+                    // Handle both 3-digit and 6-digit hex colors
+                    if (value.length === 4) {
+                        r = parseInt(value[1] + value[1], 16);
+                        g = parseInt(value[2] + value[2], 16);
+                        b = parseInt(value[3] + value[3], 16);
+                    } else {
+                        r = parseInt(value.slice(1, 3), 16);
+                        g = parseInt(value.slice(3, 5), 16);
+                        b = parseInt(value.slice(5, 7), 16);
+                    }
+                    
+                    const a = root.style.getPropertyValue('--translucent-opacity') || 0.92;
+                    root.style.setProperty('--translucent-bg-color', `rgba(${r}, ${g}, ${b}, ${a})`);
+                    if (DEBUG) console.log(`Custom background color applied for translucent mode: ${value} with opacity ${a}`);
+                }
             } else {
-                console.warn(`Invalid color value for ${varName}:`, value);
+                if (DEBUG) console.warn(`Invalid color value for ${varName}:`, value);
             }
         }
     });
     
-    if (colorsApplied) {
-        console.log('Successfully applied colors:', appliedColors);
-    } else {
-        console.log('No valid colors found in URL parameters');
+    if (DEBUG) {
+        if (colorsApplied) {
+            console.log('Successfully applied colors:', appliedColors);
+        } else {
+            console.log('No valid colors found in URL parameters');
+        }
     }
-    
-    // Log current CSS variables
-    const computedStyle = getComputedStyle(document.documentElement);
-    console.log('Current CSS variables:', {
-        '--ao-bg-color': computedStyle.getPropertyValue('--ao-bg-color'),
-        '--ao-text-color': computedStyle.getPropertyValue('--ao-text-color'),
-        '--ao-link-color': computedStyle.getPropertyValue('--ao-link-color')
-    });
 }
 
 // Initialize the application
 async function init() {
     try {
         updateLoadingStatus('Loading glossary data...');
-        checkUrlParamsForColors();
         
-        // Apply query parameters for visual customization
+        // Apply all query parameters in one call
         applyQueryParameters();
         
         // Apply iframe-specific behavior
         if (isIframeEmbed()) {
-            // Ensure iframe class is added if detected via window.self !== window.top
-            if (window.self !== window.top) {
-                document.documentElement.classList.add('iframe-embed');
-                console.log('Added iframe-embed class via script');
-            }
+            document.documentElement.classList.add('iframe-embed');
+            if (DEBUG) console.log('Added iframe-embed class via script');
             
             // Listen for messages from parent page for resize events only
             window.addEventListener('message', (event) => {
                 if (event.data && event.data.type === 'resize') {
-                    // Handle resize events
-                    console.log('Received resize event:', event.data);
+                    if (DEBUG) console.log('Received resize event:', event.data);
                 }
             });
         }
@@ -618,52 +598,48 @@ function performSearch(query) {
 
 // Generate query variations for better fuzzy matching
 function generateQueryVariations(query) {
-    const variations = [query];
+    // For very short queries, don't generate variations
+    if (query.length < 3) return [query];
     
-    // Skip short queries
-    if (query.length < 3) return variations;
-    
-    // Add common word stems and variations
+    const variations = new Set([query]);
     const words = query.toLowerCase().split(/\s+/);
     
+    // Process each word to generate useful variations
     words.forEach(word => {
         // Skip very short words
-        if (word.length < 4) return;
+        if (word.length < 3) return;
         
-        // Add stemmed versions (simple stemming)
+        // Add stemmed variations (focus on most common suffixes)
         if (word.endsWith('ing')) {
-            variations.push(word.slice(0, -3));
-            variations.push(word.slice(0, -3) + 'e');
+            variations.add(word.slice(0, -3)); // swimming -> swim
         } else if (word.endsWith('ed')) {
-            variations.push(word.slice(0, -2));
-            variations.push(word.slice(0, -1));
-        } else if (word.endsWith('s')) {
-            variations.push(word.slice(0, -1));
+            variations.add(word.slice(0, -2)); // walked -> walk
+        } else if (word.endsWith('s') && !word.endsWith('ss')) {
+            variations.add(word.slice(0, -1)); // cats -> cat
         } else if (word.endsWith('es')) {
-            variations.push(word.slice(0, -2));
+            variations.add(word.slice(0, -2)); // boxes -> box
+        } else if (word.endsWith('ies')) {
+            variations.add(word.slice(0, -3) + 'y'); // countries -> country
         }
         
-        // Add character swaps for common typos
-        for (let i = 0; i < word.length - 1; i++) {
-            const swapped = word.slice(0, i) + word[i+1] + word[i] + word.slice(i+2);
-            variations.push(swapped);
+        // Add the word without non-alphanumeric characters
+        const alphaNumericOnly = word.replace(/[^a-z0-9]/g, '');
+        if (alphaNumericOnly !== word && alphaNumericOnly.length > 2) {
+            variations.add(alphaNumericOnly);
         }
     });
     
-    // Combine variations into new queries
-    const singleWordVariations = [...new Set(variations)];
-    
-    // For multi-word queries, create combinations
+    // For multi-word queries, add variations with different word combinations
     if (words.length > 1) {
-        // Add the original words with each variation
-        singleWordVariations.forEach(variation => {
-            if (!words.includes(variation)) {
-                variations.push(words.join(' ') + ' ' + variation);
-            }
-        });
+        // Add without stop words 
+        const stopWords = ['the', 'and', 'or', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'as', 'of'];
+        const filteredWords = words.filter(w => !stopWords.includes(w) && w.length > 2);
+        if (filteredWords.length > 0 && filteredWords.length !== words.length) {
+            variations.add(filteredWords.join(' '));
+        }
     }
     
-    return [...new Set(variations)];
+    return [...variations];
 }
 
 // Process search results from FlexSearch

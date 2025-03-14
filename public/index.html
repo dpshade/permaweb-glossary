@@ -13,19 +13,11 @@
     <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.31/dist/flexsearch.bundle.js"></script>
-    <script>
-        // Detect if we're in an iframe and add the appropriate class
-        window.addEventListener('DOMContentLoaded', () => {
-            if (window.self !== window.top) {
-                document.documentElement.classList.add('iframe-embed');
-            }
-        });
-    </script>
 </head>
 <body>
     <div id="app">
         <div class="search-container">
-            <h1><a href="https://github.com/dpshade/permaweb-glossary" target="_parent" style="text-decoration: none; color: black;">Permaweb Glossary</a></h1>
+            <h1><a href="https://github.com/dpshade/permaweb-glossary" target="_parent" style="text-decoration: none; color: var(--ao-heading-color);">Permaweb Glossary</a></h1>
             <div class="search-input">
                 <input 
                     type="text" 
