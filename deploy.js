@@ -30,8 +30,6 @@ async function runDeploy(isStaging = false) {
       'permaweb-deploy', 
       '--ant-process', 
       process.env.ANT_PROCESS,
-      '--undername',
-      'glossary'
     ];
     
     if (isStaging) {
@@ -41,7 +39,6 @@ async function runDeploy(isStaging = false) {
     console.log(`Running deployment with command: bun ${args.join(' ')}`);
     console.log(`Using ANT_PROCESS: ${process.env.ANT_PROCESS}`);
     console.log(`DEPLOY_KEY is ${process.env.DEPLOY_KEY ? 'set' : 'not set'}`);
-    console.log(`Setting undername to: glossary`);
     
     const deployProcess = spawn('bun', args, { 
       stdio: 'inherit',
