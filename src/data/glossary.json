@@ -1138,9 +1138,9 @@
     },
     {
       "term": "Basejump",
-      "definition": "A social gaming platform built on AO that features an AI-powered gaming substrate called Action, enabling players to create and customize their own games. Positioned as 'the space between games', it provides a flexible environment for game development and social interaction within the AO ecosystem.",
+      "definition": "A social gaming platform built on AO that features the Action substrate. It provides a no-code environment for creating, discovering, and monetizing interoperable games and assets. Basejump is consumer-focused with an avatar-centric interface, featuring a PVP battle game for hyperobjects that runs in Discord and on the web.",
       "category": "Decentralized Applications",
-      "related": ["AI", "Gaming", "Social Platform", "Game Development", "AO Process"],
+      "related": ["Action", "Hyperobject", "AO Computer", "Arweave", "AI", "Gaming", "Social Platform", "Game Development"],
       "aliases": ["Basejump.xyz", "Action Gaming Platform"],
       "docs": ["https://www.basejump.xyz/"]
     },
@@ -1406,6 +1406,38 @@
       "category": "AR.IO Economics",
       "related": ["ARIO Token", "AR.IO", "Protocol Balance", "Staking", "ArNS"],
       "aliases": ["µARIO"],
+      "docs": []
+    },
+    {
+      "term": "Action",
+      "definition": "A decentralized framework built on AO and Arweave designed for creating self-sovereign games, digital assets, and communities. Action introduces 'hyperobjects' (interoperable game assets like avatars, items, and environments) that can be used across different games and platforms. The ecosystem is powered by the ACTION token, which enables hyperobject creation, governance participation, and economic coordination. Action emphasizes originality, collaboration, and sustainability, with a portion of fees directed toward real-world environmental initiatives like rainforest protection.",
+      "category": "Decentralized Applications",
+      "related": ["AO Computer", "Arweave", "Hyperobject", "ACTION Token", "Basejump"],
+      "aliases": ["Action Substrate"],
+      "docs": []
+    },
+    {
+      "term": "ACTION Token",
+      "definition": "The native utility token of the Action ecosystem with a fixed supply of 10 billion tokens. It enables hyperobject creation, marketplace transactions, governance participation, and ecosystem growth. Unlike traditional tokens, ACTION is designed primarily for platform utility rather than speculation, with 75% of the supply allocated to community distribution. The token follows a non-inflationary model and incorporates treasury mechanisms to fund environmental and social initiatives through community governance.",
+      "category": "Cryptocurrency",
+      "related": ["Action", "Hyperobject", "Governance", "AO Token"],
+      "aliases": ["$ACTION"],
+      "docs": []
+    },
+    {
+      "term": "Hyperobject",
+      "definition": "The foundational digital assets of the Action ecosystem that serve as building blocks for gameplay, commerce, and creativity. Hyperobjects include avatars ('Action Figures'), game assets ('Action Items'), and game environments ('Worlds'). Unlike traditional NFTs, hyperobjects can be large applications due to AO's scalability, and they exhibit context-dependent behavior, adapting dynamically to the specific game or world in which they're used. Each hyperobject runs as a unique AO process with corresponding Arweave data representing its underlying assets.",
+      "category": "Decentralized Applications",
+      "related": ["Action", "ACTION Token", "AO Process", "Digital Asset"],
+      "aliases": ["Action Hyperobject"],
+      "docs": []
+    },
+    {
+      "term": "Merkle Root",
+      "definition": "The result of hashing all transactions in a block, pairing those hashes, and hashing them again until a single hash remains. In blockchain systems like Arweave and AO, Merkle roots enable efficient verification of transaction data without requiring nodes to process every transaction individually. This technique significantly reduces the computational resources needed to verify blocks and is central to maintaining blockchain integrity. In the Converge Protocol, HashPaths use Merkle tree principles to create a cryptographic history of all operations that led to a particular state, allowing verification of the entire computation chain with a single hash.",
+      "category": "Blockchain Technology",
+      "related": ["Hashpath", "Transaction", "Block", "Converge Protocol", "Data Verification"],
+      "aliases": ["Merkle Tree", "Hash Tree", "Merkle"],
       "docs": []
     }
   ]

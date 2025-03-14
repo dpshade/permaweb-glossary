@@ -236,6 +236,7 @@ body {
     margin-bottom: 8px;
     font-size: 12px;
     font-weight: 600;
+    cursor: pointer;
   }
   
   .docs-link {
@@ -375,7 +376,6 @@ body {
   
   .iframe-embed .search-input input {
     width: 100%;
-    padding: 12px 40px 0 16px;
     font-size: 16px;
     height: 44px;
     border: 2px solid var(--ao-border-color);
@@ -525,6 +525,7 @@ body {
     margin-bottom: 4px;
     background-color: var(--ao-category-bg);
     color: var(--ao-text-color);
+    cursor: pointer;
   }
   
   .iframe-embed .docs-link {

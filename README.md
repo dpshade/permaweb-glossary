@@ -109,7 +109,7 @@ Edit the `src/data/glossary.json` file to add, modify, or remove terms. The JSON
 3. Add an iframe to your site:
    ```html
    <div class="glossary-search">
-     <iframe src="path/to/dist/index.html" width="100%" height="600px" frameborder="0"></iframe>
+     <iframe src="https://glossary_tiny4vr.permagate.io/" width="100%" height="600px" frameborder="0"></iframe>
    </div>
    ```
 
