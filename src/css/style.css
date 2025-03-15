@@ -1163,10 +1163,9 @@ html.translucent-bg .search-container {
   justify-content: center;
 }
 
-.iframe-embed :not(html.hide-header) .random-terms {
+html:not(.hide-header) .iframe-embed .random-terms {
   justify-content: flex-start;
 }
-
 
 .random-terms .related-tag {
   margin: 0 3px;
