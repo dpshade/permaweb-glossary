@@ -60,7 +60,7 @@ body {
   max-width: var(--container-max-width);
   width: var(--container-width);
   margin: 0 auto;
-  padding: 16px 32px 8px 32px;
+  padding: 12px;
   background-color: var(--ao-bg-color);
   border-radius: 2px;
   box-shadow: var(--container-shadow);
@@ -636,7 +636,7 @@ html.translucent-bg .search-container {
 }
 
 /* Responsive adjustments */
-@media (max-height: 400px) {
+@media (max-height: 768px) {
   .iframe-embed .search-container {
     padding: 12px;
   }
