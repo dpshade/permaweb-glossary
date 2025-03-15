@@ -33,7 +33,12 @@ function applyQueryParameters() {
     const hideHeader = urlParams.get('hide-header');
     if (hideHeader === 'true' || hideHeader === '1') {
         document.documentElement.classList.add('hide-header');
+        // Store justification preference in a global variable that can be used later
+        window.randomTermsJustification = 'center';
         if (DEBUG) console.log('Header hidden based on URL parameter');
+    } else {
+        // When header is not hidden, we'll use flex-start for iframe embed
+        window.randomTermsJustification = 'flex-start';
     }
     
     // Handle hide-recommendations parameter
@@ -1473,6 +1478,11 @@ function createRandomTermTags() {
     const termsContainer = document.createElement('div');
     termsContainer.className = 'related-terms random-terms';
     
+    // Apply justification based on the stored preference (if we're in iframe mode)
+    if (isIframeEmbed() && window.randomTermsJustification) {
+        termsContainer.style.justifyContent = window.randomTermsJustification;
+    }
+    
     // Get initial shuffled terms
     shuffledTerms = getShuffledTerms(glossaryData);
     
@@ -1480,6 +1490,11 @@ function createRandomTermTags() {
     function renderTags() {
         // Clear existing tags
         termsContainer.innerHTML = '';
+        
+        // Ensure justification is still applied when re-rendering
+        if (isIframeEmbed() && window.randomTermsJustification) {
+            termsContainer.style.justifyContent = window.randomTermsJustification;
+        }
         
         // Get container width
         const containerWidth = searchContainer.clientWidth - 60; // Allow padding
@@ -1573,6 +1588,13 @@ function reshuffleTermTags() {
     
     // Reshuffle the terms
     shuffledTerms = getShuffledTerms(glossaryData);
+    
+    // Also ensure justification is maintained for any existing random-terms elements
+    if (isIframeEmbed() && window.randomTermsJustification) {
+        document.querySelectorAll('.iframe-embed .random-terms').forEach(el => {
+            el.style.justifyContent = window.randomTermsJustification;
+        });
+    }
     
     // Render the new tags if the render function exists
     if (window.renderRandomTags) {

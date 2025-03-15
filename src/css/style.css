@@ -1164,10 +1164,6 @@ html.translucent-bg .search-container {
   justify-content: center;
 }
 
-html:not(.hide-header) .iframe-embed .random-terms {
-  justify-content: flex-start;
-}
-
 .random-terms .related-tag {
   margin: 0 3px;
   transition: none;
@@ -1184,8 +1180,6 @@ html:not(.hide-header) .iframe-embed .random-terms {
   color: var(--ao-tag-text);
   transform: translateY(-1px);
 }
-
-/* Responsive design for mobile */
 
 /* Hide recommendations only when explicitly set */
 html.hide-recommendations .random-terms-container {
