@@ -346,6 +346,35 @@ h1 {
     width: 100%;
     box-shadow: none;
   }
+  .tx-iframe-content {
+    height: 50vh;
+  }
+  .tx-iframe-container {
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .tx-iframe-content {
+    height: 60vh;
+  }
+  .tx-result .definition {
+    grid-template-columns: 1fr;
+  }
+  .random-terms-container {
+    margin: 10px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .random-terms .related-tag {
+    margin: 0 2px;
+    max-width: 140px;
+    font-size: 11px;
+    padding: 3px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }
 
 @keyframes spin {
@@ -809,13 +838,6 @@ html.translucent-bg .search-container {
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .tx-result .definition {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* iframe-specific transaction styling */
 .iframe-embed .tx-meta-item {
   padding: 0.4rem;
@@ -1082,23 +1104,7 @@ html.translucent-bg .search-container {
   border-radius: 0 0 8px 8px;
 }
 
-/* Responsive adjustments for iframe */
-@media (max-width: 768px) {
-  .tx-iframe-container {
-    padding: 1rem;
-    overflow-y: auto;
-  }
 
-  .tx-iframe-content {
-    height: 60vh;
-  }
-}
-
-@media (max-height: 600px) {
-  .tx-iframe-content {
-    height: 50vh;
-  }
-}
 
 /* Custom scrollbar for transaction data */
 .tx-iframe-content::-webkit-scrollbar,
@@ -1180,22 +1186,6 @@ html:not(.hide-header) .iframe-embed .random-terms {
 }
 
 /* Responsive design for mobile */
-@media (max-width: 768px) {
-  .random-terms-container {
-    margin: 10px 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .random-terms .related-tag {
-    margin: 0 2px;
-    max-width: 140px;
-    font-size: 11px;
-    padding: 3px 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
 
 /* Hide recommendations only when explicitly set */
 html.hide-recommendations .random-terms-container {
