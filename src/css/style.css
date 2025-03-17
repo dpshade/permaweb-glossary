@@ -8,7 +8,7 @@
   --ao-shadow-color: rgba(0, 0, 0, 0.8);
   --ao-category-bg: #f0f0f0;
   --ao-category-text: #555;
-  --ao-link-color: #4CAF50;
+  --ao-link-color: #34d399;
 
   /* Additional color variables */
   --ao-result-bg: var(--ao-bg-color);
@@ -18,7 +18,7 @@
   --ao-tag-text: var(--ao-bg-color);
   --ao-button-bg: var(--ao-border-color);
   --ao-button-text: var(--ao-bg-color);
-  --ao-accent-color: #4fad53;
+  --ao-accent-color: #34d399;
   --ao-secondary-text: #666;
 
   /* Layout variables */
@@ -635,7 +635,7 @@ html.translucent-bg .search-container {
   font-size: 12px;
   padding: 4px 8px;
   margin-right: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
   background-color: var(--ao-category-bg);
   color: var(--ao-text-color);
   cursor: pointer;
@@ -643,7 +643,7 @@ html.translucent-bg .search-container {
 
 .iframe-embed .docs-link {
   font-size: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .iframe-embed .docs-link a {
@@ -693,7 +693,7 @@ html.translucent-bg .search-container {
   }
 
   .iframe-embed .docs-link {
-    margin-top: 10px;
+    margin-top: 6px;
     font-size: 12px;
   }
 
@@ -1175,7 +1175,7 @@ html.translucent-bg .search-container {
   text-overflow: ellipsis;
 }
 
-.random-terms .related-tag:hover {
+.related-tag:hover {
   background-color: var(--ao-accent-color);
   color: var(--ao-tag-text);
   transform: translateY(-1px);
