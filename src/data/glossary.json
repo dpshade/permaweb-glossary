@@ -225,6 +225,14 @@
       "docs": []
     },
     {
+      "term": "Arweave Wallet Kit",
+      "definition": "A modular toolkit that simplifies interactions between Arweave wallets and dApps by providing a unified API that supports any Arweave wallet. It's built around a core package as the foundation, with additional packages for React hooks, components, and styles. The kit uses 'strategies' as modular implementations for different wallet providers, currently supporting Wander.app, Arweave.app, Othent, and general browser wallets. This architecture enables users to interact with apps using their preferred wallet while giving developers a consistent interface across all wallet types.",
+      "category": "Arweave Ecosystem",
+      "related": ["ArweaveKit", "Wallet", "Transactions", "Authentication", "dApp Development"],
+      "aliases": ["AWK", "Wallet Kit"],
+      "docs": ["https://docs.arweavekit.com/arweave-wallet-kit/introduction"]
+    },
+    {
       "term": "Compute Unit",
       "definition": "A node in the AO network responsible for executing process code and managing state. CUs offer the service of resolving process state in competition with one another.",
       "category": "AO Infrastructure",
@@ -1083,7 +1091,7 @@
     {
       "term": "Bazar",
       "definition": "A decentralized marketplace leveraging Arweave for data storage and management.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Marketplace", "Arweave"],
       "aliases": ["Decentralized Market"],
       "docs": ["https://bazar.arweave.net/"]
@@ -1098,11 +1106,11 @@
     },
     {
       "term": "Botega",
-      "definition": "A decentralized marketplace for digital goods and services.",
-      "category": "Decentralized Applications",
-      "related": ["Marketplace", "Digital Goods"],
-      "aliases": ["Digital Marketplace"],
-      "docs": ["https://botega.arweave.net"]
+      "definition": "A decentralized finance platform built on AO that facilitates asset exchanges through multiple models including AMMs and order books. Its unique architecture treats each liquidity pool as an independent process with localized state, enabling high-throughput transactions, autonomous execution of advanced orders, and AI integration. Botega is fully decentralized with its frontend on Arweave and execution logic in AO processes.",
+      "category": "DeFi",
+      "related": ["AO Process", "AMM", "Liquidity Pool", "Autonomous Agent", "Order Book", "Arweave", "Decentralized Exchange"],
+      "aliases": ["Botega Exchange", "AO DeFi Platform"],
+      "docs": ["https://botega.arweave.net", "https://botega.arweave.dev", "https://botega.ar.io"]
     },
     {
       "term": "Community Labs",
@@ -1122,10 +1130,10 @@
     },
     {
       "term": "Dexi",
-      "definition": "A decentralized exchange interface for interacting with multiple blockchain networks.",
-      "category": "Decentralized Applications",
-      "related": ["Blockchain", "Decentralized Exchange", "DEX", "Cross-chain"],
-      "aliases": ["DEX Interface"],
+      "definition": "An autonomous application that aggregates real-time financial data from events within the AO network, including asset prices, token swaps, and liquidity fluctuations. The Dexi Terminal provides a web interface similar to TradingView for monitoring assets and trading tokens. AO applications can subscribe to Dexi's data agents to receive verifiable real-time data, eliminating the need for external oracles.",
+      "category": "Decentralized Applications (dApps)",
+      "related": ["AO Network", "Financial Data", "Data Aggregation", "Asset Trading", "Real-time Data", "Oracle"],
+      "aliases": ["Dexi Terminal", "AO Financial Data Agent"],
       "docs": ["https://dexi.arweave.net/"]
     },
     {
@@ -1147,7 +1155,7 @@
     {
       "term": "Odysee",
       "definition": "A decentralized video platform utilizing blockchain for content distribution. Currently being migrated to Arweave/AO via ArFleet.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["ArFleet", "Content Distribution", "Video Platform"],
       "aliases": ["Video Platform"],
       "docs": ["https://odysee.com/"]
@@ -1163,7 +1171,7 @@
     {
       "term": "Redstone",
       "definition": "A decentralized data analytics platform built on Arweave.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Arweave", "Data Analytics", "Oracle"],
       "aliases": ["Data Oracle"],
       "docs": ["https://ar.io/case-studies/redstone"]
@@ -1171,7 +1179,7 @@
     {
       "term": "Trackgood",
       "definition": "A decentralized supply chain management system using Arweave for data integrity.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Supply Chain Management", "Arweave", "Data Integrity"],
       "aliases": ["Supply Chain Platform"],
       "docs": ["https://ar.io/case-studies/trackgood"]
@@ -1179,7 +1187,7 @@
     {
       "term": "Wander",
       "definition": "A non-custodial Arweave and AO native wallet with extensive features. Wander is available as a browser extension, mobile application, and embedded smart account.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Arweave", "Wallet", "ArNS"],
       "aliases": ["ArConnect", "Wander Wallet"],
       "docs": ["https://www.wander.app/"]
@@ -1187,7 +1195,7 @@
     {
       "term": "Beacon",
       "definition": "The most secure wallet for AO and AR networks, offering features such as two-factor authentication (2FA), multi-signature capabilities, passkeys, recovery options, and more to ensure robust security.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Blockchain", "Wallet", "Security"],
       "aliases": ["Multi-chain Wallet", "Advanced Security Wallet"],
       "docs": ["https://beaconwallet.app/"]
@@ -1203,7 +1211,7 @@
     {
       "term": "Multi-sig",
       "definition": "A multi-signature wallet or smart contract that requires multiple signatures or approvals from different parties before executing a transaction or action. This enhances security and control by distributing decision-making authority.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Wallet", "Smart Contract", "Security"],
       "aliases": ["Multi-signature"],
       "docs": []
@@ -1243,7 +1251,7 @@
     {
       "term": "Protocol.Land",
       "definition": "Decentralized, source controlled, code collaboration where you own your code.",
-      "category": "Arweave Ecosystem",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Code Collaboration", "Source Control", "Decentralized Development"],
       "aliases": ["Protocol Land", "Arweave Github"],
       "docs": ["https://protocol.land/"]
@@ -1307,7 +1315,7 @@
     {
       "term": "Basejump",
       "definition": "A social gaming platform built on AO that features the Action substrate. It provides a no-code environment for creating, discovering, and monetizing interoperable games and assets. Basejump is consumer-focused with an avatar-centric interface, featuring a PVP battle game for hyperobjects that runs in Discord and on the web.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Action", "Hyperobject", "AO Computer", "Arweave", "AI", "Gaming", "Social Platform", "Game Development"],
       "aliases": ["Basejump.xyz", "Action Gaming Platform"],
       "docs": ["https://www.basejump.xyz/"]
@@ -1579,7 +1587,7 @@
     {
       "term": "Action",
       "definition": "A decentralized framework built on AO and Arweave designed for creating self-sovereign games, digital assets, and communities. Action introduces 'hyperobjects' (interoperable game assets like avatars, items, and environments) that can be used across different games and platforms. The ecosystem is powered by the ACTION token, which enables hyperobject creation, governance participation, and economic coordination. Action emphasizes originality, collaboration, and sustainability, with a portion of fees directed toward real-world environmental initiatives like rainforest protection.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["AO Computer", "Arweave", "Hyperobject", "ACTION Token", "Basejump"],
       "aliases": ["Action Substrate"],
       "docs": []
@@ -1595,7 +1603,7 @@
     {
       "term": "Hyperobject",
       "definition": "The foundational digital assets of the Action ecosystem that serve as building blocks for gameplay, commerce, and creativity. Hyperobjects include avatars ('Action Figures'), game assets ('Action Items'), and game environments ('Worlds'). Unlike traditional NFTs, hyperobjects can be large applications due to AO's scalability, and they exhibit context-dependent behavior, adapting dynamically to the specific game or world in which they're used. Each hyperobject runs as a unique AO process with corresponding Arweave data representing its underlying assets.",
-      "category": "Decentralized Applications",
+      "category": "Decentralized Applications (dApps)",
       "related": ["Action", "ACTION Token", "AO Process", "Digital Asset"],
       "aliases": ["Action Hyperobject"],
       "docs": []
