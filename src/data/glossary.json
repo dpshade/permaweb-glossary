@@ -195,8 +195,8 @@
     {
       "term": "ArFS",
       "definition": "A data modeling, storage, and retrieval protocol designed to emulate common file system operations on Arweave's permanent storage. ArFS solves key challenges by implementing a hierarchical file structure, metadata management, file permissions (public and private with encryption), file versioning, data deduplication, search capabilities, and interoperability with other decentralized applications. It works around Arweave's immutable nature by using an append-only transaction data model with tags in Arweave Transaction headers, enabling features like file renaming and organization despite the underlying permanent storage.",
-      "category": "Arweave Ecosystem",
-      "related": ["Arweave", "Data Storage", "Metadata", "Tags", "Transaction", "Permanent Storage", "ArDrive"],
+      "category": "Arweave Technology",
+      "related": ["Arweave", "Data Storage", "Metadata", "Tags", "Transaction", "Permanent Storage", "ArDrive", "File System"],
       "aliases": ["Arweave File System"],
       "docs": ["https://cookbook.ar.io/concepts/arfs/arfs.html", "https://ardrive.io/arfs/"]
     },
@@ -1631,6 +1631,38 @@
       "related": ["Pi Token", "AO Token", "AO Yield", "Fair Launch", "Ecosystem Development"],
       "aliases": ["PI", "Permaweb Token Index"],
       "docs": []
+    },
+    {
+      "term": "ArDrive",
+      "definition": "A decentralized storage application built on Arweave that enables users to store and manage their files permanently. It offers a pay-once, store-forever model, eliminating the need for recurring subscription fees. ArDrive provides true data ownership, ensuring files remain accessible even if the company disappears, and supports both private and public data storage options. The platform is optimized for storing various types of data, including photography, digital art, and NFTs.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "Permaweb", "Data Storage", "NFT Storage", "Decentralized Storage", "ArFS"],
+      "aliases": ["ArDrive Platform", "Permanent Storage App"],
+      "docs": ["https://ardrive.io/"]
+    },
+    {
+      "term": "ArDrive CLI",
+      "definition": "A command-line interface tool for interacting with ArDrive, enabling users to upload, download, and manage files on the Arweave network programmatically. It provides a powerful way to automate file operations and integrate ArDrive functionality into scripts and applications.",
+      "category": "Arweave Development",
+      "related": ["ArDrive", "CLI", "File Management", "Arweave"],
+      "aliases": ["ArDrive Command Line Tool"],
+      "docs": ["https://ardrive.io/ardrive-cli/"]
+    },
+    {
+      "term": "ArDrive Turbo",
+      "definition": "An enhanced version of ArDrive that provides faster upload speeds and improved performance for large files. It optimizes the upload process by implementing advanced bundling and chunking techniques, making it more efficient for handling substantial amounts of data.",
+      "category": "Arweave Ecosystem",
+      "related": ["ArDrive", "Data Upload", "Performance", "Arweave"],
+      "aliases": ["Turbo Upload", "Fast ArDrive"],
+      "docs": ["https://ardrive.io/turbo/"]
+    },
+    {
+      "term": "ArDrive Core",
+      "definition": "The fundamental library that provides the core functionality for interacting with ArDrive. It includes essential features for file management, data encryption, and Arweave integration, serving as the foundation for both the ArDrive web application and CLI tools.",
+      "category": "Arweave Development",
+      "related": ["ArDrive", "ArFS", "File Management", "Arweave"],
+      "aliases": ["ArDrive Library", "Core Library"],
+      "docs": ["https://ardrive.io/core/"]
     }
   ]
 }

@@ -12,6 +12,7 @@ let activeIndex = 0;
 let isNavigatingBetweenTerms = false; // Flag to track term navigation
 let shuffledTerms = []; // Global variable to store shuffled terms
 let hideRecommendations = false; // Flag to track if recommendations should be hidden
+let isKeyboardActive = false; // Flag to track if the keyboard is active
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
@@ -236,6 +237,9 @@ async function init() {
             searchInput.value = initialQuery;
             // Update title with the search term
             document.title = `${initialQuery} - Permaweb Glossary`;
+            // Set keyboard active flag to ensure first result is selected
+            isKeyboardActive = true;
+            document.body.classList.add('keyboard-active');
             // Perform the search
             performSearch(initialQuery);
         }
@@ -1213,10 +1217,19 @@ function displayResults(results) {
         // Add the results to the container
         resultsContainer.appendChild(resultsList);
         
-        // Auto-select the first result in standalone mode
-        if (window.keyboardNav) {
-            window.keyboardNav.addMouseHandlers();
-            window.keyboardNav.reset();
+        // Auto-select the first result if keyboard navigation is active
+        if (isKeyboardActive) {
+            const firstResult = resultsList.querySelector('.result-item');
+            if (firstResult) {
+                firstResult.classList.add('selected');
+                // Ensure the selected item is visible at the top of the viewport
+                setTimeout(() => {
+                    firstResult.scrollIntoView({
+                        behavior: 'auto',
+                        block: 'start'
+                    });
+                }, 0);
+            }
         }
     }
 
@@ -1265,7 +1278,6 @@ function displayResults(results) {
                 // Ensure the container stays open
                 resultsContainer.classList.add('has-results');
                 document.querySelector('.search-container').classList.add('has-results');
-                
                 
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
@@ -1464,7 +1476,6 @@ function updateDisplay(results, currentIndex = 0) {
                 resultsContainer.classList.add('has-results');
                 document.querySelector('.search-container').classList.add('has-results');
                 
-                
                 searchInput.value = term;
                 // Directly perform the search without waiting for the input event
                 performSearch(term);
@@ -1481,11 +1492,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkVisibility = setInterval(() => {
         const results = document.querySelectorAll('.result-display');
         const activeResult = document.querySelector('.result-display.active');
-        
-        console.log('Visibility check:', {
-            results: results.length,
-            activeResult: activeResult ? 'found' : 'not found'
-        });
         
         if (activeResult && activeResult.style.opacity !== '1') {
             activeResult.style.display = 'flex';
