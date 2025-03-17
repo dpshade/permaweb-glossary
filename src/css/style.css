@@ -36,25 +36,25 @@
 
 /* Dark mode color scheme */
 [data-theme="dark"] {
-  --ao-bg-color: #18181B;
+  --ao-bg-color: #121212;
   --ao-text-color: #e0e0e0;
-  --ao-border-color: #444444;
-  --ao-input-bg: #1e1e1e;
-  --ao-hover-bg: #222222;
+  --ao-border-color: #242424;
+  --ao-input-bg: #141414;
+  --ao-hover-bg: #1a1a1a;
   --ao-shadow-color: rgba(0, 0, 0, 0.4);
-  --ao-category-bg: #333333;
+  --ao-category-bg: #1a1a1a;
   --ao-category-text: #ffffff;
   --ao-link-color: #34d399;
-  --ao-result-bg: #1e1e1e;
-  --ao-result-hover: #333333;
+  --ao-result-bg: #141414;
+  --ao-result-hover: #1a1a1a;
   --ao-heading-color: #ffffff;
-  --ao-tag-bg: #3a3a3a;
+  --ao-tag-bg: #1a1a1a;
   --ao-tag-text: #e0e0e0;
-  --ao-button-bg: #444444;
+  --ao-button-bg: #242424;
   --ao-button-text: #ffffff;
   --ao-accent-color: #34d399;
   --ao-secondary-text: #a0a0a0;
-  --ao-section-bg: #333333;
+  --ao-section-bg: #1a1a1a;
   --ao-section-color: #ffffff;
 }
 
