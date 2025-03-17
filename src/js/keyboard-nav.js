@@ -151,7 +151,17 @@ function resetSelection() {
     
     // Always apply selection to first result if there are results
     if (resultItems.length > 0) {
-        updateSelectedResult(resultItems);
+        // Force a reflow to ensure DOM is updated
+        resultsContainer.offsetHeight;
+        
+        // Set keyboard active state
+        isKeyboardActive = true;
+        document.body.classList.add('keyboard-active');
+        
+        // Update selection with a slight delay to ensure DOM is ready
+        setTimeout(() => {
+            updateSelectedResult(resultItems);
+        }, 0);
     }
 }
 

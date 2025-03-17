@@ -1,14 +1,14 @@
 :root {
   /* Default color scheme (light mode) */
   --ao-bg-color: white;
-  --ao-text-color: #111;
+  --ao-text-color: #000000;
   --ao-border-color: #000;
   --ao-input-bg: white;
   --ao-hover-bg: #f6f6f6;
   --ao-shadow-color: rgba(0, 0, 0, 0.8);
   --ao-category-bg: #f0f0f0;
   --ao-category-text: #555;
-  --ao-link-color: #34d399;
+  --ao-link-color: #29a879;
   --ao-result-bg: white;
   --ao-result-hover: #f0f0f0;
   --ao-heading-color: #111;
@@ -16,7 +16,7 @@
   --ao-tag-text: white;
   --ao-button-bg: #000;
   --ao-button-text: white;
-  --ao-accent-color: #34d399;
+  --ao-accent-color: #29a879;
   --ao-secondary-text: #666;
   --ao-section-bg: #f5f5f5;
   --ao-section-color: #111;
@@ -315,6 +315,7 @@ h1 {
 
 .definition {
   color: var(--ao-text-color);
+  font-weight: 200;
   margin-bottom: 10px;
   line-height: 1.6;
 }

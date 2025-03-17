@@ -1671,6 +1671,14 @@
       "related": ["Fair Launch", "Token Distribution", "Permaweb Index", "AO Yield", "Security"],
       "aliases": ["Rug", "Exit Scam"],
       "docs": []
+    },
+    {
+      "term": "Legacynet",
+      "definition": "A development and testing network for the AO computer launched on February 27, 2024. It allows developers and early adopters to interact with the AO computer without fees, providing a sandbox environment for testing and building applications before deploying to mainnet. The network includes features like the aos console for process management and native community chat servers for developer collaboration. It serves as a crucial platform for exploring AO's hyper parallel computing capabilities and building towards mainnet deployment.",
+      "category": "AO Development",
+      "related": ["AO Computer", "aos console", "Process", "Development Environment"],
+      "aliases": ["ao legacynet", "ao Testnet"],
+      "docs": ["https://cookbook_ao.arweave.net/legacynet"]
     }
   ]
 }

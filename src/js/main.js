@@ -371,34 +371,27 @@ function handleSearch(event) {
     // Clear results if query is empty
     if (!query) {
         resultsContainer.innerHTML = '';
-        // Only remove classes if we're not navigating between terms
-        if (!isNavigatingBetweenTerms) {
-            resultsContainer.classList.remove('has-results');
-            document.querySelector('.search-container').classList.remove('has-results');
-        }
-        
-        // Refresh random term tags when search is cleared (unless recommendations are hidden)
-        if (!hideRecommendations) {
-            reshuffleTermTags();
-        }
-        
+        resultsContainer.classList.remove('has-results');
+        document.querySelector('.search-container').classList.remove('has-results');
+        // Reset keyboard navigation state
+        isKeyboardActive = false;
+        document.body.classList.remove('keyboard-active');
         return;
     }
     
-    // Debounce search to avoid too many requests
+    // Set keyboard active state immediately
+    isKeyboardActive = true;
+    document.body.classList.add('keyboard-active');
+    
+    // Set timeout for search execution
     searchTimeout = setTimeout(() => {
-        // Check if input is an Arweave transaction ID (43 characters, no spaces)
-        if (query.length === 43 && !query.includes(' ')) {
-            fetchArweaveTx(query);
-        } else {
-            performSearch(query);
-        }
-        
-        // Refresh random term tags after search (unless recommendations are hidden)
-        if (!hideRecommendations) {
-            reshuffleTermTags();
-        }
-    }, 150); // Even faster response time
+        performSearch(query).then(() => {
+            // Reset keyboard navigation after results are displayed
+            if (window.keyboardNav) {
+                window.keyboardNav.reset();
+            }
+        });
+    }, 300);
 }
 
 // Fetch Arweave transaction data
