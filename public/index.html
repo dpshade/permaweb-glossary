@@ -13,6 +13,25 @@
     <link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png">
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.31/dist/flexsearch.bundle.js"></script>
+    <script>
+        // Update title based on search query
+        function updateTitle(query) {
+            if (query) {
+                document.title = `${query} - Permaweb Glossary`;
+            } else {
+                document.title = 'Permaweb Glossary Search';
+            }
+        }
+        
+        // Check for initial search query
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            if (query) {
+                updateTitle(query);
+            }
+        });
+    </script>
 </head>
 <body>
     <button class="theme-toggle" aria-label="Toggle dark mode">

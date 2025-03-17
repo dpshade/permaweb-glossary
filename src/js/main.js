@@ -22,6 +22,24 @@ const loadingStatus = document.getElementById('loading-status');
 const themeToggle = document.querySelector('.theme-toggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
+// URL parameter handling
+function getSearchQueryFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('q');
+}
+
+function updateURLWithSearch(query) {
+    if (!query) {
+        // If no query, remove the search parameter
+        const newUrl = window.location.pathname;
+        window.history.pushState({}, '', newUrl);
+    } else {
+        // Update URL with search query, maintaining the current path
+        const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}`;
+        window.history.pushState({}, '', newUrl);
+    }
+}
+
 // Helper functions
 function isIframeEmbed() {
     return window.self !== window.top;
@@ -212,6 +230,16 @@ async function init() {
             window.keyboardNav.init();
         }
         
+        // Check for initial search query in URL
+        const initialQuery = getSearchQueryFromURL();
+        if (initialQuery) {
+            searchInput.value = initialQuery;
+            // Update title with the search term
+            document.title = `${initialQuery} - Permaweb Glossary`;
+            // Perform the search
+            performSearch(initialQuery);
+        }
+        
         // Add unified keyboard navigation for iframe mode
         if (isIframeEmbed()) {
             document.addEventListener('keydown', (e) => {
@@ -322,6 +350,9 @@ function cleanSearchQuery(query) {
 // Handle search input with debounce
 function handleSearch(event) {
     const query = cleanSearchQuery(event.target.value);
+    
+    // Update URL with search query
+    updateURLWithSearch(query);
     
     // Clear previous timeout
     if (searchTimeout) {

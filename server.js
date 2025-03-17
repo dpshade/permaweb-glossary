@@ -12,9 +12,11 @@ const server = serve({
     // Log the request
     console.log(`${req.method} - ${path}`);
     
-    // Default to index.html for root path
+    // Handle special routes
     if (path === "/") {
       path = "/index.html";
+    } else if (path === "/define") {
+      path = "/define.html";
     }
     
     // Try to serve the requested file
