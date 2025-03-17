@@ -1663,6 +1663,14 @@
       "related": ["ArDrive", "ArFS", "File Management", "Arweave"],
       "aliases": ["ArDrive Library", "Core Library"],
       "docs": ["https://ardrive.io/core/"]
+    },
+    {
+      "term": "Rug Pull",
+      "definition": "A malicious practice in cryptocurrency where project developers abandon the project and take investors' funds, or deliberately manipulate token value before selling their holdings, leaving other investors with worthless tokens. AO's Fair Launch model prevents rug pulls by eliminating pre-mining, pre-allocation, and insider advantages. Instead, projects receive funding through the Permaweb Index based on community-allocated yield, ensuring that token distribution is tied directly to community support and utility rather than speculative investment. This model removes the ability for developers to suddenly dump large token holdings, as tokens are earned gradually through actual development and community backing.",
+      "category": "Cryptocurrency",
+      "related": ["Fair Launch", "Token Distribution", "Permaweb Index", "AO Yield", "Security"],
+      "aliases": ["Rug", "Exit Scam"],
+      "docs": []
     }
   ]
 }

@@ -240,10 +240,10 @@ h1 {
 }
 
 .result-item {
+  position: relative;
   padding: 16px 20px;
   border-bottom: 2px solid var(--ao-border-color);
   cursor: pointer;
-  position: relative;
   background-color: var(--ao-result-bg);
 }
 
@@ -452,6 +452,11 @@ h1 {
     text-overflow: ellipsis;
   }
 
+  .result-number {
+    bottom: 12px;
+    right: 16px;
+    font-size: 12px;
+  }
 }
 
 @keyframes spin {
@@ -1270,4 +1275,74 @@ html.hide-recommendations .random-terms-container {
 .iframe-embed .random-terms .related-tag {
   font-size: 11px;
   padding: 3px 8px;
+}
+
+/* Style for the result number */
+.result-number {
+  position: absolute;
+  bottom: 16px;
+  right: 20px;
+  font-weight: 500;
+  color: var(--ao-secondary-text);
+  font-size: 14px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Adjust iframe-specific styling for result numbers */
+.iframe-embed .result-number {
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+}
+
+/* Share button styles */
+.share-button {
+  position: absolute;
+  bottom: 16px;
+  right: 48px;
+  background: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.share-button:hover {
+  opacity: 0.8;
+}
+
+.share-button svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--ao-secondary-text);
+}
+
+@keyframes copySuccess {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.share-button.copied svg {
+  animation: copySuccess 0.5s ease;
+  fill: var(--ao-accent-color);
+}
+
+/* Adjust mobile styling */
+@media (max-width: 768px) {
+  .share-button {
+    bottom: 12px;
+    right: 45px;
+    padding: 6px;
+  }
+  
+  .share-button svg {
+    width: 14px;
+    height: 14px;
+  }
 }

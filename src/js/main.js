@@ -34,10 +34,14 @@ function updateURLWithSearch(query) {
         // If no query, remove the search parameter
         const newUrl = window.location.pathname;
         window.history.pushState({}, '', newUrl);
+        // Update title back to default
+        document.title = 'Permaweb Glossary';
     } else {
         // Update URL with search query, maintaining the current path
         const newUrl = `${window.location.pathname}?q=${encodeURIComponent(query)}`;
         window.history.pushState({}, '', newUrl);
+        // Update title with the search term
+        document.title = `${query} - Permaweb Glossary`;
     }
 }
 
@@ -1044,7 +1048,37 @@ function makeTermsClickable(definition, allTerms) {
     return tempElement.innerHTML;
 }
 
-// Display search results in the UI
+// Function to create share button
+function createShareButton(term) {
+    const button = document.createElement('button');
+    button.className = 'share-button';
+    button.setAttribute('aria-label', 'Share term');
+    button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/>
+    </svg>`;
+
+    button.addEventListener('click', async () => {
+        // Create the URL with the search term
+        const url = new URL(window.location.href);
+        url.searchParams.set('q', term);
+        
+        try {
+            await navigator.clipboard.writeText(url.toString());
+            button.classList.add('copied');
+            
+            // Reset the animation after it completes
+            setTimeout(() => {
+                button.classList.remove('copied');
+            }, 1000);
+        } catch (err) {
+            console.error('Failed to copy URL:', err);
+        }
+    });
+
+    return button;
+}
+
+// Update the displayResults function to add share buttons
 function displayResults(results) {
     // Clear previous results
     resultsContainer.innerHTML = '';
@@ -1151,6 +1185,10 @@ function displayResults(results) {
             const resultContent = document.createElement('div');
             resultContent.className = 'result-content';
             
+            // Add share button
+            const shareButton = createShareButton(result.term);
+            resultItem.appendChild(shareButton);
+            
             // Add the term
             const termElement = document.createElement('div');
             termElement.className = 'term';
@@ -1171,11 +1209,20 @@ function displayResults(results) {
             definitionElement.innerHTML = makeTermsClickable(result.definition, glossaryData);
             resultContent.appendChild(definitionElement);
             
+            // Add result number as a right-side indicator
+            const numberElement = document.createElement('div');
+            numberElement.className = 'result-number';
+            numberElement.textContent = index + 1;
+            resultItem.appendChild(numberElement);
+            
             // Add aliases if available
             if (result.aliases && result.aliases.length > 0) {
                 const aliasesElement = document.createElement('div');
                 aliasesElement.className = 'aliases';
-                aliasesElement.innerHTML = `<strong>Also known as:</strong> ${result.aliases.join(', ')}`;
+                const strongElement = document.createElement('strong');
+                strongElement.textContent = 'Also known as:';
+                aliasesElement.appendChild(strongElement);
+                aliasesElement.appendChild(document.createTextNode(' ' + result.aliases.join(', ')));
                 resultContent.appendChild(aliasesElement);
             }
             
@@ -1629,6 +1676,8 @@ function handleTermClick(e) {
             document.body.classList.add('keyboard-active');
             
             searchInput.value = term;
+            // Update URL with the new search term
+            updateURLWithSearch(term);
             // Directly perform the search without waiting for the input event
             performSearch(term);
             
