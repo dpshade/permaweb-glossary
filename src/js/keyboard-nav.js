@@ -1,6 +1,5 @@
 // Keyboard navigation for search results
-let selectedResultIndex = -1; // Track the currently selected result
-let isKeyboardActive = false; // Track if keyboard navigation is active
+let selectedResultIndex = 0; // Start with first result selected
 let isTxResult = false; // Track if the current result is a transaction
 
 // Initialize keyboard navigation
@@ -138,19 +137,20 @@ function updateSelectedResult(resultItems) {
 
 // Reset selection when displaying new results
 function resetSelection() {
-    // Auto-select first result when keyboard is active
-    selectedResultIndex = isKeyboardActive ? 0 : -1;
+    // Always select first result
+    selectedResultIndex = 0;
     
     // Check if we're dealing with transaction results
     const resultsContainer = document.getElementById('results');
     isTxResult = resultsContainer.querySelector('.tx-result') !== null;
     
-    // Apply the selection to the first result if keyboard is active
+    // Get the appropriate result items based on type
     const resultItems = isTxResult 
         ? resultsContainer.querySelectorAll('.tx-result')
         : resultsContainer.querySelectorAll('.result-item');
     
-    if (resultItems.length > 0 && isKeyboardActive) {
+    // Always apply selection to first result if there are results
+    if (resultItems.length > 0) {
         updateSelectedResult(resultItems);
     }
 }

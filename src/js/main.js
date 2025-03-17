@@ -1171,7 +1171,6 @@ function displayResults(results) {
         }
     } else {
         // Original standalone mode: Show all results
-        // Create a container for the results
         const resultsList = document.createElement('div');
         resultsList.className = 'results-list';
         
