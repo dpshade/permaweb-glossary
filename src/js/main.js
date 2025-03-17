@@ -208,7 +208,7 @@ async function init() {
                 
             // Get related terms and context for this item
             const relatedTerms = item.related || [];
-            const context = contextMap[item.term.toLowerCase()] || '';
+            const context = contextMap.get(item.term.toLowerCase()) || '';
                 
             searchIndex.add({
                 id: index.toString(),
@@ -283,42 +283,43 @@ async function init() {
 
 // Build a context map for better semantic-like matching
 function buildContextMap(glossaryItems) {
-    const contextMap = {};
-    
-    // First pass: collect all terms and their definitions
-    glossaryItems.forEach(item => {
-        contextMap[item.term.toLowerCase()] = item.definition;
-    });
-    
-    // Second pass: for each term, find other terms that might be related
-    // based on term occurrence in definitions
-    glossaryItems.forEach(item => {
-        const termLower = item.term.toLowerCase();
-        const relatedContext = [];
-        
-        // Look for this term in other definitions
-        glossaryItems.forEach(otherItem => {
-            const otherTermLower = otherItem.term.toLowerCase();
-            
-            // Skip self-comparison
-            if (termLower === otherTermLower) return;
-            
-            // If this term appears in another definition, consider it related
-            if (otherItem.definition.toLowerCase().includes(termLower)) {
-                relatedContext.push(otherItem.term);
-            }
-            
-            // Check if the other term appears in this definition
-            if (item.definition.toLowerCase().includes(otherTermLower)) {
-                relatedContext.push(otherItem.term);
-            }
-        });
-        
-        // Add the related context to the map
-        if (relatedContext.length > 0) {
-            contextMap[termLower] += ' ' + relatedContext.join(' ');
+    // Create Maps for terms and their definitions for O(1) lookups
+    const termDefs = new Map(glossaryItems.map(item => [
+        item.term.toLowerCase(), 
+        {
+            definition: item.definition,
+            originalTerm: item.term
         }
-    });
+    ]));
+    
+    const contextMap = new Map();
+    
+    // Process each term to find related terms
+    for (const [term, {definition, originalTerm}] of termDefs) {
+        const relatedTerms = new Set();
+        const defLower = definition.toLowerCase();
+        
+        // Find terms that appear in this definition or whose definitions contain this term
+        for (const [otherTerm, {definition: otherDef}] of termDefs) {
+            if (otherTerm === term) continue; // Skip self
+            
+            // Check if this term appears in other definition or vice versa
+            if (otherDef.toLowerCase().includes(term) || defLower.includes(otherTerm)) {
+                relatedTerms.add(otherTerm);
+            }
+        }
+        
+        // Add any explicitly related terms from the glossary item
+        const glossaryItem = glossaryItems.find(item => item.term.toLowerCase() === term);
+        if (glossaryItem?.related) {
+            glossaryItem.related.forEach(relatedTerm => {
+                relatedTerms.add(relatedTerm.toLowerCase());
+            });
+        }
+        
+        // Create the final context string with definition and related terms
+        contextMap.set(term, `${definition} ${[...relatedTerms].join(' ')}`);
+    }
     
     return contextMap;
 }
@@ -1047,7 +1048,10 @@ function makeTermsClickable(definition, allTerms) {
 function displayResults(results) {
     // Clear previous results
     resultsContainer.innerHTML = '';
-    
+
+    // Add event delegation for clickable terms and related tags
+    resultsContainer.addEventListener('click', handleTermClick);
+
     // If no results, show a message
     if (!results || results.length === 0) {
         resultsContainer.innerHTML = `
@@ -1236,58 +1240,6 @@ function displayResults(results) {
     // Always ensure the container is visible when displaying results
     resultsContainer.classList.add('has-results');
     document.querySelector('.search-container').classList.add('has-results');
-    
-    // First instance - clickable terms
-    document.querySelectorAll('.clickable-term').forEach(element => {
-        element.addEventListener('click', function(e) {
-            // Prevent the default behavior and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const term = this.getAttribute('data-term');
-            if (term) {
-                // Set the flag to indicate we're navigating between terms
-                isNavigatingBetweenTerms = true;
-                
-                // Ensure the container stays open
-                resultsContainer.classList.add('has-results');
-                document.querySelector('.search-container').classList.add('has-results');
-                
-                searchInput.value = term;
-                // Directly perform the search without waiting for the input event
-                performSearch(term);
-                
-                // Reset the flag immediately - no need for delay since we removed animations
-                isNavigatingBetweenTerms = false;
-            }
-        });
-    });
-    
-    // Second instance - related tags
-    document.querySelectorAll('.related-tag').forEach(element => {
-        element.addEventListener('click', function(e) {
-            // Prevent the default behavior and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const term = this.getAttribute('data-term');
-            if (term) {
-                // Set the flag to indicate we're navigating between terms
-                isNavigatingBetweenTerms = true;
-                
-                // Ensure the container stays open
-                resultsContainer.classList.add('has-results');
-                document.querySelector('.search-container').classList.add('has-results');
-                
-                searchInput.value = term;
-                // Directly perform the search without waiting for the input event
-                performSearch(term);
-                
-                // Reset the flag immediately - no need for delay since we removed animations
-                isNavigatingBetweenTerms = false;
-            }
-        });
-    });
 }
 
 function navigateResults(direction) {
@@ -1359,10 +1311,10 @@ document.addEventListener('click', (e) => {
 
 function updateDisplay(results, currentIndex = 0) {
     const resultsContainer = document.getElementById('results');
-    if (!resultsContainer) return;
-
-    // Clear existing results
     resultsContainer.innerHTML = '';
+
+    // Add event delegation for clickable terms and related tags
+    resultsContainer.addEventListener('click', handleTermClick);
 
     if (results.length === 0) {
         resultsContainer.innerHTML = `
@@ -1434,57 +1386,13 @@ function updateDisplay(results, currentIndex = 0) {
 
     resultsContainer.appendChild(resultContainer);
 
-    // Add event listeners for clickable terms
-    document.querySelectorAll('.clickable-term').forEach(element => {
-        element.addEventListener('click', function(e) {
-            // Prevent the default behavior and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const term = this.getAttribute('data-term');
-            if (term) {
-                // Set the flag to indicate we're navigating between terms
-                isNavigatingBetweenTerms = true;
-                
-                // Ensure the container stays open
-                resultsContainer.classList.add('has-results');
-                document.querySelector('.search-container').classList.add('has-results');
-                
-                searchInput.value = term;
-                // Directly perform the search without waiting for the input event
-                performSearch(term);
-                
-                // Reset the flag immediately - no need for delay since we removed animations
-                isNavigatingBetweenTerms = false;
-            }
-        });
-    });
-    
-    // Add event listeners for related tags
-    document.querySelectorAll('.related-tag').forEach(element => {
-        element.addEventListener('click', function(e) {
-            // Prevent the default behavior and stop propagation
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const term = this.getAttribute('data-term');
-            if (term) {
-                // Set the flag to indicate we're navigating between terms
-                isNavigatingBetweenTerms = true;
-                
-                // Ensure the container stays open
-                resultsContainer.classList.add('has-results');
-                document.querySelector('.search-container').classList.add('has-results');
-                
-                searchInput.value = term;
-                // Directly perform the search without waiting for the input event
-                performSearch(term);
-                
-                // Reset the flag immediately - no need for delay since we removed animations
-                isNavigatingBetweenTerms = false;
-            }
-        });
-    });
+    // Ensure first result is visible
+    const firstResult = resultContainer.querySelector('.result-display');
+    if (firstResult) {
+        firstResult.classList.add('active');
+        // Force reflow
+        firstResult.offsetHeight;
+    }
 }
 
 // Add visibility check on load
@@ -1584,21 +1492,6 @@ function createRandomTermTags() {
             tag.className = 'related-tag';
             tag.textContent = term;
             tag.setAttribute('data-term', term);
-            
-            // Add click event to populate search bar
-            tag.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                // Set search input value to this term
-                searchInput.value = term;
-                // Directly perform the search
-                performSearch(term);
-                
-                // Focus the search input
-                searchInput.focus();
-            });
-            
             termsContainer.appendChild(tag);
         });
     }
@@ -1611,6 +1504,9 @@ function createRandomTermTags() {
     
     // Add window resize listener to update tags on window resize
     window.addEventListener('resize', debounce(renderTags, 200));
+    
+    // Add event delegation for random term tags
+    termsContainer.addEventListener('click', handleTermClick);
     
     tagsContainer.appendChild(termsContainer);
     
@@ -1709,4 +1605,38 @@ prefersDarkScheme.addEventListener('change', (e) => {
 });
 
 // Initialize theme when the page loads
-initializeTheme(); 
+initializeTheme();
+
+// Function to handle click events for clickable terms and related tags
+function handleTermClick(e) {
+    const target = e.target;
+    if (target.classList.contains('clickable-term') || target.classList.contains('related-tag')) {
+        // Prevent the default behavior and stop propagation
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const term = target.getAttribute('data-term');
+        if (term) {
+            // Set the flag to indicate we're navigating between terms
+            isNavigatingBetweenTerms = true;
+            
+            // Ensure the container stays open
+            resultsContainer.classList.add('has-results');
+            document.querySelector('.search-container').classList.add('has-results');
+            
+            // Set keyboard active state to ensure first result is selected
+            isKeyboardActive = true;
+            document.body.classList.add('keyboard-active');
+            
+            searchInput.value = term;
+            // Directly perform the search without waiting for the input event
+            performSearch(term);
+            
+            // Reset the flag immediately - no need for delay since we removed animations
+            isNavigatingBetweenTerms = false;
+            
+            // Focus the search input
+            searchInput.focus();
+        }
+    }
+} 
