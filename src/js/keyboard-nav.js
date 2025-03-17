@@ -126,11 +126,13 @@ function updateSelectedResult(resultItems) {
     if (selectedResultIndex >= 0 && selectedResultIndex < resultItems.length) {
         resultItems[selectedResultIndex].classList.add('selected');
         
-        // Ensure the selected item is visible (scroll into view if needed)
-        resultItems[selectedResultIndex].scrollIntoView({
-            behavior: 'auto',
-            block: 'nearest'
-        });
+        // Ensure the selected item is visible at the top of the viewport
+        setTimeout(() => {
+            resultItems[selectedResultIndex].scrollIntoView({
+                behavior: 'auto',
+                block: 'start'
+            });
+        }, 0);
     }
 }
 
