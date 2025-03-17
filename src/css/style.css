@@ -1214,6 +1214,7 @@ html.translucent-bg .search-container {
 /* Clickable terms in definitions */
 .clickable-term {
   color: var(--ao-link-color);
+  font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
   text-decoration-style: dotted;
