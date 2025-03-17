@@ -18,6 +18,10 @@ const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('results');
 const loadingStatus = document.getElementById('loading-status');
 
+// Theme switching functionality
+const themeToggle = document.querySelector('.theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
 // Helper functions
 function isIframeEmbed() {
     return window.self !== window.top;
@@ -1627,4 +1631,45 @@ function getShuffledTerms(glossary) {
     }
     
     return terms;
-} 
+}
+
+// Initialize theme based on user preference or stored preference
+const initializeTheme = () => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+        updateThemeToggle(storedTheme);
+        return;
+    }
+    
+    const systemTheme = prefersDarkScheme.matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', systemTheme);
+    updateThemeToggle(systemTheme);
+};
+
+// Update theme toggle button appearance
+const updateThemeToggle = (theme) => {
+    // SVG icons are controlled by CSS, no need to update content
+    document.documentElement.setAttribute('data-theme', theme);
+};
+
+// Handle theme toggle click
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
+
+// Listen for system theme changes
+prefersDarkScheme.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        updateThemeToggle(newTheme);
+    }
+});
+
+// Initialize theme when the page loads
+initializeTheme(); 

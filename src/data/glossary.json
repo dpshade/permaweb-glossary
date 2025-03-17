@@ -1302,7 +1302,7 @@
       "category": "AO Development",
       "related": ["Lua", "TypeScript", "AO Process", "Development Tools", "Type System"],
       "aliases": ["Teal", "Typed Lua", "AO Typed Lua"],
-      "docs": ["https://cookbook_ao.arweave.net/references/lua.html"]
+      "docs": ["https://docs.autonomous.finance/products/ecosystem-tooling/ao-teal"]
     },
     {
       "term": "AO Form",
