@@ -1,6 +1,7 @@
 // Keyboard navigation for search results
 let selectedResultIndex = 0; // Start with first result selected
 let isTxResult = false; // Track if the current result is a transaction
+let isKeyboardActive = false; // Flag to track if the keyboard is active
 
 // Initialize keyboard navigation
 function initKeyboardNavigation() {
@@ -197,9 +198,17 @@ function addMouseHandlers() {
     });
 }
 
-// Export the functions needed by other modules
-window.keyboardNav = {
+// Create the keyboard navigation object
+const keyboardNav = {
     init: initKeyboardNavigation,
     reset: resetSelection,
     addMouseHandlers: addMouseHandlers
-}; 
+};
+
+// Support both global export and module export
+if (typeof window !== 'undefined') {
+    window.keyboardNav = keyboardNav;
+}
+
+// Support ES modules
+export { keyboardNav }; 
