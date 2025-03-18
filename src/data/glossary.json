@@ -266,11 +266,11 @@
     },
     {
       "term": "Holographic State",
-      "definition": "A state management approach in AO where consensus is achieved on message inputs rather than computation outputs. This allows process state to be reconstructed from message logs without requiring all nodes to execute every computation.",
+      "definition": "A state management approach in AO where each process maintains its state independently of other processes, represented by a log of messages stored on Arweave. This independence allows processes to operate and be evaluated separately, facilitating faster interactions and improved scalability. The state is considered 'holographic' because it's implied by the associated message log rather than being explicitly stored, enabling true parallel processing while maintaining verifiability.",
       "category": "AO Core Concepts",
-      "related": ["Process", "Message", "State Management"],
-      "aliases": ["Holographic Computation", "State Projection"],
-      "docs": []
+      "related": ["Process", "Message", "Parallel Processing", "Hyper Parallel Computing", "State Management"],
+      "aliases": ["Holographic Process State", "Independent State Management"],
+      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "AOS",
@@ -1719,6 +1719,30 @@
       "related": ["Verifiable Delay Function", "RandAO", "RSW Timelock Puzzle", "Sequential Computation"],
       "aliases": ["Simple VDF", "Pietrzak VDF"],
       "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "RSW Timelock Puzzle",
+      "definition": "A cryptographic construction developed by Rivest, Shamir, and Wagner that requires sequential computation to solve, making it impossible to significantly accelerate even with parallel processing. In RandAO, it serves as the foundation for Pietrzak's VDF implementation, creating a deterministic time delay between commitment and revelation phases to prevent denial of service attacks in randomness generation.",
+      "category": "Cryptography",
+      "related": ["Verifiable Delay Function", "RandAO", "Pietrzak's VDF", "Sequential Computation"],
+      "aliases": ["Rivest-Shamir-Wagner Timelock", "Sequential Timelock Puzzle"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "Parallel Processing",
+      "definition": "A fundamental capability in AO where an arbitrary number of processes can execute simultaneously and independently. Unlike traditional blockchain networks where computation happens in a single global state, AO processes maintain independent states and can operate separately, sharing available computational resources efficiently. During idle times, resources are automatically reallocated to active processes, maximizing throughput and enabling scalability mechanics similar to traditional web2 systems. This parallel architecture, combined with holographic state management, forms the foundation of AO's hyper parallel computing capabilities.",
+      "category": "AO Core Concepts",
+      "related": ["Process", "Message", "Actor Model", "Non-blocking Communication", "HyperBEAM", "Compute Unit", "Holographic State", "Hyper Parallel Computing"],
+      "aliases": ["Parallel Execution", "Concurrent Processing", "Parallel Computation"],
+      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+    },
+    {
+      "term": "Hyper Parallel Computing",
+      "definition": "The ability to execute multiple processes simultaneously and independently, allowing for parallel execution of tasks and improved overall system performance. This is a key feature of AO's architecture, enabling efficient utilization of computational resources and faster processing times.",
+      "category": "AO Core Concepts",
+      "related": ["Parallel Processing", "Process", "Message", "Actor Model", "Non-blocking Communication", "HyperBEAM", "Compute Unit", "Holographic State"],
+      "aliases": ["Parallel Computing"],
+      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
     }
   ]
 }

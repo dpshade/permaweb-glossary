@@ -288,18 +288,34 @@ async function init() {
 // Build a context map for better semantic-like matching
 function buildContextMap(glossaryItems) {
     // Create Maps for terms and their definitions for O(1) lookups
-    const termDefs = new Map(glossaryItems.map(item => [
-        item.term.toLowerCase(), 
-        {
-            definition: item.definition,
-            originalTerm: item.term
+    const termDefs = new Map(glossaryItems.map(item => {
+        // Create plural form as a hidden alias
+        const pluralForm = item.term + 's';
+        
+        // Create hidden aliases array with the plural form of the main term
+        const hiddenAliases = [pluralForm];
+        
+        // Also add plural forms for each explicit alias
+        if (item.aliases && item.aliases.length > 0) {
+            item.aliases.forEach(alias => {
+                hiddenAliases.push(alias + 's');
+            });
         }
-    ]));
+        
+        return [
+            item.term.toLowerCase(), 
+            {
+                definition: item.definition,
+                originalTerm: item.term,
+                hiddenAliases: hiddenAliases
+            }
+        ];
+    }));
     
     const contextMap = new Map();
     
     // Process each term to find related terms
-    for (const [term, {definition, originalTerm}] of termDefs) {
+    for (const [term, {definition, originalTerm, hiddenAliases}] of termDefs) {
         const relatedTerms = new Set();
         const defLower = definition.toLowerCase();
         
@@ -323,6 +339,11 @@ function buildContextMap(glossaryItems) {
         
         // Create the final context string with definition and related terms
         contextMap.set(term, `${definition} ${[...relatedTerms].join(' ')}`);
+        
+        // Also add entries for hidden aliases
+        hiddenAliases.forEach(alias => {
+            contextMap.set(alias.toLowerCase(), `${definition} ${[...relatedTerms].join(' ')}`);
+        });
     }
     
     return contextMap;
@@ -913,16 +934,39 @@ function makeTermsClickable(definition, allTerms) {
     const aliasMap = new Map(); // Track which term an alias belongs to
     
     allTerms.forEach(term => {
+        // Add the main term
         termMap.set(term.term.toLowerCase(), term.term);
         
-        // Also add aliases
+        // Add the plural form of the main term as a hidden alias
+        const pluralForm = term.term + 's';
+        termMap.set(pluralForm.toLowerCase(), term.term);
+        aliasMap.set(pluralForm.toLowerCase(), { 
+            originalTerm: term.term,
+            isAlias: true,
+            aliasText: pluralForm,
+            isHidden: true // Mark as hidden alias
+        });
+        
+        // Also add explicit aliases and their plural forms
         if (term.aliases && term.aliases.length > 0) {
             term.aliases.forEach(alias => {
+                // Add the alias
                 termMap.set(alias.toLowerCase(), term.term);
                 aliasMap.set(alias.toLowerCase(), { 
                     originalTerm: term.term,
                     isAlias: true,
-                    aliasText: alias
+                    aliasText: alias,
+                    isHidden: false
+                });
+                
+                // Add the plural form of the alias
+                const aliasPluralForm = alias + 's';
+                termMap.set(aliasPluralForm.toLowerCase(), term.term);
+                aliasMap.set(aliasPluralForm.toLowerCase(), { 
+                    originalTerm: term.term,
+                    isAlias: true,
+                    aliasText: aliasPluralForm,
+                    isHidden: true // Mark as hidden alias
                 });
             });
         }
@@ -957,7 +1001,8 @@ function makeTermsClickable(definition, allTerms) {
                         matchedText: match[0],
                         originalTerm: originalTerm,
                         isAlias: aliasInfo ? true : false,
-                        aliasText: aliasInfo ? aliasInfo.aliasText : null
+                        aliasText: aliasInfo ? aliasInfo.aliasText : null,
+                        isHidden: aliasInfo ? aliasInfo.isHidden : false
                     });
                 }
             });
@@ -1003,10 +1048,13 @@ function makeTermsClickable(definition, allTerms) {
                     clickableSpan.className = 'clickable-term';
                     clickableSpan.setAttribute('data-term', match.originalTerm);
                     
-                    // If it's an alias, add a data attribute to indicate this
+                    // If it's an alias, add data attributes
                     if (match.isAlias) {
                         clickableSpan.setAttribute('data-is-alias', 'true');
                         clickableSpan.setAttribute('data-alias-text', match.aliasText);
+                        if (match.isHidden) {
+                            clickableSpan.setAttribute('data-is-hidden-alias', 'true');
+                        }
                     }
                     
                     clickableSpan.textContent = match.matchedText; // Preserve exact matched text

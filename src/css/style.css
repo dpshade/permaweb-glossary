@@ -1222,7 +1222,18 @@ html.translucent-bg .search-container {
   transition: none;
 }
 
-.clickable-term:hover {
+/* Style for hidden aliases (plurals) - make them look like regular terms */
+.clickable-term[data-is-hidden-alias="true"] {
+  /* Use the same styling as regular terms to maintain consistency */
+  color: var(--ao-link-color);
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.clickable-term:hover,
+.clickable-term[data-is-hidden-alias="true"]:hover {
   opacity: 0.8;
   text-decoration-style: solid;
 }
