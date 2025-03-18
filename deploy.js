@@ -24,7 +24,7 @@ async function runBuild() {
       }
       
       // Then minify JS and CSS
-      const minifyProcess = spawn('bun', ['run', 'build:minify:js', '&&', 'bun', 'run', 'build:minify:css'], {
+      const minifyProcess = spawn('bun', ['run', 'build:minify:js', '&&', 'bun', 'run', 'build:minify:css', '&&', 'bun', 'run', 'build:minify:keyboard'], {
         stdio: 'inherit',
         shell: true
       });

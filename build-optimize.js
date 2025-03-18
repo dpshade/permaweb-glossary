@@ -12,10 +12,7 @@ const paths = {
   },
   js: 'dist/src/js/main.js',
   css: 'dist/src/css/style.css',
-  keyboardNav: {
-    src: 'src/js/keyboard-nav.js',
-    dist: 'dist/src/js/keyboard-nav.js'
-  }
+  keyboardNav: 'dist/src/js/keyboard-nav.js'
 };
 
 // Detect if we're in deploy mode
@@ -23,24 +20,18 @@ const isDeployment = process.argv.includes('--deploy');
 
 // Ensure dist directories exist
 ensureDir(path.dirname(paths.json.dist));
-ensureDir(path.dirname(paths.keyboardNav.dist));
 
 // Step 1: Minify JSON
 console.log('=== Minifying Files ===');
 minifyJson(paths.json.src, paths.json.dist);
 
-// Step 2: Copy keyboard-nav.js
-console.log('\n=== Copying Additional Files ===');
-fs.copyFileSync(paths.keyboardNav.src, paths.keyboardNav.dist);
-console.log(`Copied ${paths.keyboardNav.src} to ${paths.keyboardNav.dist}`);
-
-// Step 3: Compress all assets
+// Step 2: Compress all assets
 console.log('\n=== Compressing Files with gzip ===');
 const filesToCompress = [
   paths.js,
   paths.css,
   paths.json.dist,
-  paths.keyboardNav.dist
+  paths.keyboardNav
 ];
 
 for (const filePath of filesToCompress) {
