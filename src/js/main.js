@@ -169,12 +169,11 @@ async function init() {
         // Apply iframe-specific behavior
         if (isIframeEmbed()) {
             document.documentElement.classList.add('iframe-embed');
-            if (DEBUG) console.log('Added iframe-embed class via script');
             
             // Listen for messages from parent page for resize events only
             window.addEventListener('message', (event) => {
                 if (event.data && event.data.type === 'resize') {
-                    if (DEBUG) console.log('Received resize event:', event.data);
+                    // Process resize event if needed
                 }
             });
         }
@@ -245,43 +244,18 @@ async function init() {
             isKeyboardActive = true;
             document.body.classList.add('keyboard-active');
             // Perform the search
-            performSearch(initialQuery);
-        }
-        
-        // Add unified keyboard navigation for iframe mode
-        if (isIframeEmbed()) {
-            document.addEventListener('keydown', (e) => {
-                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
-                    e.preventDefault();
-                    const direction = (e.key === 'ArrowDown' || e.key === 'ArrowRight') ? 1 : -1;
-                    navigateResults(direction);
-                } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    // Get the currently active result
-                    const activeResult = document.querySelector('.result-display.active');
-                    if (activeResult) {
-                        // Find the documentation link in the active result
-                        const docLink = activeResult.querySelector('.docs-link a');
-                        if (docLink) {
-                            // Navigate to the documentation link
-                            window.open(docLink.href, '_blank', 'noopener,noreferrer');
-                        }
-                    }
-                }
-            });
-        }
-        
-        // Create and display random term tags unless explicitly hidden
-        if (!hideRecommendations) {
+            handleSearch({ target: searchInput });
+        } else {
+            // If no search query, show random terms
             createRandomTermTags();
         }
         
-        searchInput.focus();
+        // Add theme toggle functionality
+        initializeTheme();
         
-        console.log('Search index initialized successfully');
     } catch (error) {
         console.error('Initialization error:', error);
-        updateLoadingStatus(`Error: ${error.message}. Please refresh the page to try again.`, true);
+        updateLoadingStatus('Failed to load glossary data. Please try again later.', true);
     }
 }
 
@@ -377,7 +351,7 @@ function cleanSearchQuery(query) {
         .trim(); // Remove leading/trailing whitespace
 }
 
-// Handle search input with debounce
+// Handle search input without debounce
 function handleSearch(event) {
     const query = cleanSearchQuery(event.target.value);
     
@@ -404,15 +378,12 @@ function handleSearch(event) {
     isKeyboardActive = true;
     document.body.classList.add('keyboard-active');
     
-    // Set timeout for search execution
-    searchTimeout = setTimeout(() => {
-        performSearch(query).then(() => {
-            // Reset keyboard navigation after results are displayed
-            if (window.keyboardNav) {
-                window.keyboardNav.reset();
-            }
-        });
-    }, 300);
+    // Execute search immediately
+    performSearch(query).then(() => {
+        // Reset keyboard navigation after results are displayed
+        keyboardNav.reset();
+        keyboardNav.addMouseHandlers();
+    });
 }
 
 // Fetch Arweave transaction data
@@ -1372,13 +1343,6 @@ function navigateResults(direction) {
             }
         }
     });
-
-    // Debug logging
-    console.log('Navigation:', {
-        direction,
-        newIndex,
-        activeResult: nextResult ? 'visible' : 'not found'
-    });
 }
 
 // Add click handler to close results when clicking outside
@@ -1395,92 +1359,6 @@ document.addEventListener('click', (e) => {
         document.querySelector('.search-container').classList.remove('has-results');
     }
 });
-
-function updateDisplay(results, currentIndex = 0) {
-    const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = '';
-
-    // Add event delegation for clickable terms and related tags
-    resultsContainer.addEventListener('click', handleTermClick);
-
-    if (results.length === 0) {
-        resultsContainer.innerHTML = `
-            <div class="no-results">
-                <p>No matching terms found.</p>
-                <p>Try a different search term or check your spelling.</p>
-            </div>
-        `;
-        // Always ensure the container is visible
-        resultsContainer.classList.add('has-results');
-        document.querySelector('.search-container').classList.add('has-results');
-        return;
-    }
-
-    // Create result container
-    const resultContainer = document.createElement('div');
-    resultContainer.className = 'result-container';
-
-    // Create result displays
-    results.forEach((result, index) => {
-        const resultDisplay = document.createElement('div');
-        resultDisplay.className = `result-display${index === currentIndex ? ' active' : ''}`;
-        
-        // Create navigation buttons
-        const prevButton = document.createElement('button');
-        prevButton.className = 'nav-button prev';
-        prevButton.innerHTML = '←';
-        prevButton.disabled = index === 0;
-        prevButton.onclick = () => navigateResults(-1);
-
-        const nextButton = document.createElement('button');
-        nextButton.className = 'nav-button next';
-        nextButton.innerHTML = '→';
-        nextButton.disabled = index === results.length - 1;
-        nextButton.onclick = () => navigateResults(1);
-        
-        // Create the content with clickable terms
-        const definitionWithClickableTerms = makeTermsClickable(result.definition, glossaryData);
-        
-        resultDisplay.innerHTML = `
-            <div class="term">${result.term}</div>
-            <div class="category">${result.category}</div>
-            ${result.aliases && result.aliases.length > 0 ? `<div class="aliases"><strong>Also known as:</strong> ${result.aliases.join(', ')}</div>` : ''}
-            <div class="definition">${definitionWithClickableTerms}</div>
-            ${result.related && result.related.length > 0 ? `
-                <div class="related-terms">
-                    ${result.related.map(term => `<span class="related-tag" data-term="${term}">${term}</span>`).join('')}
-                </div>
-            ` : ''}
-            ${result.docs && result.docs.length > 0 ? `
-                <div class="docs-link">
-                    <a href="${result.docs[0]}" target="_blank" rel="noopener noreferrer">Learn more →</a>
-                </div>
-            ` : ''}
-            <div class="result-footer">
-                <div class="result-count">Result ${index + 1} of ${results.length}</div>
-            </div>
-        `;
-        
-        // Add navigation buttons to the footer
-        const resultFooter = resultDisplay.querySelector('.result-footer');
-        if (resultFooter) {
-            resultFooter.appendChild(prevButton);
-            resultFooter.appendChild(nextButton);
-        }
-        
-        resultContainer.appendChild(resultDisplay);
-    });
-
-    resultsContainer.appendChild(resultContainer);
-
-    // Ensure first result is visible
-    const firstResult = resultContainer.querySelector('.result-display');
-    if (firstResult) {
-        firstResult.classList.add('active');
-        // Force reflow
-        firstResult.offsetHeight;
-    }
-}
 
 // Add visibility check on load
 document.addEventListener('DOMContentLoaded', () => {
