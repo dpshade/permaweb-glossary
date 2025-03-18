@@ -2,7 +2,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { brotliCompressSync } from 'zlib';
+import { gzipSync } from 'zlib';
 
 // File paths
 const paths = {
@@ -14,6 +14,9 @@ const paths = {
   css: 'dist/src/css/style.css'
 };
 
+// Detect if we're in deploy mode
+const isDeployment = process.argv.includes('--deploy');
+
 // Ensure dist directories exist
 ensureDir(path.dirname(paths.json.dist));
 
@@ -22,7 +25,7 @@ console.log('=== Minifying Files ===');
 minifyJson(paths.json.src, paths.json.dist);
 
 // Step 2: Compress all assets
-console.log('\n=== Compressing Files ===');
+console.log('\n=== Compressing Files with gzip ===');
 const filesToCompress = [
   paths.js,
   paths.css,
@@ -30,7 +33,7 @@ const filesToCompress = [
 ];
 
 for (const filePath of filesToCompress) {
-  compressFile(filePath);
+  compressFile(filePath, isDeployment);
 }
 
 // Function to minify JSON
@@ -54,8 +57,8 @@ function minifyJson(srcPath, destPath) {
   }
 }
 
-// Function to compress a file with Brotli
-function compressFile(filePath) {
+// Function to compress a file with gzip
+function compressFile(filePath, isDeployment) {
   if (!fs.existsSync(filePath)) {
     console.warn(`Warning: ${filePath} not found, skipping...`);
     return;
@@ -64,14 +67,24 @@ function compressFile(filePath) {
   try {
     const originalSize = fs.statSync(filePath).size;
     const content = fs.readFileSync(filePath);
-    const compressed = brotliCompressSync(content);
+    const compressed = gzipSync(content);
     
     // Write compressed version
-    fs.writeFileSync(`${filePath}.br`, compressed);
-    const compressedSize = fs.statSync(`${filePath}.br`).size;
+    const gzipPath = `${filePath}.gz`;
+    fs.writeFileSync(gzipPath, compressed);
+    const compressedSize = fs.statSync(gzipPath).size;
     
     const reduction = ((originalSize - compressedSize) / originalSize * 100).toFixed(2);
     console.log(`${path.basename(filePath)}: ${originalSize.toLocaleString()} bytes → ${compressedSize.toLocaleString()} bytes (${reduction}% reduction)`);
+    
+    // For deployment, we should clean up old .br files
+    if (isDeployment) {
+      const brPath = `${filePath}.br`;
+      if (fs.existsSync(brPath)) {
+        fs.unlinkSync(brPath);
+        console.log(`Removed old Brotli file: ${brPath}`);
+      }
+    }
   } catch (error) {
     console.error(`Error compressing ${filePath}: ${error.message}`);
   }

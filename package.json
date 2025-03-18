@@ -8,6 +8,8 @@
     "start": "bun run prod-server.js",
     "dev": "bun --watch run prod-server.js",
     "build": "bun run build:clean && bun run build:copy && bun run build:optimize",
+    "build:dev": "bun run build:clean && bun run build:copy && bun run build:optimize",
+    "build:deploy": "bun run build:clean && bun run build:copy && bun run build:minify:js && bun run build:minify:css && bun run build-optimize.js --deploy",
     "build:clean": "rm -rf dist",
     "build:copy": "mkdir -p dist && cp -r public/* dist/ && mkdir -p dist/src && rsync -av --exclude='*.js' --exclude='*.json' src/ dist/src/",
     "build:optimize": "bun run build:minify:js && bun run build:minify:css && bun run build-optimize.js",
