@@ -1679,6 +1679,46 @@
       "related": ["AO Computer", "aos console", "Process", "Development Environment"],
       "aliases": ["ao legacynet", "ao Testnet"],
       "docs": ["https://cookbook_ao.arweave.net/legacynet"]
+    },
+    {
+      "term": "RandAO",
+      "definition": "A novel decentralized random number generation protocol built on AO that achieves robust security through an 'any honest' guarantee - ensuring randomness integrity as long as at least one participant remains honest. It integrates Verifiable Delay Functions (VDFs) with a commit-reveal scheme to prevent denial of service attacks and manipulation attempts while maintaining unpredictable output generation.",
+      "category": "AO Ecosystem",
+      "related": ["AO Computer", "Verifiable Delay Function", "Commit Reveal Scheme", "$RNG Token", "Randomness Generation"],
+      "aliases": ["Random AO", "Decentralized Randomness"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "Verifiable Delay Function",
+      "definition": "A cryptographic primitive that requires a specified number of sequential steps to evaluate (and hence a theoretical amount of time), yet produces a unique output that can be efficiently verified. VDFs feature sequential computation that cannot be significantly accelerated even with parallel processing, while allowing for efficient verification of results. In RandAO, VDFs prevent denial of service attacks by ensuring that once commitments are made, the final entropy value is deterministically locked but requires time to calculate.",
+      "category": "Cryptography",
+      "related": ["RandAO", "Pietrzak's VDF", "Cryptographic Primitive", "Sequential Computation"],
+      "aliases": ["VDF", "Time-lock Puzzle"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "Commit Reveal Scheme",
+      "definition": "A decentralized protocol for generating verifiable random numbers where providers first commit to entropy values by submitting their hashes, then reveal the original values which are verified against the commitments. The naive implementation suffers from a critical any-malicious denial of service vulnerability that RandAO addresses through VDF integration.",
+      "category": "Cryptography",
+      "related": ["RandAO", "Entropy", "Verifiable Delay Function", "Randomness Generation"],
+      "aliases": ["Commitment Scheme", "Commit-then-Reveal"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "$RNG Token",
+      "definition": "The native utility token of the RandAO ecosystem that captures the value of decentralized random number generation. All randomness requests must be paid for in $RNG tokens, establishing continuous demand. The token economy creates a marketplace where providers compete on service quality and earn rewards through both direct service payments and staking mechanisms.",
+      "category": "AO Economics",
+      "related": ["RandAO", "Token Utility", "Staking Mechanism", "Provider"],
+      "aliases": ["RNG Token", "$RNG"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
+    },
+    {
+      "term": "Pietrzak's VDF",
+      "definition": "An elegant implementation of a Verifiable Delay Function using the RSW timelock puzzle. The construction is defined by an RSA modulus (N), input value (x), number of squaring operations (T), and number of checkpoints (n). It creates checkpoints that split verification into equal segments that can be verified independently, reducing verification time through parallelization.",
+      "category": "Cryptography",
+      "related": ["Verifiable Delay Function", "RandAO", "RSW Timelock Puzzle", "Sequential Computation"],
+      "aliases": ["Simple VDF", "Pietrzak VDF"],
+      "docs": ["https://randao_whitepaper.arweave.net"]
     }
   ]
 }
