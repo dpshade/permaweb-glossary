@@ -253,6 +253,9 @@ async function init() {
         // Add theme toggle functionality
         initializeTheme();
         
+        // Auto-focus the search input
+        searchInput.focus();
+        
     } catch (error) {
         console.error('Initialization error:', error);
         updateLoadingStatus('Failed to load glossary data. Please try again later.', true);
@@ -1351,7 +1354,10 @@ document.addEventListener('click', (e) => {
     if (isNavigatingBetweenTerms) return;
     
     // Don't close if clicking on a clickable term or related tag
-    if (e.target.classList.contains('clickable-term') || e.target.classList.contains('related-tag')) return;
+    if (e.target.classList.contains('clickable-term') || 
+        e.target.classList.contains('related-tag') ||
+        e.target === themeToggle ||
+        themeToggle.contains(e.target)) return;
     
     if (!resultsContainer.contains(e.target) && e.target !== searchInput) {
         resultsContainer.innerHTML = '';
@@ -1552,12 +1558,18 @@ const updateThemeToggle = (theme) => {
 };
 
 // Handle theme toggle click
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('click', (e) => {
+    // Stop propagation to prevent the document click handler from closing results
+    e.stopPropagation();
+    
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    
+    // Re-focus the search input
+    searchInput.focus();
 });
 
 // Listen for system theme changes
