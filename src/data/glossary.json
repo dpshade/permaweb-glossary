@@ -1743,6 +1743,62 @@
       "related": ["Parallel Processing", "Process", "Message", "Actor Model", "Non-blocking Communication", "HyperBEAM", "Compute Unit", "Holographic State"],
       "aliases": ["Parallel Computing"],
       "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+    },
+    {
+      "term": "Deflationary",
+      "definition": "A property of Arweave's tokenomics where the effective token supply decreases over time due to the storage endowment mechanism. As users pay for permanent storage, tokens are locked in the endowment, and due to the storage cost decline rate (historically averaging 38% per year), fewer tokens need to be released from the endowment than were initially deposited. This creates a natural token sink that reduces circulating supply proportionate to network usage, strengthening the token's value proposition without extracting value from users.",
+      "category": "Arweave Economics",
+      "related": ["Storage Endowment", "AR Token", "Token Sink", "Storage Cost Decline Rate"],
+      "aliases": ["Supply Reduction", "Deflationary Tokenomics"],
+      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+    },
+    {
+      "term": "Endowment Simulation",
+      "definition": "A computational model that projects the behavior of Arweave's storage endowment over time based on variables like storage cost decline rate, token prices, and network usage. This tool helps users understand the long-term sustainability of the permanent storage economics system.",
+      "category": "Arweave Technology",
+      "related": ["Storage Endowment", "Storage Cost Decline Rate", "Permanent Storage Economics"],
+      "aliases": ["Storage Simulator", "Endowment Calculator"],
+      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+    },
+    {
+      "term": "Non-value Extractive Mechanism",
+      "definition": "A tokenomic design where costs to users represent actual value (in Arweave's case, storage security) rather than rent extraction. This creates alignment between user interests and protocol economics, as users pay for reliability rather than arbitrary fees. This mechanism is fundamental to Arweave's Permanent Storage Economics model.",
+      "category": "Arweave Economics",
+      "related": ["Storage Endowment", "Permanent Storage Economics", "Deflationary"],
+      "aliases": ["Value-aligned Economics", "Non-extractive Model"],
+      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+    },
+    {
+      "term": "Permanent Storage Economics",
+      "definition": "The economic model underlying Arweave's permanent storage solution, where upfront payments create a Storage Endowment that generates returns to fund ongoing storage costs. This model, as a non-value extractive mechanism, treats storage costs not as extraction but as purchased security, with higher costs correlating to greater reliability and permanence. The system's sustainability is projected through the endowment simulation tool.",
+      "category": "Arweave Economics",
+      "related": ["Storage Endowment", "AR Token", "Non-value Extractive Mechanism", "Storage Cost Decline Rate"],
+      "aliases": ["Endowment Economics", "Perpetual Storage Model"],
+      "docs": ["https://arwiki.arweave.net/#/en/storage-endowment"]
+    },
+    {
+      "term": "Storage Cost Decline Rate",
+      "definition": "The annual percentage decrease in data storage costs due to technological advancements. Historically averaging around 38% per year over the past 50 years (as of 2025), this rate directly impacts Arweave's tokenomics by reducing the number of tokens that need to be released from the Storage Endowment over time to maintain stored data.",
+      "category": "Arweave Economics",
+      "related": ["Storage Endowment", "Permanent Storage", "Deflationary"],
+      "aliases": ["Storage Deflation Rate", "Cost Reduction Rate"],
+      "docs": ["https://x.com/samecwilliams/status/1902192622199824634"]
+    },
+    {
+      "term": "Storage Endowment",
+      "definition": "A financial mechanism in Arweave where users pay upfront for long-term storage (approximately 200 years at current prices). These tokens are removed from circulation and held in the endowment, only to be released if/when needed to pay for ongoing storage costs. This creates a natural token sink that reduces circulating supply proportionate to network usage.",
+      "category": "Arweave Economics",
+      "related": ["AR Token", "Permanent Storage", "Deflationary", "Storage Cost Decline Rate"],
+      "aliases": ["Endowment", "Storage Fund"],
+      "docs": ["https://arwiki.arweave.net/#/en/storage-endowment"]
+    },
+    {
+      "term": "Token Sink",
+      "definition": "A mechanism in the Arweave ecosystem that removes tokens from circulation, effectively reducing the available supply. In Arweave's case, the Storage Endowment functions as a token sink, as tokens paid for storage are locked away for extended periods. This mechanism contributes to the deflationary nature of the AR token.",
+      "category": "Arweave Economics",
+      "related": ["Storage Endowment", "AR Token", "Deflationary"],
+      "aliases": ["Supply Reduction Mechanism", "Token Burn"],
+      "docs": ["https://x.com/samecwilliams/status/1902192622199824634"]
     }
   ]
 }

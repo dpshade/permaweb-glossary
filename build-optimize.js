@@ -12,7 +12,8 @@ const paths = {
   },
   js: 'dist/src/js/main.js',
   css: 'dist/src/css/style.css',
-  keyboardNav: 'dist/src/js/keyboard-nav.js'
+  keyboardNav: 'dist/src/js/keyboard-nav.js',
+  serviceWorker: 'dist/service-worker.js'
 };
 
 // Detect if we're in deploy mode
@@ -31,7 +32,8 @@ const filesToCompress = [
   paths.js,
   paths.css,
   paths.json.dist,
-  paths.keyboardNav
+  paths.keyboardNav,
+  paths.serviceWorker
 ];
 
 for (const filePath of filesToCompress) {

@@ -4,6 +4,19 @@ const ARWEAVE_GRAPHQL_URL = 'https://arweave-search.goldsky.com/graphql';
 const DEBUG = false; // Debug flag for logging
 const NUM_RANDOM_TAGS = 8; // Number of random term tags to display
 
+// Register service worker if supported
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                if (DEBUG) console.log('ServiceWorker registration successful with scope:', registration.scope);
+            })
+            .catch(err => {
+                if (DEBUG) console.log('ServiceWorker registration failed: ', err);
+            });
+    });
+}
+
 // State variables
 let searchIndex = null;
 let glossaryData = null;
@@ -381,12 +394,19 @@ function handleSearch(event) {
     isKeyboardActive = true;
     document.body.classList.add('keyboard-active');
     
-    // Execute search immediately
-    performSearch(query).then(() => {
-        // Reset keyboard navigation after results are displayed
-        keyboardNav.reset();
-        keyboardNav.addMouseHandlers();
-    });
+    // Execute search with proper error handling
+    performSearch(query)
+        .then(() => {
+            // Reset keyboard navigation after results are displayed
+            if (window.keyboardNav) {
+                window.keyboardNav.reset();
+                window.keyboardNav.addMouseHandlers();
+            }
+        })
+        .catch(error => {
+            console.error('Search failed:', error);
+            updateLoadingStatus('Error performing search', true);
+        });
 }
 
 // Fetch Arweave transaction data
@@ -619,45 +639,51 @@ function formatBytes(bytes, decimals = 2) {
 
 // Perform search using FlexSearch with enhanced options
 function performSearch(query) {
-    try {
-        if (!searchIndex) {
-            throw new Error('Search index not initialized');
-        }
-        
-        // Generate query variations for better fuzzy matching
-        const queryVariations = generateQueryVariations(query);
-        
-        // Search in term, definition, and aliases with all query variations
-        let allResults = [];
-        
-        // Search with the original query
-        const mainResults = searchIndex.search(query, {
-            enrich: true,
-            limit: 10
-        });
-        
-        allResults = [...mainResults];
-        
-        // Search with query variations for better fuzzy matching
-        queryVariations.forEach(variation => {
-            if (variation !== query) {
-                const variationResults = searchIndex.search(variation, {
-                    enrich: true,
-                    limit: 5
-                });
-                
-                allResults = [...allResults, ...variationResults];
+    return new Promise((resolve, reject) => {
+        try {
+            if (!searchIndex) {
+                throw new Error('Search index not initialized');
             }
-        });
-        
-        // Process and display results
-        const processedResults = processSearchResults(allResults, query);
-        displayResults(processedResults);
-    } catch (error) {
-        console.error('Search error:', error);
-        resultsContainer.innerHTML = `<div class="error-message">Search error: ${error.message}</div>`;
-        resultsContainer.classList.add('has-results');
-    }
+            
+            // Generate query variations for better fuzzy matching
+            const queryVariations = generateQueryVariations(query);
+            
+            // Search in term, definition, and aliases with all query variations
+            let allResults = [];
+            
+            // Search with the original query
+            const mainResults = searchIndex.search(query, {
+                enrich: true,
+                limit: 10
+            });
+            
+            allResults = [...mainResults];
+            
+            // Search with query variations for better fuzzy matching
+            queryVariations.forEach(variation => {
+                if (variation !== query) {
+                    const variationResults = searchIndex.search(variation, {
+                        enrich: true,
+                        limit: 5
+                    });
+                    
+                    allResults = [...allResults, ...variationResults];
+                }
+            });
+            
+            // Process and display results
+            const processedResults = processSearchResults(allResults, query);
+            displayResults(processedResults);
+            
+            // Resolve the promise with the processed results
+            resolve(processedResults);
+        } catch (error) {
+            console.error('Search error:', error);
+            resultsContainer.innerHTML = `<div class="error-message">Search error: ${error.message}</div>`;
+            resultsContainer.classList.add('has-results');
+            reject(error);
+        }
+    });
 }
 
 // Generate query variations for better fuzzy matching
@@ -1618,4 +1644,32 @@ function handleTermClick(e) {
             searchInput.focus();
         }
     }
-} 
+}
+
+// Add error handling for Promise chains
+function safePromiseChain(promise) {
+    if (!promise) {
+        console.error('Promise is undefined');
+        return Promise.reject(new Error('Promise is undefined'));
+    }
+    return promise;
+}
+
+// Update the event handler to use safe promise chain
+document.getElementById('searchInput').addEventListener('input', async (event) => {
+    try {
+        const query = event.target.value;
+        if (!query) return;
+        
+        const searchPromise = performSearch(query);
+        if (!searchPromise) {
+            console.error('Search promise is undefined');
+            return;
+        }
+        
+        await safePromiseChain(searchPromise);
+    } catch (error) {
+        console.error('Error in search:', error);
+        updateLoadingStatus('Error performing search', true);
+    }
+}); 
