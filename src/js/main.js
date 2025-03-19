@@ -1387,6 +1387,17 @@ function navigateResults(direction) {
             }
         }
     });
+    
+    // Make selected result visually apparent for keyboard navigation
+    if (nextResult) {
+        // Remove selected class from all results
+        results.forEach(result => {
+            result.classList.remove('selected');
+        });
+        
+        // Add selected class to current result
+        nextResult.classList.add('selected');
+    }
 }
 
 // Add click handler to close results when clicking outside
