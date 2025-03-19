@@ -26,6 +26,7 @@ let isNavigatingBetweenTerms = false; // Flag to track term navigation
 let shuffledTerms = []; // Global variable to store shuffled terms
 let hideRecommendations = false; // Flag to track if recommendations should be hidden
 let isKeyboardActive = false; // Flag to track if the keyboard is active
+let prevQuery = ''; // Track previous query state
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
@@ -370,6 +371,8 @@ function cleanSearchQuery(query) {
 // Handle search input without debounce
 function handleSearch(event) {
     const query = cleanSearchQuery(event.target.value);
+    const wasNonEmpty = prevQuery.length > 0;
+    const isNowEmpty = query.length === 0;
     
     // Update URL with search query
     updateURLWithSearch(query);
@@ -387,8 +390,20 @@ function handleSearch(event) {
         // Reset keyboard navigation state
         isKeyboardActive = false;
         document.body.classList.remove('keyboard-active');
+        
+        // Reshuffle tags if we've transitioned from non-empty to empty
+        if (wasNonEmpty && isNowEmpty) {
+            if (DEBUG) console.log('Input cleared, reshuffling tags');
+            reshuffleTermTags();
+        }
+        
+        // Update previous query state AFTER handling the empty case
+        prevQuery = query;
         return;
     }
+    
+    // Update previous query state
+    prevQuery = query;
     
     // Set keyboard active state immediately
     isKeyboardActive = true;
@@ -1520,6 +1535,8 @@ function createRandomTermTags() {
 function reshuffleTermTags() {
     if (!glossaryData || glossaryData.length === 0) return;
     
+    if (DEBUG) console.log('Reshuffling term tags');
+    
     // Reshuffle the terms
     shuffledTerms = getShuffledTerms(glossaryData);
     
@@ -1528,6 +1545,26 @@ function reshuffleTermTags() {
         document.querySelectorAll('.iframe-embed .random-terms').forEach(el => {
             el.style.justifyContent = window.randomTermsJustification;
         });
+    }
+    
+    // Force re-render the tags
+    const randomTermsContainer = document.querySelector('.random-terms-container .random-terms');
+    if (randomTermsContainer) {
+        if (DEBUG) console.log('Found random terms container, refreshing tags');
+        
+        // Clear existing tags
+        randomTermsContainer.innerHTML = '';
+        
+        // Add the new tags
+        shuffledTerms.slice(0, NUM_RANDOM_TAGS).forEach(term => {
+            const tag = document.createElement('span');
+            tag.className = 'related-tag';
+            tag.textContent = term;
+            tag.setAttribute('data-term', term);
+            randomTermsContainer.appendChild(tag);
+        });
+    } else if (DEBUG) {
+        console.log('Random terms container not found');
     }
     
     // Render the new tags if the render function exists
