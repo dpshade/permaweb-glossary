@@ -317,7 +317,7 @@
       "definition": "A server that provides access to data stored on the Arweave network. Part of the AR.IO network's decentralized infrastructure for serving permanent data and managing network traffic.",
       "category": "AR.IO Infrastructure",
       "related": ["AR.IO", "Gateway Address Registry", "Wayfinder Protocol", "Data Retrieval"],
-      "aliases": [],
+      "aliases": ["ARIO Gateway"],
       "docs": ["https://docs.ar.io/build/gateways#overview"]
     },
     {
