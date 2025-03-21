@@ -290,11 +290,11 @@
     },
     {
       "term": "Blockweave",
-      "definition": "The data structure used by Arweave to store and validate data. Unlike traditional blockchains, it enables efficient access to historical data through its unique weave structure.",
+      "definition": "Arweave's innovative data structure that improves upon traditional blockchain technology. Unlike sequential blockchain verification, it requires only random data verification for new additions, creating a 3D spider web-like structure. This approach dramatically reduces energy consumption while maintaining data immutability. The blockweave supports petabyte-scale storage and features continuous data validation (over 5,670 validations daily). It includes advanced features like bundled transactions (up to 1000 per block) and incentivized data replication, enabling efficient storage and verification of large datasets.",
       "category": "Arweave Technology",
-      "related": ["Arweave", "Proof of Access", "SPoRA", "Data Storage", "Weave"],
-      "aliases": ["Weave Structure", "AR Blockweave"],
-      "docs": []
+      "related": ["Arweave", "Proof of Access", "SPoRA", "Data Storage", "Weave", "Bundled Transactions", "Data Replication"],
+      "aliases": ["Weave Structure", "AR Blockweave", "Blockchain"],
+      "docs": ["https://arweave.org/technology"]
     },
     {
       "term": "Permaweb",
@@ -1090,11 +1090,11 @@
     },
     {
       "term": "Bazar",
-      "definition": "A decentralized marketplace leveraging Arweave for data storage and management.",
+      "definition": "A fully decentralized atomic asset exchange built on the permaweb, leveraging the Universal Content Marketplace (UCM) protocol and AO. It enables content creators to trade digital assets with real-world rights through a trustless orderbook process. As the first user interface operating on the UCM protocol, Bazar facilitates the exchange of various digital content types, from images and music to applications, while ensuring secure and efficient trading through AO processes.",
       "category": "Decentralized Applications (dApps)",
-      "related": ["Marketplace", "Arweave"],
-      "aliases": ["Decentralized Market"],
-      "docs": ["https://bazar.arweave.net/"]
+      "related": ["Universal Content Marketplace", "AO", "Universal Data License", "Permaweb", "Orderbook"],
+      "aliases": ["Decentralized Asset Exchange", "UCM Marketplace", "Open Sea"],
+      "docs": ["https://bazar.arweave.net/", "https://github.com/permaweb/ao-ucm"]
     },
     {
       "term": "BetterIDEa",
@@ -1391,6 +1391,14 @@
       "related": ["Arweave", "AO Computer", "Permaweb", "Forward Research"],
       "aliases": ["Arweave Founder", "AO Creator"],
       "docs": ["https://sam_metalinks.arweave.net/"]
+    },
+    {
+      "term": "Metalinks",
+      "definition": "A decentralized link hub platform that enables users to create and manage their web presence without intermediaries. Metalinks provides a web3-native solution where users can own their content and control their digital presence, embodying the principles of decentralization and user sovereignty. The platform allows users to create their own decentralized link hub, offering pure web3 freedom without traditional gatekeepers or centralized control.",
+      "category": "Web3 Infrastructure",
+      "related": ["Decentralization", "Web3", "Digital Sovereignty", "Permaweb", "Arweave"],
+      "aliases": ["Decentralized Link Hub", "Web3 Link Platform", "Link tree"],
+      "docs": ["https://metalinks.arweave.net/"]
     },
     {
       "term": "Fair Launch",

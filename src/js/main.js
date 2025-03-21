@@ -391,10 +391,15 @@ function handleSearch(event) {
         isKeyboardActive = false;
         document.body.classList.remove('keyboard-active');
         
-        // Reshuffle tags if we've transitioned from non-empty to empty
-        if (wasNonEmpty && isNowEmpty) {
-            if (DEBUG) console.log('Input cleared, reshuffling tags');
-            reshuffleTermTags();
+        // Show recommended tags when input is cleared
+        if (isNowEmpty) {
+            if (DEBUG) console.log('Input cleared, showing/reshuffling tags');
+            const existingTags = document.querySelector('.random-terms-container');
+            if (existingTags) {
+                reshuffleTermTags();
+            } else {
+                createRandomTermTags();
+            }
         }
         
         // Update previous query state AFTER handling the empty case
