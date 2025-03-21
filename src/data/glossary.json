@@ -1236,15 +1236,15 @@
       "term": "Under_names",
       "definition": "ANT owners and controllers can configure multiple subdomains for their registered ArNS name known as \"under_names\" or more easily written \"undernames\". These undernames are assigned individually at the time of registration or can be added on to any registered name at any time. Under_names use an underscore \"_\" in place of a more typically used dot \".\" to separate the subdomain from the main ArNS domain.",
       "category": "AR.IO Ecosystem",
-      "related": ["ArNS", "Subdomains", "ANT"],
-      "aliases": ["Undernames"],
+      "related": ["ArNS", "ANT"],
+      "aliases": ["Undernames", "Subdomain"],
       "docs": ["https://docs.ar.io/arns"]
     },
     {
       "term": "Permaweb Glossary",
       "definition": "A comprehensive reference guide for the Arweave and AO ecosystem, providing detailed explanations of key terms, concepts, and technologies. It serves as an educational resource for developers, users, and community members to better understand the permaweb ecosystem. A key feature is its portability - the glossary can be embedded in other websites and applications via iframes, making it easily accessible across the permaweb.",
       "category": "Arweave Ecosystem",
-      "related": ["Permaweb", "Arweave", "AO Ecosystem", "Documentation", "Embedding"],
+      "related": [],
       "aliases": ["AO Glossary", "Arweave Glossary", "Embeddable Glossary"],
       "docs": ["https://github.com/dpshade/permaweb-glossary"]
     },
@@ -1252,7 +1252,7 @@
       "term": "Protocol.Land",
       "definition": "Decentralized, source controlled, code collaboration where you own your code.",
       "category": "Decentralized Applications (dApps)",
-      "related": ["Code Collaboration", "Source Control", "Decentralized Development"],
+      "related": [],
       "aliases": ["Protocol Land", "Arweave Github"],
       "docs": ["https://protocol.land/"]
     },
@@ -1260,7 +1260,7 @@
       "term": "Stablecoin",
       "definition": "A type of cryptocurrency designed to maintain a stable value relative to a specific asset or basket of assets, typically a fiat currency like the US dollar. Stablecoins provide price stability while leveraging the benefits of blockchain technology, making them useful for trading, payments, and as a store of value in the crypto ecosystem.",
       "category": "DeFi",
-      "related": ["USDA", "Cryptocurrency", "DeFi", "Token"],
+      "related": ["USDA", "Token"],
       "aliases": ["Stable Token", "Price-stable Cryptocurrency"],
       "docs": []
     },
@@ -1308,7 +1308,7 @@
       "term": "AO Form",
       "definition": "A declarative infrastructure management tool for the AO ecosystem, similar to Terraform, that enables developers to deploy and upgrade multiprocess systems through a single configuration file. It provides state management for deployments, efficient component upgrades, and streamlined infrastructure maintenance, making it essential for managing complex AO process networks and optimizing development workflows.",
       "category": "AO Development",
-      "related": ["Process", "Infrastructure Management", "Deployment", "State Management", "Configuration"],
+      "related": ["Process"],
       "aliases": ["AOForm", "AO Infrastructure as Code", "AO Deployment Tool"],
       "docs": ["https://docs.autonomous.finance/products/ecosystem-tooling/ao-form"]
     },
@@ -1316,7 +1316,7 @@
       "term": "Basejump",
       "definition": "A social gaming platform built on AO that features the Action substrate. It provides a no-code environment for creating, discovering, and monetizing interoperable games and assets. Basejump is consumer-focused with an avatar-centric interface, featuring a PVP battle game for hyperobjects that runs in Discord and on the web.",
       "category": "Decentralized Applications (dApps)",
-      "related": ["Action", "Hyperobject", "AO Computer", "Arweave", "AI", "Gaming", "Social Platform", "Game Development"],
+      "related": ["Action", "Hyperobject", "Gaming", "Game Development"],
       "aliases": ["Basejump.xyz", "Action Gaming Platform"],
       "docs": ["https://www.basejump.xyz/"]
     },
