@@ -122,9 +122,9 @@
     },
     {
       "term": "Message",
-      "definition": "The fundamental unit of communication in AO and the Converge Protocol. In AO, messages are ANS-104 compliant data items that can be sent between processes or from users to processes. In the Converge Protocol, every item on the permaweb is described as a Message, interpretable as either a map of named functions or as a concrete binary term. Messages can be called through the creation of another message, providing a map of arguments to the execution. Both systems use messages as the primary mechanism for communication and state management.",
+      "definition": "The fundamental unit of communication in AO and the AO Core Protocol. In AO, messages are ANS-104 compliant data items that can be sent between processes or from users to processes. In the AO Core Protocol, every item on the permaweb is described as a Message, interpretable as either a map of named functions or as a concrete binary term. Messages can be called through the creation of another message, providing a map of arguments to the execution. Both systems use messages as the primary mechanism for communication and state management.",
       "category": "AO Core Concepts",
-      "related": ["Process", "Tags", "Handler", "Outbox", "Converge Protocol", "Device", "Hashpath", "Path"],
+      "related": ["Process", "Tags", "Handler", "Outbox", "AO Core Protocol", "Device", "Hashpath", "Path"],
       "aliases": ["AO Message", "Converge Message"],
       "docs": ["https://cookbook_ao.arweave.net/concepts/messages.html"]
     },
@@ -220,7 +220,7 @@
       "term": "HyperBEAM",
       "definition": "The distributed execution engine that powers AO, built on Erlang/OTP. It provides distributed computation, deterministic execution, message scheduling, and WASM runtime capabilities.",
       "category": "AO Core Infrastructure",
-      "related": ["AO Computer", "AO-Core Protocol", "Compute Unit", "Scheduler Unit"],
+      "related": ["AO Computer", "AO Core Protocol", "Compute Unit", "Scheduler Unit"],
       "aliases": ["AO Execution Engine", "Distributed Runtime"],
       "docs": []
     },
@@ -276,7 +276,7 @@
       "term": "AOS",
       "definition": "The AO operating system, which serves as a reference model for software creation on AO. It allows developers to initiate processes, install packages, and edit code within a live environment.",
       "category": "AO Development",
-      "related": ["AO-Core Protocol", "Process", "Lua"],
+      "related": ["AO Core Protocol", "Process", "Lua"],
       "aliases": ["AO Operating System"],
       "docs": []
     },
@@ -396,7 +396,7 @@
       "term": "AO Computer",
       "definition": "The AO Computer is an actor-oriented machine on the Arweave network, creating a unified computing environment across diverse nodes. It supports many parallel processes through an open message-passing layer, linking independent processes into a cohesive system, similar to how websites are interconnected via hyperlinks.",
       "category": "AO Core Infrastructure",
-      "related": ["HyperBEAM", "AO-Core Protocol", "Process", "Actor Model", "Message"],
+      "related": ["HyperBEAM", "AO Core Protocol", "Process", "Actor Model", "Message"],
       "aliases": ["AO", "Actor-Oriented Computer"],
       "docs": []
     },
@@ -850,9 +850,9 @@
     },
     {
       "term": "State Attestation",
-      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the Converge Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
+      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the AO Core Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
       "category": "AO Security",
-      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "Converge Protocol"],
+      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "AO Core Protocol"],
       "aliases": ["State Attestation", "Computation Attestation"],
       "docs": []
     },
@@ -1321,11 +1321,11 @@
       "docs": ["https://www.basejump.xyz/"]
     },
     {
-      "term": "AO-Core Protocol",
-      "definition": "The underlying protocol that HyperBEAM implements, enabling decentralized computing and communication between nodes. AO-Core provides a framework into which any number of different computational models, encapsulated as primitive devices, can be attached.",
+      "term": "AO Core Protocol",
+      "definition": "The foundational execution protocol of AO that enables decentralized computing and communication between nodes. AO Core provides a framework into which any number of different computational models, encapsulated as primitive devices, can be attached. It serves as the base layer for the AO ecosystem, offering universal primitives for decentralized computations including hashpaths for state-space referencing, unified data structures for program states, attestation mechanisms, and a meta-VM for executing various computational models. HyperBEAM is a modular system that implements this protocol, while AO builds an actor-based environment on top of it. The protocol is designed to be computer-native to internet technologies, particularly compatible with HTTP protocols. Every item on the permaweb is described as a Message, which can be interpreted as either a map of named functions or as a concrete binary term. Messages can be called through the creation of another message, providing a map of arguments to the execution. The protocol does not enforce any forms of consensus or particular virtual machine, instead focusing on offering the simplest possible representation of data and computation.",
       "category": "AO Core Infrastructure",
-      "related": ["HyperBEAM", "Device", "Decentralized Computing"],
-      "aliases": ["AO-Core", "AO Core", "Core Protocol"],
+      "related": ["HyperBEAM", "Device", "Decentralized Computing", "Message", "Hashpath", "Path", "Attestation", "AO"],
+      "aliases": ["AO Core Protocol"],
       "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
     },
     {
@@ -1370,15 +1370,15 @@
     },
     {
       "term": "HTTP Message Signature",
-      "definition": "A standardized method (RFC9421) for creating, encoding, and verifying digital signatures within HTTP messages, crucial for the security model of HyperBEAM and the AO-Core protocol. In HyperBEAM, HTTP Signed Messages are used to authenticate node configuration changes, verify message integrity, and establish trust between nodes. The hb_message module in HyperBEAM provides functionality to convert between different message formats, including HTTP Signed Messages, enabling secure communication across the decentralized network. This signature mechanism is fundamental to the attestation system that allows nodes to cryptographically prove the correctness of computations without requiring full recomputation.",
+      "definition": "A standardized method (RFC9421) for creating, encoding, and verifying digital signatures within HTTP messages, crucial for the security model of HyperBEAM and the AO Core protocol. In HyperBEAM, HTTP Signed Messages are used to authenticate node configuration changes, verify message integrity, and establish trust between nodes. The hb_message module in HyperBEAM provides functionality to convert between different message formats, including HTTP Signed Messages, enabling secure communication across the decentralized network. This signature mechanism is fundamental to the attestation system that allows nodes to cryptographically prove the correctness of computations without requiring full recomputation.",
       "category": "AO Security",
-      "related": ["HyperBEAM", "Message", "Attestation", "Security Model", "AO-Core Protocol", "Converge Protocol"],
+      "related": ["HyperBEAM", "Message", "Attestation", "Security Model", "AO Core Protocol"],
       "aliases": ["HTTP Signatures", "RFC9421", "HTTP Signed Message"],
       "docs": ["https://datatracker.ietf.org/doc/html/rfc9421", "https://github.com/permaweb/HyperBEAM"]
     },
     {
       "term": "~p4@1.0",
-      "definition": "A device that runs as a pre-processor and post-processor in HyperBEAM, enabling a framework for node operators to sell usage of their machine's hardware to execute AO-Core devices.",
+      "definition": "A device that runs as a pre-processor and post-processor in HyperBEAM, enabling a framework for node operators to sell usage of their machine's hardware to execute AO Core devices.",
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Hardware", "Node Operator"],
       "aliases": ["Hardware Access Device"],
@@ -1410,25 +1410,25 @@
     },
     {
       "term": "Converge Protocol",
-      "definition": "A minimal computation model that enables the permaweb to be interpreted as both a flat, permanent ledger of data and a mutable, reactive computation environment. It provides a single, shared system image that can be accessed and added to permissionlessly, focusing on the simplest possible representation of data and computation upon that data, tailored for Arweave's distributed environment and HTTP access methods.",
+      "definition": "The codename for AO Core Protocol. See AO Core Protocol for the complete definition.",
       "category": "AO Core Infrastructure",
-      "related": ["HyperBEAM", "AO", "Message", "Device", "Hashpath"],
-      "aliases": ["Converge"],
+      "related": ["AO Core Protocol"],
+      "aliases": ["AO Core Protocol"],
       "docs": ["https://github.com/permaweb/HyperBEAM/tree/main/docs"]
     },
     {
       "term": "Device",
-      "definition": "A component in the Converge Protocol that specifies how a message should be interpreted. Each message may optionally state a Device which should be used by Converge-compatible systems to interpret its contents. If no Device is explicitly stated, it must be inferred as 'Message'. Every Device must implement functions with the names 'ID' and 'Keys'.",
+      "definition": "A component in the AO Core Protocol that specifies how a message should be interpreted. Each message may optionally state a Device which should be used by Converge-compatible systems to interpret its contents. If no Device is explicitly stated, it must be inferred as 'Message'. Every Device must implement functions with the names 'ID' and 'Keys'.",
       "category": "AO Core Infrastructure",
-      "related": ["Converge Protocol", "Message", "HyperBEAM", "Stack Device"],
+      "related": ["AO Core Protocol", "Message", "HyperBEAM", "Stack Device"],
       "aliases": ["Converge Device"],
       "docs": []
     },
     {
       "term": "Hashpath",
-      "definition": "A cryptographic memoization of the tree of executions that were the source of a given piece of data in the Converge Protocol. It is derived by cryptographically mixing two prior commitments, resulting in a short (32 bytes with SHA2-256) but verifiable reference to the entire computation tree.",
+      "definition": "A cryptographic memoization of the tree of executions that were the source of a given piece of data in the AO Core Protocol. It is derived by cryptographically mixing two prior commitments, resulting in a short (32 bytes with SHA2-256) but verifiable reference to the entire computation tree.",
       "category": "AO Core Infrastructure",
-      "related": ["Converge Protocol", "Message", "Attestation", "Path"],
+      "related": ["AO Core Protocol", "Message", "Attestation", "Path"],
       "aliases": ["Computation Path"],
       "docs": []
     },
@@ -1436,23 +1436,23 @@
       "term": "Stack Device",
       "definition": "A special device in HyperBEAM that combines a series of devices on a message into a single 'stack' of executable transformations. When added as the highest Device tag on a message, it scans the remainder of the message's tags looking for and loading other messages it finds, passing through each element of the stack in turn during execution.",
       "category": "AO Core Infrastructure",
-      "related": ["Device", "HyperBEAM", "Converge Protocol"],
+      "related": ["Device", "HyperBEAM", "AO Core Protocol"],
       "aliases": ["Device Stack"],
       "docs": []
     },
     {
       "term": "Attestation",
-      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the Converge Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
+      "definition": "A cryptographic assurance mechanism in AO that verifies the correctness of computations and states. In AO's state management, attestations are cryptographically signed statements by Compute Units verifying process state computation results. In the AO Core Protocol, attestations provide cryptographic assurance that verifies the correctness of an output, representing proof that a specific computation produced the expected result when combined with the message and hashpath. Both forms enable trustless verification without requiring full recomputation.",
       "category": "AO Security",
-      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "Converge Protocol"],
+      "related": ["Compute Unit", "Process", "State Management", "Hashpath", "Message", "AO Core Protocol"],
       "aliases": ["State Attestation", "Computation Attestation"],
       "docs": []
     },
     {
       "term": "Path",
-      "definition": "A way to reference messages in the Converge Protocol that starts from a given message and applies a series of additional messages on top of it. Each resulting message must have an ID resolvable via its device, enabling additional paths to be described atop the intermediate message. Paths are designed to be compatible with HTTP protocols.",
+      "definition": "A way to reference messages in the AO Core Protocol that starts from a given message and applies a series of additional messages on top of it. Each resulting message must have an ID resolvable via its device, enabling additional paths to be described atop the intermediate message. Paths are designed to be compatible with HTTP protocols.",
       "category": "AO Core Infrastructure",
-      "related": ["Message", "Hashpath", "Converge Protocol"],
+      "related": ["Message", "Hashpath", "AO Core Protocol"],
       "aliases": ["Message Path"],
       "docs": []
     },
@@ -1460,7 +1460,7 @@
       "term": "Permissionlessness",
       "definition": "A property of computation systems where no actor in the ecosystem may be denied the ability to use the network by any other actor or group. This is a fundamental property of decentralized computation machines, though it can only be offered in degrees rather than absolutely.",
       "category": "AO Core Concepts",
-      "related": ["Trustlessness", "Decentralization", "Converge Protocol"],
+      "related": ["Trustlessness", "Decentralization", "AO Core Protocol"],
       "aliases": ["Permissionless Access"],
       "docs": []
     },
@@ -1468,7 +1468,7 @@
       "term": "Trustlessness",
       "definition": "A property of computation systems where users can participate in the network without needing to trust other parties are not acting maliciously. Like permissionlessness, this is a fundamental property of decentralized computation machines that can only be offered in degrees rather than absolutely.",
       "category": "AO Core Concepts",
-      "related": ["Permissionlessness", "Security", "Converge Protocol"],
+      "related": ["Permissionlessness", "Security", "AO Core Protocol"],
       "aliases": ["Trustless Operation"],
       "docs": []
     },
@@ -1506,7 +1506,7 @@
     },
     {
       "term": "~snp@1.0",
-      "definition": "A device in HyperBEAM used to generate and validate proofs that a node is executing inside a Trusted Execution Environment (TEE). It enables trust-minimized attestations of AO-Core executions using ephemeral key pairs that exist only within the TEE.",
+      "definition": "A device in HyperBEAM used to generate and validate proofs that a node is executing inside a Trusted Execution Environment (TEE). It enables trust-minimized attestations of AO Core executions using ephemeral key pairs that exist only within the TEE.",
       "category": "AO Security",
       "related": ["HyperBEAM", "TEE", "Attestation", "Security"],
       "aliases": ["SNP Device", "TEE Proof Device"],
@@ -1516,13 +1516,13 @@
       "term": "Trustless Execution",
       "definition": "A property of computation systems where users can participate in the network without needing to trust other parties are not acting maliciously. Like permissionlessness, this is a fundamental property of decentralized computation machines that can only be offered in degrees rather than absolutely.",
       "category": "AO Core Concepts",
-      "related": ["Permissionlessness", "Security", "Converge Protocol"],
+      "related": ["Permissionlessness", "Security", "AO Core Protocol"],
       "aliases": ["Trustless Operation"],
       "docs": []
     },
     {
       "term": "~simple-pay@1.0",
-      "definition": "A simple, flexible pricing device in HyperBEAM that can be used with p4@1.0 to offer flat-fees for the execution of AO-Core messages. It provides a straightforward mechanism for monetizing node services.",
+      "definition": "A simple, flexible pricing device in HyperBEAM that can be used with p4@1.0 to offer flat-fees for the execution of AO Core messages. It provides a straightforward mechanism for monetizing node services.",
       "category": "AO Economics",
       "related": ["HyperBEAM", "p4@1.0", "Pricing", "Node Services"],
       "aliases": ["Simple Payment Device", "Flat-fee Device"],
@@ -1538,7 +1538,7 @@
     },
     {
       "term": "scheduler@1.0",
-      "definition": "A device in HyperBEAM used to assign a linear hashpath to an execution, ensuring deterministic ordering that all users can access. It enables the creation of executions that mirror traditional smart contracting networks when used with other AO-Core devices.",
+      "definition": "A device in HyperBEAM used to assign a linear hashpath to an execution, ensuring deterministic ordering that all users can access. It enables the creation of executions that mirror traditional smart contracting networks when used with other AO Core devices.",
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Hashpath", "Execution", "Ordering"],
       "aliases": ["Scheduler Device", "Execution Scheduler", "Scheduler", "Scheduler Unit"],
@@ -1618,9 +1618,9 @@
     },
     {
       "term": "Merkle Root",
-      "definition": "The result of hashing all transactions in a block, pairing those hashes, and hashing them again until a single hash remains. In blockchain systems like Arweave and AO, Merkle roots enable efficient verification of transaction data without requiring nodes to process every transaction individually. This technique significantly reduces the computational resources needed to verify blocks and is central to maintaining blockchain integrity. In the Converge Protocol, HashPaths use Merkle tree principles to create a cryptographic history of all operations that led to a particular state, allowing verification of the entire computation chain with a single hash.",
+      "definition": "The result of hashing all transactions in a block, pairing those hashes, and hashing them again until a single hash remains. In blockchain systems like Arweave and AO, Merkle roots enable efficient verification of transaction data without requiring nodes to process every transaction individually. This technique significantly reduces the computational resources needed to verify blocks and is central to maintaining blockchain integrity. In the AO Core Protocol, HashPaths use Merkle tree principles to create a cryptographic history of all operations that led to a particular state, allowing verification of the entire computation chain with a single hash.",
       "category": "Blockchain Technology",
-      "related": ["Hashpath", "Transaction", "Block", "Converge Protocol", "Data Verification"],
+      "related": ["Hashpath", "Transaction", "Block", "AO Core Protocol", "Data Verification"],
       "aliases": ["Merkle Tree", "Hash Tree", "Merkle"],
       "docs": []
     },
