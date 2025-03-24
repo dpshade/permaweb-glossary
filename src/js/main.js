@@ -953,8 +953,13 @@ function makeTermsClickable(definition, allTerms) {
     const termMap = new Map();
     const aliasMap = new Map(); // Track which term an alias belongs to
     
+    // First pass: Add all primary terms
+    const primaryTerms = new Set();
     allTerms.forEach(term => {
-        // Add the main term
+        // Add the main term to the primary terms set
+        primaryTerms.add(term.term.toLowerCase());
+        
+        // Add the main term to the map
         termMap.set(term.term.toLowerCase(), term.term);
         
         // Add the plural form of the main term as a hidden alias
@@ -966,28 +971,41 @@ function makeTermsClickable(definition, allTerms) {
             aliasText: pluralForm,
             isHidden: true // Mark as hidden alias
         });
-        
-        // Also add explicit aliases and their plural forms
+    });
+    
+    // Second pass: Add aliases, but don't overwrite primary terms
+    allTerms.forEach(term => {
+        // Add explicit aliases and their plural forms
         if (term.aliases && term.aliases.length > 0) {
             term.aliases.forEach(alias => {
-                // Add the alias
-                termMap.set(alias.toLowerCase(), term.term);
-                aliasMap.set(alias.toLowerCase(), { 
-                    originalTerm: term.term,
-                    isAlias: true,
-                    aliasText: alias,
-                    isHidden: false
-                });
+                const aliasLower = alias.toLowerCase();
                 
-                // Add the plural form of the alias
-                const aliasPluralForm = alias + 's';
-                termMap.set(aliasPluralForm.toLowerCase(), term.term);
-                aliasMap.set(aliasPluralForm.toLowerCase(), { 
-                    originalTerm: term.term,
-                    isAlias: true,
-                    aliasText: aliasPluralForm,
-                    isHidden: true // Mark as hidden alias
-                });
+                // Only add the alias if it's not already a primary term
+                if (!primaryTerms.has(aliasLower)) {
+                    // Add the alias
+                    termMap.set(aliasLower, term.term);
+                    aliasMap.set(aliasLower, { 
+                        originalTerm: term.term,
+                        isAlias: true,
+                        aliasText: alias,
+                        isHidden: false
+                    });
+                    
+                    // Add the plural form of the alias
+                    const aliasPluralForm = alias + 's';
+                    const aliasPluralLower = aliasPluralForm.toLowerCase();
+                    
+                    // Only add the plural alias if it's not already a primary term
+                    if (!primaryTerms.has(aliasPluralLower)) {
+                        termMap.set(aliasPluralLower, term.term);
+                        aliasMap.set(aliasPluralLower, { 
+                            originalTerm: term.term,
+                            isAlias: true,
+                            aliasText: aliasPluralForm,
+                            isHidden: true // Mark as hidden alias
+                        });
+                    }
+                }
             });
         }
     });

@@ -1325,7 +1325,7 @@
       "definition": "The foundational execution protocol of AO that enables decentralized computing and communication between nodes. AO Core provides a framework into which any number of different computational models, encapsulated as primitive devices, can be attached. It serves as the base layer for the AO ecosystem, offering universal primitives for decentralized computations including hashpaths for state-space referencing, unified data structures for program states, attestation mechanisms, and a meta-VM for executing various computational models. HyperBEAM is a modular system that implements this protocol, while AO builds an actor-based environment on top of it. The protocol is designed to be computer-native to internet technologies, particularly compatible with HTTP protocols. Every item on the permaweb is described as a Message, which can be interpreted as either a map of named functions or as a concrete binary term. Messages can be called through the creation of another message, providing a map of arguments to the execution. The protocol does not enforce any forms of consensus or particular virtual machine, instead focusing on offering the simplest possible representation of data and computation.",
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Device", "Decentralized Computing", "Message", "Hashpath", "Path", "Attestation", "AO"],
-      "aliases": ["AO Core Protocol"],
+      "aliases": ["AO Core Protocol", "AO Core"],
       "docs": ["https://permaweb.github.io/HyperBEAM/hyperbeam"]
     },
     {
