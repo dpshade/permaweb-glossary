@@ -1807,6 +1807,38 @@
       "related": ["Storage Endowment", "AR Token", "Deflationary"],
       "aliases": ["Supply Reduction Mechanism", "Token Burn"],
       "docs": ["https://x.com/samecwilliams/status/1902192622199824634"]
+    },
+    {
+      "term": "TabM",
+      "definition": "A unified data format in HyperBEAM standing for 'Type Annotated Binary Messages'. TabM serves as the intermediary representation that all message formats can convert to and from, enabling seamless communication between different encoding schemes. It includes type annotations that preserve the data types of fields (such as integers, strings, and binaries), allowing for accurate message transformation across the system. TabM is a core component of HyperBEAM's message processing pipeline, bridging the gap between various message formats while preserving data integrity.",
+      "category": "AO Core Infrastructure",
+      "related": ["Codecs", "HyperBEAM", "Message", "HTTP Message Signature", "Converge Protocol"],
+      "aliases": ["Type Annotated Binary Messages"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "Codecs",
+      "definition": "Modular components in HyperBEAM that convert between different message formats and the unified TabM format. Codecs solve interoperability challenges in distributed systems by using TabM as an intermediate format, reducing complexity from N² direct conversions to N codecs for N formats. This maintains data integrity and type safety while supporting various encodings (ANS-104, HTTP Signatures, JSON, flat formats). The architecture makes the system extensible - adding a new format only requires one codec that converts to/from TabM, rather than creating conversions for every existing format. This enables HyperBEAM to seamlessly communicate across different systems while maintaining consistent message semantics.",
+      "category": "AO Core Infrastructure",
+      "related": ["TabM", "HyperBEAM", "ANS-104", "HTTP Message Signature", "Message"],
+      "aliases": ["Message Encoders/Decoders", "Format Converters"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "Flat Format",
+      "definition": "A simple key-value encoding scheme in HyperBEAM where data is represented as a series of 'key: value' pairs, each on a new line. This format is particularly used in configuration files and certain message types due to its simplicity and human readability. For example, a flat format message might look like 'Content-Type: text/plain\\nAction: update\\nValue: 123'. Unlike nested formats like JSON, flat formats have no hierarchy or nesting capabilities, making them easier to parse but less expressive. In HyperBEAM, flat formats are often used for configuration files and basic message headers where nested structures aren't necessary.",
+      "category": "AO Core Infrastructure",
+      "related": ["Codecs", "TabM", "Message", "Configuration"],
+      "aliases": ["Key-Value Format", "Line-based Format"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
+    },
+    {
+      "term": "PATCH",
+      "definition": "A method in HyperBEAM that enables efficient state updates by modifying only specific parts of data structures rather than replacing entire objects. When sent with method=patch in AO, it allows processes to update their state incrementally, significantly reducing latency and computational overhead. PATCH works with HyperBEAM's caching system to provide high-performance state management even for legacy processes. This mechanism is particularly valuable for applications handling large datasets or requiring frequent small updates, as it minimizes network traffic and processing time by transmitting only the changed portions of state.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Process", "State Management", "Device", "Cache"],
+      "aliases": ["Partial Update", "State Patching"],
+      "docs": ["https://github.com/permaweb/HyperBEAM"]
     }
   ]
 }
