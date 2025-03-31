@@ -1017,14 +1017,6 @@
       "docs": []
     },
     {
-      "term": "Verifiable Delay Function",
-      "definition": "A cryptographic clock that provides a unique identifier to every node each second in the Arweave network.",
-      "category": "Arweave Technology",
-      "related": ["Mining", "Network Synchronization", "Security"],
-      "aliases": ["VDF"],
-      "docs": []
-    },
-    {
       "term": "Wallet",
       "definition": "A software application that allows users to store, send, and receive AR tokens, as well as interact with Arweave applications.",
       "category": "Arweave Technology",
