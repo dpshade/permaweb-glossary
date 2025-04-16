@@ -267,8 +267,10 @@ async function init() {
         // Add theme toggle functionality
         initializeTheme();
         
-        // Auto-focus the search input
-        searchInput.focus();
+        // Auto-focus the search input only if not in an iframe
+        if (!isIframeEmbed()) {
+            searchInput.focus();
+        }
         
     } catch (error) {
         console.error('Initialization error:', error);
