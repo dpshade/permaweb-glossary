@@ -1065,12 +1065,12 @@
       "docs": ["https://www.aoventures.io/"]
     },
     {
-      "term": "Arlink",
-      "definition": "A decentralized data linking service utilizing Arweave for permanent data storage and retrieval.",
-      "category": "Arweave Ecosystem",
-      "related": ["Arweave", "Data Linking"],
-      "aliases": ["Permanent Data Links"],
-      "docs": ["https://arlink.arweave.net/"]
+  "term": "Arlink",
+  "definition": "Arlink is a one click deployment platform built on Arweave, enabling developers to permanently host front-end applications such as React, Next.js, or static websites with a single click. It functions like Vercel but leverages the Arweave Permaweb for censorship-resistant, immutable, and durable hosting.",
+  "category": "Arweave Ecosystem",
+  "related": ["Arweave", "Permaweb", "Permanent Web Hosting", "Decentralized Deployment"],
+  "aliases": ["Decentralized Vercel", "Permaweb Hosting", "Permanent Frontend Hosting", "CICD for the permaweb"],
+  "docs": ["https://arlink.arweave.net/"]
     },
     {
       "term": "Autonomous Finance",
