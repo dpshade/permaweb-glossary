@@ -67,6 +67,98 @@ bun run build
 
 This will create a `dist` directory with all the necessary files for deployment.
 
+### Build Process
+
+The build system has been streamlined for simplicity and maintainability:
+
+1. **Clean**: Removes previous build artifacts
+2. **Copy**: Copies static assets from `public/` and source files
+3. **Minify**: Bundles and minifies JavaScript/CSS using Bun's built-in bundler
+4. **Post-process**: Runs optimizations including:
+   - Generates `glossary.txt` from `glossary.json` 
+   - Minifies JSON data
+   - Compresses all assets with gzip
+
+### Available Scripts
+
+- `bun run dev` - Development server with hot reload (via preview-server.js)
+- `bun run build` - Production build
+- `bun run preview` - Preview production build locally (via preview-server.js)
+- `bun run clean` - Clean build artifacts
+- `bun run deploy` - Deploy to production (via GitHub Actions)
+- `bun run deploy:preview` - Create preview deployment
+
+## Deployment
+
+### Automated Deployment via GitHub Actions
+
+The project uses GitHub Actions for automated deployments:
+
+#### **Production Deployment** 
+- **Trigger**: `bun run deploy` (creates PR or pushes to `main` branch)
+- **URL**: https://glossary.ar.io
+- **ArNS**: `glossary` (main domain)
+
+#### **Preview Deployment**
+- **Trigger**: `bun run deploy:preview` (pushes to `preview` branch)
+- **URL**: https://preview_glossary.ar.io
+- **ArNS**: `glossary` with `preview` undername
+
+**Both deployments use the same GitHub Actions workflow** - no local secrets needed! 🎉
+
+### 🔄 **Workflow Recommendations:**
+
+- **Contributors**: Use `bun run deploy:preview` → test changes → create PR to main  
+- **Maintainers**: Use `bun run deploy` → choose PR or direct push based on repo governance
+
+#### **Pull Request Checks**
+- **Trigger**: Pull requests to `main`
+- **Action**: Build verification only (no deployment)
+
+### Creating Preview Deployments
+
+To create a preview deployment from any branch:
+
+```bash
+# Using the npm script (recommended)
+bun run deploy:preview
+
+# Or using the script directly
+./scripts/deploy-preview.sh
+
+# Or manually
+git push origin HEAD:preview --force-with-lease
+```
+
+The script will:
+1. Check for uncommitted changes
+2. Push your current branch to the `preview` branch
+3. Trigger the GitHub Actions workflow
+4. Deploy to `https://preview_glossary.ar.io`
+
+### Production Deployment
+
+To deploy to production from any branch:
+
+```bash
+# Deploy to production (interactive menu)
+bun run deploy
+```
+
+The script will offer two deployment options:
+
+1. **Create Pull Request** (recommended for most workflows)
+   - Pushes your current branch to origin
+   - Provides GitHub URL to create PR to main
+   - Production deployment happens when PR is merged
+
+2. **Direct Push to Main** (maintainers only)
+   - Pushes directly to main branch
+   - Triggers immediate production deployment
+   - Use only if you have write access to main
+
+This approach works with both protected and unprotected main branches.
+
 ## How It Works
 
 1. The application uses FlexSearch, a lightweight full-text search library with fuzzy matching capabilities.

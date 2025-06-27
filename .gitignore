@@ -2,6 +2,7 @@
 node_modules/
 .npm
 .yarn
+package-lock.json
 
 # Build output
 dist/
