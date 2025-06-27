@@ -42,6 +42,8 @@ const server = serve({
         headers.set('Content-Type', 'image/x-icon');
       } else if (path.endsWith('.webmanifest')) {
         headers.set('Content-Type', 'application/manifest+json');
+      } else if (path.endsWith('.txt')) {
+        headers.set('Content-Type', 'text/plain; charset=utf-8');
       }
       
       // Add cache control for static assets
@@ -51,7 +53,7 @@ const server = serve({
 
       // Check if client accepts gzip and if we have a pre-compressed version
       const acceptEncoding = req.headers.get('accept-encoding') || '';
-      const shouldCompress = path.match(/\.(js|css|json)$/);
+      const shouldCompress = path.match(/\.(js|css|json|txt)$/);
       const gzipPath = `${filePath}.gz`;
       
       if (acceptEncoding.includes('gzip') && shouldCompress && existsSync(gzipPath)) {

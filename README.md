@@ -67,6 +67,77 @@ bun run build
 
 This will create a `dist` directory with all the necessary files for deployment.
 
+### Build Process
+
+The build system has been streamlined for simplicity and maintainability:
+
+1. **Clean**: Removes previous build artifacts
+2. **Copy**: Copies static assets from `public/` and source files
+3. **Minify**: Bundles and minifies JavaScript/CSS using Bun's built-in bundler
+4. **Post-process**: Runs optimizations including:
+   - Generates `glossary.txt` from `glossary.json` 
+   - Minifies JSON data
+   - Compresses all assets with gzip
+
+### Available Scripts
+
+- `bun run dev` - Development server with hot reload
+- `bun run build` - Production build
+- `bun run preview` - Preview production build locally
+- `bun run clean` - Clean build artifacts
+- `bun run deploy` - Deploy to Arweave (local)
+- `bun run deploy:preview` - Create preview deployment
+
+## Deployment
+
+### Automated Deployment via GitHub Actions
+
+The project uses GitHub Actions for automated deployments:
+
+#### **Production Deployment** 
+- **Trigger**: Push to `main` branch
+- **URL**: https://glossary.ar.io
+- **ArNS**: `glossary` (main domain)
+
+#### **Preview Deployment**
+- **Trigger**: Push to `preview` branch  
+- **URL**: https://preview_glossary.ar.io
+- **ArNS**: `glossary` with `preview` undername
+
+#### **Pull Request Checks**
+- **Trigger**: Pull requests to `main`
+- **Action**: Build verification only (no deployment)
+
+### Creating Preview Deployments
+
+To create a preview deployment from any branch:
+
+```bash
+# Using the npm script (recommended)
+bun run deploy:preview
+
+# Or using the script directly
+./scripts/create-preview.sh
+
+# Or manually
+git push origin HEAD:preview --force-with-lease
+```
+
+The script will:
+1. Check for uncommitted changes
+2. Push your current branch to the `preview` branch
+3. Trigger the GitHub Actions workflow
+4. Deploy to `https://preview_glossary.ar.io`
+
+### Manual Deployment
+
+For local manual deployment:
+
+```bash
+bun run build
+bun run deploy
+```
+
 ## How It Works
 
 1. The application uses FlexSearch, a lightweight full-text search library with fuzzy matching capabilities.
