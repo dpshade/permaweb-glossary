@@ -81,9 +81,9 @@ The build system has been streamlined for simplicity and maintainability:
 
 ### Available Scripts
 
-- `bun run dev` - Development server with hot reload
+- `bun run dev` - Development server with hot reload (via preview-server.js)
 - `bun run build` - Production build
-- `bun run preview` - Preview production build locally
+- `bun run preview` - Preview production build locally (via preview-server.js)
 - `bun run clean` - Clean build artifacts
 - `bun run deploy` - Deploy to Arweave (local)
 - `bun run deploy:preview` - Create preview deployment

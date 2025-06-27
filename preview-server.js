@@ -2,7 +2,7 @@ import { serve } from "bun";
 import { join } from "path";
 import { existsSync } from "fs";
 
-// Create a production file server
+// Local preview server for testing built files
 const server = serve({
   port: 3000,
   fetch(req) {
@@ -79,4 +79,4 @@ const server = serve({
   },
 });
 
-console.log(`Production server running at http://localhost:${server.port}`); 
+console.log(`Preview server running at http://localhost:${server.port}`); 

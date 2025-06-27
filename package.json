@@ -2,18 +2,18 @@
   "name": "permaweb-glossary-search",
   "version": "1.0.0",
   "description": "A lightweight client-side search for the Permaweb Glossary using FlexSearch",
-  "main": "prod-server.js",
+  "main": "preview-server.js",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch run prod-server.js",
+    "dev": "bun --watch run preview-server.js",
     "build": "bun run build:clean && bun run build:copy && bun run build:minify && bun run build:post-process",
     "build:clean": "rm -rf dist",
     "build:copy": "mkdir -p dist && cp -r public/* dist/ && mkdir -p dist/src && rsync -av --exclude='*.js' src/ dist/src/",
     "build:minify": "bun build src/js/main.js --outdir dist/src/js --minify && bun build src/css/style.css --outdir dist/src/css --minify && bun build src/js/keyboard-nav.js --outdir dist/src/js --minify && bun build src/js/service-worker.js --outdir dist/ --minify",
     "build:post-process": "bun run scripts/post-build.js",
-    "preview": "bun run prod-server.js",
+    "preview": "bun run preview-server.js",
     "clean": "rm -rf dist",
-    "deploy": "bun run deploy.js",
+    "deploy": "bun run scripts/deploy.js",
     "deploy:preview": "./scripts/create-preview.sh"
   },
   "keywords": [
