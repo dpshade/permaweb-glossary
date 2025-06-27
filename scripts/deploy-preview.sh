@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 🔍 Create Preview Deployment Script
-# This script helps create preview deployments by pushing the current branch to the preview branch
+# 🔍 Preview Deployment Script
+# Deploy current branch to preview environment via GitHub Actions
 
 set -e
 

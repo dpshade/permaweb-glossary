@@ -3,8 +3,16 @@
 import fs from 'fs';
 import path from 'path';
 import { gzipSync } from 'zlib';
+import { execSync } from 'child_process';
 
 console.log('🔧 Running post-build optimizations...');
+
+// Clean up any .DS_Store files that might have slipped through
+try {
+  execSync('find dist -name ".DS_Store" -delete', { stdio: 'ignore' });
+} catch (error) {
+  // Ignore if no .DS_Store files found
+}
 
 // Configuration
 const DIST_DIR = 'dist';

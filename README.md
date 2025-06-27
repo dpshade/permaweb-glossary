@@ -85,7 +85,7 @@ The build system has been streamlined for simplicity and maintainability:
 - `bun run build` - Production build
 - `bun run preview` - Preview production build locally (via preview-server.js)
 - `bun run clean` - Clean build artifacts
-- `bun run deploy` - Deploy to Arweave (local)
+- `bun run deploy` - Deploy to production (via GitHub Actions)
 - `bun run deploy:preview` - Create preview deployment
 
 ## Deployment
@@ -95,14 +95,21 @@ The build system has been streamlined for simplicity and maintainability:
 The project uses GitHub Actions for automated deployments:
 
 #### **Production Deployment** 
-- **Trigger**: Push to `main` branch
+- **Trigger**: `bun run deploy` (creates PR or pushes to `main` branch)
 - **URL**: https://glossary.ar.io
 - **ArNS**: `glossary` (main domain)
 
 #### **Preview Deployment**
-- **Trigger**: Push to `preview` branch  
+- **Trigger**: `bun run deploy:preview` (pushes to `preview` branch)
 - **URL**: https://preview_glossary.ar.io
 - **ArNS**: `glossary` with `preview` undername
+
+**Both deployments use the same GitHub Actions workflow** - no local secrets needed! 🎉
+
+### 🔄 **Workflow Recommendations:**
+
+- **Contributors**: Use `bun run deploy:preview` → test changes → create PR to main  
+- **Maintainers**: Use `bun run deploy` → choose PR or direct push based on repo governance
 
 #### **Pull Request Checks**
 - **Trigger**: Pull requests to `main`
@@ -117,7 +124,7 @@ To create a preview deployment from any branch:
 bun run deploy:preview
 
 # Or using the script directly
-./scripts/create-preview.sh
+./scripts/deploy-preview.sh
 
 # Or manually
 git push origin HEAD:preview --force-with-lease
@@ -129,14 +136,28 @@ The script will:
 3. Trigger the GitHub Actions workflow
 4. Deploy to `https://preview_glossary.ar.io`
 
-### Manual Deployment
+### Production Deployment
 
-For local manual deployment:
+To deploy to production from any branch:
 
 ```bash
-bun run build
+# Deploy to production (interactive menu)
 bun run deploy
 ```
+
+The script will offer two deployment options:
+
+1. **Create Pull Request** (recommended for most workflows)
+   - Pushes your current branch to origin
+   - Provides GitHub URL to create PR to main
+   - Production deployment happens when PR is merged
+
+2. **Direct Push to Main** (maintainers only)
+   - Pushes directly to main branch
+   - Triggers immediate production deployment
+   - Use only if you have write access to main
+
+This approach works with both protected and unprotected main branches.
 
 ## How It Works
 
