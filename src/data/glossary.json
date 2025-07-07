@@ -1825,12 +1825,36 @@
       "docs": ["https://github.com/permaweb/HyperBEAM"]
     },
     {
-      "term": "PATCH",
-      "definition": "A method in HyperBEAM that enables efficient state updates by modifying only specific parts of data structures rather than replacing entire objects. When sent with method=patch in AO, it allows processes to update their state incrementally, significantly reducing latency and computational overhead. PATCH works with HyperBEAM's caching system to provide high-performance state management even for legacy processes. This mechanism is particularly valuable for applications handling large datasets or requiring frequent small updates, as it minimizes network traffic and processing time by transmitting only the changed portions of state.",
+      "term": "~patch@1.0",
+      "definition": "A HyperBEAM device that enables AO processes to expose specific parts of their internal state for direct HTTP access. It allows developers to make selected data immediately readable via a standardized URL path, improving performance for web frontends and data services by replacing slower dryrun calls with immediate state reading.",
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Process", "State Management", "Device", "Cache"],
-      "aliases": ["Partial Update", "State Patching"],
-      "docs": ["https://github.com/permaweb/HyperBEAM"]
+      "aliases": ["PATCH", "PATCH Device", "State Exposure Device"],
+      "docs": ["https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html"]
+    },
+    {
+      "term": "Permaweb Deploy",
+      "definition": "A Node.js command-line tool designed to streamline the deployment of web applications to the Arweave permaweb. It automates the process of uploading build folders using Turbo, creating manifests, and updating ArNS (Arweave Name Service) records. The tool supports both mainnet and testnet deployments and integrates easily with GitHub Actions for continuous deployment workflows.",
+      "category": "Arweave Ecosystem",
+      "related": ["Arweave", "ArNS", "Turbo", "Permaweb", "Deployment"],
+      "aliases": ["permaweb-deploy"],
+      "docs": ["https://github.com/permaweb/permaweb-deploy", "https://docs.ar.io/guides/permaweb-deploy"]
+    },
+    {
+      "term": "~lua@5.3a",
+      "definition": "A HyperBEAM device (lua@5.3a) that enables dynamic, on-the-fly computation of process state using Lua scripts. It allows transformation of process state without altering the underlying data, supporting pipeline-style processing where state is passed as a base message and custom Lua functions are executed to return computed results.",
+      "category": "AO Core Infrastructure",
+      "related": ["HyperBEAM", "Process", "State Management", "Device", "Lua"],
+      "aliases": ["Lua Device", "Dynamic State Device"],
+      "docs": ["https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html"]
+    },
+    {
+      "term": "Wayfinder SDK",
+      "definition": "A client-side routing and verification library for decentralized data access on the Arweave network. It provides intelligent gateway routing based on performance and availability, cryptographic data verification to ensure content integrity, and seamless access to permaweb content by automatically selecting optimal gateways and verifying data authenticity.",
+      "category": "Arweave Ecosystem",
+      "related": ["Wayfinder Protocol", "Gateway", "AR.IO", "Data Verification"],
+      "aliases": ["@ar.io/wayfinder-core", "@ar.io/wayfinder-react"],
+      "docs": ["https://docs.ar.io/wayfinder"]
     }
   ]
 }
