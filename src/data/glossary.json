@@ -921,14 +921,6 @@
       "docs": []
     },
     {
-      "term": "dryrun Parameter",
-      "definition": "An API parameter that allows execution of operations without committing them to the blockchain, useful for testing and validation.",
-      "category": "AO Development",
-      "related": ["Process", "Message", "Handler"],
-      "aliases": ["Test Mode"],
-      "docs": []
-    },
-    {
       "term": "Relay Operator",
       "definition": "An entity that facilitates message transmission in the AO network, often requiring payment in the form of tokens to relay messages.",
       "category": "AO Core Infrastructure",
@@ -1855,6 +1847,14 @@
       "related": ["Wayfinder Protocol", "Gateway", "AR.IO", "Data Verification"],
       "aliases": ["@ar.io/wayfinder-core", "@ar.io/wayfinder-react"],
       "docs": ["https://docs.ar.io/wayfinder"]
+    },
+    {
+      "term": "dryrun",
+      "definition": "A simulation of an operation without committing it to the blockchain, allowing you to test and validate interactions on process state before applying them permanently. This method is being deprecated for HyperBEAM processes in favor of the state patching mechanism (~patch@1.0 device) for better performance, as dryrun calls caused bottlenecks on Legacynet. Still useful for testing token balances, transfers, and other operations locally before execution.",
+      "category": "AO Development",
+      "related": ["Process", "State Management", "HyperBEAM", "~patch@1.0", "Message", "Handler", "Legacynet"],
+      "aliases": ["dry run", "test mode", "simulation", "dryrun parameter"],
+      "docs": []
     }
   ]
 }
