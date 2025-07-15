@@ -27,11 +27,13 @@ let shuffledTerms = []; // Global variable to store shuffled terms
 let hideRecommendations = false; // Flag to track if recommendations should be hidden
 let isKeyboardActive = false; // Flag to track if the keyboard is active
 let prevQuery = ''; // Track previous query state
+let isGlossaryMode = true; // Track whether we're showing "Glossary" or "Documentation"
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const resultsContainer = document.getElementById('results');
 const loadingStatus = document.getElementById('loading-status');
+const clickableTitle = document.getElementById('clickableTitle');
 
 // Theme switching functionality
 const themeToggle = document.querySelector('.theme-toggle');
@@ -172,6 +174,24 @@ function applyQueryParameters() {
     }
 }
 
+// Title toggle functionality
+function initializeTitleToggle() {
+    if (clickableTitle) {
+        clickableTitle.addEventListener('click', () => {
+            isGlossaryMode = !isGlossaryMode;
+            clickableTitle.textContent = isGlossaryMode ? 'Glossary' : 'Documentation';
+            
+            // Update the page title as well
+            const currentTitle = document.title;
+            if (isGlossaryMode) {
+                document.title = currentTitle.replace('Documentation', 'Glossary');
+            } else {
+                document.title = currentTitle.replace('Glossary', 'Documentation');
+            }
+        });
+    }
+}
+
 // Initialize the application
 async function init() {
     try {
@@ -247,6 +267,9 @@ async function init() {
         if (window.keyboardNav) {
             window.keyboardNav.init();
         }
+        
+        // Initialize title toggle functionality
+        initializeTitleToggle();
         
         // Check for initial search query in URL
         const initialQuery = getSearchQueryFromURL();

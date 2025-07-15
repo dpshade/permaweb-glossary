@@ -171,6 +171,19 @@ h1 {
   display: var(--header-display);
 }
 
+.clickable-title {
+  cursor: pointer;
+  transition: color 0.2s ease, text-shadow 0.2s ease, border-bottom-color 0.2s ease;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.clickable-title:hover {
+  color: var(--ao-primary-color);
+  text-shadow: 0 0 8px var(--ao-primary-color);
+  border-bottom-color: var(--ao-primary-color);
+}
+
 .search-input {
   position: relative;
   width: 100%;

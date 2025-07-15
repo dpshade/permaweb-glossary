@@ -6,7 +6,7 @@
       "category": "Arweave Technology",
       "related": ["Bundling", "Transaction", "Data Storage", "Base Layer Transaction"],
       "aliases": ["Bundled Data Standard", "Arweave Network Standard 104"],
-      "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
+      "docs": ["ar://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
     },
     {
       "term": "Messaging Patterns",
@@ -14,7 +14,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "Process", "ao.send", "msg.reply", "msg.forward", "Reference"],
       "aliases": ["Communication Patterns", "Message Exchange Patterns"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "ao.send",
@@ -22,7 +22,7 @@
       "category": "AO Development",
       "related": ["Message", "Process", "ao.send().receive()", "Non-blocking Communication"],
       "aliases": ["Send Function", "Asynchronous Send"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "ao.send().receive()",
@@ -30,7 +30,7 @@
       "category": "AO Development",
       "related": ["ao.send", "Message", "X-Reference", "Blocking Communication"],
       "aliases": ["Request-Response Pattern", "Blocking Receive"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "msg.reply",
@@ -38,7 +38,7 @@
       "category": "AO Development",
       "related": ["Message", "Handler", "X-Reference", "Reply-To"],
       "aliases": ["Reply Function", "Message Response"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "msg.forward",
@@ -46,7 +46,7 @@
       "category": "AO Development",
       "related": ["Message", "X-Reference", "X-Origin", "Message Forwarding"],
       "aliases": ["Forward Function", "Message Routing"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Receive",
@@ -54,7 +54,7 @@
       "category": "AO Development",
       "related": ["Message", "Pattern Matching", "Blocking Communication"],
       "aliases": ["Capital-R Receive", "Pattern Matcher"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Handlers.utils.reply",
@@ -62,7 +62,7 @@
       "category": "AO Development",
       "related": ["Handler", "msg.reply", "Message"],
       "aliases": ["Auto-reply Utility", "Reply Handler Creator"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Reference",
@@ -70,7 +70,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "X-Reference", "Message Chain"],
       "aliases": ["Message ID", "Message Reference"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Reply-To",
@@ -78,7 +78,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "msg.reply", "Message Routing"],
       "aliases": ["Response Destination", "Reply Address"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "X-Reference",
@@ -86,7 +86,7 @@
       "category": "AO Core Concepts",
       "related": ["Reference", "Message", "Message Chain", "X-Origin"],
       "aliases": ["Conversation Reference", "Message Chain ID"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "X-Origin",
@@ -94,7 +94,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "msg.forward", "X-Reference"],
       "aliases": ["Original Sender", "Message Originator"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Blocking Communication",
@@ -102,7 +102,7 @@
       "category": "AO Core Concepts",
       "related": ["Receive", "ao.send().receive()", "Non-blocking Communication"],
       "aliases": ["Synchronous Communication", "Blocking Messaging"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Non-blocking Communication",
@@ -110,7 +110,7 @@
       "category": "AO Core Concepts",
       "related": ["ao.send", "msg.reply", "msg.forward", "Blocking Communication"],
       "aliases": ["Asynchronous Communication", "Non-blocking Messaging"],
-      "docs": ["https://cookbook_ao.arweave.net/references/messaging.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/messaging.html"]
     },
     {
       "term": "Process",
@@ -118,7 +118,7 @@
       "category": "AO Core Concepts",
       "related": ["Message", "Spawn", "Process ID", "Actor Model"],
       "aliases": ["AO Process", "Actor", "Smart Contract"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "Message",
@@ -126,7 +126,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Tags", "Handler", "Outbox", "AO Core Protocol", "Device", "Hashpath", "Path"],
       "aliases": ["AO Message", "Converge Message"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/messages.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/messages.html"]
     },
     {
       "term": "Handler",
@@ -134,7 +134,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "Pattern Matching"],
       "aliases": ["Message Handler"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Resolvers",
@@ -142,7 +142,7 @@
       "category": "AO Development",
       "related": ["Handler", "Pattern Matching Tables", "Message", "Handler Pattern"],
       "aliases": ["Handler Resolvers", "Conditional Handlers"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Pattern Matching Tables",
@@ -150,7 +150,7 @@
       "category": "AO Development",
       "related": ["Handler", "Message", "Handler Pattern", "Resolvers"],
       "aliases": ["Message Matching Tables", "Tag Matching Patterns"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Handlers.utils.hasMatchingData",
@@ -158,7 +158,7 @@
       "category": "AO Development",
       "related": ["Handler", "Message", "Handlers.utils.reply", "Handlers.utils.hasMatchingTag"],
       "aliases": ["Data Matcher", "Content Matcher"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Handlers.utils.hasMatchingTag",
@@ -166,7 +166,7 @@
       "category": "AO Development",
       "related": ["Handler", "Message", "Handlers.utils.reply", "Handlers.utils.hasMatchingData"],
       "aliases": ["Tag Matcher", "Tag Validator"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Handlers.add",
@@ -174,7 +174,7 @@
       "category": "AO Development",
       "related": ["Handler", "Pattern Matching Tables", "Resolvers", "Message"],
       "aliases": ["Add Handler", "Register Handler"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Handlers.once",
@@ -182,7 +182,7 @@
       "category": "AO Development",
       "related": ["Handler", "Handlers.add", "Pattern Matching Tables", "Message"],
       "aliases": ["Single-Run Handler", "One-Time Handler"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "Handler Execution Flow",
@@ -190,7 +190,7 @@
       "category": "AO Core Concepts",
       "related": ["Handler", "Message", "Pattern Matching Tables", "Handlers.add"],
       "aliases": ["Handler Pipeline", "Execution Order", "Handler Processing Flow"],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html"]
     },
     {
       "term": "ArFS",
@@ -198,7 +198,7 @@
       "category": "Arweave Technology",
       "related": ["Arweave", "Data Storage", "Metadata", "Tags", "Transaction", "Permanent Storage", "ArDrive", "File System"],
       "aliases": ["Arweave File System"],
-      "docs": ["https://cookbook.ar.io/concepts/arfs/arfs.html", "https://ardrive.io/arfs/"]
+      "docs": ["ar://cookbook.ar.io/concepts/arfs/arfs.html", "https://ardrive.io/arfs/"]
     },
     {
       "term": "Spawn",
@@ -262,7 +262,7 @@
       "category": "AO Features",
       "related": ["Process", "Autonomous Execution", "Agent"],
       "aliases": ["Scheduled Execution"],
-      "docs": ["https://cookbook_ao.arweave.net/references/cron.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/cron.html"]
     },
     {
       "term": "Holographic State",
@@ -270,7 +270,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "Parallel Processing", "Hyper Parallel Computing", "State Management"],
       "aliases": ["Holographic Process State", "Independent State Management"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "AOS",
@@ -310,7 +310,7 @@
       "category": "AR.IO Infrastructure",
       "related": ["Gateway", "Gateway Address Registry", "Protocol Balance", "Wayfinder Protocol", "Layer 2 Infrastructure"],
       "aliases": ["Arweave I/O", "ARIO"],
-      "docs": ["https://ar.io/"]
+      "docs": ["ar://ar.io/"]
     },
     {
       "term": "AR.IO Gateway",
@@ -318,7 +318,7 @@
       "category": "AR.IO Infrastructure",
       "related": ["AR.IO", "Gateway Address Registry", "Wayfinder Protocol", "Data Retrieval"],
       "aliases": ["ARIO Gateway"],
-      "docs": ["https://docs.ar.io/build/gateways#overview"]
+      "docs": ["ar://docs.ar.io/build/gateways#overview"]
     },
     {
       "term": "Bundling",
@@ -382,7 +382,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "ao Module", "Data Access"],
       "aliases": ["Process Assignments", "Message Assignment"],
-      "docs": ["https://cookbook_ao.arweave.net/references/data.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/data.html"]
     },
     {
       "term": "ao Module",
@@ -390,7 +390,7 @@
       "category": "AO Development",
       "related": ["Process", "Message", "Assignments", "Environment"],
       "aliases": ["AO Library", "Core Module"],
-      "docs": ["https://cookbook_ao.arweave.net/references/ao.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/ao.html"]
     },
     {
       "term": "AO Computer",
@@ -462,7 +462,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Handler", "Message", "Security Model"],
       "aliases": ["Eval Handler", "Code Evaluator"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/eval.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/eval.html"]
     },
     {
       "term": "Gateway Address Registry",
@@ -678,7 +678,7 @@
       "category": "AO Development",
       "related": ["Handler", "Handler Pattern", "Pattern Matching"],
       "aliases": [],
-      "docs": ["https://cookbook_ao.arweave.net/references/handlers.html#resolvers"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/handlers.html#resolvers"]
     },
     {
       "term": "WeaveDrive",
@@ -686,7 +686,7 @@
       "category": "AO Core Infrastructure",
       "related": ["AO Process", "Arweave", "Data Protocol", "Attestation", "File System"],
       "aliases": ["AOP-5", "WeaveDrive Protocol"],
-      "docs": ["https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/guides/snacks/weavedrive.html"]
     },
     {
       "term": "Attestor",
@@ -894,7 +894,7 @@
       "category": "AO Development",
       "related": ["AO Process", "Message", "JavaScript", "TypeScript", "Node.js"],
       "aliases": ["AO Connect", "AO Client Library"],
-      "docs": ["https://cookbook_ao.arweave.net/guides/aoconnect/aoconnect.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/guides/aoconnect/aoconnect.html"]
     },
     {
       "term": "AO Dev-Cli",
@@ -902,7 +902,7 @@
       "category": "AO Development",
       "related": ["WebAssembly", "WASM", "Lua", "C/C++", "Module", "Build Tool"],
       "aliases": ["AO CLI", "AO Development CLI"],
-      "docs": ["https://cookbook_ao.arweave.net/guides/dev-cli/index.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/guides/dev-cli/index.html"]
     },
     {
       "term": "aos console",
@@ -1046,7 +1046,7 @@
       "category": "AO Development",
       "related": ["BetterIDEa", "AO Modules", "Process Module"],
       "aliases": ["APM"],
-      "docs": ["https://apm_betteridea.arweave.net/"]
+      "docs": ["ar://apm_betteridea.arweave.net/"]
     },
     {
       "term": "AO Ventures",
@@ -1062,7 +1062,7 @@
   "category": "Arweave Ecosystem",
   "related": ["Arweave", "Permaweb", "Permanent Web Hosting", "Decentralized Deployment"],
   "aliases": ["Decentralized Vercel", "Permaweb Hosting", "Permanent Frontend Hosting", "CICD for the permaweb"],
-  "docs": ["https://arlink.arweave.net/"]
+  "docs": ["ar://arlink.arweave.net/"]
     },
     {
       "term": "Autonomous Finance",
@@ -1078,7 +1078,7 @@
       "category": "Decentralized Applications (dApps)",
       "related": ["Universal Content Marketplace", "AO", "Universal Data License", "Permaweb", "Orderbook"],
       "aliases": ["Decentralized Asset Exchange", "UCM Marketplace", "Open Sea"],
-      "docs": ["https://bazar.arweave.net/", "https://github.com/permaweb/ao-ucm"]
+      "docs": ["ar://bazar.arweave.net/", "https://github.com/permaweb/ao-ucm"]
     },
     {
       "term": "BetterIDEa",
@@ -1094,7 +1094,7 @@
       "category": "DeFi",
       "related": ["AO Process", "AMM", "Liquidity Pool", "Autonomous Agent", "Order Book", "Arweave", "Decentralized Exchange"],
       "aliases": ["Botega Exchange", "AO DeFi Platform"],
-      "docs": ["https://botega.arweave.net", "https://botega.arweave.dev", "https://botega.ar.io"]
+      "docs": ["ar://botega.arweave.net", "ar://botega.arweave.dev", "ar://botega.ar.io"]
     },
     {
       "term": "Community Labs",
@@ -1118,7 +1118,7 @@
       "category": "Decentralized Applications (dApps)",
       "related": ["AO Network", "Financial Data", "Data Aggregation", "Asset Trading", "Real-time Data", "Oracle"],
       "aliases": ["Dexi Terminal", "AO Financial Data Agent"],
-      "docs": ["https://dexi.arweave.net/"]
+      "docs": ["ar://dexi.arweave.net/"]
     },
     {
       "term": "Forward Research",
@@ -1126,7 +1126,7 @@
       "category": "Organizations",
       "related": ["AO Network", "Research", "Development"],
       "aliases": ["FWD Research"],
-      "docs": ["https://fwd.arweave.net/"]
+      "docs": ["ar://fwd.arweave.net/"]
     },
     {
       "term": "Longview Labs",
@@ -1158,7 +1158,7 @@
       "category": "Decentralized Applications (dApps)",
       "related": ["Arweave", "Data Analytics", "Oracle"],
       "aliases": ["Data Oracle"],
-      "docs": ["https://ar.io/case-studies/redstone"]
+      "docs": ["ar://ar.io/case-studies/redstone"]
     },
     {
       "term": "Trackgood",
@@ -1166,7 +1166,7 @@
       "category": "Decentralized Applications (dApps)",
       "related": ["Supply Chain Management", "Arweave", "Data Integrity"],
       "aliases": ["Supply Chain Platform"],
-      "docs": ["https://ar.io/case-studies/trackgood"]
+      "docs": ["ar://ar.io/case-studies/trackgood"]
     },
     {
       "term": "Wander",
@@ -1190,7 +1190,7 @@
       "category": "Arweave Technology",
       "related": ["Query Language", "Data Retrieval", "Indexing", "Gateway"],
       "aliases": ["Arweave GraphQL", "AR GraphQL"],
-      "docs": ["https://cookbook.arweave.net/concepts/queryTransactions.html"]
+      "docs": ["ar://cookbook.arweave.net/concepts/queryTransactions.html"]
     },
     {
       "term": "Multi-sig",
@@ -1206,7 +1206,7 @@
       "category": "Arweave Ecosystem",
       "related": ["Arweave", "AO Ecosystem", "On-chain Publication"],
       "aliases": [],
-      "docs": ["https://permaweb-journal.arweave.net"]
+      "docs": ["ar://permaweb-journal.arweave.net"]
     },
     {
       "term": "Lua",
@@ -1214,7 +1214,7 @@
       "category": "AO Development",
       "related": ["AO Process", "Scripting Language", "BetterIDEa"],
       "aliases": [],
-      "docs": ["https://cookbook_ao.arweave.net/references/lua.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/references/lua.html"]
     },
     {
       "term": "Under_names",
@@ -1222,7 +1222,7 @@
       "category": "AR.IO Ecosystem",
       "related": ["ArNS", "ANT"],
       "aliases": ["Undernames", "Subdomain"],
-      "docs": ["https://docs.ar.io/arns"]
+      "docs": ["ar://docs.ar.io/arns"]
     },
     {
       "term": "Permaweb Glossary",
@@ -1270,7 +1270,7 @@
       "category": "Arweave Technology",
       "related": ["ANS-104", "Bundle", "AO Message", "Arweave", "Data Storage"],
       "aliases": ["ANS-104 Data Item", "Bundled Data Item", "DataItem"],
-      "docs": ["https://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
+      "docs": ["ar://specs.g8way.io/?tx=xwOgX-MmqN5_-Ny_zNu2A8o-PnTGsoRb_3FrtiMAkuw"]
     },
     {
       "term": "AO Link",
@@ -1374,7 +1374,7 @@
       "category": "People",
       "related": ["Arweave", "AO Computer", "Permaweb", "Forward Research"],
       "aliases": ["Arweave Founder", "AO Creator"],
-      "docs": ["https://sam_metalinks.arweave.net/"]
+      "docs": ["ar://sam_metalinks.arweave.net/"]
     },
     {
       "term": "Metalinks",
@@ -1382,7 +1382,7 @@
       "category": "Web3 Infrastructure",
       "related": ["Decentralization", "Web3", "Digital Sovereignty", "Permaweb", "Arweave"],
       "aliases": ["Decentralized Link Hub", "Web3 Link Platform", "Link tree"],
-      "docs": ["https://metalinks.arweave.net/"]
+      "docs": ["ar://metalinks.arweave.net/"]
     },
     {
       "term": "Fair Launch",
@@ -1550,7 +1550,7 @@
       "category": "AR.IO Economics",
       "related": ["AR.IO", "Protocol Balance", "Protocol Rewards", "Staking", "Gateway", "ArNS"],
       "aliases": ["$ARIO"],
-      "docs": ["https://ar.io/articles/ario-tokenomics-guide"]
+      "docs": ["ar://ar.io/articles/ario-tokenomics-guide"]
     },
     {
       "term": "Armstrong",
@@ -1670,7 +1670,7 @@
       "category": "AO Development",
       "related": ["AO Computer", "aos console", "Process", "Development Environment"],
       "aliases": ["ao legacynet", "ao Testnet"],
-      "docs": ["https://cookbook_ao.arweave.net/legacynet"]
+      "docs": ["ar://cookbook_ao.arweave.net/legacynet"]
     },
     {
       "term": "RandAO",
@@ -1678,7 +1678,7 @@
       "category": "AO Ecosystem",
       "related": ["AO Computer", "Verifiable Delay Function", "Commit Reveal Scheme", "$RNG Token", "Randomness Generation"],
       "aliases": ["Random AO", "Decentralized Randomness"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "Verifiable Delay Function",
@@ -1686,7 +1686,7 @@
       "category": "Cryptography",
       "related": ["RandAO", "Pietrzak's VDF", "Cryptographic Primitive", "Sequential Computation"],
       "aliases": ["VDF", "Time-lock Puzzle"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "Commit Reveal Scheme",
@@ -1694,7 +1694,7 @@
       "category": "Cryptography",
       "related": ["RandAO", "Entropy", "Verifiable Delay Function", "Randomness Generation"],
       "aliases": ["Commitment Scheme", "Commit-then-Reveal"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "$RNG Token",
@@ -1702,7 +1702,7 @@
       "category": "AO Economics",
       "related": ["RandAO", "Token Utility", "Staking Mechanism", "Provider"],
       "aliases": ["RNG Token", "$RNG"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "Pietrzak's VDF",
@@ -1710,7 +1710,7 @@
       "category": "Cryptography",
       "related": ["Verifiable Delay Function", "RandAO", "RSW Timelock Puzzle", "Sequential Computation"],
       "aliases": ["Simple VDF", "Pietrzak VDF"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "RSW Timelock Puzzle",
@@ -1718,7 +1718,7 @@
       "category": "Cryptography",
       "related": ["Verifiable Delay Function", "RandAO", "Pietrzak's VDF", "Sequential Computation"],
       "aliases": ["Rivest-Shamir-Wagner Timelock", "Sequential Timelock Puzzle"],
-      "docs": ["https://randao_whitepaper.arweave.net"]
+      "docs": ["ar://randao_whitepaper.arweave.net"]
     },
     {
       "term": "Parallel Processing",
@@ -1726,7 +1726,7 @@
       "category": "AO Core Concepts",
       "related": ["Process", "Message", "Actor Model", "Non-blocking Communication", "HyperBEAM", "Compute Unit", "Holographic State", "Hyper Parallel Computing"],
       "aliases": ["Parallel Execution", "Concurrent Processing", "Parallel Computation"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "Hyper Parallel Computing",
@@ -1734,7 +1734,7 @@
       "category": "AO Core Concepts",
       "related": ["Parallel Processing", "Process", "Message", "Actor Model", "Non-blocking Communication", "HyperBEAM", "Compute Unit", "Holographic State"],
       "aliases": ["Parallel Computing"],
-      "docs": ["https://cookbook_ao.arweave.net/concepts/processes.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/concepts/processes.html"]
     },
     {
       "term": "Deflationary",
@@ -1742,7 +1742,7 @@
       "category": "Arweave Economics",
       "related": ["Storage Endowment", "AR Token", "Token Sink", "Storage Cost Decline Rate"],
       "aliases": ["Supply Reduction", "Deflationary Tokenomics"],
-      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+      "docs": ["ar://arwiki.arweave.net/#/en/endowment-simulation"]
     },
     {
       "term": "Endowment Simulation",
@@ -1750,7 +1750,7 @@
       "category": "Arweave Technology",
       "related": ["Storage Endowment", "Storage Cost Decline Rate", "Permanent Storage Economics"],
       "aliases": ["Storage Simulator", "Endowment Calculator"],
-      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+      "docs": ["ar://arwiki.arweave.net/#/en/endowment-simulation"]
     },
     {
       "term": "Non-value Extractive Mechanism",
@@ -1758,7 +1758,7 @@
       "category": "Arweave Economics",
       "related": ["Storage Endowment", "Permanent Storage Economics", "Deflationary"],
       "aliases": ["Value-aligned Economics", "Non-extractive Model"],
-      "docs": ["https://arwiki.arweave.net/#/en/endowment-simulation"]
+      "docs": ["ar://arwiki.arweave.net/#/en/endowment-simulation"]
     },
     {
       "term": "Permanent Storage Economics",
@@ -1766,7 +1766,7 @@
       "category": "Arweave Economics",
       "related": ["Storage Endowment", "AR Token", "Non-value Extractive Mechanism", "Storage Cost Decline Rate"],
       "aliases": ["Endowment Economics", "Perpetual Storage Model"],
-      "docs": ["https://arwiki.arweave.net/#/en/storage-endowment"]
+      "docs": ["ar://arwiki.arweave.net/#/en/storage-endowment"]
     },
     {
       "term": "Storage Cost Decline Rate",
@@ -1782,7 +1782,7 @@
       "category": "Arweave Economics",
       "related": ["AR Token", "Permanent Storage", "Deflationary", "Storage Cost Decline Rate"],
       "aliases": ["Endowment", "Storage Fund"],
-      "docs": ["https://arwiki.arweave.net/#/en/storage-endowment"]
+      "docs": ["ar://arwiki.arweave.net/#/en/storage-endowment"]
     },
     {
       "term": "Token Sink",
@@ -1822,7 +1822,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Process", "State Management", "Device", "Cache"],
       "aliases": ["PATCH", "PATCH Device", "State Exposure Device"],
-      "docs": ["https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html"]
     },
     {
       "term": "Permaweb Deploy",
@@ -1830,7 +1830,7 @@
       "category": "Arweave Ecosystem",
       "related": ["Arweave", "ArNS", "Turbo", "Permaweb", "Deployment"],
       "aliases": ["permaweb-deploy"],
-      "docs": ["https://github.com/permaweb/permaweb-deploy", "https://docs.ar.io/guides/permaweb-deploy"]
+      "docs": ["https://github.com/permaweb/permaweb-deploy", "ar://docs.ar.io/guides/permaweb-deploy"]
     },
     {
       "term": "~lua@5.3a",
@@ -1838,7 +1838,7 @@
       "category": "AO Core Infrastructure",
       "related": ["HyperBEAM", "Process", "State Management", "Device", "Lua"],
       "aliases": ["Lua Device", "Dynamic State Device"],
-      "docs": ["https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html"]
+      "docs": ["ar://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html"]
     },
     {
       "term": "Wayfinder SDK",
@@ -1846,7 +1846,7 @@
       "category": "Arweave Ecosystem",
       "related": ["Wayfinder Protocol", "Gateway", "AR.IO", "Data Verification"],
       "aliases": ["@ar.io/wayfinder-core", "@ar.io/wayfinder-react"],
-      "docs": ["https://docs.ar.io/wayfinder"]
+      "docs": ["ar://docs.ar.io/wayfinder"]
     },
     {
       "term": "dryrun",
@@ -1854,7 +1854,7 @@
       "category": "AO Development",
       "related": ["Process", "State Management", "HyperBEAM", "~patch@1.0", "Message", "Handler", "Legacynet"],
       "aliases": ["dry run", "test mode", "simulation", "dryrun parameter"],
-      "docs": []
+      "docs": ["ar://cookbook_ao.arweave.net/guides/aoconnect/calling-dryrun.html#calling-dryrun"]
     }
   ]
 }
