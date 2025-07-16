@@ -20,6 +20,11 @@ Wayfinder URLs are broken and not working as intended. The wayfinder utility fun
 - Gateway routing is not functioning
 - Users cannot access content through wayfinder URLs
 
+**Latest Updates (July 2025):**
+- Gateway pinging logic was optimized for performance and reliability.
+- Timeouts have been reduced, and gateway verification on startup has been disabled to prevent the app from hanging.
+- While these changes improve stability, the core URL resolution issue may still persist.
+
 **Reproduction Steps:**  
 1. Navigate to the application
 2. Attempt to access content through wayfinder URLs
@@ -36,44 +41,37 @@ Wayfinder URLs are broken and not working as intended. The wayfinder utility fun
 **Status:** Fixed  
 **Fixed in:** Latest release  
 **Priority:** High  
-**Component:** Enhanced Search (`src/js/enhanced-search.js`)
+**Component:** Search System
 
 **Description:**  
-When toggling to "Documentation" mode (previously "Dictionary"), the application is not using the alternative FlexSearch index built from `docs-index.json`. The documentation search functionality is incomplete.
-
-**Expected Behavior:**  
-- Clicking "Glossary" → "Documentation" should switch to docs search mode
-- Documentation search should use FlexSearch index from `docs-index.json`
-- Search results should show Permaweb documentation pages
-- Search should be fast and relevant using the pre-built index
+When toggling to "Documentation" mode, the application was not using the alternative FlexSearch index built from `docs-index.json`. The documentation search functionality was incomplete.
 
 **Solution:**  
-- Integrated `enhanced-search.js` into the main application
-- Added proper module imports in `index.html` for enhanced search functionality
-- Modified `main.js` to detect and initialize `EnhancedPermwebSearch` when available
-- Enhanced title toggle to properly switch between glossary and documentation search modes
-- Updated search placeholder text and behavior based on current mode
-- Documentation search now loads from remote `docs-index.json` with fallback URLs
-- Results display adapted for both glossary terms and documentation pages
+A comprehensive refactor of the search system was completed, replacing the legacy `enhanced-search.js` with a more robust and modular architecture.
 
 **Technical Changes:**
-- **Files modified:**
-  - `public/index.html` - Added enhanced-search.js and wayfinder-utils.js imports
-  - `src/js/main.js` - Added enhanced search integration and mode switching
-  - `src/js/enhanced-search.js` - Removed auto-initialization, made globally available
-  - `package.json` - Added enhanced search files to build process
-- **Implementation completed:**
-  - Mode switching logic between glossary and documentation search
-  - FlexSearch index loading for documentation from remote sources
-  - Proper results display for documentation format with metadata
-  - Seamless fallback to basic search when enhanced search unavailable
+- **New Architecture:**
+  - `SearchManager`: Controls the overall search state and orchestrates different providers.
+  - `SearchState`: Manages UI state (e.g., `has-results`).
+  - `SearchProvider`: Base class for different search implementations.
+  - `BasicSearchProvider`: Handles glossary search.
+  - `EnhancedSearchProvider`: Handles documentation search, loading the `docs-index.json` FlexSearch index.
+  - `permaweb-config.js` and `search-config.js` were added for easier configuration.
+- **Files Modified:**
+  - `src/js/main.js`: Streamlined to use the new `SearchManager`.
+  - `package.json`: Build scripts updated.
+- **Files Removed:**
+  - `src/js/enhanced-search.js`: Deprecated and removed.
+- **Implementation Completed:**
+  - Fully functional mode switching between glossary and documentation search.
+  - Asynchronous loading of the documentation index from remote sources.
+  - Standardized results display for both search modes.
 
 **Critical Bug Fixes Applied:**
-- **Fixed Race Conditions**: Moved search input handler initialization to occur AFTER data loading to prevent "Search index not initialized" errors
-- **Resolved Event Handler Conflicts**: Eliminated duplicate event handlers between main.js and enhanced-search.js
-- **Standardized Results Styling**: Documentation results now use identical HTML structure and CSS classes as glossary results
-- **Improved Error Handling**: Added graceful degradation when docs-index.json fails to load, with user-friendly error messages
-- **Enhanced Initialization Logic**: Added proper try-catch blocks and fallback mechanisms for robust initialization
+- **Fixed Race Conditions**: The new architecture ensures data is loaded before search is initialized.
+- **Resolved Event Handler Conflicts**: Centralized event handling in the new modules.
+- **Standardized Results Styling**: Documentation results now use identical HTML structure and CSS classes as glossary results.
+- **Improved Error Handling**: The system now has better fallbacks and displays clear error states.
 
 ---
 
@@ -94,8 +92,9 @@ Theme toggle button lacks proper ARIA labels and keyboard navigation support.
 
 ---
 
-### 4. Mobile Responsive Issues
-**Status:** Open  
+### ~~4. Mobile Responsive Issues~~
+**Status:** Fixed  
+**Fixed in:** Latest release  
 **Priority:** Medium  
 **Component:** CSS Responsive Design
 
@@ -103,24 +102,31 @@ Theme toggle button lacks proper ARIA labels and keyboard navigation support.
 Some layout issues on very small mobile devices (<350px width).
 
 **Symptoms:**  
-- Search input may overflow container
-- Random term tags can break layout
-- Navigation buttons may be too small
+- Search input could overflow container.
+- Random term tags could break layout.
+
+**Solution:**
+- The main layout, search container, and results display have been significantly improved with `flexbox` and `vh` units for better viewport fitting on mobile devices.
+- The random terms container is now hidden when search results are displayed, preventing layout conflicts.
 
 ---
 
 ### 5. Error Message Improvements
-**Status:** Open  
+**Status:** In Progress  
 **Priority:** Low  
-**Component:** Error Handling
+**Component:** Error Handling & CSS
 
 **Description:**  
 Generic error messages don't provide enough context for users when network or data loading fails.
 
+**Latest Updates (July 2025):**
+- CSS styles for a standardized error state and retry button (`.error-state`, `.retry-button`) have been implemented.
+- This provides the foundation for displaying more user-friendly error messages.
+
 **Improvement Needed:**  
-- More specific error messages
-- Retry mechanisms
-- Offline indicators
+- Integrate the new styles to show specific error messages.
+- Implement retry mechanisms in the JavaScript logic.
+- Add offline indicators.
 
 ---
 

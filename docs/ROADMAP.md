@@ -1,31 +1,29 @@
 # Permaweb Glossary - Development Roadmap
 
 ## Current Status
-The Permaweb Glossary is a functional search application with dual-mode capabilities (Glossary/Documentation) and theme switching. The title toggle feature has been successfully implemented.
+The Permaweb Glossary is a functional search application with dual-mode capabilities (Glossary/Documentation) and theme switching. The title toggle feature has been successfully implemented. A major refactor of the search system was recently completed for improved stability and modularity.
 
 ## Short Term Goals (Next 1-2 Releases)
 
 ### 🔧 Bug Fixes & Stability
-- **Fix Wayfinder URL Integration** - Resolve broken wayfinder URLs that are not working as intended
-- **Complete Documentation Search** - Implement proper FlexSearch integration for docs-index.json when in Documentation mode
-- **Enhanced Error Handling** - Improve error messages and fallback mechanisms for network failures
+- **Fix Wayfinder URL Integration** - Resolve broken wayfinder URLs that are not working as intended. While recent optimizations have improved performance, the core issue remains.
+- **Enhanced Error Handling** - Build upon the new error styling to implement user-friendly error messages and retry logic for network failures.
 
 ### 🚀 Feature Enhancements
-- **Search Mode Persistence** - Remember user's selected mode (Glossary/Documentation) across sessions
-- **Advanced Search Filters** - Add category filtering and advanced search operators
-- **Search History** - Implement recent searches functionality
-- **Keyboard Shortcuts** - Add hotkeys for common actions (toggle mode, focus search, etc.)
+- **Search Mode Persistence** - Remember user's selected mode (Glossary/Documentation) across sessions.
+- **Advanced Search Filters** - Add category filtering and advanced search operators.
+- **Search History** - Implement recent searches functionality.
+- **Keyboard Shortcuts** - Add hotkeys for common actions (toggle mode, focus search, etc.).
 
 ## Medium Term Goals (Next 3-6 Months)
 
 ### 📊 Performance & User Experience
-- **Search Analytics** - Track popular terms and search patterns
-- **Progressive Web App** - Add PWA capabilities for offline usage
-- **Search Suggestions** - Implement autocomplete and search suggestions
-- **Improved Mobile Experience** - Enhanced responsive design and touch interactions
+- **Search Analytics** - Track popular terms and search patterns.
+- **Progressive Web App** - Add PWA capabilities for offline usage.
+- **Search Suggestions** - Implement autocomplete and search suggestions.
 
 ### 🔗 Integration Features
-- **Deep Linking** - Better URL structure for sharing specific terms or search results
+- **Deep Linking** - Better URL structure for sharing specific terms or search results.
 - **Embed Widget** - Standalone embeddable search widget for other Permaweb sites
 - **API Endpoints** - RESTful API for programmatic access to glossary data
 - **Cross-Reference System** - Automatic linking between related terms in definitions
@@ -58,16 +56,21 @@ The Permaweb Glossary is a functional search application with dual-mode capabili
 ## Technical Debt & Infrastructure
 
 ### 🏗️ Architecture Improvements
-- **Module System Refactor** - Convert to modern ES modules with proper bundling
-- **State Management** - Implement centralized state management (Redux/Zustand)
-- **Testing Framework** - Comprehensive unit and integration test suite
-- **Documentation** - Complete API documentation and developer guides
+- **Migrate to Astro Framework** - Transition from the current vanilla JS architecture to the Astro framework to leverage its component-based architecture, automatic optimization (bundling, minification), and improved developer experience (HMR, TypeScript support). This will solve current build system and module management pain points and provide a more scalable foundation.
+- **State Management** - Implement centralized state management (Redux/Zustand).
+- **Testing Framework** - Comprehensive unit and integration test suite.
+- **Documentation** - Complete API documentation and developer guides.
 
 ### 🔧 Development Experience
-- **Build Optimization** - Improved build pipeline and asset optimization
-- **Development Tooling** - Hot reload, debugging tools, and development server
-- **CI/CD Pipeline** - Automated testing, building, and deployment
-- **Code Quality** - ESLint, Prettier, and TypeScript migration
+- **Build Optimization** - Improved build pipeline and asset optimization.
+- **Development Tooling** - Hot reload, debugging tools, and development server. The recent addition of `dev` and `sync` scripts in `package.json` improves the local development workflow.
+- **CI/CD Pipeline** - Automated testing, building, and deployment.
+- **Code Quality** - ESLint, Prettier, and TypeScript migration.
+
+## Recently Completed ✅
+- **Documentation Search**: The search system was refactored to fully support documentation search using a dedicated FlexSearch index.
+- **Mobile Responsive Design**: The UI has been significantly improved for better usability on mobile devices.
+
 
 ## Success Metrics
 
