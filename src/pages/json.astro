@@ -7,6 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <title>JSON API</title>
+    <!-- Load FlexSearch from local bundle -->
+    
 </head>
 <body>
 <script type="module">
@@ -41,58 +43,54 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Show loading
         document.body.innerHTML = '<div style="font-family: monospace; padding: 20px;">Loading search results...</div>';
         
-        // Wait a bit for potential search manager to load from parent window or main page
-        await new Promise(resolve => setTimeout(resolve, 100));
         
-        // Try to load search functionality
-        if (typeof window.searchManager === 'undefined') {
-            // Import and initialize search providers directly
-            const { SearchManager } = await import('../scripts/search-manager.js');
-            const { BasicSearchProvider } = await import('../scripts/basic-search-provider.js');
-            const { EnhancedSearchProvider } = await import('../scripts/enhanced-search-provider.js');
-            
-            const searchManager = new SearchManager();
-            const basicProvider = new BasicSearchProvider();
-            const enhancedProvider = new EnhancedSearchProvider();
-            
-            searchManager.registerProvider('basic', basicProvider);
-            searchManager.registerProvider('enhanced', enhancedProvider);
-            
-            const initialMode = (mode === 'docs') ? 'enhanced' : (mode === 'glossary') ? 'basic' : mode;
-            await searchManager.initialize(initialMode);
-            
-            // Perform search
-            await searchManager.performSearch(query);
-            const results = searchManager.state.currentResults || [];
-            
-            showJSON({
-                success: true,
-                query: query,
-                mode: initialMode,
-                results: results,
-                total: results.length,
-                timestamp: new Date().toISOString()
-            });
-        } else {
-            // Use existing search manager
-            const searchMode = (mode === 'docs') ? 'enhanced' : (mode === 'glossary') ? 'basic' : mode;
-            
-            if (window.searchManager.state.mode !== searchMode) {
-                await window.searchManager.switchMode(searchMode);
+        
+        // Import and initialize search providers directly
+        // Try multiple paths to handle both development and production
+        let searchManagerModule, basicProviderModule, enhancedProviderModule;
+        
+        try {
+            // Try development path first (Vite/Astro dev server)
+            searchManagerModule = await import('/src/scripts/search-manager.js');
+            basicProviderModule = await import('/src/scripts/basic-search-provider.js');
+            enhancedProviderModule = await import('/src/scripts/enhanced-search-provider.js');
+        } catch (devError) {
+            try {
+                // Fallback to production path
+                searchManagerModule = await import('../scripts/search-manager.js');
+                basicProviderModule = await import('../scripts/basic-search-provider.js');
+                enhancedProviderModule = await import('../scripts/enhanced-search-provider.js');
+            } catch (prodError) {
+                throw new Error(`Failed to load modules. Dev error: ${devError.message}, Prod error: ${prodError.message}`);
             }
-            
-            await window.searchManager.performSearch(query);
-            const results = window.searchManager.state.currentResults || [];
-            
-            showJSON({
-                success: true,
-                query: query,
-                mode: searchMode,
-                results: results,
-                total: results.length,
-                timestamp: new Date().toISOString()
-            });
         }
+        
+        const { SearchManager } = searchManagerModule;
+        const { BasicSearchProvider } = basicProviderModule;
+        const { EnhancedSearchProvider } = enhancedProviderModule;
+        
+        const searchManager = new SearchManager();
+        const basicProvider = new BasicSearchProvider();
+        const enhancedProvider = new EnhancedSearchProvider();
+        
+        searchManager.registerProvider('basic', basicProvider);
+        searchManager.registerProvider('enhanced', enhancedProvider);
+        
+        const initialMode = (mode === 'docs') ? 'enhanced' : (mode === 'glossary') ? 'basic' : mode;
+        await searchManager.initialize(initialMode);
+        
+        // Perform search
+        await searchManager.performSearch(query);
+        const results = searchManager.state.currentResults || [];
+        
+        showJSON({
+            success: true,
+            query: query,
+            mode: initialMode,
+            results: results,
+            total: results.length,
+            timestamp: new Date().toISOString()
+        });
         
     } catch (error) {
         showJSON({

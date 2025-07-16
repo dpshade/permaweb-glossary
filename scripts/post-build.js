@@ -6,6 +6,15 @@ import { gzipSync } from 'zlib';
 import { execSync } from 'child_process';
 import { Document } from 'flexsearch';
 
+// Configuration
+const DIST_DIR = 'dist';
+const SRC_SCRIPTS_DIR = 'src/scripts';
+const DIST_SCRIPTS_DIR = `${DIST_DIR}/scripts`;
+const GLOSSARY_SRC = 'public/data/glossary.json';
+const GLOSSARY_DIST = `${DIST_DIR}/src/data/glossary.json`;
+const GLOSSARY_TXT = `${DIST_DIR}/glossary.txt`;
+const FLEXSEARCH_INDEX_DIR = `${DIST_DIR}/flexsearch`;
+
 console.log('🔧 Running post-build optimizations...');
 
 // Clean up any .DS_Store files that might have slipped through
@@ -15,14 +24,9 @@ try {
   // Ignore if no .DS_Store files found
 }
 
-// Configuration
-const DIST_DIR = 'dist';
-const SRC_SCRIPTS_DIR = 'src/scripts';
-const DIST_SCRIPTS_DIR = `${DIST_DIR}/scripts`;
-const GLOSSARY_SRC = 'public/data/glossary.json';
-const GLOSSARY_DIST = `${DIST_DIR}/src/data/glossary.json`;
-const GLOSSARY_TXT = `${DIST_DIR}/glossary.txt`;
-const FLEXSEARCH_INDEX_DIR = `${DIST_DIR}/flexsearch`;
+// Step 0: Copy src/scripts to dist/scripts
+console.log('📂 Copying script files...');
+copyScriptFiles();
 
 
 // Ensure dist directory exists
@@ -48,6 +52,26 @@ console.log('📦 Compressing assets...');
 compressAssets(flexsearchFiles);
 
 console.log('✅ Post-build optimizations complete!');
+
+/**
+ * Copy script files from src/scripts to dist/scripts
+ */
+function copyScriptFiles() {
+  try {
+    if (!fs.existsSync(DIST_SCRIPTS_DIR)) {
+      fs.mkdirSync(DIST_SCRIPTS_DIR, { recursive: true });
+    }
+    fs.readdirSync(SRC_SCRIPTS_DIR).forEach(file => {
+      const srcFile = path.join(SRC_SCRIPTS_DIR, file);
+      const destFile = path.join(DIST_SCRIPTS_DIR, file);
+      fs.copyFileSync(srcFile, destFile);
+    });
+    console.log(`   ✓ Copied all script files to ${DIST_SCRIPTS_DIR}`);
+  } catch (error) {
+    console.error(`❌ Error copying script files: ${error.message}`);
+    process.exit(1);
+  }
+}
 
 /**
  * Generate FlexSearch index from glossary.json
