@@ -100,15 +100,39 @@ The project uses GitHub Actions for automated deployments:
 
 #### **Preview Deployment**
 - **Trigger**: `bun run deploy:preview` (pushes to `preview` branch)
-- **URL**: https://preview_glossary.ar.io
-- **ArNS**: `glossary` with `preview` undername
+- **Platform**: Vercel (for fast iteration and testing)
+- **URL**: https://permaweb-glossary.vercel.app (or assigned Vercel URL)
 
-**Both deployments use the same GitHub Actions workflow** - no local secrets needed! 🎉
+**Both deployments use the same GitHub Actions workflow** - configure secrets once! 🎉
+
+### 🔐 **Required GitHub Secrets**
+
+Configure these secrets in your GitHub repository settings:
+
+#### For Production (Arweave) Deployment
+```bash
+DEPLOY_KEY=your_arweave_wallet_jwk
+ANT_PROCESS=your_ant_process_id
+```
+
+#### For Preview (Vercel) Deployment
+```bash
+VERCEL_TOKEN=your_vercel_token
+VERCEL_ORG_ID=your_vercel_org_id
+VERCEL_PROJECT_ID=your_vercel_project_id
+```
 
 ### 🔄 **Workflow Recommendations:**
 
-- **Contributors**: Use `bun run deploy:preview` → test changes → create PR to main  
+- **Contributors**: Use `bun run deploy:preview` → test changes on Vercel → create PR to main  
 - **Maintainers**: Use `bun run deploy` → choose PR or direct push based on repo governance
+
+### 📊 **Deployment Strategy**
+
+| Environment | Platform | Speed | Persistence | Use Case |
+|------------|----------|-------|-------------|----------|
+| **Preview** | Vercel | ⚡ Fast (1-2 min) | Temporary | Quick iteration & testing |
+| **Production** | Arweave | 🐌 Slower (2-3 min) | Permanent | Final release to permaweb |
 
 #### **Pull Request Checks**
 - **Trigger**: Pull requests to `main`
@@ -116,7 +140,7 @@ The project uses GitHub Actions for automated deployments:
 
 ### Creating Preview Deployments
 
-To create a preview deployment from any branch:
+To create a fast Vercel preview deployment from any branch:
 
 ```bash
 # Using the npm script (recommended)
@@ -133,7 +157,7 @@ The script will:
 1. Check for uncommitted changes
 2. Push your current branch to the `preview` branch
 3. Trigger the GitHub Actions workflow
-4. Deploy to `https://preview_glossary.ar.io`
+4. Deploy to Vercel (fast preview platform)
 
 ### Production Deployment
 

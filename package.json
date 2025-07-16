@@ -6,9 +6,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:vercel": "astro build",
     "preview": "astro preview",
     "deploy": "./scripts/deploy-production.sh",
     "deploy:preview": "./scripts/deploy-preview.sh",
+    "deploy:vercel": "vercel --prod",
+    "deploy:vercel:preview": "vercel",
     "sync": "bun run scripts/sync-permaweb-llm-data.js",
     "sync:dev": "bun run sync && bun run dev"
   },

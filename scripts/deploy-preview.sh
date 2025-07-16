@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# 🔍 Preview Deployment Script
-# Deploy current branch to preview environment via GitHub Actions
+# 🔍 Preview Deployment Script  
+# Deploy current branch to Vercel preview via GitHub Actions
 
 set -e
 
-echo "🔍 Permaweb Glossary Preview Deployment"
-echo "======================================="
+echo "🔍 Permaweb Glossary Preview Deployment (Vercel)"
+echo "================================================"
 
 # Check if we're in a git repository
 if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -35,10 +35,10 @@ echo "📋 Current commit: ${CURRENT_COMMIT:0:8}"
 echo
 
 # Confirm the preview deployment
-echo "🚀 This will create a preview deployment by:"
+echo "🚀 This will create a Vercel preview deployment by:"
 echo "   1. Pushing current state to 'preview' branch"
 echo "   2. Triggering GitHub Actions workflow" 
-echo "   3. Deploying to: https://preview_glossary.ar.io"
+echo "   3. Deploying to: Vercel (fast preview)"
 echo
 read -p "   Continue? (y/N): " -n 1 -r
 echo
@@ -60,6 +60,7 @@ echo "🔗 Monitor the deployment at:"
 echo "   https://github.com/$(git config --get remote.origin.url | sed 's/.*github.com[:/]\([^/]*\/[^/]*\).*/\1/' | sed 's/\.git$//')/actions"
 echo
 echo "🌐 Preview will be available at:"
-echo "   https://preview_glossary.ar.io"
+echo "   https://permaweb-glossary.vercel.app (or assigned Vercel URL)"
+echo "   Note: Actual Vercel URL will be shown in GitHub Actions output"
 echo
-echo "⏰ Deployment typically takes 2-3 minutes" 
+echo "⏰ Deployment typically takes 1-2 minutes (Vercel is faster than Arweave)" 

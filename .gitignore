@@ -56,3 +56,4 @@ api/
 
 # Astro local preview server
 astro.config.mjs.local
+.vercel

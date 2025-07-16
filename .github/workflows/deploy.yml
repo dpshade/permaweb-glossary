@@ -117,11 +117,9 @@ jobs:
         env:
           NODE_ENV: production
           
-      - name: 🌐 Deploy to Permaweb
-        id: deploy_to_arweave
+      - name: 🌐 Deploy to Vercel (Preview) or Permaweb (Production)
+        id: deploy_platform
         run: |
-          echo "🚀 Deploying to Arweave Permaweb..."
-          
           # Verify build artifacts exist
           if [ ! -d "dist" ]; then
             echo "❌ Build artifacts not found"
@@ -130,6 +128,7 @@ jobs:
           
           # Deploy based on branch
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "🚀 Deploying to production Arweave Permaweb..."
             echo "📡 Deploying to production ArNS name: glossary"
             npx permaweb-deploy \
               --arns-name=glossary \
@@ -138,29 +137,38 @@ jobs:
               --verbose
             echo "deployment_type=production" >> $GITHUB_OUTPUT
             echo "deployment_url=https://glossary.ar.io" >> $GITHUB_OUTPUT
+            echo "platform=arweave" >> $GITHUB_OUTPUT
           elif [[ "${{ github.ref }}" == "refs/heads/preview" ]]; then
-            echo "🔍 Deploying to preview ArNS undername: preview_glossary"
-            npx permaweb-deploy \
-              --arns-name=glossary \
-              --undername=preview \
-              --ant-process=${{ secrets.ANT_PROCESS }} \
-              --deploy-folder=dist \
-              --verbose
+            echo "🌐 Deploying to Vercel for fast preview..."
+            npx vercel --token "${{ secrets.VERCEL_TOKEN }}" --scope "${{ secrets.VERCEL_ORG_ID }}" --yes --prod
             echo "deployment_type=preview" >> $GITHUB_OUTPUT  
-            echo "deployment_url=https://preview_glossary.ar.io" >> $GITHUB_OUTPUT
+            echo "deployment_url=https://permaweb-glossary.vercel.app" >> $GITHUB_OUTPUT
+            echo "platform=vercel" >> $GITHUB_OUTPUT
           fi
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
           ANT_PROCESS: ${{ secrets.ANT_PROCESS }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           
       - name: 📝 Deployment summary
         run: |
           echo "🎉 Deployment complete!"
-          echo "Type: ${{ steps.deploy_to_arweave.outputs.deployment_type }}"
-          echo "URL: ${{ steps.deploy_to_arweave.outputs.deployment_url }}"
+          echo "Platform: ${{ steps.deploy_platform.outputs.platform }}"
+          echo "Type: ${{ steps.deploy_platform.outputs.deployment_type }}"
+          echo "URL: ${{ steps.deploy_platform.outputs.deployment_url }}"
           echo ""
           echo "📊 Deployment details:"
           echo "- Branch: ${{ github.ref }}"
           echo "- Commit: ${{ github.sha }}"
           echo "- Actor: ${{ github.actor }}"
-          echo "- Build artifacts: $(find dist -type f | wc -l) files" 
+          echo "- Build artifacts: $(find dist -type f | wc -l) files"
+          echo ""
+          if [[ "${{ steps.deploy_platform.outputs.platform }}" == "vercel" ]]; then
+            echo "⚡ Fast Vercel preview deployment complete!"
+            echo "🔗 Preview your changes at: ${{ steps.deploy_platform.outputs.deployment_url }}"
+          else
+            echo "🌐 Permanent Arweave deployment complete!"
+            echo "📦 Your site is now permanently stored on the permaweb!"
+          fi 
