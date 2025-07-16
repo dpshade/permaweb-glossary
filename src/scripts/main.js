@@ -54,6 +54,9 @@ async function init() {
         const initialMode = getModeFromURL() || 'basic';
         await searchManager.initialize(initialMode);
         
+        // Expose searchManager globally for JSON API access
+        window.searchManager = searchManager;
+        
         // Expose glossary data for UI functions
         glossaryDataForUI = basicProvider.glossaryData;
 

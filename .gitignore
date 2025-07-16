@@ -35,3 +35,24 @@ permaweb-glossary/
 
 # Test directory
 test/
+
+# Astro build output
+.astro/
+
+# Astro cache
+node_modules/.astro/
+
+# Astro SSR output
+.server/
+
+# Astro preview output
+.netlify/
+.vercel/
+.output/
+
+# Astro adapter outputs (optional, depending on deployment)
+functions/
+api/
+
+# Astro local preview server
+astro.config.mjs.local

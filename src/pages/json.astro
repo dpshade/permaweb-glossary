@@ -1,0 +1,118 @@
+---
+// Simple client-side JSON API page
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JSON API</title>
+</head>
+<body>
+<script type="module">
+// Immediately replace page content with JSON
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // Get query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        const mode = urlParams.get('mode');
+        
+        // Validate parameters
+        if (!query) {
+            showJSON({ success: false, error: 'Missing required parameter: q', timestamp: new Date().toISOString() });
+            return;
+        }
+        
+        if (!mode) {
+            showJSON({ success: false, error: 'Missing required parameter: mode', timestamp: new Date().toISOString() });
+            return;
+        }
+        
+        const validModes = ['basic', 'glossary', 'enhanced', 'docs'];
+        if (!validModes.includes(mode)) {
+            showJSON({ success: false, error: `Invalid mode parameter. Must be one of: ${validModes.join(', ')}`, timestamp: new Date().toISOString() });
+            return;
+        }
+        
+        // Set page title to indicate JSON
+        document.title = 'JSON API Response';
+        
+        // Show loading
+        document.body.innerHTML = '<div style="font-family: monospace; padding: 20px;">Loading search results...</div>';
+        
+        // Wait a bit for potential search manager to load from parent window or main page
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Try to load search functionality
+        if (typeof window.searchManager === 'undefined') {
+            // Import and initialize search providers directly
+            const { SearchManager } = await import('/src/scripts/search-manager.js');
+            const { BasicSearchProvider } = await import('/src/scripts/basic-search-provider.js');
+            const { EnhancedSearchProvider } = await import('/src/scripts/enhanced-search-provider.js');
+            
+            const searchManager = new SearchManager();
+            const basicProvider = new BasicSearchProvider();
+            const enhancedProvider = new EnhancedSearchProvider();
+            
+            searchManager.registerProvider('basic', basicProvider);
+            searchManager.registerProvider('enhanced', enhancedProvider);
+            
+            const initialMode = (mode === 'docs') ? 'enhanced' : (mode === 'glossary') ? 'basic' : mode;
+            await searchManager.initialize(initialMode);
+            
+            // Perform search
+            await searchManager.performSearch(query);
+            const results = searchManager.state.currentResults || [];
+            
+            showJSON({
+                success: true,
+                query: query,
+                mode: initialMode,
+                results: results,
+                total: results.length,
+                timestamp: new Date().toISOString()
+            });
+        } else {
+            // Use existing search manager
+            const searchMode = (mode === 'docs') ? 'enhanced' : (mode === 'glossary') ? 'basic' : mode;
+            
+            if (window.searchManager.state.mode !== searchMode) {
+                await window.searchManager.switchMode(searchMode);
+            }
+            
+            await window.searchManager.performSearch(query);
+            const results = window.searchManager.state.currentResults || [];
+            
+            showJSON({
+                success: true,
+                query: query,
+                mode: searchMode,
+                results: results,
+                total: results.length,
+                timestamp: new Date().toISOString()
+            });
+        }
+        
+    } catch (error) {
+        showJSON({
+            success: false,
+            error: error.message,
+            timestamp: new Date().toISOString()
+        });
+    }
+});
+
+function showJSON(data) {
+    // Replace entire page with JSON
+    document.body.innerHTML = `<pre style="font-family: monospace; white-space: pre-wrap; padding: 20px; margin: 0; background: #f5f5f5; min-height: 100vh; font-size: 14px;">${JSON.stringify(data, null, 2)}</pre>`;
+    
+    // Set content type meta tag
+    const meta = document.createElement('meta');
+    meta.httpEquiv = 'Content-Type';
+    meta.content = 'application/json; charset=utf-8';
+    document.head.appendChild(meta);
+}
+</script>
+</body>
+</html> 
