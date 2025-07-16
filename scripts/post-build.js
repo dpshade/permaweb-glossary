@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { gzipSync } from 'zlib';
 import { execSync } from 'child_process';
+import { Document } from 'flexsearch';
 
 console.log('🔧 Running post-build optimizations...');
 
@@ -16,9 +17,13 @@ try {
 
 // Configuration
 const DIST_DIR = 'dist';
-const GLOSSARY_SRC = 'src/data/glossary.json';
+const SRC_SCRIPTS_DIR = 'src/scripts';
+const DIST_SCRIPTS_DIR = `${DIST_DIR}/scripts`;
+const GLOSSARY_SRC = 'public/data/glossary.json';
 const GLOSSARY_DIST = `${DIST_DIR}/src/data/glossary.json`;
 const GLOSSARY_TXT = `${DIST_DIR}/glossary.txt`;
+const FLEXSEARCH_INDEX_DIR = `${DIST_DIR}/flexsearch`;
+
 
 // Ensure dist directory exists
 if (!fs.existsSync(DIST_DIR)) {
@@ -34,11 +39,56 @@ generateGlossaryTxt();
 console.log('🗜️  Minifying JSON...');
 minifyGlossaryJson();
 
-// Step 3: Compress assets
+// Step 3: Generate FlexSearch index
+console.log('🔍 Generating FlexSearch index...');
+const flexsearchFiles = generateFlexSearchIndex();
+
+// Step 4: Compress assets
 console.log('📦 Compressing assets...');
-compressAssets();
+compressAssets(flexsearchFiles);
 
 console.log('✅ Post-build optimizations complete!');
+
+/**
+ * Generate FlexSearch index from glossary.json
+ */
+function generateFlexSearchIndex() {
+  try {
+    const data = JSON.parse(fs.readFileSync(GLOSSARY_SRC, 'utf8'));
+    const index = new Document({
+      document: {
+        id: 'term',
+        index: ['term', 'definition', 'aliases', 'related'],
+        store: ['term', 'definition', 'category', 'aliases', 'related', 'docs']
+      }
+    });
+
+    data.terms.forEach(entry => {
+      index.add(entry);
+    });
+
+    // Ensure flexsearch directory exists
+    if (!fs.existsSync(FLEXSEARCH_INDEX_DIR)) {
+      fs.mkdirSync(FLEXSEARCH_INDEX_DIR, { recursive: true });
+    }
+
+    const generatedFiles = [];
+    // Export and save the index
+    index.export((key, data) => {
+      const filePath = path.join(FLEXSEARCH_INDEX_DIR, key + '.json');
+      fs.writeFileSync(filePath, data, 'utf8');
+      generatedFiles.push(filePath);
+    });
+    console.log(`   ✓ Generated FlexSearch index files.`);
+    return generatedFiles;
+
+  } catch (error) {
+    console.error(`❌ Error generating FlexSearch index: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+
 
 /**
  * Generate glossary.txt from glossary.json
@@ -76,6 +126,8 @@ function generateGlossaryTxt() {
   }
 }
 
+
+
 /**
  * Minify the glossary JSON
  */
@@ -106,14 +158,14 @@ function minifyGlossaryJson() {
 /**
  * Compress all assets with gzip
  */
-function compressAssets() {
+function compressAssets(additionalFiles = []) {
+  const astroJsFiles = fs.readdirSync(path.join(DIST_DIR, '_astro')).filter(f => f.endsWith('.js')).map(f => path.join(DIST_DIR, '_astro', f));
   const filesToCompress = [
-    `${DIST_DIR}/src/js/main.js`,
-    `${DIST_DIR}/src/css/style.css`,
-    `${DIST_DIR}/src/js/keyboard-nav.js`,
+    ...astroJsFiles,
     `${DIST_DIR}/service-worker.js`,
     GLOSSARY_DIST,
-    GLOSSARY_TXT
+    GLOSSARY_TXT,
+    ...additionalFiles
   ];
 
   filesToCompress.forEach(filePath => {

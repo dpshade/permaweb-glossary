@@ -4,9 +4,10 @@
   "description": "A lightweight client-side search for the Permaweb Glossary using FlexSearch",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf dist",
     "dev": "astro dev",
-    "build": "astro build",
-    "build:vercel": "astro build",
+    "build": "bun run clean && astro build && bun run scripts/post-build.js",
+    "build:vercel": "astro build && bun run scripts/post-build.js",
     "preview": "astro preview",
     "deploy": "./scripts/deploy-production.sh",
     "deploy:preview": "./scripts/deploy-preview.sh",
