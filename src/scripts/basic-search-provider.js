@@ -1,6 +1,16 @@
-import { Document } from 'flexsearch';
 import { SearchProvider } from './search-provider.js';
 import { searchConfig } from './search-config.js';
+
+// Always use bundled FlexSearch for consistency across all environments
+async function getFlexSearch() {
+    if (typeof window !== 'undefined' && window.FlexSearch) {
+        return { Document: window.FlexSearch.Document };
+    } else {
+        // Load the bundled version
+        await import('./flexsearch.bundle.min.js');
+        return { Document: window.FlexSearch.Document };
+    }
+}
 
 // Constants for the application, can be moved to config
 const GLOSSARY_URL = '/data/glossary.json';
@@ -21,6 +31,9 @@ export class BasicSearchProvider extends SearchProvider {
         
         const data = await response.json();
         this.glossaryData = data.terms || data;
+
+        // Get FlexSearch Document class (handles dev/prod environments)
+        const { Document } = await getFlexSearch();
 
         // Initialize FlexSearch index
         this.searchIndex = new Document({

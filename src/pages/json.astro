@@ -45,25 +45,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         
         
-        // Import and initialize search providers directly
-        // Try multiple paths to handle both development and production
-        let searchManagerModule, basicProviderModule, enhancedProviderModule;
-        
-        try {
-            // Try development path first (Vite/Astro dev server)
-            searchManagerModule = await import('/src/scripts/search-manager.js');
-            basicProviderModule = await import('/src/scripts/basic-search-provider.js');
-            enhancedProviderModule = await import('/src/scripts/enhanced-search-provider.js');
-        } catch (devError) {
-            try {
-                // Fallback to production path
-                searchManagerModule = await import('../scripts/search-manager.js');
-                basicProviderModule = await import('../scripts/basic-search-provider.js');
-                enhancedProviderModule = await import('../scripts/enhanced-search-provider.js');
-            } catch (prodError) {
-                throw new Error(`Failed to load modules. Dev error: ${devError.message}, Prod error: ${prodError.message}`);
-            }
-        }
+        // Import search providers - works consistently across all environments
+        const searchManagerModule = await import('../scripts/search-manager.js');
+        const basicProviderModule = await import('../scripts/basic-search-provider.js');
+        const enhancedProviderModule = await import('../scripts/enhanced-search-provider.js');
         
         const { SearchManager } = searchManagerModule;
         const { BasicSearchProvider } = basicProviderModule;

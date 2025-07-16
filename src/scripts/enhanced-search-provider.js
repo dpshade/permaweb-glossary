@@ -1,7 +1,17 @@
-import { Document } from 'flexsearch';
 import { SearchProvider } from './search-provider.js';
 import { searchConfig } from './search-config.js';
 import { permawebConfig, getDocsIndexUrls, getLLMTextFileUrls, debugLog } from './permaweb-config.js';
+
+// Always use bundled FlexSearch for consistency across all environments
+async function getFlexSearch() {
+    if (typeof window !== 'undefined' && window.FlexSearch) {
+        return { Document: window.FlexSearch.Document };
+    } else {
+        // Load the bundled version
+        await import('./flexsearch.bundle.min.js');
+        return { Document: window.FlexSearch.Document };
+    }
+}
 
 function fetchWithTimeout(url, options = {}) {
     const { timeout = permawebConfig.network.timeout, ...fetchOptions } = options;
@@ -106,7 +116,7 @@ export class EnhancedSearchProvider extends SearchProvider {
             }
             
             await this._processDocumentationDataWithLLMText(docsIndex);
-            this._createDocumentationIndex();
+            await this._createDocumentationIndex();
         } catch (error) {
             this.docsData = [];
             this.docsIndex = null;
@@ -246,7 +256,10 @@ export class EnhancedSearchProvider extends SearchProvider {
         return contentMap;
     }
 
-    _createDocumentationIndex() {
+    async _createDocumentationIndex() {
+        // Get FlexSearch Document class (handles dev/prod environments)
+        const { Document } = await getFlexSearch();
+        
         this.docsIndex = new Document({
             document: {
                 id: "url",
