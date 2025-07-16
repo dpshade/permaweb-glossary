@@ -12,13 +12,13 @@ This document explains how the Permaweb Glossary leverages the [permaweb-llm-fue
 
 ```
 permaweb-llm-fuel/              permaweb-glossary/
-├── public/                     ├── src/js/
+├── public/                     ├── src/scripts/
 │   ├── docs-index.json        │   ├── enhanced-search-provider.js  ← Uses LLM files
 │   ├── hyperbeam-llms.txt ────────→ permaweb-config.js           ← Configuration
-│   ├── ao-llms.txt            │   └── ...
-│   ├── ario-llms.txt          └── scripts/
-│   ├── arweave-llms.txt           └── sync-permaweb-llm-data.js    ← Optional sync
-│   └── permaweb-glossary-llms.txt
+│   ├── ao-llms.txt            │   ├── search-manager.js          ← Orchestration
+│   ├── ario-llms.txt          │   └── ...
+│   ├── arweave-llms.txt       └── scripts/
+│   └── permaweb-glossary-llms.txt   └── sync-permaweb-llm-data.js ← Optional sync
 ```
 
 ### Data Flow
@@ -34,7 +34,7 @@ permaweb-llm-fuel/              permaweb-glossary/
 
 ## 📁 **Key Integration Components**
 
-### 1. Enhanced Search Provider (`src/js/enhanced-search-provider.js`)
+### 1. Enhanced Search Provider (`src/scripts/enhanced-search-provider.js`)
 
 The main integration point that:
 - Loads documentation index from permaweb-llm-fuel
@@ -47,7 +47,15 @@ The main integration point that:
 - `_parseLLMTextFile()` - Parses LLM text format
 - `_processDocumentationDataWithLLMText()` - Combines metadata + content
 
-### 2. Configuration (`src/js/permaweb-config.js`)
+### 2. Search Manager (`src/scripts/search-manager.js`)
+
+Central orchestrator that:
+- Manages search providers (basic and enhanced)
+- Handles mode switching between Glossary and Documentation
+- Provides fallback mechanisms when enhanced search fails
+- Manages application state through reactive `SearchState`
+
+### 3. Configuration (`src/scripts/permaweb-config.js`)
 
 Centralizes all URLs and settings:
 - **Environment Detection** - Automatically selects URLs based on hostname
@@ -55,12 +63,14 @@ Centralizes all URLs and settings:
 - **Feature Flags** - Enable/disable pre-extracted content usage
 - **Debug Logging** - Configurable logging for development
 
-### 3. Sync Script (`scripts/sync-permaweb-llm-data.js`)
+### 4. Sync Script (`scripts/sync-permaweb-llm-data.js`)
 
 Optional offline sync for development:
-- Copies data from local permaweb-llm-fuel build
-- Creates enhanced index with pre-extracted content
-- Useful for local development without network dependencies
+
+1. Copies data from local permaweb-llm-fuel build
+2. Ensures latest documentation content for development
+3. Fetch pre-extracted content from LLM text files
+4. Build search index with full content
 
 ## 🔧 **Configuration Options**
 
@@ -78,7 +88,7 @@ The system automatically detects the environment and uses appropriate URLs:
 ### Feature Flags
 
 ```javascript
-// src/js/permaweb-config.js
+// src/scripts/permaweb-config.js
 features: {
     usePreExtractedContent: true,  // Use LLM text files (recommended)
     fallbackToLive: false,         // Fallback to individual page fetching
@@ -124,7 +134,7 @@ bun run sync:dev    # Sync + start dev server
 Override URLs for testing:
 
 ```javascript
-// src/js/permaweb-config.js - modify base URLs
+// src/scripts/permaweb-config.js - modify base URLs
 const PERMAWEB_LLM_FUEL_URLS = {
     production: 'https://your-custom-url.com',
     // ...
@@ -206,21 +216,25 @@ const getBaseUrl = () => 'https://test-url.com';
 - Check browser console for network errors
 - Verify permaweb-llm-fuel URLs are accessible
 - Try fallback URLs if primary fails
+- Check if SearchManager initialized enhanced provider correctly
 
 ### Slow Loading
 - Check if using pre-extracted content (`usePreExtractedContent: true`)
 - Verify LLM text files are loading (not individual pages)
 - Check network timeout settings in config
+- Ensure SearchManager isn't re-initializing providers repeatedly
 
 ### Content Missing
 - Ensure permaweb-llm-fuel has crawled the sites recently
 - Check LLM text file format/parsing
 - Verify URLs match between index and LLM files
+- Check if enhanced search provider is falling back to basic mode
 
 ### Local Development Issues
 - Run `bun run sync` to get fresh data locally
 - Check relative paths in sync script
 - Ensure permaweb-llm-fuel is built first
+- Verify SearchManager is using correct provider after sync
 
 ## 🔄 **Deployment**
 
@@ -254,19 +268,10 @@ git add public/ && git commit -m "Update docs index" && git push
 ### Integration Opportunities
 
 1. **Shared Components** - Extract common search logic
-2. **Unified Configuration** - Single config for both projects
-3. **Cross-References** - Link between glossary terms and documentation
-4. **Analytics** - Track search patterns across both projects
+2. **Cross-Platform Sync** - Share search providers across applications
+3. **Plugin Architecture** - Extensible search provider system
+4. **AI Integration** - Enhanced semantic search capabilities
 
 ---
 
-## 💡 **Key Benefits**
-
-✅ **Fast Loading** - 15x faster search index creation  
-✅ **Reduced Load** - 20x fewer network requests  
-✅ **Better UX** - Near-instant search availability  
-✅ **Offline Support** - Works without network (with sync)  
-✅ **Maintainable** - Centralized configuration and fallbacks  
-✅ **Scalable** - Handles hundreds of documentation pages efficiently  
-
-This integration demonstrates effective reuse of computed work, eliminating duplicate effort while providing a significantly better user experience. 
+*This integration represents a major architectural improvement, reducing documentation search load times by 15x while maintaining comprehensive coverage of the Permaweb ecosystem.* 
