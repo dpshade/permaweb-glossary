@@ -526,6 +526,9 @@ function createDocumentationResultHTML(result, query) {
             <div class="category">${sourceLabel}</div>
             <div class="definition">${highlightQuery(result.snippet, query)}</div>
             ${metaInfo ? `<div class="aliases"><strong>Source:</strong> ${metaInfo}</div>` : ''}
+            <div class="docs-link">
+                <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">Read more →</a>
+            </div>
         </div>
     `;
 }
