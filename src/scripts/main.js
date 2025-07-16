@@ -4,7 +4,7 @@ import { EnhancedSearchProvider } from './enhanced-search-provider.js';
 
 // --- Constants ---
 const DEBUG = false;
-const NUM_RANDOM_TAGS = 8;
+const NUM_RANDOM_TAGS = 5;
 
 // --- Service Worker ---
 if ('serviceWorker' in navigator) {
@@ -234,10 +234,6 @@ function handleStateChange(state) {
     // Always sync URL with actual state mode
     syncURLWithCurrentState(state);
         
-    // Show notification if enhanced mode was requested but fell back to basic
-    if (hadFallback) {
-        showModeUnavailableNotification();
-    }
 }
 
 function syncURLWithCurrentState(state) {
@@ -275,27 +271,6 @@ function syncURLWithCurrentState(state) {
     }
 }
 
-function showModeUnavailableNotification() {
-    // Only show once per session
-    if (window.docsUnavailableNotificationShown) return;
-    window.docsUnavailableNotificationShown = true;
-    
-    const notification = document.createElement('div');
-    notification.className = 'mode-notification';
-    notification.innerHTML = `
-        <p>📚 Documentation search is temporarily unavailable. Showing glossary results instead.</p>
-        <button onclick="this.parentElement.remove()">×</button>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentElement) {
-            notification.remove();
-        }
-    }, 5000);
-}
 
 // Keyboard navigation variables and functions
 let selectedResultIndex = -1;
