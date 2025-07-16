@@ -1,0 +1,4902 @@
+{
+  "generated": "2025-07-03T18:20:00.491Z",
+  "sites": {
+    "hyperbeam": {
+      "name": "Hyperbeam",
+      "baseUrl": "https://hyperbeam.arweave.net",
+      "pages": [
+        {
+          "url": "https://hyperbeam.arweave.net/llms.html",
+          "title": "LLM Context Files",
+          "estimatedWords": 150,
+          "lastModified": "2025-07-02T15:08:36.174Z",
+          "breadcrumbs": [
+            "llms"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 1,
+          "crawledAt": "2025-07-02T15:08:36.175Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/reference/troubleshooting.html",
+          "title": "Developer Troubleshooting Guide",
+          "estimatedWords": 159,
+          "lastModified": "2025-07-02T15:08:36.671Z",
+          "breadcrumbs": [
+            "build",
+            "reference",
+            "troubleshooting"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:36.671Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/reference/glossary.html",
+          "title": "Developer Glossary",
+          "estimatedWords": 256,
+          "lastModified": "2025-07-02T15:08:37.036Z",
+          "breadcrumbs": [
+            "build",
+            "reference",
+            "glossary"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:37.036Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/reference/faq.html",
+          "title": "Developer FAQ",
+          "estimatedWords": 292,
+          "lastModified": "2025-07-02T15:08:37.449Z",
+          "breadcrumbs": [
+            "build",
+            "reference",
+            "faq"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:37.449Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/building-devices.html",
+          "title": "Extending HyperBEAM with Devices",
+          "estimatedWords": 163,
+          "lastModified": "2025-07-02T15:08:37.813Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "building devices"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:37.814Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/meta-at-1-0.html",
+          "title": "Device meta10",
+          "estimatedWords": 358,
+          "lastModified": "2025-07-02T15:08:38.152Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "meta at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:38.152Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/hyperbeam-devices.html",
+          "title": "HyperBEAM Devices",
+          "estimatedWords": 713,
+          "lastModified": "2025-07-02T15:08:38.612Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "hyperbeam devices"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:38.612Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/pathing-in-hyperbeam.html",
+          "title": "Pathing in HyperBEAM",
+          "estimatedWords": 879,
+          "lastModified": "2025-07-02T15:08:39.028Z",
+          "breadcrumbs": [
+            "build",
+            "pathing in hyperbeam"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:39.028Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/building-on-ao.html",
+          "title": "Building on HyperBEAM with ao",
+          "estimatedWords": 105,
+          "lastModified": "2025-07-02T15:08:39.434Z",
+          "breadcrumbs": [
+            "build",
+            "building on ao"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:39.434Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/hyperbeam-capabilities.html",
+          "title": "HyperBEAM Your Decentralized Development Toolkit",
+          "estimatedWords": 704,
+          "lastModified": "2025-07-02T15:08:39.786Z",
+          "breadcrumbs": [
+            "build",
+            "hyperbeam capabilities"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:39.786Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/introduction/what-is-ao-core.html",
+          "title": "What is AO-Core",
+          "estimatedWords": 1090,
+          "lastModified": "2025-07-02T15:08:40.218Z",
+          "breadcrumbs": [
+            "build",
+            "introduction",
+            "what is ao core"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:40.219Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/running-a-hyperbeam-node.html",
+          "title": "Running a HyperBEAM Node",
+          "estimatedWords": 885,
+          "lastModified": "2025-07-02T15:08:40.585Z",
+          "breadcrumbs": [
+            "run",
+            "running a hyperbeam node"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:40.585Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/",
+          "title": "Hyperbeam",
+          "estimatedWords": 209,
+          "lastModified": "2025-07-02T15:08:40.792Z",
+          "breadcrumbs": [],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 0,
+          "crawledAt": "2025-07-02T15:08:40.792Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/introduction/what-is-hyperbeam.html",
+          "title": "What is HyperBEAM",
+          "estimatedWords": 958,
+          "lastModified": "2025-07-02T15:08:42.052Z",
+          "breadcrumbs": [
+            "build",
+            "introduction",
+            "what is hyperbeam"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:42.052Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/configuring-your-machine.html",
+          "title": "Configuring Your HyperBEAM Node",
+          "estimatedWords": 816,
+          "lastModified": "2025-07-02T15:08:42.645Z",
+          "breadcrumbs": [
+            "run",
+            "configuring your machine"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:42.646Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/tee-nodes.html",
+          "title": "Trusted Execution Environment (TEE)",
+          "estimatedWords": 577,
+          "lastModified": "2025-07-02T15:08:44.068Z",
+          "breadcrumbs": [
+            "run",
+            "tee nodes"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:44.068Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/joining-running-a-router.html",
+          "title": "Router Networks Joining vs Running",
+          "estimatedWords": 591,
+          "lastModified": "2025-07-02T15:08:44.572Z",
+          "breadcrumbs": [
+            "run",
+            "joining running a router"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:44.572Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/reference/faq.html",
+          "title": "Node Operator FAQ",
+          "estimatedWords": 341,
+          "lastModified": "2025-07-02T15:08:44.975Z",
+          "breadcrumbs": [
+            "run",
+            "reference",
+            "faq"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:44.975Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/reference/glossary.html",
+          "title": "Node Operator Glossary",
+          "estimatedWords": 292,
+          "lastModified": "2025-07-02T15:08:45.524Z",
+          "breadcrumbs": [
+            "run",
+            "reference",
+            "glossary"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:45.524Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/run/reference/troubleshooting.html",
+          "title": "Node Operator Troubleshooting Guide",
+          "estimatedWords": 341,
+          "lastModified": "2025-07-02T15:08:46.006Z",
+          "breadcrumbs": [
+            "run",
+            "reference",
+            "troubleshooting"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:08:46.006Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_patch.html",
+          "title": "Module dev_patcherl",
+          "estimatedWords": 394,
+          "lastModified": "2025-07-02T15:08:46.471Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev patch"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:46.471Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/relay-at-1-0.html",
+          "title": "Device relay10",
+          "estimatedWords": 379,
+          "lastModified": "2025-07-02T15:08:47.234Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "relay at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:47.234Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/process-at-1-0.html",
+          "title": "Device process10",
+          "estimatedWords": 564,
+          "lastModified": "2025-07-02T15:08:47.803Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "process at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:47.803Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/message-at-1-0.html",
+          "title": "Device message10",
+          "estimatedWords": 483,
+          "lastModified": "2025-07-02T15:08:48.212Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "message at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:48.213Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/wasm64-at-1-0.html",
+          "title": "Device wasm6410",
+          "estimatedWords": 551,
+          "lastModified": "2025-07-02T15:08:48.577Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "wasm64 at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:48.577Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/lua-at-5-3a.html",
+          "title": "Device lua53a",
+          "estimatedWords": 557,
+          "lastModified": "2025-07-02T15:08:48.907Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "lua at 5 3a"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:48.907Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/json-at-1-0.html",
+          "title": "Device json10",
+          "estimatedWords": 211,
+          "lastModified": "2025-07-02T15:08:49.260Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "json at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:49.260Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/scheduler-at-1-0.html",
+          "title": "Device scheduler10",
+          "estimatedWords": 689,
+          "lastModified": "2025-07-02T15:08:49.654Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "scheduler at 1 0"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:49.654Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_meta.html",
+          "title": "Module dev_metaerl",
+          "estimatedWords": 1195,
+          "lastModified": "2025-07-02T15:08:50.026Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev meta"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:50.026Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_router.html",
+          "title": "Module dev_routererl",
+          "estimatedWords": 1438,
+          "lastModified": "2025-07-02T15:08:50.494Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev router"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:50.494Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_snp.html",
+          "title": "Module dev_snperl",
+          "estimatedWords": 436,
+          "lastModified": "2025-07-02T15:08:50.957Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev snp"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:50.957Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_codec_httpsig.html",
+          "title": "Module dev_codec_httpsigerl",
+          "estimatedWords": 671,
+          "lastModified": "2025-07-02T15:08:51.369Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev codec httpsig"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:51.369Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_p4.html",
+          "title": "Module dev_p4erl",
+          "estimatedWords": 566,
+          "lastModified": "2025-07-02T15:08:51.991Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev p4"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:51.991Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_faff.html",
+          "title": "Module dev_fafferl",
+          "estimatedWords": 184,
+          "lastModified": "2025-07-02T15:08:52.514Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev faff"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:52.514Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_cron.html",
+          "title": "Module dev_cronerl",
+          "estimatedWords": 321,
+          "lastModified": "2025-07-02T15:08:52.827Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev cron"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:52.827Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_stack.html",
+          "title": "Module dev_stackerl",
+          "estimatedWords": 1197,
+          "lastModified": "2025-07-02T15:08:53.265Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev stack"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:53.265Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_monitor.html",
+          "title": "Module dev_monitorerl",
+          "estimatedWords": 55,
+          "lastModified": "2025-07-02T15:08:53.712Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev monitor"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:53.712Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/hb_singleton.html",
+          "title": "Module hb_singletonerl",
+          "estimatedWords": 1170,
+          "lastModified": "2025-07-02T15:08:54.741Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "hb singleton"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:54.741Z"
+        },
+        {
+          "url": "https://hyperbeam.arweave.net/build/devices/source-code/dev_codec_structured.html",
+          "title": "Module dev_codec_structurederl",
+          "estimatedWords": 356,
+          "lastModified": "2025-07-02T15:08:55.100Z",
+          "breadcrumbs": [
+            "build",
+            "devices",
+            "source code",
+            "dev codec structured"
+          ],
+          "siteKey": "hyperbeam",
+          "siteName": "Hyperbeam",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:08:55.100Z"
+        }
+      ],
+      "lastCrawled": "2025-07-03T18:20:00.491Z",
+      "stats": {
+        "totalPages": 39,
+        "averageWords": 546,
+        "duration": 1138,
+        "requestCount": 3,
+        "averageResponseTime": 134.66666666666666,
+        "pagesPerSecond": 34.27065026362039
+      }
+    },
+    "ao": {
+      "name": "AO Cookbook",
+      "baseUrl": "https://cookbook_ao.arweave.net",
+      "pages": [
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/base64.html",
+          "title": "Base64",
+          "estimatedWords": 233,
+          "lastModified": "2025-07-02T15:08:57.739Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "base64"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:57.739Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/crypto.html",
+          "title": "crypto",
+          "estimatedWords": 2304,
+          "lastModified": "2025-07-02T15:08:58.851Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "crypto"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:58.851Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/ao.html",
+          "title": "ao",
+          "estimatedWords": 100,
+          "lastModified": "2025-07-02T15:08:59.565Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "ao"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:08:59.565Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/json.html",
+          "title": "JSON",
+          "estimatedWords": 88,
+          "lastModified": "2025-07-02T15:09:00.192Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "json"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:00.192Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/voting.html",
+          "title": "Voting Blueprint",
+          "estimatedWords": 343,
+          "lastModified": "2025-07-02T15:09:01.174Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "voting"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:01.174Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/token.html",
+          "title": "Token Blueprint",
+          "estimatedWords": 974,
+          "lastModified": "2025-07-02T15:09:02.006Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "token"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:02.007Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/staking.html",
+          "title": "Staking Blueprint",
+          "estimatedWords": 426,
+          "lastModified": "2025-07-02T15:09:02.601Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "staking"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:02.601Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/cred-utils.html",
+          "title": "CRED Utils Blueprint",
+          "estimatedWords": 664,
+          "lastModified": "2025-07-02T15:09:03.154Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "cred utils"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:03.154Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/chatroom.html",
+          "title": "Chatroom Blueprint",
+          "estimatedWords": 170,
+          "lastModified": "2025-07-02T15:09:03.822Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "chatroom"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:03.822Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/blueprints/index.html",
+          "title": "Blueprints",
+          "estimatedWords": 46,
+          "lastModified": "2025-07-02T15:09:04.447Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "blueprints",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:04.447Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/token.html",
+          "title": "Building a Token in ao",
+          "estimatedWords": 1362,
+          "lastModified": "2025-07-02T15:09:05.159Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "token"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:05.159Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/faq.html",
+          "title": "FAQ",
+          "estimatedWords": 182,
+          "lastModified": "2025-07-02T15:09:05.780Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "faq"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:05.780Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/troubleshooting.html",
+          "title": "Troubleshooting using aolink",
+          "estimatedWords": 392,
+          "lastModified": "2025-07-02T15:09:06.302Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "troubleshooting"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:06.302Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/inbox-and-handlers.html",
+          "title": "Understanding the Inbox",
+          "estimatedWords": 211,
+          "lastModified": "2025-07-02T15:09:06.803Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "inbox and handlers"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:06.803Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/editor.html",
+          "title": "Editor setup",
+          "estimatedWords": 228,
+          "lastModified": "2025-07-02T15:09:07.408Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "editor"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:07.408Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/pingpong.html",
+          "title": "Creating a Pingpong Process in aos",
+          "estimatedWords": 360,
+          "lastModified": "2025-07-02T15:09:07.929Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "pingpong"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:07.929Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/load.html",
+          "title": "Load Lua Files with load filename",
+          "estimatedWords": 106,
+          "lastModified": "2025-07-02T15:09:08.547Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "load"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:08.548Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/prompt.html",
+          "title": "Customizing the Prompt in aos",
+          "estimatedWords": 203,
+          "lastModified": "2025-07-02T15:09:09.127Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "prompt"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:09.127Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/cli.html",
+          "title": "CLI",
+          "estimatedWords": 190,
+          "lastModified": "2025-07-02T15:09:09.849Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "cli"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:09.849Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/installing.html",
+          "title": "Installing aos",
+          "estimatedWords": 37,
+          "lastModified": "2025-07-02T15:09:10.493Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "installing"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:10.493Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/intro.html",
+          "title": "Introduction",
+          "estimatedWords": 531,
+          "lastModified": "2025-07-02T15:09:11.022Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "intro"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:11.022Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/index.html",
+          "title": "aos AO Operating System",
+          "estimatedWords": 420,
+          "lastModified": "2025-07-02T15:09:11.598Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:11.598Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/index.html",
+          "title": "Guides",
+          "estimatedWords": 233,
+          "lastModified": "2025-07-02T15:09:12.840Z",
+          "breadcrumbs": [
+            "guides",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:09:12.840Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/build-game.html",
+          "title": "Expanding the Arena",
+          "estimatedWords": 1811,
+          "lastModified": "2025-07-02T15:09:13.878Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "build game"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:13.878Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/arena-mechanics.html",
+          "title": "Mechanics of the Arena",
+          "estimatedWords": 1920,
+          "lastModified": "2025-07-02T15:09:15.477Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "arena mechanics"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:15.477Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/bringing-together.html",
+          "title": "Bringing it Together",
+          "estimatedWords": 968,
+          "lastModified": "2025-07-02T15:09:16.261Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "bringing together"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:16.261Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/attacking.html",
+          "title": "Automated Responses",
+          "estimatedWords": 443,
+          "lastModified": "2025-07-02T15:09:16.944Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "attacking"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:16.944Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/decisions.html",
+          "title": "Strategic Decisions",
+          "estimatedWords": 559,
+          "lastModified": "2025-07-02T15:09:17.649Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "decisions"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:17.649Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/game-state.html",
+          "title": "Fetching Game State",
+          "estimatedWords": 445,
+          "lastModified": "2025-07-02T15:09:18.190Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "game state"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:18.190Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/announcements.html",
+          "title": "Interpreting Announcements",
+          "estimatedWords": 356,
+          "lastModified": "2025-07-02T15:09:18.688Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "announcements"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:18.688Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/ao-effect.html",
+          "title": "Lets Play A Game",
+          "estimatedWords": 655,
+          "lastModified": "2025-07-02T15:09:19.186Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "ao effect"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:19.186Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/bots-and-games/index.html",
+          "title": "Bots and Games",
+          "estimatedWords": 189,
+          "lastModified": "2025-07-02T15:09:20.061Z",
+          "breadcrumbs": [
+            "tutorials",
+            "bots and games",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:20.061Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/tokengating.html",
+          "title": "Tokengating the Chatroom",
+          "estimatedWords": 512,
+          "lastModified": "2025-07-02T15:09:20.611Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "tokengating"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:20.611Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/token.html",
+          "title": "Crafting a Token",
+          "estimatedWords": 607,
+          "lastModified": "2025-07-02T15:09:21.142Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "token"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:21.142Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/chatroom.html",
+          "title": "Building a Chatroom in aos",
+          "estimatedWords": 803,
+          "lastModified": "2025-07-02T15:09:21.649Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "chatroom"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:21.650Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/messaging.html",
+          "title": "Messaging in ao",
+          "estimatedWords": 1032,
+          "lastModified": "2025-07-02T15:09:22.312Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "messaging"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:22.312Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/preparations.html",
+          "title": "Preparations",
+          "estimatedWords": 532,
+          "lastModified": "2025-07-02T15:09:23.017Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "preparations"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:23.017Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/begin/index.html",
+          "title": "Begin An Interactive Tutorial",
+          "estimatedWords": 141,
+          "lastModified": "2025-07-02T15:09:23.667Z",
+          "breadcrumbs": [
+            "tutorials",
+            "begin",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:23.667Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/tutorials/index.html",
+          "title": "Tutorials",
+          "estimatedWords": 57,
+          "lastModified": "2025-07-02T15:09:24.275Z",
+          "breadcrumbs": [
+            "tutorials",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:09:24.275Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/welcome/getting-started.html",
+          "title": "Get started in 5 minutes",
+          "estimatedWords": 852,
+          "lastModified": "2025-07-02T15:09:24.981Z",
+          "breadcrumbs": [
+            "welcome",
+            "getting started"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:09:24.981Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/welcome/legacynet-info/index.html",
+          "title": "Legacynet  HyperBEAM",
+          "estimatedWords": 386,
+          "lastModified": "2025-07-02T15:09:25.502Z",
+          "breadcrumbs": [
+            "welcome",
+            "legacynet info",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:09:25.502Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/welcome/ao-processes.html",
+          "title": "AO Processes",
+          "estimatedWords": 446,
+          "lastModified": "2025-07-02T15:09:25.946Z",
+          "breadcrumbs": [
+            "welcome",
+            "ao processes"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:09:25.946Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/llms-explanation.html",
+          "title": "LLMs Documentation",
+          "estimatedWords": 66,
+          "lastModified": "2025-07-02T15:09:26.529Z",
+          "breadcrumbs": [
+            "llms explanation"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 1,
+          "crawledAt": "2025-07-02T15:09:26.530Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/",
+          "title": "Cookbook",
+          "estimatedWords": 51,
+          "lastModified": "2025-07-02T15:09:26.662Z",
+          "breadcrumbs": [],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 0,
+          "crawledAt": "2025-07-02T15:09:26.662Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/welcome/ao-core-introduction.html",
+          "title": "Introduction to AO-Core",
+          "estimatedWords": 330,
+          "lastModified": "2025-07-02T15:09:27.235Z",
+          "breadcrumbs": [
+            "welcome",
+            "ao core introduction"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:09:27.235Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/pretty.html",
+          "title": "Pretty",
+          "estimatedWords": 51,
+          "lastModified": "2025-07-02T15:09:27.940Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "pretty"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:27.940Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/utils.html",
+          "title": "Utils",
+          "estimatedWords": 541,
+          "lastModified": "2025-07-02T15:09:28.643Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "utils"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:28.643Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/aoconnect.html",
+          "title": "aoconnect",
+          "estimatedWords": 47,
+          "lastModified": "2025-07-02T15:09:29.281Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "aoconnect"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:29.281Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/installing-connect.html",
+          "title": "Installing ao connect",
+          "estimatedWords": 51,
+          "lastModified": "2025-07-02T15:09:29.904Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "installing connect"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:29.905Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/connecting.html",
+          "title": "Connecting to specific ao nodes",
+          "estimatedWords": 180,
+          "lastModified": "2025-07-02T15:09:30.487Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "connecting"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:30.487Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/sending-messages.html",
+          "title": "Sending a Message to a Process",
+          "estimatedWords": 399,
+          "lastModified": "2025-07-02T15:09:30.964Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "sending messages"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:30.964Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/reading-results.html",
+          "title": "Reading results from an ao Process",
+          "estimatedWords": 139,
+          "lastModified": "2025-07-02T15:09:31.557Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "reading results"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:31.557Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/spawning-processes.html",
+          "title": "Spawning a Process",
+          "estimatedWords": 168,
+          "lastModified": "2025-07-02T15:09:32.205Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "spawning processes"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:32.205Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/calling-dryrun.html",
+          "title": "Calling DryRun",
+          "estimatedWords": 125,
+          "lastModified": "2025-07-02T15:09:32.892Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "calling dryrun"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:32.892Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/monitoring-cron.html",
+          "title": "Monitoring Cron",
+          "estimatedWords": 77,
+          "lastModified": "2025-07-02T15:09:33.499Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "monitoring cron"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:33.499Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/assign-data.html",
+          "title": "Sending an Assignment to a Process",
+          "estimatedWords": 202,
+          "lastModified": "2025-07-02T15:09:33.957Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "assign data"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:33.957Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aoconnect/signers.html",
+          "title": "DataItem Signers",
+          "estimatedWords": 291,
+          "lastModified": "2025-07-02T15:09:34.582Z",
+          "breadcrumbs": [
+            "guides",
+            "aoconnect",
+            "signers"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:34.582Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/why-migrate.html",
+          "title": "Why Migrate to HyperBEAM",
+          "estimatedWords": 143,
+          "lastModified": "2025-07-02T15:09:35.160Z",
+          "breadcrumbs": [
+            "guides",
+            "migrating to hyperbeam",
+            "why migrate"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:35.160Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/exposing-process-state.html",
+          "title": "Exposing Process State to HyperBEAM",
+          "estimatedWords": 583,
+          "lastModified": "2025-07-02T15:09:35.675Z",
+          "breadcrumbs": [
+            "guides",
+            "migrating to hyperbeam",
+            "exposing process state"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:35.675Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/reading-dynamic-state.html",
+          "title": "Reading Dynamic State",
+          "estimatedWords": 430,
+          "lastModified": "2025-07-02T15:09:36.221Z",
+          "breadcrumbs": [
+            "guides",
+            "migrating to hyperbeam",
+            "reading dynamic state"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:36.222Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/aos-with-hyperbeam.html",
+          "title": "Connecting to HyperBEAM with aos",
+          "estimatedWords": 254,
+          "lastModified": "2025-07-02T15:09:36.730Z",
+          "breadcrumbs": [
+            "guides",
+            "migrating to hyperbeam",
+            "aos with hyperbeam"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:36.730Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/migrating-to-hyperbeam/ao-connect.html",
+          "title": "HyperBEAM from AO Connect",
+          "estimatedWords": 213,
+          "lastModified": "2025-07-02T15:09:36.957Z",
+          "breadcrumbs": [
+            "guides",
+            "migrating to hyperbeam",
+            "ao connect"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:36.957Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/dev-cli/index.html",
+          "title": "AO Dev-Cli 01",
+          "estimatedWords": 464,
+          "lastModified": "2025-07-02T15:09:37.570Z",
+          "breadcrumbs": [
+            "guides",
+            "dev cli",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:37.570Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/snacks/sqlite.html",
+          "title": "Getting started with SQLite",
+          "estimatedWords": 138,
+          "lastModified": "2025-07-02T15:09:38.166Z",
+          "breadcrumbs": [
+            "guides",
+            "snacks",
+            "sqlite"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:38.166Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/snacks/weavedrive.html",
+          "title": "Using WeaveDrive",
+          "estimatedWords": 253,
+          "lastModified": "2025-07-02T15:09:38.816Z",
+          "breadcrumbs": [
+            "guides",
+            "snacks",
+            "weavedrive"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:38.816Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/index.html",
+          "title": "Concepts",
+          "estimatedWords": 211,
+          "lastModified": "2025-07-02T15:09:39.343Z",
+          "breadcrumbs": [
+            "concepts",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:39.343Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/how-it-works.html",
+          "title": "How ao messaging works",
+          "estimatedWords": 398,
+          "lastModified": "2025-07-02T15:09:39.859Z",
+          "breadcrumbs": [
+            "concepts",
+            "how it works"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:39.859Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/processes.html",
+          "title": "Processes",
+          "estimatedWords": 323,
+          "lastModified": "2025-07-02T15:09:40.375Z",
+          "breadcrumbs": [
+            "concepts",
+            "processes"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:40.376Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/messages.html",
+          "title": "Messages",
+          "estimatedWords": 316,
+          "lastModified": "2025-07-02T15:09:41.006Z",
+          "breadcrumbs": [
+            "concepts",
+            "messages"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:41.006Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/eval.html",
+          "title": "Eval",
+          "estimatedWords": 84,
+          "lastModified": "2025-07-02T15:09:41.736Z",
+          "breadcrumbs": [
+            "concepts",
+            "eval"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:41.736Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/units.html",
+          "title": "Units",
+          "estimatedWords": 14735,
+          "lastModified": "2025-07-02T15:09:42.280Z",
+          "breadcrumbs": [
+            "concepts",
+            "units"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:42.280Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/specs.html",
+          "title": "ao Specs",
+          "estimatedWords": 154,
+          "lastModified": "2025-07-02T15:09:42.923Z",
+          "breadcrumbs": [
+            "concepts",
+            "specs"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:42.924Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/tour.html",
+          "title": "aos Brief Tour",
+          "estimatedWords": 390,
+          "lastModified": "2025-07-02T15:09:43.394Z",
+          "breadcrumbs": [
+            "concepts",
+            "tour"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:43.394Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/concepts/lua.html",
+          "title": "A whistle stop tour of Lua",
+          "estimatedWords": 873,
+          "lastModified": "2025-07-02T15:09:44.003Z",
+          "breadcrumbs": [
+            "concepts",
+            "lua"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:44.003Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/index.html",
+          "title": "References",
+          "estimatedWords": 214,
+          "lastModified": "2025-07-02T15:09:44.444Z",
+          "breadcrumbs": [
+            "references",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:44.444Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/lua.html",
+          "title": "Meet Lua",
+          "estimatedWords": 300,
+          "lastModified": "2025-07-02T15:09:44.938Z",
+          "breadcrumbs": [
+            "references",
+            "lua"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:44.938Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/wasm.html",
+          "title": "Meet Web Assembly",
+          "estimatedWords": 192,
+          "lastModified": "2025-07-02T15:09:45.551Z",
+          "breadcrumbs": [
+            "references",
+            "wasm"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:45.551Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/lua-optimization.html",
+          "title": "Lua Optimization Guide for AO Platform",
+          "estimatedWords": 179,
+          "lastModified": "2025-07-02T15:09:46.305Z",
+          "breadcrumbs": [
+            "references",
+            "lua optimization"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:46.305Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/ao.html",
+          "title": "ao Module",
+          "estimatedWords": 603,
+          "lastModified": "2025-07-02T15:09:47.068Z",
+          "breadcrumbs": [
+            "references",
+            "ao"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:47.068Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/messaging.html",
+          "title": "Messaging Patterns in ao",
+          "estimatedWords": 686,
+          "lastModified": "2025-07-02T15:09:47.737Z",
+          "breadcrumbs": [
+            "references",
+            "messaging"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:47.737Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/handlers.html",
+          "title": "Handlers (Version 005)",
+          "estimatedWords": 943,
+          "lastModified": "2025-07-02T15:09:48.401Z",
+          "breadcrumbs": [
+            "references",
+            "handlers"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:48.401Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/token.html",
+          "title": "ao Token and Subledger Specification",
+          "estimatedWords": 1113,
+          "lastModified": "2025-07-02T15:09:49.298Z",
+          "breadcrumbs": [
+            "references",
+            "token"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:49.298Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/data.html",
+          "title": "Accessing Data from Arweave with ao",
+          "estimatedWords": 1265,
+          "lastModified": "2025-07-02T15:09:49.929Z",
+          "breadcrumbs": [
+            "references",
+            "data"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:49.929Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/cron.html",
+          "title": "Cron Messages",
+          "estimatedWords": 254,
+          "lastModified": "2025-07-02T15:09:50.435Z",
+          "breadcrumbs": [
+            "references",
+            "cron"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:50.435Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/editor-setup.html",
+          "title": "Editor setup",
+          "estimatedWords": 228,
+          "lastModified": "2025-07-02T15:09:51.128Z",
+          "breadcrumbs": [
+            "references",
+            "editor setup"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:51.128Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/betteridea/index.html",
+          "title": "BetterIDEa",
+          "estimatedWords": 90,
+          "lastModified": "2025-07-02T15:09:51.676Z",
+          "breadcrumbs": [
+            "references",
+            "betteridea",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:51.676Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/references/community.html",
+          "title": "Community Resources",
+          "estimatedWords": 187,
+          "lastModified": "2025-07-02T15:09:52.549Z",
+          "breadcrumbs": [
+            "references",
+            "community"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:52.549Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/releasenotes/index.html",
+          "title": "Release Notes",
+          "estimatedWords": 187,
+          "lastModified": "2025-07-02T15:09:53.890Z",
+          "breadcrumbs": [
+            "releasenotes",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:53.890Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/guides/aos/modules/index.html",
+          "title": "Modules",
+          "estimatedWords": 11,
+          "lastModified": "2025-07-02T15:09:54.794Z",
+          "breadcrumbs": [
+            "guides",
+            "aos",
+            "modules",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:54.794Z"
+        },
+        {
+          "url": "https://cookbook_ao.arweave.net/welcome/index.html",
+          "title": "Welcome to ao",
+          "estimatedWords": 219,
+          "lastModified": "2025-07-02T15:09:56.128Z",
+          "breadcrumbs": [
+            "welcome",
+            "index"
+          ],
+          "siteKey": "ao",
+          "siteName": "AO Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:09:56.128Z"
+        }
+      ],
+      "lastCrawled": "2025-07-03T18:20:00.491Z",
+      "stats": {
+        "totalPages": 90,
+        "averageWords": 576,
+        "duration": 2792,
+        "requestCount": 5,
+        "averageResponseTime": 238,
+        "pagesPerSecond": 32.23495702005731
+      }
+    },
+    "ario": {
+      "name": "AR-IO Network",
+      "baseUrl": "https://docs.ar.io",
+      "pages": [
+        {
+          "url": "https://docs.ar.io/wayfinder",
+          "title": "Wayfinder",
+          "description": "<body><div><h2>Wayfinder</h2> <p>Wayfinder is a client-side routing and verification protocol that provides decentralized, cryptographically verified access to data stored on Arweave via the <a href=\"...",
+          "estimatedWords": 355,
+          "lastModified": "2025-07-01T20:07:11.986Z",
+          "breadcrumbs": [
+            "Wayfinder"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 1,
+          "crawledAt": "2025-07-01T20:07:11.987Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/getting-started",
+          "title": "Getting Started with Wayfinder",
+          "description": "<body><div><h2>Getting Started with Wayfinder</h2> <p>Wayfinder provides decentralized and verified access to data stored on Arweave. This guide will help you get started with the core concepts and ba...",
+          "estimatedWords": 580,
+          "lastModified": "2025-07-01T20:07:12.354Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Getting Started"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:12.355Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/telemetry",
+          "title": "Telemetry Configuration",
+          "description": "<body><div><h2>Telemetry Configuration</h2> <p>Wayfinder includes optional telemetry support built on the OpenTelemetry standard. Telemetry is <strong>completely opt-in</strong> and <strong>disabled b...",
+          "estimatedWords": 195,
+          "lastModified": "2025-07-01T20:07:12.559Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Telemetry"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:12.560Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core",
+          "title": "Wayfinder Core",
+          "description": "<body><div><h2>Wayfinder Core</h2> <p>The <code>@ar.io/wayfinder-core</code> library provides intelligent gateway routing and data verification for accessing Arweave data through the AR.IO network. It...",
+          "estimatedWords": 455,
+          "lastModified": "2025-07-01T20:07:12.875Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:12.875Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/verification-strategies/signature-verification",
+          "title": "SignatureVerificationStrategy",
+          "description": "<body><div><h2>SignatureVerificationStrategy</h2> <h2>Overview</h2> <p>The <code>SignatureVerificationStrategy</code> validates Arweave transaction signatures to ensure data authenticity and ownership...",
+          "estimatedWords": 378,
+          "lastModified": "2025-07-01T20:07:13.414Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Verification Strategies",
+            "Signature Verification"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:13.414Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/verification-strategies/data-root-verification",
+          "title": "DataRootVerificationStrategy",
+          "description": "<body><div><h2>DataRootVerificationStrategy</h2> <h2>Overview</h2> <p>The <code>DataRootVerificationStrategy</code> provides the highest level of data integrity verification by validating data using A...",
+          "estimatedWords": 479,
+          "lastModified": "2025-07-01T20:07:14.062Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Verification Strategies",
+            "Data Root Verification"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:14.062Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies",
+          "title": "Routing Strategies",
+          "description": "<body><p>Routing strategies determine how Wayfinder selects which AR.IO gateway to use for each request. Different strategies optimize for different goals like performance, reliability, or load distri...",
+          "estimatedWords": 287,
+          "lastModified": "2025-07-01T20:07:14.316Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:14.316Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/simple-cache",
+          "title": "SimpleCacheRoutingStrategy",
+          "description": "<body><div><h2>Overview</h2> <p>The <code>SimpleCacheRoutingStrategy</code> wraps another routing strategy and caches its results for a specified duration. This improves performance by avoiding repeat...",
+          "estimatedWords": 197,
+          "lastModified": "2025-07-01T20:07:14.920Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Simple Cache"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:14.920Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/static",
+          "title": "StaticRoutingStrategy",
+          "description": "<body><div><h2>Overview</h2> <p>The <code>StaticRoutingStrategy</code> is the simplest routing strategy that always returns a single, pre-configured gateway URL. This strategy ignores any gateways pro...",
+          "estimatedWords": 213,
+          "lastModified": "2025-07-01T20:07:15.444Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Static"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:15.444Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/verification-strategies",
+          "title": "Verification Strategies",
+          "description": "<body><div><h2>Overview</h2> <p>Verification strategies in Wayfinder ensure data integrity and authenticity when fetching content from Arweave through AR.IO gateways. These strategies use cryptographi...",
+          "estimatedWords": 737,
+          "lastModified": "2025-07-01T20:07:15.641Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Verification Strategies"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:15.641Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/react",
+          "title": "ariowayfinder-react",
+          "description": "<body><div><h2>Overview</h2> <p>The <code>@ar.io/wayfinder-react</code> package provides React-specific components and hooks for integrating Wayfinder into React applications. It offers a provider pat...",
+          "estimatedWords": 389,
+          "lastModified": "2025-07-01T20:07:16.158Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "React"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:16.158Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/react/use-wayfinder",
+          "title": "useWayfinder",
+          "description": "<body><div><h2>Overview</h2> <p>The <code>useWayfinder</code> hook provides access to the complete Wayfinder instance from the React context. This hook gives you full control over all Wayfinder method...",
+          "estimatedWords": 903,
+          "lastModified": "2025-07-01T20:07:17.245Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "React",
+            "Use Wayfinder"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:17.245Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/request",
+          "title": "wayfinderrequest()",
+          "description": "<body><div><p>Fetch data from Arweave using the ar:// protocol with intelligent routing and verification. This method is a wrapper around the native <a href=\"https://developer.mozilla.org/en-US/docs/W...",
+          "estimatedWords": 278,
+          "lastModified": "2025-07-01T20:07:22.704Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Request"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:22.704Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/resolve-url",
+          "title": "wayfinderresolveUrl()",
+          "description": "<body><div><p>Resolve ar:// URLs to fully-qualified gateway URLs using the configured routing strategy without making a network request.</p><h2>Syntax</h2> <h2>Parameters</h2> <ul><li><strong><code>or...",
+          "estimatedWords": 269,
+          "lastModified": "2025-07-01T20:07:23.381Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Resolve Url"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:23.381Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/events",
+          "title": "Events System",
+          "description": "<body><div><h2>Events System</h2> <h2>Overview</h2> <p>Wayfinder provides a comprehensive event system that allows you to monitor and respond to various operations including routing, verification, tel...",
+          "estimatedWords": 1356,
+          "lastModified": "2025-07-01T20:07:25.073Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Events"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:25.073Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/gateway-providers",
+          "title": "Gateway Providers",
+          "description": "<body><div><h2>Gateway Providers</h2> <h2>Overview</h2> <p>Gateway providers are responsible for discovering and managing AR.IO gateways that Wayfinder can use to access Arweave data. They abstract th...",
+          "estimatedWords": 1121,
+          "lastModified": "2025-07-01T20:07:27.078Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Gateway Providers"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:27.078Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/gateway-providers/network",
+          "title": "NetworkGatewaysProvider",
+          "description": "<body><div><h2>NetworkGatewaysProvider</h2> <h2>Overview</h2> <p>The <code>NetworkGatewaysProvider</code> discovers AR.IO gateways from the AR.IO Network using the AR.IO SDK. It provides dynamic acces...",
+          "estimatedWords": 1408,
+          "lastModified": "2025-07-01T20:07:28.730Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Gateway Providers",
+            "Network"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:28.731Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/gateway-providers/static",
+          "title": "StaticGatewaysProvider",
+          "description": "<body><div><h2>StaticGatewaysProvider</h2> <h2>Overview</h2> <p>The <code>StaticGatewaysProvider</code> uses a predefined list of gateway URLs, making it ideal for development, testing, or when you ne...",
+          "estimatedWords": 295,
+          "lastModified": "2025-07-01T20:07:29.703Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Gateway Providers",
+            "Static"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:29.703Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/core/gateway-providers/cache",
+          "title": "SimpleCacheGatewaysProvider",
+          "description": "<body><div><h2>SimpleCacheGatewaysProvider</h2> <h2>Overview</h2> <p>The <code>SimpleCacheGatewaysProvider</code> wraps another gateway provider and caches the results for improved performance. It red...",
+          "estimatedWords": 759,
+          "lastModified": "2025-07-01T20:07:30.664Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Core",
+            "Gateway Providers",
+            "Cache"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:30.665Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/fastest-ping",
+          "title": "FastestPingRoutingStrategy",
+          "description": "<body><div><h2>FastestPingRoutingStrategy</h2> <h2>Overview</h2> <p>The <code>FastestPingRoutingStrategy</code> selects the gateway with the lowest latency by performing HEAD requests to all available...",
+          "estimatedWords": 224,
+          "lastModified": "2025-07-01T20:07:31.125Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Fastest Ping"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:31.125Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/preferred-with-fallback",
+          "title": "PreferredWithFallbackRoutingStrategy",
+          "description": "<body><div><h2>PreferredWithFallbackRoutingStrategy</h2> <h2>Overview</h2> <p>The <code>PreferredWithFallbackRoutingStrategy</code> attempts to use a designated preferred gateway first, and only falls...",
+          "estimatedWords": 234,
+          "lastModified": "2025-07-01T20:07:31.626Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Preferred With Fallback"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:31.626Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/round-robin",
+          "title": "RoundRobinRoutingStrategy",
+          "description": "<body><div><h2>RoundRobinRoutingStrategy</h2> <h2>Overview</h2> <p>The <code>RoundRobinRoutingStrategy</code> distributes requests evenly across all available gateways in a cyclical manner. Each gatew...",
+          "estimatedWords": 205,
+          "lastModified": "2025-07-01T20:07:32.135Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Round Robin"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:32.135Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/routing-strategies/random",
+          "title": "RandomRoutingStrategy",
+          "description": "<body><div><h2>RandomRoutingStrategy</h2> <h2>Overview</h2> <p>The <code>RandomRoutingStrategy</code> selects gateways randomly from the available pool. This strategy provides simple load distribution...",
+          "estimatedWords": 210,
+          "lastModified": "2025-07-01T20:07:32.628Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Routing Strategies",
+            "Random"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:32.628Z"
+        },
+        {
+          "url": "https://docs.ar.io/wayfinder/verification-strategies/hash-verification",
+          "title": "HashVerificationStrategy",
+          "description": "<body><div><h2>HashVerificationStrategy</h2> <h2>Overview</h2> <p>The <code>HashVerificationStrategy</code> verifies data integrity by comparing SHA-256 hashes of fetched data against trusted gateway ...",
+          "estimatedWords": 330,
+          "lastModified": "2025-07-01T20:07:33.145Z",
+          "breadcrumbs": [
+            "Wayfinder",
+            "Verification Strategies",
+            "Hash Verification"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:33.145Z"
+        },
+        {
+          "url": "https://docs.ar.io/",
+          "title": "Welcome to the Permaweb",
+          "description": "<body><div><a href=\"/guides\"><p>🚀 Get Started Quickly: Explore Our Quick Start Guides →</p></a> <h2>Welcome to the Permaweb</h2> <p>Data in paradise. The AR.IO ecosystem is dedicated to cultivating p...",
+          "estimatedWords": 165,
+          "lastModified": "2025-07-01T20:07:33.538Z",
+          "breadcrumbs": [],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:33.538Z"
+        },
+        {
+          "url": "https://docs.ar.io/concepts/wayfinder",
+          "title": "Wayfinder Protocol",
+          "description": "<body><div><h2>Overview</h2> <p>The Wayfinder protocol is a <a href=\"https://wikipedia.org/wiki/Uniform_Resource_Identifier\">URI scheme</a> designed to translate requests for Arweave content into <cod...",
+          "estimatedWords": 1098,
+          "lastModified": "2025-07-01T20:07:33.688Z",
+          "breadcrumbs": [
+            "Concepts",
+            "Wayfinder"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:33.688Z"
+        },
+        {
+          "url": "https://docs.ar.io/introduction",
+          "title": "Introduction",
+          "description": "<body><div><h2>TL;DR</h2> <p>AR.IO seeks to create a decentralized and incentivized cloud network aimed at attracting more gateways to the Arweave network therefore making the permanent web more acces...",
+          "estimatedWords": 596,
+          "lastModified": "2025-07-01T20:07:33.795Z",
+          "breadcrumbs": [
+            "Introduction"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:33.795Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/observer",
+          "title": "Observation and Incentives (OIP)",
+          "description": "<body><div><h2>Observation and Incentives (OIP)</h2> <h2>Overview</h2> <p>The Observation and Incentive Protocol is designed to maintain and enhance the operational integrity of gateways on the AR.IO ...",
+          "estimatedWords": 1723,
+          "lastModified": "2025-07-01T20:07:34.195Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Observer"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:34.195Z"
+        },
+        {
+          "url": "https://docs.ar.io/ario-contract",
+          "title": "ARIO Smart Contract",
+          "description": "<body><div><h2>Overview</h2> <p>The AR.IO smart contract encompasses all the functionality required to support the network's currency, utilities, and management. Written in Lua and compiled to WASM64,...",
+          "estimatedWords": 304,
+          "lastModified": "2025-07-01T20:07:34.621Z",
+          "breadcrumbs": [
+            "Ario Contract"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:34.621Z"
+        },
+        {
+          "url": "https://docs.ar.io/staking",
+          "title": "Staking",
+          "description": "<body><h2>Overview</h2> <p>Staking tokens within the AR.IO Network serves a dual primary purpose: it signifies a public commitment by gateway operators and qualifies them and their delegates for rewar...",
+          "estimatedWords": 537,
+          "lastModified": "2025-07-01T20:07:35.053Z",
+          "breadcrumbs": [
+            "Staking"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:35.053Z"
+        },
+        {
+          "url": "https://docs.ar.io/concepts/manifests",
+          "title": "Manifests",
+          "description": "<body><h2>Overview</h2> <p>AR.IO Gateways support friendly-path-name routing for data on Arweave via Manifests. This greatly improves the programmability of data relationships. Consider an illustrativ...",
+          "estimatedWords": 735,
+          "lastModified": "2025-07-01T20:07:35.548Z",
+          "breadcrumbs": [
+            "Concepts",
+            "Manifests"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:35.548Z"
+        },
+        {
+          "url": "https://docs.ar.io/concepts/normalized-addresses",
+          "title": "Normalized Addresses",
+          "description": "<body><div><h2>Overview</h2> <p>Different blockchains use different formats for the <a href=\"/glossary#public-key\">public keys</a> of wallets, and the <a href=\"/glossary#native-address\">native address...",
+          "estimatedWords": 622,
+          "lastModified": "2025-07-01T20:07:35.921Z",
+          "breadcrumbs": [
+            "Concepts",
+            "Normalized Addresses"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:35.921Z"
+        },
+        {
+          "url": "https://docs.ar.io/concepts/sandboxing",
+          "title": "Browser Sandboxing",
+          "description": "<body><div><h2>Overview</h2> <p>Browser sandboxing allows data requests to a gateway node to benefit from the security advantages of using a browser's same-origin policy by redirecting the requests to...",
+          "estimatedWords": 520,
+          "lastModified": "2025-07-01T20:07:36.327Z",
+          "breadcrumbs": [
+            "Concepts",
+            "Sandboxing"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:36.327Z"
+        },
+        {
+          "url": "https://docs.ar.io/arns",
+          "title": "Arweave Name System (ArNS)",
+          "description": "<body><div><h2>Overview</h2> <p>Arweave URLs and transaction IDs are long, difficult to remember, and occasionally miscategorized as spam. The Arweave Name System (ArNS) aims to resolve these problems...",
+          "estimatedWords": 1715,
+          "lastModified": "2025-07-01T20:07:37.246Z",
+          "breadcrumbs": [
+            "Arns"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:37.246Z"
+        },
+        {
+          "url": "https://docs.ar.io/token",
+          "title": "The ARIO Token",
+          "description": "<body><div><h2>Overview</h2> <p>ARIO is the multifunction <a href=\"/glossary#ao-computer-ao\">AO Computer</a> based token that powers the AR.IO Network and its suite of permanent cloud applications. Th...",
+          "estimatedWords": 254,
+          "lastModified": "2025-07-01T20:07:37.640Z",
+          "breadcrumbs": [
+            "Token"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:37.640Z"
+        },
+        {
+          "url": "https://docs.ar.io/network-composition",
+          "title": "ARIO Network composition",
+          "description": "<body><div><h2>Overview</h2> <p>The permanent web, or \"permaweb,\" is the collection of all webpages, applications, and files stored on the Arweave network and made accessible by the AR.IO permanent cl...",
+          "estimatedWords": 268,
+          "lastModified": "2025-07-01T20:07:38.056Z",
+          "breadcrumbs": [
+            "Network Composition"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:38.056Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides",
+          "title": "Quick Start Guides",
+          "description": "Quick Start Guides Deploy a dApp with ArlinkEasily deploy a web app with ArNS using Arlinkmake your ArNS name tradable on BazarHow to display and trade your ArNS ANTs on BazarBuild a dApp using the Ar...",
+          "estimatedWords": 107,
+          "lastModified": "2025-07-01T20:07:39.790Z",
+          "breadcrumbs": [
+            "Guides"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:07:39.790Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/testnet",
+          "title": "Testnet",
+          "description": "<body><div><h2>Testnet</h2> <p>The AR.IO Network Testnet allows developers to test their applications and workflows using ARIO Network features such as <a href=\"/arns\">ArNS Names</a> before deploying ...",
+          "estimatedWords": 905,
+          "lastModified": "2025-07-01T20:07:39.985Z",
+          "breadcrumbs": [
+            "Guides",
+            "Testnet"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:39.985Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk",
+          "title": "ARIO SDK",
+          "description": "<body><h2>AR.IO SDK</h2> <h2>Overview</h2> <p>The AR.IO SDK provides functionality for interacting with the AR.IO ecosystem of services and protocols. This includes, <a href=\"/network-composition\">the...",
+          "estimatedWords": 430,
+          "lastModified": "2025-07-01T20:07:40.400Z",
+          "breadcrumbs": [
+            "Ar Io Sdk"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:40.400Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/getting-started",
+          "title": "Getting Started",
+          "description": "<body><div><h2>Prerequisites</h2> <ul><li><code>node &gt;= v18.0.0</code></li> <li><code>npm</code> or <code>yarn</code></li></ul> <h2>Installation</h2> <h2>Quick Start</h2> <p>The following examples ...",
+          "estimatedWords": 122,
+          "lastModified": "2025-07-01T20:07:41.243Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Getting Started"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:41.243Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/release-notes",
+          "title": "ARIO SDK Changelog",
+          "description": "<body><div><h2>AR.IO SDK Changelog</h2> <h2>Overview</h2> <p>Welcome to the documentation page for the AR.IO SDK release notes. Here, you will find detailed information about each version of the AR.IO...",
+          "estimatedWords": 6691,
+          "lastModified": "2025-07-01T20:07:42.852Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Release Notes"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:42.852Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/gateway-network",
+          "title": "Gateway network",
+          "description": "<body><div><h2>Overview</h2> <p>The AR.IO Network consists of AR.IO <a href=\"/gateways\">gateway nodes</a>, which are identified by their registered Arweave wallet addresses and either their IP address...",
+          "estimatedWords": 653,
+          "lastModified": "2025-07-01T20:07:43.170Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Gateway Network"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:43.170Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/configuration",
+          "title": "init",
+          "description": "<body><h2>init</h2> <p><code>init</code> is a factory function that creates a read-only or writable client. By providing a <code>signer</code>, additional write APIs that require signing (like <code>b...",
+          "estimatedWords": 96,
+          "lastModified": "2025-07-01T20:07:43.879Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Configuration"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:43.879Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/linux-setup",
+          "title": "Linux Installation Instructions",
+          "description": "<body><div><h2>Linux Installation Instructions</h2> <h2>Overview</h2> <p>The following instructions will guide you through the process of installing the AR.IO node on a Linux machine, specifically Ubu...",
+          "estimatedWords": 1286,
+          "lastModified": "2025-07-01T20:07:44.140Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Linux Setup"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:44.140Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/parquet",
+          "title": "Parquet and ClickHouse Usage Guide",
+          "description": "<body><div><h2>Overview</h2> <p>AR.IO gateway Release 33 introduces a new configuration option for using Parquet files and ClickHouse to improve performance and scalability of your AR.IO gateway for l...",
+          "estimatedWords": 1492,
+          "lastModified": "2025-07-01T20:07:45.284Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Parquet"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:45.284Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/snapshots",
+          "title": "Importing SQLite Database Snapshots",
+          "description": "<body><div><h2>Overview</h2> <p>One of the challenges of running an AR.IO Gateway is the initial synchronization time as your gateway builds its local index of the Arweave network. This process can ta...",
+          "estimatedWords": 485,
+          "lastModified": "2025-07-01T20:07:45.737Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Snapshots"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:45.737Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/join-network",
+          "title": "Join the ARIO Network",
+          "description": "<body><div><h2>Join the AR.IO Network</h2> <h2>Prerequisites</h2> <ol><li><p>Must have a fully functional AR.IO gateway.</p><ul><li>This includes the ability to resolve ArNS subdomains.</li><li>Follow...",
+          "estimatedWords": 489,
+          "lastModified": "2025-07-01T20:07:46.172Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Join Network"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:46.172Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/arns-resolution",
+          "title": "ArNS Resolution",
+          "description": "<body><h2>ArNS Resolution</h2> <h2>Overview</h2> <p>One of the core functions of the AR.IO network gateway is to serve <a href=\"/arns\">ArNS (Arweave Name System)</a> records. Each ArNS name is assigne...",
+          "estimatedWords": 629,
+          "lastModified": "2025-07-01T20:07:46.539Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Arns Resolution"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:46.539Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/apex",
+          "title": "Gateway Apex Domain Content Resolution",
+          "description": "<body><div><h2>Overview</h2> <p>Prior to gateway Release 28, the apex domain of a gateway would only display information about the Arweave network. Release 28 introduced two new environment variables ...",
+          "estimatedWords": 363,
+          "lastModified": "2025-07-01T20:07:46.955Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Apex"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:46.955Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/admin",
+          "title": "ARIO HTTP API Admin Endpoints",
+          "description": "<body><div><h2>AR.IO HTTP API Admin Endpoints</h2> <h2>Overview</h2> <p>The AR.IO HTTP API offers several endpoints that allow access to internal information and the ability to make adjustments withou...",
+          "estimatedWords": 325,
+          "lastModified": "2025-07-01T20:07:47.363Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Admin"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:47.363Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/advanced",
+          "title": "Advanced Configuration",
+          "description": "<body><div><h2>Advanced Configuration</h2> <h2>Overview</h2> <p>The Getting Started guides for <a href=\"/gateways/windows-setup\">windows</a> and <a href=\"/gateways/linux-setup\">linux</a> contain all t...",
+          "estimatedWords": 798,
+          "lastModified": "2025-07-01T20:07:47.972Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Advanced"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:47.972Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/env",
+          "title": "Environmental Variables",
+          "description": "<body><h2>Environmental Variables</h2> <h2>Overview</h2> <p>The AR.IO Gateway allows configuration customization through environmental variables. These variables dictate the gateway's behavior, from b...",
+          "estimatedWords": 1254,
+          "lastModified": "2025-07-01T20:07:48.495Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Env"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:48.495Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/troubleshooting",
+          "title": "Gateway Troubleshooting  FAQ",
+          "description": "<body><div><p>Welcome to the unified troubleshooting and FAQ resource for AR.IO Gateway operators. Use the quick lookup table below for fast answers, or browse the detailed sections for in-depth guida...",
+          "estimatedWords": 3861,
+          "lastModified": "2025-07-01T20:07:49.189Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Troubleshooting"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:49.189Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/upgrading",
+          "title": "Upgrading your Gateway",
+          "description": "<body><div><h2>Upgrading your Gateway</h2> <p>To ensure the optimal performance and security of your AR.IO Gateway, it's essential to regularly upgrade to the latest version. Notably, indexed data res...",
+          "estimatedWords": 356,
+          "lastModified": "2025-07-01T20:07:49.687Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Upgrading"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:49.687Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/moderation",
+          "title": "Content Moderation",
+          "description": "<body><div><h2>Overview</h2> <p>Arweave is a network designed for permanent storage of data. It is a practical impossibility for data to be wholly removed from the network once it has been uploaded.</...",
+          "estimatedWords": 544,
+          "lastModified": "2025-07-01T20:07:50.324Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Moderation"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:50.324Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/filters",
+          "title": "ARIO Node Filtering System",
+          "description": "<body><div><p>The AR.IO Node filtering system provides a flexible way to match and filter items based on various criteria. The system is built around JSON-based filter definitions that can be combined...",
+          "estimatedWords": 541,
+          "lastModified": "2025-07-01T20:07:50.774Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Filters"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:50.774Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/optimize-data",
+          "title": "Optimizing Data Handling in ARIO Gateway",
+          "description": "<body><div><p>The AR.IO Gateway provides powerful tools for optimizing how you access and serve specific types of data. By configuring filters and worker settings, you can focus your gateway on effici...",
+          "estimatedWords": 970,
+          "lastModified": "2025-07-01T20:07:51.537Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Optimize Data"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:51.537Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/bundler",
+          "title": "Bundler",
+          "description": "<body><div><h2>Bundler</h2> <h2>Overview</h2> <p>A <a href=\"https://github.com/ardriveapp/turbo-upload-service/\">Turbo ANS-104</a> data item bundler can be run alongside an AR.IO gateway. This allows ...",
+          "estimatedWords": 816,
+          "lastModified": "2025-07-01T20:07:52.122Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Bundler"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:52.122Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/grafana",
+          "title": "Grafana Analytics",
+          "description": "<body><div><h2>Grafana Analytics</h2> <h2>Overview</h2> <p>AR.IO gateways track a significant number of performance and operation metrics using <a href=\"https://prometheus.io/\">Prometheus</a>. A <a hr...",
+          "estimatedWords": 698,
+          "lastModified": "2025-07-01T20:07:52.632Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Grafana"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:52.632Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/cu",
+          "title": "AO Compute Unit (CU)",
+          "description": "<body><div><h2>Overview</h2> <p>An AO Compute Unit (CU) is a critical component in the AO ecosystem responsible for executing AO processes and maintaining their state. CUs serve as the computational b...",
+          "estimatedWords": 1014,
+          "lastModified": "2025-07-01T20:07:53.224Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Cu"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:53.224Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/windows-setup",
+          "title": "Windows Installation Instructions",
+          "description": "<body><div><h2>Windows Installation Instructions</h2> <h2>Overview</h2> <p>This guide provides step-by-step instructions for setting up the AR.IO node on a Windows computer. It covers installing neces...",
+          "estimatedWords": 1312,
+          "lastModified": "2025-07-01T20:07:54.488Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Windows Setup"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:54.489Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/ar-io-node/advanced-config.html",
+          "title": "Advanced Configuration",
+          "description": "<body><div><h2>Advanced Configuration</h2> <h2>Overview</h2> <p>The Getting Started guides for <a href=\"/gateways/windows-setup\">windows</a> and <a href=\"/gateways/linux-setup\">linux</a> contain all t...",
+          "estimatedWords": 798,
+          "lastModified": "2025-07-01T20:07:54.839Z",
+          "breadcrumbs": [
+            "Gateways",
+            "Ar Io Node",
+            "Advanced Config"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:54.839Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/gql",
+          "title": "GraphQL",
+          "description": "<body><div><h2>GraphQL</h2> <h2>Overview</h2> <p>GraphQL is a powerful query language designed for modern web applications to efficiently fetch data. It enables precise queries, allowing users to spec...",
+          "estimatedWords": 1298,
+          "lastModified": "2025-07-01T20:07:55.263Z",
+          "breadcrumbs": [
+            "Guides",
+            "Gql"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:55.263Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/managing-undernames",
+          "title": "Managing Undernames",
+          "description": "<body><h2>Overview</h2> <p><a href=\"/arns#under_names\">ArNS undernames</a> are subdomains of top level ArNS domains. They are separated from the main ArNS domain using an underscore \"_\" in place of th...",
+          "estimatedWords": 311,
+          "lastModified": "2025-07-01T20:07:55.745Z",
+          "breadcrumbs": [
+            "Guides",
+            "Managing Undernames"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:07:55.745Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-record",
+          "title": "setRecord",
+          "description": "<body><p>Deprecated</p> <p>This method is deprecated. Please use <code>setBaseNameRecord</code> for top-level names or <code>setUndernameRecord</code> for undernames instead. See the <a href=\"/ar-io-s...",
+          "estimatedWords": 208,
+          "lastModified": "2025-07-01T20:07:56.250Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:07:56.250Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/configuration",
+          "title": "init",
+          "description": "<body><h2>init</h2> <p><code>init</code> is a factory function that creates a read-only or writable client. By providing a <code>signer</code>, additional write APIs that require signing (like <code>s...",
+          "estimatedWords": 98,
+          "lastModified": "2025-07-01T20:07:56.909Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Configuration"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:56.909Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-balance",
+          "title": "getBalance",
+          "description": "<body><p><code>getBalance</code> is a method on the <code>ANT</code> class that retrieves the token balance for a specific wallet address within the ANT process.</p><p><code>getBalance</code> does not...",
+          "estimatedWords": 48,
+          "lastModified": "2025-07-01T20:07:57.604Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Balance"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:57.604Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-balances",
+          "title": "getBalances",
+          "description": "<body><p><code>getBalances</code> is a method on the <code>ANT</code> class that retrieves all token balances within the ANT process.</p><p><code>getBalances</code> does not require authentication.</p...",
+          "estimatedWords": 29,
+          "lastModified": "2025-07-01T20:07:58.011Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Balances"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:58.011Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-info",
+          "title": "getInfo",
+          "description": "<body><p><code>getInfo</code> is a method on the <code>ANT</code> class that retrieves general information about the ANT process, including name, ticker, denomination, and other metadata.</p><p><code>...",
+          "estimatedWords": 35,
+          "lastModified": "2025-07-01T20:07:58.832Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Info"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:58.832Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-logo",
+          "title": "getLogo",
+          "description": "<body><h2>getLogo</h2> <p><code>getLogo</code> is a method on the <code>ANT</code> class that retrieves the transaction ID (TX ID) of the ANT's logo.</p><p><code>getLogo</code> does not require authen...",
+          "estimatedWords": 36,
+          "lastModified": "2025-07-01T20:07:59.363Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Logo"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:59.363Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-state",
+          "title": "getState",
+          "description": "<body><p><code>getState</code> is a method on the <code>ANT</code> class that retrieves the complete state of the ANT process, including all records, balances, controllers, and metadata.</p><p><code>g...",
+          "estimatedWords": 36,
+          "lastModified": "2025-07-01T20:07:59.948Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get State"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:07:59.948Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-owner",
+          "title": "getOwner",
+          "description": "<body><p><code>getOwner</code> is a method on the <code>ANT</code> class that retrieves the owner wallet address of the configured ANT process.</p><p><code>getOwner</code> does not require authenticat...",
+          "estimatedWords": 35,
+          "lastModified": "2025-07-01T20:08:01.147Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Owner"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:01.147Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-controllers",
+          "title": "getControllers",
+          "description": "<body><p><code>getControllers</code> is a method on the <code>ANT</code> class that retrieves the controllers of the configured ANT process.</p><p><code>getControllers</code> does not require authenti...",
+          "estimatedWords": 33,
+          "lastModified": "2025-07-01T20:08:01.609Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Controllers"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:01.609Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-handlers",
+          "title": "getHandlers",
+          "description": "<body><p><code>getHandlers</code> is a method on the <code>ANT</code> class that retrieves the handlers supported by the ANT.</p><p><code>getHandlers</code> does not require authentication.</p><h2>Par...",
+          "estimatedWords": 28,
+          "lastModified": "2025-07-01T20:08:02.116Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Handlers"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:02.116Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/get-records",
+          "title": "getRecords",
+          "description": "<body><p><code>getRecords</code> is a method on the <code>ANT</code> class that retrieves all the records stored in the ANT process, including both base name records and undername records.</p><p><code...",
+          "estimatedWords": 38,
+          "lastModified": "2025-07-01T20:08:02.685Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Get Records"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:02.686Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-name",
+          "title": "setName",
+          "description": "<body><h2>setName</h2> <p><code>setName</code> is a method on the <code>ANT</code> class that updates the display name of the ANT process.</p><p><code>setName</code> requires authentication.</p></body...",
+          "estimatedWords": 20,
+          "lastModified": "2025-07-01T20:08:03.228Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Name"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:03.228Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-logo",
+          "title": "setLogo",
+          "description": "<body><h2>setLogo</h2> <p><code>setLogo</code> is a method on the <code>ANT</code> class that updates the logo of the ANT process. The logo must be specified as an Arweave transaction ID that contains...",
+          "estimatedWords": 33,
+          "lastModified": "2025-07-01T20:08:03.754Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Logo"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:03.754Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-ticker",
+          "title": "setTicker",
+          "description": "<body><h2>setTicker</h2> <p><code>setTicker</code> is a method on the <code>ANT</code> class that updates the ticker symbol of the ANT process.</p><p><code>setTicker</code> requires authentication.</p...",
+          "estimatedWords": 20,
+          "lastModified": "2025-07-01T20:08:04.246Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Ticker"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:04.246Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-description",
+          "title": "setDescription",
+          "description": "<body><h2>setDescription</h2> <p><code>setDescription</code> is a method on the <code>ANT</code> class that updates the descriptive text for the ANT process.</p><p><code>setDescription</code> requires...",
+          "estimatedWords": 20,
+          "lastModified": "2025-07-01T20:08:04.809Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Description"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:04.809Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-keywords",
+          "title": "setKeywords",
+          "description": "<body><p><code>setKeywords</code> is a method on the <code>ANT</code> class that updates the list of keywords associated with the ANT process.</p><p><code>setKeywords</code> requires authentication.</...",
+          "estimatedWords": 66,
+          "lastModified": "2025-07-01T20:08:05.341Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Keywords"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:05.341Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/add-controller",
+          "title": "addController",
+          "description": "<body><p><code>addController</code> is a method on the <code>ANT</code> class that adds a new controller to the ANT's list of approved controllers. Controllers have permissions to set records and modi...",
+          "estimatedWords": 83,
+          "lastModified": "2025-07-01T20:08:05.883Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Add Controller"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:05.883Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/remove-controller",
+          "title": "removeController",
+          "description": "<body><h2>removeController</h2> <p><code>removeController</code> is a method on the <code>ANT</code> class that removes a specified wallet address from the ANT's list of approved controllers.</p><p><c...",
+          "estimatedWords": 24,
+          "lastModified": "2025-07-01T20:08:06.330Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Remove Controller"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:06.330Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/remove-primary-names",
+          "title": "removePrimaryNames",
+          "description": "<body><h2>removePrimaryNames</h2> <p><code>removePrimaryNames</code> is a method on the <code>ANT</code> class that removes specified primary names from the ANT process. This affects any primary names...",
+          "estimatedWords": 33,
+          "lastModified": "2025-07-01T20:08:06.957Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Remove Primary Names"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:06.957Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/approve-primary-name-request",
+          "title": "approvePrimaryNameRequest",
+          "description": "<body><p><code>approvePrimaryNameRequest</code> is a method on the <code>ANT</code> class that approves a primary name request for a given name or address.</p><p><code>approvePrimaryNameRequest</code>...",
+          "estimatedWords": 85,
+          "lastModified": "2025-07-01T20:08:07.463Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Approve Primary Name Request"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:07.463Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/release-name",
+          "title": "releaseName",
+          "description": "<body><h2>releaseName</h2> <p><code>releaseName</code> is a method on the <code>ANT</code> class that releases an ArNS name from the ANT, making it available for auction on the ARIO contract. The name...",
+          "estimatedWords": 71,
+          "lastModified": "2025-07-01T20:08:08.029Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Release Name"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:08.029Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/reassign-name",
+          "title": "reassignName",
+          "description": "<body><h2>reassignName</h2> <p><code>reassignName</code> is a method on the <code>ANT</code> class that transfers ownership of an ArNS name to a new ANT. This operation can only be performed by the cu...",
+          "estimatedWords": 33,
+          "lastModified": "2025-07-01T20:08:08.531Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Reassign Name"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:08.531Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/transfer",
+          "title": "transfer",
+          "description": "<body><p><code>transfer</code> is a method on the <code>ANT</code> class that transfers ownership of the ANT process to another wallet address.</p><p><code>transfer</code> requires authentication.</p>...",
+          "estimatedWords": 65,
+          "lastModified": "2025-07-01T20:08:09.229Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Transfer"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:09.229Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-base-name-record",
+          "title": "setBaseNameRecord",
+          "description": "<body><p><code>setBaseNameRecord</code> is a method on the <code>ANT</code> class that adds or updates the base name record for the ANT. This record defines the top-level name of the ANT (e.g., ardriv...",
+          "estimatedWords": 116,
+          "lastModified": "2025-07-01T20:08:09.723Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Base Name Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:09.723Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/set-undername-record",
+          "title": "setUndernameRecord",
+          "description": "<body><p><code>setUndernameRecord</code> is a method on the <code>ANT</code> class that creates or updates an undername record for the ANT. An undername is a prefix that is joined to the base name wit...",
+          "estimatedWords": 120,
+          "lastModified": "2025-07-01T20:08:10.331Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Set Undername Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:10.331Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/remove-undername-record",
+          "title": "removeUndernameRecord",
+          "description": "<body><p><code>removeUndernameRecord</code> is a method on the <code>ANT</code> class that removes a specified undername record from the ANT process. Once removed, the undername will no longer resolve...",
+          "estimatedWords": 28,
+          "lastModified": "2025-07-01T20:08:10.826Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Remove Undername Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:10.826Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ants/remove-record",
+          "title": "removeRecord",
+          "description": "<body><p>Deprecated</p> <p>This method is deprecated. Please use <code>removeUndernameRecord</code> instead. See the <a href=\"/ar-io-sdk/ants/remove-undername-record\">removeUndernameRecord</a> documen...",
+          "estimatedWords": 34,
+          "lastModified": "2025-07-01T20:08:11.433Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ants",
+            "Remove Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:11.433Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/increase-undername-limit",
+          "title": "increaseUndernameLimit",
+          "description": "<body><h2>increaseUndernameLimit</h2> <p><code>increaseUndernameLimit</code> is a method on the <code>ARIO</code> class that increases the number of undernames an ArNS domain can support. Each domain ...",
+          "estimatedWords": 114,
+          "lastModified": "2025-07-01T20:08:11.944Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Increase Undername Limit"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:11.944Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/buy-record",
+          "title": "buyRecord",
+          "description": "<body><p><code>buyRecord</code> is a method on the <code>ARIO</code> class that purchases a record in the ArNS registry for a specified name and duration.</p><p><code>buyRecord</code> requires authent...",
+          "estimatedWords": 111,
+          "lastModified": "2025-07-01T20:08:12.511Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Buy Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:12.511Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/extend-lease",
+          "title": "extendLease",
+          "description": "<body><h2>extendLease</h2> <p><code>extendLease</code> is a method on the <code>ARIO</code> class that extends the lease duration of a registered ArNS domain. The extension period can be 1-5 years, de...",
+          "estimatedWords": 115,
+          "lastModified": "2025-07-01T20:08:13.049Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Extend Lease"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:13.049Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/upgrade-record",
+          "title": "upgradeRecord",
+          "description": "<body><p><code>upgradeRecord</code> is a method on the <code>ARIO</code> class that upgrades an existing ArNS record from a lease to a permanent ownership (permabuy). This allows converting a leased n...",
+          "estimatedWords": 76,
+          "lastModified": "2025-07-01T20:08:13.523Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Upgrade Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:13.523Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-record",
+          "title": "getArNSRecord",
+          "description": "<body><p><code>getArNSRecord</code> is a method on the <code>ARIO</code> class that retrieves the details of a specific ArNS record by its name. This includes lease information, type, process ID, and ...",
+          "estimatedWords": 34,
+          "lastModified": "2025-07-01T20:08:14.009Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Record"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:14.009Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-records",
+          "title": "getArNSRecords",
+          "description": "<body><p><code>getArNSRecords</code> is a method on the <code>ARIO</code> class that retrieves all ArNS records with optional pagination and filtering support.</p><p><code>getArNSRecords</code> does n...",
+          "estimatedWords": 92,
+          "lastModified": "2025-07-01T20:08:14.556Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Records"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:14.557Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-reserved-name",
+          "title": "getArNSReservedName",
+          "description": "<body><p><code>getArNSReservedName</code> is a method on the <code>ARIO</code> class that retrieves details about a specific reserved ArNS name, including its target and any expiration information.</p...",
+          "estimatedWords": 43,
+          "lastModified": "2025-07-01T20:08:15.037Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Reserved Name"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:15.037Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-reserved-names",
+          "title": "getArNSReservedNames",
+          "description": "<body><p><code>getArNSReservedNames</code> is a method on the <code>ARIO</code> class that retrieves all reserved ArNS names, with support for pagination and custom sorting. Reserved names are names t...",
+          "estimatedWords": 94,
+          "lastModified": "2025-07-01T20:08:15.512Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Reserved Names"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:15.512Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-cost-details",
+          "title": "getCostDetails",
+          "description": "<body><p><code>getCostDetails</code> is a method on the <code>ARIO</code> class that calculates detailed cost information for a specific interaction (such as buying an ArNS record). The method determi...",
+          "estimatedWords": 148,
+          "lastModified": "2025-07-01T20:08:16.079Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Cost Details"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:16.079Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-token-cost",
+          "title": "getTokenCost",
+          "description": "<body><p><code>getTokenCost</code> is a method on the <code>ARIO</code> class that calculates the cost in mARIO tokens for various ArNS operations such as buying records, extending leases, increasing ...",
+          "estimatedWords": 71,
+          "lastModified": "2025-07-01T20:08:16.593Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Token Cost"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:16.594Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-demand-factor",
+          "title": "getDemandFactor",
+          "description": "<body><h2>getDemandFactor</h2> <p><code>getDemandFactor</code> is a method on the <code>ARIO</code> class that retrieves the current network demand factor. This factor is a dynamic multiplier that adj...",
+          "estimatedWords": 52,
+          "lastModified": "2025-07-01T20:08:16.974Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Demand Factor"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:16.974Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-demand-factor-settings",
+          "title": "getDemandFactorSettings",
+          "description": "<body><p><code>getDemandFactorSettings</code> is a method on the <code>ARIO</code> class that retrieves the configuration settings for the demand factor algorithm, which dynamically adjusts ArNS regis...",
+          "estimatedWords": 40,
+          "lastModified": "2025-07-01T20:08:17.485Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Demand Factor Settings"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:17.485Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-registration-fees",
+          "title": "getRegistrationFees",
+          "description": "<body><p><code>getRegistrationFees</code> is a method on the <code>ARIO</code> class that retrieves the current registration fee structure for ArNS names, including base fees and any applicable multip...",
+          "estimatedWords": 37,
+          "lastModified": "2025-07-01T20:08:18.018Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Registration Fees"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:18.018Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-returned-name",
+          "title": "getArNSReturnedName",
+          "description": "<body><h2>getArNSReturnedName</h2> <p><code>getArNSReturnedName</code> is a method on the <code>ARIO</code> class that retrieves information about an ArNS name that has been returned to the protocol, ...",
+          "estimatedWords": 34,
+          "lastModified": "2025-07-01T20:08:18.539Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Returned Name"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:18.539Z"
+        },
+        {
+          "url": "https://docs.ar.io/ar-io-sdk/ario/arns/get-arns-returned-names",
+          "title": "getArNSReturnedNames",
+          "description": "<body><h2>getArNSReturnedNames</h2> <p><code>getArNSReturnedNames</code> is a method on the <code>ARIO</code> class that retrieves all currently active returned ArNS names, with support for pagination...",
+          "estimatedWords": 49,
+          "lastModified": "2025-07-01T20:08:19.089Z",
+          "breadcrumbs": [
+            "Ar Io Sdk",
+            "Ario",
+            "Arns",
+            "Get Arns Returned Names"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 5,
+          "crawledAt": "2025-07-01T20:08:19.089Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/primary-names",
+          "title": "Managing Primary Names",
+          "description": "<body><div><h2>Overview</h2> <p>Primary names allow users to set a user-friendly alias for their Arweave wallet address, simplifying how addresses are displayed across applications. This process invol...",
+          "estimatedWords": 733,
+          "lastModified": "2025-07-01T20:08:19.595Z",
+          "breadcrumbs": [
+            "Guides",
+            "Primary Names"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:19.595Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/story",
+          "title": "Registering Story Protocol IP Assets with Arweave Metadata using Turbo",
+          "description": "<body><div><h2>Registering Story Protocol IP Assets with Arweave Metadata using Turbo</h2> <blockquote><p>Utilize the speed and reliability of ArDrive Turbo to store metadata for Story Protocol IP Ass...",
+          "estimatedWords": 1944,
+          "lastModified": "2025-07-01T20:08:22.749Z",
+          "breadcrumbs": [
+            "Guides",
+            "Story"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:22.749Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/ants-on-bazar",
+          "title": "Trading ANTs on Bazar",
+          "description": "<body><div><h2>Trading ANTs on Bazar</h2> <h2>Overview</h2> <p><a href=\"/arns#arweave-name-token-ant\">Arweave Name Tokens</a> are <a href=\"https://github.com/permaweb/ao-permaweb/blob/asset-manager/se...",
+          "estimatedWords": 548,
+          "lastModified": "2025-07-01T20:08:23.137Z",
+          "breadcrumbs": [
+            "Guides",
+            "Ants On Bazar"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:23.137Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/uploading-to-arweave",
+          "title": "Uploading to Arweave",
+          "description": "<body><div><h2>Uploading to Arweave</h2> <h2>Overview</h2> <p>While AR.IO provides powerful tools for accessing and interacting with data on Arweave, that data must first be uploaded to the network. T...",
+          "estimatedWords": 344,
+          "lastModified": "2025-07-01T20:08:24.541Z",
+          "breadcrumbs": [
+            "Guides",
+            "Uploading To Arweave"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:24.541Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/arlink",
+          "title": "Arlink Deploy",
+          "description": "<body><div><h2>Overview</h2> <p>Arlink is a third party tool that allows you to permanently deploy and manage web apps on the permaweb with ease.</p><h2>How it works</h2> <p>Users can link their Githu...",
+          "estimatedWords": 484,
+          "lastModified": "2025-07-01T20:08:24.968Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Arlink"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:24.968Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/permaweb-deploy",
+          "title": "Deploy a Website or Application",
+          "description": "<body><div><h2>Deploy a Website or Application</h2> <h2>Overview</h2> <p>With the growing popularity of permanently deployed apps, hosted on Arweave, along with the growing list of tools offered by AR...",
+          "estimatedWords": 1066,
+          "lastModified": "2025-07-01T20:08:25.139Z",
+          "breadcrumbs": [
+            "Guides",
+            "Permaweb Deploy"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:25.139Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/arlink",
+          "title": "Arlink Deploy",
+          "description": "<body><div><h2>Overview</h2> <p>Arlink is a third party tool that allows you to permanently deploy and manage web apps on the permaweb with ease.</p><h2>How it works</h2> <p>Users can link their Githu...",
+          "estimatedWords": 484,
+          "lastModified": "2025-07-01T20:08:25.459Z",
+          "breadcrumbs": [
+            "Guides",
+            "Arlink"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:25.459Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/ardrive-web",
+          "title": "ArDrive Web Deployment Guide",
+          "description": "<body><h2>ArDrive Web Deployment Guide</h2> <h2>Overview</h2> <p>This guide will outline the simple steps needed to deploy your dApp or website onto the Arweave blockchain using the ArDrive web app an...",
+          "estimatedWords": 795,
+          "lastModified": "2025-07-01T20:08:25.782Z",
+          "breadcrumbs": [
+            "Guides",
+            "Ardrive Web"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:25.783Z"
+        },
+        {
+          "url": "https://docs.ar.io/learn/guides/ants-on-bazar",
+          "title": "Trading ANTs on Bazar",
+          "description": "<body><div><h2>Trading ANTs on Bazar</h2> <h2>Overview</h2> <p><a href=\"/arns#arweave-name-token-ant\">Arweave Name Tokens</a> are <a href=\"https://github.com/permaweb/ao-permaweb/blob/asset-manager/se...",
+          "estimatedWords": 548,
+          "lastModified": "2025-07-01T20:08:26.112Z",
+          "breadcrumbs": [
+            "Learn",
+            "Guides",
+            "Ants On Bazar"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:26.112Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/arns-viewer",
+          "title": "ArNS Viewer",
+          "description": "<body><div><h2>ArNS Viewer</h2> <h2>Overview</h2> <p>This guide will walk you through creating a project that uses the AR.IO SDK to interact with ArNS names in a web environment. It provides all the s...",
+          "estimatedWords": 2616,
+          "lastModified": "2025-07-01T20:08:27.380Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Arns Viewer"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:27.380Z"
+        },
+        {
+          "url": "https://docs.ar.io/guides/arns-viewer",
+          "title": "ArNS Viewer",
+          "description": "<body><div><h2>ArNS Viewer</h2> <h2>Overview</h2> <p>This guide will walk you through creating a project that uses the AR.IO SDK to interact with ArNS names in a web environment. It provides all the s...",
+          "estimatedWords": 2616,
+          "lastModified": "2025-07-01T20:08:28.972Z",
+          "breadcrumbs": [
+            "Guides",
+            "Arns Viewer"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 4,
+          "crawledAt": "2025-07-01T20:08:28.972Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/permaweb-deploy",
+          "title": "Deploy a Website or Application",
+          "description": "<body><div><h2>Deploy a Website or Application</h2> <h2>Overview</h2> <p>With the growing popularity of permanently deployed apps, hosted on Arweave, along with the growing list of tools offered by AR...",
+          "estimatedWords": 1066,
+          "lastModified": "2025-07-01T20:08:29.472Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Permaweb Deploy"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:29.472Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/managing-undernames",
+          "title": "Managing Undernames",
+          "description": "<body><h2>Overview</h2> <p><a href=\"/arns#under_names\">ArNS undernames</a> are subdomains of top level ArNS domains. They are separated from the main ArNS domain using an underscore \"_\" in place of th...",
+          "estimatedWords": 311,
+          "lastModified": "2025-07-01T20:08:29.825Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Managing Undernames"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:29.825Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/gql",
+          "title": "GraphQL",
+          "description": "<body><div><h2>GraphQL</h2> <h2>Overview</h2> <p>GraphQL is a powerful query language designed for modern web applications to efficiently fetch data. It enables precise queries, allowing users to spec...",
+          "estimatedWords": 1298,
+          "lastModified": "2025-07-01T20:08:30.461Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Gql"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:30.461Z"
+        },
+        {
+          "url": "https://docs.ar.io/build/guides/ardrive-web",
+          "title": "ArDrive Web Deployment Guide",
+          "description": "<body><h2>ArDrive Web Deployment Guide</h2> <h2>Overview</h2> <p>This guide will outline the simple steps needed to deploy your dApp or website onto the Arweave blockchain using the ArDrive web app an...",
+          "estimatedWords": 795,
+          "lastModified": "2025-07-01T20:08:30.805Z",
+          "breadcrumbs": [
+            "Build",
+            "Guides",
+            "Ardrive Web"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-01T20:08:30.806Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways",
+          "title": "Gateway Architecture",
+          "description": "<body><div><h2>Overview</h2> <p>Gateways are the workhorses of the AR.IO Network. Their primary role is to act as a bridge between the Arweave network and the outside world. This means that a gateway'...",
+          "estimatedWords": 652,
+          "lastModified": "2025-07-01T20:08:31.227Z",
+          "breadcrumbs": [
+            "Gateways"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-01T20:08:31.227Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/release-notes",
+          "title": "ARIO Release Notes",
+          "estimatedWords": 84,
+          "lastModified": "2025-07-02T15:10:00.711Z",
+          "breadcrumbs": [
+            "gateways",
+            "release notes"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:00.711Z"
+        },
+        {
+          "url": "https://docs.ar.io/glossary",
+          "title": "Glossary",
+          "estimatedWords": 1367,
+          "lastModified": "2025-07-02T15:10:00.843Z",
+          "breadcrumbs": [
+            "glossary"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 1,
+          "crawledAt": "2025-07-02T15:10:00.843Z"
+        },
+        {
+          "url": "https://docs.ar.io/gateways/release-notes#",
+          "title": "ARIO Release Notes",
+          "estimatedWords": 84,
+          "lastModified": "2025-07-02T15:10:01.784Z",
+          "breadcrumbs": [
+            "gateways",
+            "release notes"
+          ],
+          "siteKey": "ario",
+          "siteName": "AR-IO Network",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:01.784Z"
+        }
+      ],
+      "lastCrawled": "2025-07-03T18:20:00.491Z",
+      "stats": {
+        "totalPages": 125,
+        "averageWords": 556,
+        "duration": 4062,
+        "requestCount": 0,
+        "averageResponseTime": 0,
+        "pagesPerSecond": 30.77301821762678
+      }
+    },
+    "arweave": {
+      "name": "Arweave Cookbook",
+      "baseUrl": "https://cookbook.arweave.net",
+      "pages": [
+        {
+          "url": "https://cookbook.arweave.net/guides/querying-arweave/queryingArweave.html",
+          "title": "Querying Arweave with GraphQL",
+          "estimatedWords": 870,
+          "lastModified": "2025-07-02T15:10:04.796Z",
+          "breadcrumbs": [
+            "guides",
+            "querying arweave",
+            "queryingarweave"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:04.796Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deploying-manifests/arseeding-js.html",
+          "title": "Cooking with the Permaweb",
+          "estimatedWords": 386,
+          "lastModified": "2025-07-02T15:10:09.151Z",
+          "breadcrumbs": [
+            "guides",
+            "deploying manifests",
+            "arseeding js"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:09.151Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deploying-manifests/ardrive.html",
+          "title": "Cooking with the Permaweb",
+          "estimatedWords": 96,
+          "lastModified": "2025-07-02T15:10:09.843Z",
+          "breadcrumbs": [
+            "guides",
+            "deploying manifests",
+            "ardrive"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:09.843Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deploying-manifests/arweave-app.html",
+          "title": "Cooking with the Permaweb",
+          "estimatedWords": 78,
+          "lastModified": "2025-07-02T15:10:10.467Z",
+          "breadcrumbs": [
+            "guides",
+            "deploying manifests",
+            "arweave app"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:10.468Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deploying-manifests/deployingManifests.html",
+          "title": "Creating and Deploying Manifests",
+          "estimatedWords": 95,
+          "lastModified": "2025-07-02T15:10:11.155Z",
+          "breadcrumbs": [
+            "guides",
+            "deploying manifests",
+            "deployingmanifests"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:11.155Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deployment/github-action.html",
+          "title": "Github Action",
+          "estimatedWords": 543,
+          "lastModified": "2025-07-02T15:10:11.878Z",
+          "breadcrumbs": [
+            "guides",
+            "deployment",
+            "github action"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:11.878Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/deployment/arkb.html",
+          "title": "arkb",
+          "estimatedWords": 252,
+          "lastModified": "2025-07-02T15:10:12.460Z",
+          "breadcrumbs": [
+            "guides",
+            "deployment",
+            "arkb"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:12.460Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/dns-integration/server-side.html",
+          "title": "ServerSide DNS Integration",
+          "estimatedWords": 402,
+          "lastModified": "2025-07-02T15:10:13.487Z",
+          "breadcrumbs": [
+            "guides",
+            "dns integration",
+            "server side"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:13.487Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/vouch.html",
+          "title": "Vouch",
+          "estimatedWords": 316,
+          "lastModified": "2025-07-02T15:10:14.489Z",
+          "breadcrumbs": [
+            "concepts",
+            "vouch"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:14.489Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/schema-diagrams.html",
+          "title": "Cooking with the Permaweb",
+          "estimatedWords": 83,
+          "lastModified": "2025-07-02T15:10:14.854Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "schema diagrams"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:14.854Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/privacy.html",
+          "title": "Privacy",
+          "estimatedWords": 717,
+          "lastModified": "2025-07-02T15:10:15.417Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "privacy"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:15.417Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/content-types.html",
+          "title": "Content Types",
+          "estimatedWords": 223,
+          "lastModified": "2025-07-02T15:10:16.097Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "content types"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:16.098Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/entity-types.html",
+          "title": "Entity Types",
+          "estimatedWords": 1341,
+          "lastModified": "2025-07-02T15:10:16.999Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "entity types"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:16.999Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/data-model.html",
+          "title": "Data Model",
+          "estimatedWords": 354,
+          "lastModified": "2025-07-02T15:10:17.500Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "data model"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:17.500Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arfs/arfs.html",
+          "title": "ArFS Protocol A Decentralized File System on Arweave",
+          "estimatedWords": 409,
+          "lastModified": "2025-07-02T15:10:18.033Z",
+          "breadcrumbs": [
+            "concepts",
+            "arfs",
+            "arfs"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:18.033Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/bundlers.html",
+          "title": "Bundling Services",
+          "estimatedWords": 197,
+          "lastModified": "2025-07-02T15:10:18.430Z",
+          "breadcrumbs": [
+            "concepts",
+            "bundlers"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:18.430Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/gateways.html",
+          "title": "Gateways",
+          "estimatedWords": 309,
+          "lastModified": "2025-07-02T15:10:19.057Z",
+          "breadcrumbs": [
+            "concepts",
+            "gateways"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:19.057Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/permawebApplications.html",
+          "title": "Permaweb Applications",
+          "estimatedWords": 443,
+          "lastModified": "2025-07-02T15:10:19.598Z",
+          "breadcrumbs": [
+            "concepts",
+            "permawebapplications"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:19.598Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/permaweb.html",
+          "title": "Welcome to the Permaweb",
+          "estimatedWords": 164,
+          "lastModified": "2025-07-02T15:10:20.315Z",
+          "breadcrumbs": [
+            "concepts",
+            "permaweb"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:20.315Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/keyfiles-and-wallets.html",
+          "title": "Wallets and Keys",
+          "estimatedWords": 540,
+          "lastModified": "2025-07-02T15:10:20.579Z",
+          "breadcrumbs": [
+            "concepts",
+            "keyfiles and wallets"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:20.579Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/manifests.html",
+          "title": "Path Manifests",
+          "estimatedWords": 386,
+          "lastModified": "2025-07-02T15:10:21.096Z",
+          "breadcrumbs": [
+            "concepts",
+            "manifests"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:21.096Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/bundles.html",
+          "title": "Transaction Bundles",
+          "estimatedWords": 299,
+          "lastModified": "2025-07-02T15:10:21.828Z",
+          "breadcrumbs": [
+            "concepts",
+            "bundles"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:21.828Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/http-api.html",
+          "title": "Fetching Transaction Data",
+          "estimatedWords": 589,
+          "lastModified": "2025-07-02T15:10:22.519Z",
+          "breadcrumbs": [
+            "guides",
+            "http api"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:22.519Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/queryTransactions.html",
+          "title": "Querying Transactions",
+          "estimatedWords": 405,
+          "lastModified": "2025-07-02T15:10:22.790Z",
+          "breadcrumbs": [
+            "concepts",
+            "querytransactions"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:22.790Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/tags.html",
+          "title": "Transaction Metadata (Tags)",
+          "estimatedWords": 561,
+          "lastModified": "2025-07-02T15:10:23.376Z",
+          "breadcrumbs": [
+            "concepts",
+            "tags"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:23.376Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/posting-transactions/turbo.html",
+          "title": "Posting Transactions using Ardrive Turbo",
+          "estimatedWords": 339,
+          "lastModified": "2025-07-02T15:10:24.020Z",
+          "breadcrumbs": [
+            "guides",
+            "posting transactions",
+            "turbo"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:24.020Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/posting-transactions/arseeding-js.html",
+          "title": "Posting Transactions using arseedingjs",
+          "estimatedWords": 246,
+          "lastModified": "2025-07-02T15:10:24.415Z",
+          "breadcrumbs": [
+            "guides",
+            "posting transactions",
+            "arseeding js"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:24.415Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/posting-transactions/dispatch.html",
+          "title": "Posting a Transaction using Dispatch",
+          "estimatedWords": 171,
+          "lastModified": "2025-07-02T15:10:25.125Z",
+          "breadcrumbs": [
+            "guides",
+            "posting transactions",
+            "dispatch"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:25.125Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/posting-transactions/arweave-js.html",
+          "title": "Posting Transactions using arweave-js",
+          "estimatedWords": 385,
+          "lastModified": "2025-07-02T15:10:25.458Z",
+          "breadcrumbs": [
+            "guides",
+            "posting transactions",
+            "arweave js"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:25.458Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/post-transactions.html",
+          "title": "Posting Transactions",
+          "estimatedWords": 645,
+          "lastModified": "2025-07-02T15:10:25.994Z",
+          "breadcrumbs": [
+            "concepts",
+            "post transactions"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:25.994Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/contributing.html",
+          "title": "Contributing Workflow",
+          "estimatedWords": 329,
+          "lastModified": "2025-07-02T15:10:26.705Z",
+          "breadcrumbs": [
+            "getting started",
+            "contributing"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:26.706Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/quick-starts/hw-cli.html",
+          "title": "Hello World (CLI)",
+          "estimatedWords": 166,
+          "lastModified": "2025-07-02T15:10:27.423Z",
+          "breadcrumbs": [
+            "getting started",
+            "quick starts",
+            "hw cli"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:27.423Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/quick-starts/hw-no-code.html",
+          "title": "Hello World (No Code)",
+          "estimatedWords": 110,
+          "lastModified": "2025-07-02T15:10:28.152Z",
+          "breadcrumbs": [
+            "getting started",
+            "quick starts",
+            "hw no code"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:28.152Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/welcome.html",
+          "title": "Developing on the Permaweb",
+          "estimatedWords": 222,
+          "lastModified": "2025-07-02T15:10:28.778Z",
+          "breadcrumbs": [
+            "getting started",
+            "welcome"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:28.778Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/index.html",
+          "title": "Build on the Permaweb",
+          "estimatedWords": 227,
+          "lastModified": "2025-07-02T15:10:29.317Z",
+          "breadcrumbs": [
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 1,
+          "crawledAt": "2025-07-02T15:10:29.317Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/references/index.html",
+          "title": "References",
+          "estimatedWords": 71,
+          "lastModified": "2025-07-02T15:10:29.820Z",
+          "breadcrumbs": [
+            "references",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:29.820Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/index.html",
+          "title": "Core Concepts",
+          "estimatedWords": 111,
+          "lastModified": "2025-07-02T15:10:30.195Z",
+          "breadcrumbs": [
+            "concepts",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:30.195Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/index.html",
+          "title": "Guides",
+          "estimatedWords": 98,
+          "lastModified": "2025-07-02T15:10:30.520Z",
+          "breadcrumbs": [
+            "guides",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:30.521Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/index.html",
+          "title": "Cooking with the Permaweb",
+          "estimatedWords": 253,
+          "lastModified": "2025-07-02T15:10:30.762Z",
+          "breadcrumbs": [
+            "getting started",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 2,
+          "crawledAt": "2025-07-02T15:10:30.762Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/querying-arweave/ardb.html",
+          "title": "ArDB",
+          "estimatedWords": 204,
+          "lastModified": "2025-07-02T15:10:31.444Z",
+          "breadcrumbs": [
+            "guides",
+            "querying arweave",
+            "ardb"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:31.444Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/querying-arweave/ar-gql.html",
+          "title": "ar-gql",
+          "estimatedWords": 147,
+          "lastModified": "2025-07-02T15:10:32.148Z",
+          "breadcrumbs": [
+            "guides",
+            "querying arweave",
+            "ar gql"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:32.148Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/querying-arweave/search-indexing-service.html",
+          "title": "Search Indexing Service",
+          "estimatedWords": 614,
+          "lastModified": "2025-07-02T15:10:32.841Z",
+          "breadcrumbs": [
+            "guides",
+            "querying arweave",
+            "search indexing service"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:32.842Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/testing/arlocal.html",
+          "title": "arlocal",
+          "estimatedWords": 397,
+          "lastModified": "2025-07-02T15:10:33.752Z",
+          "breadcrumbs": [
+            "guides",
+            "testing",
+            "arlocal"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:33.752Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/vouch.html",
+          "title": "Vouch",
+          "estimatedWords": 233,
+          "lastModified": "2025-07-02T15:10:34.378Z",
+          "breadcrumbs": [
+            "guides",
+            "vouch"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:34.378Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/references/bundling.html",
+          "title": "Bundling",
+          "estimatedWords": 563,
+          "lastModified": "2025-07-02T15:10:34.995Z",
+          "breadcrumbs": [
+            "references",
+            "bundling"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:34.995Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/references/gql.html",
+          "title": "Complete GraphQL Structure for Transactions",
+          "estimatedWords": 419,
+          "lastModified": "2025-07-02T15:10:35.656Z",
+          "breadcrumbs": [
+            "references",
+            "gql"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:35.656Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/references/http-api.html",
+          "title": "Arweave peer HTTP API",
+          "estimatedWords": 330,
+          "lastModified": "2025-07-02T15:10:36.206Z",
+          "breadcrumbs": [
+            "references",
+            "http api"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:36.207Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/kits/index.html",
+          "title": "Starter Kits",
+          "estimatedWords": 28,
+          "lastModified": "2025-07-02T15:10:36.834Z",
+          "breadcrumbs": [
+            "kits",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:36.834Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/kits/react/index.html",
+          "title": "React Starter Kits",
+          "estimatedWords": 119,
+          "lastModified": "2025-07-02T15:10:37.450Z",
+          "breadcrumbs": [
+            "kits",
+            "react",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:37.450Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/kits/svelte/index.html",
+          "title": "Svelte Starter Kits",
+          "estimatedWords": 134,
+          "lastModified": "2025-07-02T15:10:38.143Z",
+          "breadcrumbs": [
+            "kits",
+            "svelte",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:38.143Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/kits/vue/index.html",
+          "title": "Vue Starter Kits",
+          "estimatedWords": 135,
+          "lastModified": "2025-07-02T15:10:38.714Z",
+          "breadcrumbs": [
+            "kits",
+            "vue",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:38.714Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/community/index.html",
+          "title": "Community",
+          "estimatedWords": 61,
+          "lastModified": "2025-07-02T15:10:39.323Z",
+          "breadcrumbs": [
+            "community",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:39.323Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/arns.html",
+          "title": "ArNS - Arweave Name System",
+          "estimatedWords": 529,
+          "lastModified": "2025-07-02T15:10:39.926Z",
+          "breadcrumbs": [
+            "concepts",
+            "arns"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:39.926Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/atomic-assets/index.html",
+          "title": "Atomic Assets",
+          "estimatedWords": 149,
+          "lastModified": "2025-07-02T15:10:40.638Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "atomic assets",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:40.638Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/atomic-assets/ardrive-cli.html",
+          "title": "Deploy and Register Atomic Assets using ArDrive CLI",
+          "estimatedWords": 436,
+          "lastModified": "2025-07-02T15:10:41.226Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "atomic assets",
+            "ardrive cli"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:41.226Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/legacy/index.html",
+          "title": "Legacy",
+          "estimatedWords": 42,
+          "lastModified": "2025-07-02T15:10:41.848Z",
+          "breadcrumbs": [
+            "legacy",
+            "index"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:41.848Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/smartweave.html",
+          "title": "SmartWeave",
+          "estimatedWords": 912,
+          "lastModified": "2025-07-02T15:10:42.366Z",
+          "breadcrumbs": [
+            "concepts",
+            "smartweave"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:42.366Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/concepts/psts.html",
+          "title": "Overview",
+          "estimatedWords": 415,
+          "lastModified": "2025-07-02T15:10:42.987Z",
+          "breadcrumbs": [
+            "concepts",
+            "psts"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:42.987Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/atomic-tokens/intro.html",
+          "title": "Atomic Tokens",
+          "estimatedWords": 361,
+          "lastModified": "2025-07-02T15:10:43.736Z",
+          "breadcrumbs": [
+            "guides",
+            "atomic tokens",
+            "intro"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:43.736Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/warp/intro.html",
+          "title": "Warp (SmartWeave) SDK Intro",
+          "estimatedWords": 293,
+          "lastModified": "2025-07-02T15:10:44.331Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "warp",
+            "intro"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:44.331Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/warp/deploying-contracts.html",
+          "title": "Warp (SmartWeave) SDK - Deploying Contracts",
+          "estimatedWords": 745,
+          "lastModified": "2025-07-02T15:10:44.986Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "warp",
+            "deploying contracts"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:44.986Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/warp/readstate.html",
+          "title": "Warp (SmartWeave) SDK - ReadState",
+          "estimatedWords": 282,
+          "lastModified": "2025-07-02T15:10:45.586Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "warp",
+            "readstate"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:45.586Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/warp/write-interactions.html",
+          "title": "Warp WriteInteractions",
+          "estimatedWords": 362,
+          "lastModified": "2025-07-02T15:10:46.163Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "warp",
+            "write interactions"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:46.163Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/guides/smartweave/warp/evolve.html",
+          "title": "Warp (SmartWeave) SDK - Evolve",
+          "estimatedWords": 428,
+          "lastModified": "2025-07-02T15:10:46.802Z",
+          "breadcrumbs": [
+            "guides",
+            "smartweave",
+            "warp",
+            "evolve"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 4,
+          "crawledAt": "2025-07-02T15:10:46.802Z"
+        },
+        {
+          "url": "https://cookbook.arweave.net/getting-started/quick-starts/hw-nodejs.html",
+          "title": "Hello World (NodeJS)",
+          "estimatedWords": 268,
+          "lastModified": "2025-07-02T15:10:50.356Z",
+          "breadcrumbs": [
+            "getting started",
+            "quick starts",
+            "hw nodejs"
+          ],
+          "siteKey": "arweave",
+          "siteName": "Arweave Cookbook",
+          "depth": 3,
+          "crawledAt": "2025-07-02T15:10:50.356Z"
+        }
+      ],
+      "lastCrawled": "2025-07-03T18:20:00.491Z",
+      "stats": {
+        "totalPages": 65,
+        "averageWords": 339,
+        "duration": 4758,
+        "requestCount": 11,
+        "averageResponseTime": 304.3636363636364,
+        "pagesPerSecond": 13.66120218579235
+      }
+    },
+    "permaweb-glossary": {
+      "name": "Permaweb Glossary",
+      "baseUrl": "https://glossary.arweave.net",
+      "pages": [
+        {
+          "url": "https://glossary.arweave.net/glossary.txt",
+          "title": "Permaweb Glossary",
+          "estimatedWords": 9712,
+          "lastModified": "2025-07-02T15:10:50.792Z",
+          "breadcrumbs": [
+            "Permaweb Glossary"
+          ],
+          "siteKey": "permaweb-glossary",
+          "siteName": "Permaweb Glossary",
+          "depth": 0,
+          "crawledAt": "2025-07-02T15:10:50.792Z"
+        }
+      ],
+      "lastCrawled": "2025-07-03T18:20:00.491Z",
+      "stats": {
+        "totalPages": 1,
+        "averageWords": 9712,
+        "duration": 0,
+        "requestCount": 0,
+        "averageResponseTime": 0,
+        "pagesPerSecond": 0
+      }
+    }
+  }
+}

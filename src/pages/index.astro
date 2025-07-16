@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Permaweb Glossary Search">
+	<main>
+		<button class="theme-toggle" aria-label="Toggle dark mode">
+			<svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<circle cx="12" cy="12" r="5"></circle>
+				<line x1="12" y1="1" x2="12" y2="3"></line>
+				<line x1="12" y1="21" x2="12" y2="23"></line>
+				<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+				<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+				<line x1="1" y1="12" x2="3" y2="12"></line>
+				<line x1="21" y1="12" x2="23" y2="12"></line>
+				<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+				<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+			</svg>
+			<svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+			</svg>
+		</button>
+		<div id="app">
+			<div class="search-container">
+				<h1>Permaweb <span class="clickable-title" id="clickableTitle">Glossary</span></h1>
+				<div class="search-input">
+					<input 
+						type="text" 
+						id="searchInput" 
+						placeholder="Search glossary terms..." 
+						autocomplete="off"
+						aria-autocomplete="list"
+						aria-controls="results"
+						role="combobox"
+						aria-expanded="false"
+					>
+					<div id="results" role="listbox"></div>
+				</div>
+				<!-- Random term tags will be inserted here via JavaScript -->
+				<div id="loading-status">
+					<p>Loading glossary data...</p>
+					<div class="loader"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script is:inline>
+	// Update title based on search query and mode
+	function updateTitle(query, mode) {
+		const modeText = mode === 'docs' ? 'Documentation' : 'Glossary';
+		if (query) {
+			document.title = `${query} - Permaweb ${modeText}`;
+		} else {
+			document.title = `Permaweb ${modeText} Search`;
+		}
+	}
+	
+	// Check for initial search query and mode
+	document.addEventListener('DOMContentLoaded', () => {
+		const urlParams = new URLSearchParams(window.location.search);
+		const query = urlParams.get('q');
+		const mode = urlParams.get('mode') || 'glossary';
+		updateTitle(query, mode);
+	});
+
+	// Analytics initialization
+	(function() {
+	  // Configuration
+	  const ANALYTICS_CONFIG = {
+		src: 'https://analytics_arlink.ar.io/browser.js',
+		processId: 'E3rrhh4WGl-XmjaEFA8QVnVUte9xh0R-tY78JuWw3BU',
+		trackUrlHashes: true,
+		debug: false
+	  };
+
+	  // Wait for DOM to be ready
+	  function init() {
+		const script = document.createElement('script');
+		script.type = 'module';
+		script.src = ANALYTICS_CONFIG.src;
+		script.setAttribute('data-process-id', ANALYTICS_CONFIG.processId);
+		script.setAttribute('data-track-url-hashes', ANALYTICS_CONFIG.trackUrlHashes.toString());
+		script.setAttribute('data-debug', ANALYTICS_CONFIG.debug.toString());
+		document.body.appendChild(script);
+	  }
+
+	  // Handle different loading states
+	  if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	  } else {
+		init();
+	  }
+	})();
+</script>
+<script type="module" src="/src/scripts/main.js"></script>
+
+<style>
+	/* Add any page-specific styles here if needed */
+</style> 

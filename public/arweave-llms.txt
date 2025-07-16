@@ -1,0 +1,2093 @@
+# Permaweb Documentation Collection
+
+Generated on: 2025-07-03T17:24:18.636Z
+Total documents: 65
+Total words: 21106
+
+## Table of Contents
+
+### Included Documents
+
+1. [Deploy and Register Atomic Assets using ArDrive CLI](https://cookbook.arweave.net/guides/smartweave/atomic-assets/ardrive-cli.html)
+2. [Hello World (CLI)](https://cookbook.arweave.net/getting-started/quick-starts/hw-cli.html)
+3. [Github Action](https://cookbook.arweave.net/guides/deployment/github-action.html)
+4. [SmartWeave](https://cookbook.arweave.net/concepts/smartweave.html)
+5. [Data Model](https://cookbook.arweave.net/concepts/arfs/data-model.html)
+6. [Atomic Tokens](https://cookbook.arweave.net/guides/atomic-tokens/intro.html)
+7. [arlocal](https://cookbook.arweave.net/guides/testing/arlocal.html)
+8. [Overview](https://cookbook.arweave.net/concepts/psts.html)
+9. [Querying Transactions](https://cookbook.arweave.net/concepts/queryTransactions.html)
+10. [Warp (SmartWeave) SDK - Deploying Contracts](https://cookbook.arweave.net/guides/smartweave/warp/deploying-contracts.html)
+11. [Warp (SmartWeave) SDK Intro](https://cookbook.arweave.net/guides/smartweave/warp/intro.html)
+12. [Arseeding Js](https://cookbook.arweave.net/guides/deploying-manifests/arseeding-js.html)
+13. [ArNS - Arweave Name System](https://cookbook.arweave.net/concepts/arns.html)
+14. [Warp (SmartWeave) SDK - ReadState](https://cookbook.arweave.net/guides/smartweave/warp/readstate.html)
+15. [Posting Transactions](https://cookbook.arweave.net/concepts/post-transactions.html)
+16. [Vue Starter Kits](https://cookbook.arweave.net/kits/vue/index.html)
+17. [Svelte Starter Kits](https://cookbook.arweave.net/kits/svelte/index.html)
+18. [ServerSide DNS Integration](https://cookbook.arweave.net/guides/dns-integration/server-side.html)
+19. [Transaction Metadata (Tags)](https://cookbook.arweave.net/concepts/tags.html)
+20. [ar-gql](https://cookbook.arweave.net/guides/querying-arweave/ar-gql.html)
+21. [Posting Transactions using arseedingjs](https://cookbook.arweave.net/guides/posting-transactions/arseeding-js.html)
+22. [Querying Arweave with GraphQL](https://cookbook.arweave.net/guides/querying-arweave/queryingArweave.html)
+23. [Bundling](https://cookbook.arweave.net/references/bundling.html)
+24. [Wallets and Keys](https://cookbook.arweave.net/concepts/keyfiles-and-wallets.html)
+25. [Posting Transactions using arweave-js](https://cookbook.arweave.net/guides/posting-transactions/arweave-js.html)
+26. [React Starter Kits](https://cookbook.arweave.net/kits/react/index.html)
+27. [arkb](https://cookbook.arweave.net/guides/deployment/arkb.html)
+28. [Entity Types](https://cookbook.arweave.net/concepts/arfs/entity-types.html)
+29. [Vouch](https://cookbook.arweave.net/concepts/vouch.html)
+30. [Arweave peer HTTP API](https://cookbook.arweave.net/references/http-api.html)
+31. [Warp WriteInteractions](https://cookbook.arweave.net/guides/smartweave/warp/write-interactions.html)
+32. [Cooking with the Permaweb](https://cookbook.arweave.net/index.html)
+33. [Permaweb Applications](https://cookbook.arweave.net/concepts/permawebApplications.html)
+34. [Cooking with the Permaweb](https://cookbook.arweave.net/getting-started/index.html)
+35. [Fetching Transaction Data](https://cookbook.arweave.net/guides/http-api.html)
+36. [Vouch](https://cookbook.arweave.net/guides/vouch.html)
+37. [Privacy](https://cookbook.arweave.net/concepts/arfs/privacy.html)
+38. [Hello World (NodeJS)](https://cookbook.arweave.net/getting-started/quick-starts/hw-nodejs.html)
+39. [Developing on the Permaweb](https://cookbook.arweave.net/getting-started/welcome.html)
+40. [Gateways](https://cookbook.arweave.net/concepts/gateways.html)
+41. [Atomic Assets](https://cookbook.arweave.net/guides/smartweave/atomic-assets/index.html)
+42. [ArDB](https://cookbook.arweave.net/guides/querying-arweave/ardb.html)
+43. [Path Manifests](https://cookbook.arweave.net/concepts/manifests.html)
+44. [Welcome to the Permaweb](https://cookbook.arweave.net/concepts/permaweb.html)
+45. [Permaweb Cookbook - Guides](https://cookbook.arweave.net/guides/index.html)
+46. [Creating and Deploying Manifests](https://cookbook.arweave.net/guides/deploying-manifests/deployingManifests.html)
+47. [Permaweb Cookbook - Core Concepts](https://cookbook.arweave.net/concepts/index.html)
+48. [Bundling Services](https://cookbook.arweave.net/concepts/bundlers.html)
+49. [ArFS Protocol A Decentralized File System on Arweave](https://cookbook.arweave.net/concepts/arfs/arfs.html)
+50. [Ardrive](https://cookbook.arweave.net/guides/deploying-manifests/ardrive.html)
+51. [Contributing Workflow](https://cookbook.arweave.net/getting-started/contributing.html)
+52. [Permaweb Cookbook - Community](https://cookbook.arweave.net/community/index.html)
+53. [Posting Transactions using Ardrive Turbo](https://cookbook.arweave.net/guides/posting-transactions/turbo.html)
+54. [Permaweb Cookbook - References](https://cookbook.arweave.net/references/index.html)
+55. [Posting a Transaction using Dispatch](https://cookbook.arweave.net/guides/posting-transactions/dispatch.html)
+56. [Complete GraphQL Structure for Transactions](https://cookbook.arweave.net/references/gql.html)
+57. [Schema Diagrams](https://cookbook.arweave.net/concepts/arfs/schema-diagrams.html)
+58. [Hello World (No Code)](https://cookbook.arweave.net/getting-started/quick-starts/hw-no-code.html)
+59. [Content Types](https://cookbook.arweave.net/concepts/arfs/content-types.html)
+60. [Warp (SmartWeave) SDK - Evolve](https://cookbook.arweave.net/guides/smartweave/warp/evolve.html)
+61. [Transaction Bundles](https://cookbook.arweave.net/concepts/bundles.html)
+62. [Search Indexing Service](https://cookbook.arweave.net/guides/querying-arweave/search-indexing-service.html)
+63. [Arweave App](https://cookbook.arweave.net/guides/deploying-manifests/arweave-app.html)
+64. [Permaweb Cookbook - Legacy](https://cookbook.arweave.net/legacy/index.html)
+65. [Starter Kits](https://cookbook.arweave.net/kits/index.html)
+
+---
+
+# 1. Deploy and Register Atomic Assets using ArDrive CLI  Cooking with the Permaweb
+
+Document Number: 1
+Source: https://cookbook.arweave.net/guides/smartweave/atomic-assets/ardrive-cli.html
+Words: 427
+Quality Score: 0.639
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Atomic Assets need to be registered to be capable of being traded on the Permaweb. You can upload your assets using services like ardrive-cli and give the asset the proper data tags, then use this cli to register the asset.Guide to publish an atomic asset using ArDrive-cli and asset-registar cli.Setup Requires NodeJS - https://nodejs.org and jq - https://jqlang.github.io/jq/download/ npm i -g ardrive-cli
+npm i -g asset-registar Create Atomic Assets Tags Using a text editor, we want to create a new file called data.json and in this new file add the following:{
+"dataGqlTags": {
+"Type": "ASSET_TYPE_HERE",
+"Title": "TITLE_HERE",
+"Description": "DESCRIPTION_HERE",
+"License": "yRj4a5KMctX_uOmKWCFJIjmY8DeJcusVk6-HzLiM_t8",
+"App-Name": "SmartWeaveContract",
+"App-Version": "0.3.0",
+"Contract-Src": "Of9pi--Gj7hCTawhgxOwbuWnFI1h24TTgO5pw8ENJNQ",
+"Indexed-By": "ucm",
+"Init-State": "{ \"ticker\": \"ATOMIC\", \"name\": \"ASSET_NAME_HERE\", \"balances\": { \"YOUR_WALLET_ADDRESS\": UNITS_HERE }, \"claimable\": [] }"
+}
+} Now that you have your tags initialized you need to take every uppercase word and replace it with the values that are unique to your asset.ASSET_TYPE_HERE:This should be a one word description of your asset, "image", "audio", "video". etc.TITLE_HERE:A title that describes your asset, it should not be longer than 150 characters.DESCRIPTION_HERE:A description that you want to show up in search results or list results for your asset.ASSET_NAME_HERE:The name of your asset, in one word or connected with dashes ex. "AA-ALIEN-WITH-BEER".YOUR_WALLET_ADDRESS:The wallet address you want to give ownership too.UNITS_HERE:The number of fractional units you want to provide for this asset, if there can only be one owner then the replace with 1, if you want 100 owners replace with 100.save the file as data.json Copy the asset you want to publish to this directory. Create a wallet or copy your wallet.json here.ardrive generate-seedphrase
+# copy the seed phrase that is in the output and include in the next command where the `...` are.
+# generate wallet
+ardrive generate-wallet -s "..." > wallet.json Using ardrive-cli we are going to create a drive and a folder.# create drive and folder
+export FOLDER=$(ardrive create-drive -w ./wallet.json -n "My Atomic Assets" --turbo | jq -r '.created[] | select(.type == "folder").entityId')
+# upload atomic asset
+export ASSET=$(ardrive upload-file -w ./wallet.json -F ${FOLDER} --metadata-file ./data.json -l ASSET_FILE_HERE --turbo | jq -r '.created[] | select(.type == "file").dataTxId') NOTE: if your file is larger than 500k, you will need to add credits to your ardrive wallet, you can do this by going to https://ardrive.io and logging in with your wallet file.Once the asset is uploaded with the Atomic Asset Tags, now all you have to do is call asset-register asset-registar ${ASSET} CONGRATS!You should be able to find your asset on ar://bazar by typing in the contractId in the search bar.
+
+---
+
+# 2. Hello World (CLI)  Cooking with the Permaweb
+
+Document Number: 2
+Source: https://cookbook.arweave.net/getting-started/quick-starts/hw-cli.html
+Words: 154
+Quality Score: 0.612
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Hello World (CLI) This guide walks you through the most simple way to get data on to the permaweb using a command-line interface (CLI).Requirements NodeJS open in new window LTS or greater Description Using a terminal/console window create a new folder called hw-permaweb-1.Setup cd hw-permaweb-1
+npm init -y
+npm install arweave ardrive-cli Generate a wallet npx -y @permaweb/wallet > ~/.demo-arweave-wallet.json Create a web page echo "# Hello Permaweb
+" > index.html Upload using Ardrive CLI # Create a Drive
+FOLDER_ID=$(npx ardrive create-drive -n public -w ~/.demo-arweave-wallet.json --turbo | jq -r '.created[] | select(.type == "folder") | .entityId')
+# Upload file
+TX_ID=$(npx ardrive upload-file -l index.html --content-type text/html -w ~/.demo-arweave-wallet.json --turbo -F ${FOLDER_ID} | jq -r '.created[] | select(.type == "file
+") | .dataTxId')
+# open file from ar.io gateway
+open https://g8way.io/${TX_ID} Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 3. Github Action  Cooking with the Permaweb
+
+Document Number: 3
+Source: https://cookbook.arweave.net/guides/deployment/github-action.html
+Words: 537
+Quality Score: 0.587
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Github Action WARNING This guide is for educational purposes only, and you should use to learn options of how you might want to deploy your application. In this guide, we are trusting a 3rd party resource github owned by microsoft to protect our secret information, in their documentation they encrypt secrets in their store using libsodium sealed box, you can find more information about their security practices here. https://docs.github.com/en/actions/security-guides/encrypted-secrets Github Actions are CI/CD pipelines that allows developers to trigger automated tasks via events generated from the github workflow system. These tasks can be just about anything, in this guide we will show how you can use github actions to deploy your permaweb application to the permaweb using Irys and ArNS.TIP This guide requires understanding of github actions, and you must have some ArNS Test Tokens, go to https://ar.io/arns/ for more details.WARNING This guide does not include testing or any other checks you may want to add to your production workflow.Create deploy script A deploy script is a script that does the heavy lifting of deploying your application, we will use @irys/sdk and warp-contracts to publish our application and register the newly published application on ArNS.Install deploy dependencies npm install --save-dev @permaweb/arx
+npm install --save-dev warp-contracts
+npm install --save-dev arweave Create deploy.mjs file import Arx from "@permaweb/arx";
+import { WarpFactory, defaultCacheOptions } from "warp-contracts";
+import Arweave from "arweave";
+const ANT = "[YOUR ANT CONTRACT]";
+const DEPLOY_FOLDER = "./dist";
+const TURBO_NODE = "https://turbo.ardrive.io";
+const jwk = JSON.parse(Buffer.from(process.env.PERMAWEB_KEY, "base64").toString("utf-8"));
+const arweave = Arweave.init({ host: "arweave.net", port: 443, protocol: "https" });
+const arx = new Arx({ url: TURBO_NODE, token: "arweave", key: jwk });
+const warp = WarpFactory.custom(arweave, defaultCacheOptions, "mainnet").useArweaveGateway().build();
+const contract = warp.contract(ANT).connect(jwk);
+// upload folder
+const result = await arx.uploadFolder(DEPLOY_FOLDER, {
+indexFile: "index.html",
+});
+// update ANT
+await contract.writeInteraction({
+function: "setRecord",
+subDomain: "@",
+transactionId: result.id,
+});
+console.log("Deployed Cookbook, please wait 20 - 30 minutes for ArNS to update!");Add script to package.json Create a new script property called deploy, call the build script, then call node deploy.mjs in the value of the scripts deploy property.package.json...
+"scripts": {
+"dev": "vuepress dev src",
+"build": "vuepress build src",
+"deploy": "yarn build && node deploy.mjs"
+},
+...Create github action Create a deploy.yml file in the .github/workflows folder, this file instructs github actions to deploy when a push event is triggered on the main branch.name: publish
+on:
+push:
+branches:
+- "main"
+jobs:
+publish:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v2
+- uses: actions/setup-node@v1
+with:
+node-version: 18.x
+- run: yarn
+- run: yarn deploy
+env:
+KEY: ${{ secrets.PERMAWEB_KEY }} Summary In the project repo, go to the settings and secrets, add a new secret to the repostiory, this secret will be called PERMAWEB_KEY for this project. The value of the secret should be the base64 encode string of the deployment wallet.base64 -i wallet.json | pbcopy In order for this deployment to work, you will need to fund this wallets Irys account, make sure there is some $AR in the wallet you will be using, not much, maybe.5 AR, then use the Irys cli to fund.arx fund 250000000000 -w wallet.json -t arweave WARNING Keep this wallet low on funds and only use it for this project.🎉 You have setup a github action to completely automate your deploy to permaweb!
+
+---
+
+# 4. SmartWeave  Cooking with the Permaweb
+
+Document Number: 4
+Source: https://cookbook.arweave.net/concepts/smartweave.html
+Words: 891
+Quality Score: 0.574
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+SmartWeave ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.What is SmartWeave?SmartWeave is the name given to the dominant SmartContract paradigm on Arweave. A unique property of SmartWeave contracts is that the current state of the contract is provided by a process of "lazy evaluation". This means that instead of Arweave mining nodes constantly evaluating the current state of all contracts, a client reading a contract evaluates the state for themselves.Why is SmartWeave important?The state and logic of decentralized applications need to be as censorship-resistant, permanent, and verifiable as the rest of their data. SmartWeave enables developers to write smart contracts that encapsulate their apps state and logic on-chain and execute it in a trustless verifiable way. This is no small feat as the Arweave protocol does not include incentives for nodes to evaluate smart contract state for the network.SmartWeave provides an immutable append-only pattern for contract interactions that leverage permanent storage to hold onto their state. The result is a fully decentralized on-chain state machine that can give protocols and applications dynamic functionality in a permissionless and trustless way. By using SmartWeave, developers can create smart contracts that are stored on Arweave and are guaranteed not to change over time. This allows them to build Permaweb applications with dynamic functionality that can be used in a permissionless and trustless manner.There are several reasons why developers might choose to use SmartWeave to implement the logic for their permaweb applications:Decentralized storage: SmartWeave is built on Arweave, which means that applications created using SmartWeave will be stored on a distributed network of nodes rather than on a centralized server. This can make them more resistant to censorship, tampering, and other forms of interference.Lazy evaluation: The lazy evaluation feature of SmartWeave contracts allows for efficient and scaleable execution. Instead of Arweave nodes constantly evaluating the state of a contract, the client reading the contract is responsible for evaluating the state, leveraging the users processing power instead of the networks nodes.Language support: SmartWeave supports a range of programming languages, including JavaScript, TypeScript, Rust, Go, AssemblyScript, and WASM (WebAssembly). This allows developers to use the language they are most familiar with when creating SmartWeave applications.Data durability: Arweave is designed to store data in a way that makes it highly durable and long-lasting. This can be useful for applications that need to store data over a long period of time, such as historical records or scientific data.Economic model: Arweave uses a unique economic model based on the concept of permanent storage that incentivizes miners to store data indefinitely. This can help ensure the long-term viability and durability of permaweb applications created using SmartWeave.How does SmartWeave Work?SmartWeave contracts, at their core, are built from an initial contract state, with edits, additions, and subtractions using transaction tags.SmartWeave SDK's such as Warp (previously RedStone), are used to query for these transactions to build contract state locally, modifying the contract state with each transaction. The Evaluator (Warp) uses tags to query for a contracts transactions; It knows a transaction is part of the contract by way of the App-Name tag, and the Contract tag.Here is an example of a contract interaction.The App-Name says its a Smartweave ACTION.The Contract tag gives the specific transaction ID of the initial contract state.The Input tag gives the contract its function to execute and any other data it needs:[
+{
+name:"App-Name"
+value:"SmartWeaveAction"
+},
+{
+name:"App-Version"
+value:"0.3.0"
+},
+{
+name:"Contract"
+value:"pyM5amizQRN2VlcVBVaC7QzlguUB0p3O3xx9JmbNW48"
+},
+{
+name:"Input"
+value:"{
+"function":"setRecord",
+"subDomain":"@",
+"transactionId":"lfaFgcoBT8auBrFJepLV1hyiUjtlKwVwn5MTjPnTDcs"
+}"
+}
+] And here is an example of a contract.The App-Name says its a Smartweave CONTRACT The Contract-Src tag points to the source code of the contract:[
+{
+key:"App-Name"
+value:"SmartWeaveContract"
+},
+{
+key:"App-Version"
+value:"0.3.0"
+},
+{
+key:"Contract-Src"
+value:"JIIB01pRbNK2-UyNxwQK-6eknrjENMTpTvQmB8ZDzQg"
+},
+{
+key:"SDK"
+value:"RedStone"
+},
+{
+key:"Content-Type"
+value:"application/json"
+}
+] The resulting state is the current contract state, which the SDK on the client side can use to calculate user balances, contract owners, and other contract specific details. Once the caller has a validated contract state they can build an interaction for the user to deploy to the chain, which upon mining or indexing on a Gateway will be included the next time someone builds the contract state.For a comprehensive overview of the SmartWeave Protocol, its leading implementation Warp Contracts, and more, head to Warp Academy. Dive into step-by-step tutorials, explore advanced concepts, and uncover how SmartWeave power up the permaweb!Smartweave ecosystem projects There's quite a few ecosystem projects leveraging SmartWeave SmartContracts, but here are some of notes:Implementations Warp | Main provider of SmartWeave SDK's, tutorials, and helps maintain the SmartWeave protocol.MEM | Molecular Execution Machine (MEM) is a developer platform that powers the creation and usage of highly available and highly performant applications within a decentralized environment.Tools SonAr | SmartWeave contract explorer, created and hosted by Warp.Resources Warp Academy | A one- shop for all things SmartWeave Apps Permapages | Permanent webpage creation tool, ArNS purchase portal, and ANT creation portal. Your profile on the permaweb.ArNS | Arweave Name System WeaveDB | NoSQL Database as a Smart Contract.KwilDB | SQL Database as a Smart Contract.ArDrive Inferno | Get PST's for uploading thru Ardrive.FirstBatch | FirstBatch aids developers and enterprises in creating personalized, private, and distortion-free AI applications.Othent | Web3 transactions with existing traditional social logins.BazAR | Digital content marketplace with real-world rights.Alex the Archieve | A decentralized archival platform utilizing Arweave's immutable storage.and so much more.
+
+---
+
+# 5. Data Model  Cooking with the Permaweb
+
+Document Number: 5
+Source: https://cookbook.arweave.net/concepts/arfs/data-model.html
+Words: 344
+Quality Score: 0.569
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Data Model Because of Arweave's permanent and immutable nature, traditional file structure operations such as renaming and moving files or folders cannot be accomplished by simply updating on-chain data. ArFS works around this by defining an append-only transaction data model based on the metadata tags found in the Arweave Transaction Headers.This model uses a bottom-up reference method, which avoids race conditions in file system updates. Each file contains metadata that refers to the parent folder, and each folder contains metadata that refers to its parent drive. A top-down data model would require the parent model (i.e. a folder) to store references to its children.These defined entities allow the state of the drive to be constructed by a client to look and feel like a file system Drive Entities contain folders and files Folder Entities contain other folders or files File Entities contain both the file data and metadata Snapshot entities contain a state rollups of all files and folder metadata within a drive Entity relationships The following diagram shows the high level relationships between drive, folder, and file entities, and their associated data. More detailed information about each Entity Type can be found here. Entity Relationship Diagram As you can see, each file and folder contains metadata which points to both the parent folder and the parent drive. The drive entity contains metadata about itself, but not the child contents. So clients must build drive states from the lowest level and work their way up.Metadata stored in any Arweave transaction tag will be defined in the following manner:{ "name": "Example-Tag", "value": "example-data" } Metadata stored in the Transaction Data Payload will follow JSON formatting like below:{
+"exampleField": "exampleData"
+} fields with a ? suffix are optional.{
+"name": "My Project",
+"description": "This is a sample project.",
+"version?": "1.0.0",
+"author?": "John Doe"
+} Enumerated field values (those which must adhere to certain values) are defined in the format "value 1 | value 2".All UUIDs used for Entity-Ids are based on the Universally Unique Identifier standard.There are no requirements to list ArFS tags in any specific order.
+
+---
+
+# 6. Atomic Tokens  Cooking with the Permaweb
+
+Document Number: 6
+Source: https://cookbook.arweave.net/guides/atomic-tokens/intro.html
+Words: 355
+Quality Score: 0.567
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Atomic Tokens ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.What is an Atomic Token?Check out the concept Creating an Atomic Token INFORMATION For this example, we are using a SWT Contract Source that is already published on the network. x0ojRwrcHBmZP20Y4SY0mgusMRx-IYTjg5W8c3UFoNs - example.ts import Irys from '@irys/sdk'
+import { WarpFactory } from 'warp-contracts'
+async function main() {
+const wallet = JSON.parse(await import('fs')
+.then(fs => fs.readFileSync('./wallet.json', 'utf-8')))
+const irys = new Irys({ 'https://node2.irys.xyz', 'arweave', wallet })
+const warp = WarpFactory.forMainnet()
+const data = `# Hello Permaweb!
+`
+const tags = [
+{ name: 'Content-Type', value: 'text/html' },
+// ANS-110 Tags
+{ name: 'Type', value: 'web-page' },
+{ name: 'Title', value: 'My first permaweb page' },
+{ name: 'Description', value: 'First permaweb page by Anon' },
+{ name: 'Topic:Noob', value: 'Noob' },
+// SmartWeave Contract
+{ name: 'App-Name', value: 'SmartWeaveContract' },
+{ name: 'App-Version', value: '0.3.0' },
+{ name: 'Contract-Src', value: 'x0ojRwrcHBmZP20Y4SY0mgusMRx-IYTjg5W8c3UFoNs' },
+{
+name: 'Init-State', value: JSON.stringify({
+balances: {
+'cHB6D8oNeXxbQCsKcmOyjUX3UkL8cc3FbJmzbaj3-Nc': 1000000
+},
+name: 'AtomicToken',
+ticker: 'ATOMIC-TOKEN',
+pairs: [],
+creator: 'cHB6D8oNeXxbQCsKcmOyjUX3UkL8cc3FbJmzbaj3-Nc',
+settings: [['isTradeable', true]]
+})
+}
+]
+const { id } = await irys.upload(data, { tags })
+await warp.createContract.register(id, 'node2')
+console.log('Atomic Token: ', id)
+}
+main() In this example, we are creating a data-item and uploading the item to the bundler network service. Then we are registering our contract with the Warp sequencer. By using bundler to publish our data-item and registering with the Warp sequencer, our data is immediately available on the gateway service and our contract is immediately able to accept interactions.Run Example npm install @irys/sdk warp-contracts
+npm install typescript ts-node
+npx ts-node example.ts INFORMATION ANS-110 is an Asset Discovery Specification to allow for composability with the Permaweb Application ecosystem.Summary This is a simple example of deploying an Atomic Asset, for more detailed examples check out: https://atomic-assets.arweave.dev Working with Tokens SmartWeave Contracts can not hold AR the native coin of the Arweave Network. AR is used to purchase storage for data on the Arweave Network and it can be transferred from a source wallet to a target wallet on the Arweave network, but it can not be held in a SmartWeave contract.
+
+---
+
+# 7. arlocal  Cooking with the Permaweb
+
+Document Number: 7
+Source: https://cookbook.arweave.net/guides/testing/arlocal.html
+Words: 391
+Quality Score: 0.556
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+arlocal arlocal is a tool for quickly setting up and running a local Arweave testing environment. It allows you to test transactions on a Arweave gateway-like server. It allows developers to test their applications in a simulated environment before deploying them to the Arweave network No $AR tokens are required to use and transactions are instant.CLI You must have node and npm installed on your machine to use the arlocal CLI To start the local gateway, run npx arlocal TIP You can specify what port to run the slim gateway on by passing your port as an argument npx arlocal 8080 To hide the logs, add the flag --hidelogs when you run your gateway npx arlocal --hidelogs Node Install the package as a dev dependency by running yarn add arlocal -D or npm install arlocal --save-dev import ArLocal from 'arlocal';
+(async () => {
+const arLocal = new ArLocal();
+// create local testing environment
+await arLocal.start();
+// your tests here
+// shut down testing environment
+await arLocal.();
+})();An ArLocal instance can be created with options Option Description port Port to use showLogs Show logs dbPath Directory for temporary database persist Persisting data between server restarts Example For this example to work, the code needs to use a generated test wallet. To achieve this the arweave package must be installed to the project along with arlocal yarn add arweave arlocal -D or npm install --save-dev arweave arlocal Below is a basic JavaScript test for creating a data transaction and posting it to Arweave using arlocal:import ArLocal from 'arlocal'
+import Arweave from 'arweave'
+test('test transaction', async () => {
+// create and start ArLocal instance
+const arLocal = new ArLocal()
+await arLocal.start()
+// create local Arweave gateway
+const arweave = Arweave.init({
+host: 'localhost',
+port: 1984,
+protocol: 'http'
+})
+// generate wallet
+const wallet = await arweave.wallets.generate()
+// airdrop amount of tokens (in winston) to wallet
+await arweave.api.get(`mint/${addr}/10000000000000000`)
+// create mine function
+const mine = () => arweave.api.get('mine')
+try {
+// create transaction
+let transaction = await arweave.createTransaction({
+data: 'Hello world!'
+}, wallet);
+// sign and post transaction
+await arweave.transactions.sign(transaction, wallet);
+const response = await arweave.transactions.post(transaction);
+// mine transaction
+await mine()
+// test the response
+} catch(err) {
+console.error('ERROR: ', err.message)
+}
+// tear down testing environment
+await arLocal.()
+}) WARNING Test results from L1 transactions may differ from L2 transactions Resources arlocal docs
+
+---
+
+# 8. Overview  Cooking with the Permaweb
+
+Document Number: 8
+Source: https://cookbook.arweave.net/concepts/psts.html
+Words: 399
+Quality Score: 0.538
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Overview ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.Profit Sharing Tokens (PSTs) are a type of SmartWeaveToken which include the following structure:property type balances object name string ticker string transfer method balance method PSTs are typically used to govern a protocol or "Profit Sharing Community" (PSC) - similar to a DAO.How are PSTs Distributed? Founders of an application can create a set number of PSTs and distribute them as they see fit - to keep, or sell to investors to raise capital.Protocols can offer PSTs as a reward for contributing work, or completing tasks for the community to incentivize growth.PSTs can also be exchanged between each other on Permaswap (currently in testnet), and developers can set up token trading permissions using Verto Flex.Features PSTs work as ‘ micro-dividends ’. When a protocol is used, a tipping amount is set aside to be distributed amongst holders. The tip is paid out in $AR - not in the currency of the PST. This creates quite a special relationship between the app being developed, and Arweave itself.Benefits Provides a flexible way for developers to run a protocol and distribute as much ‘ownership’ as they see fit PSTs can be used as payment for protocol work or for community tasks Founders are incentivized to increase network usage, as it is directly tied to revenue Holders get intrinsic value (rewards $AR, not more ‘stock’) Example PST: ARDRIVE Token ArDrive is a permaweb application utilitizing their aptly named PST, ARDRIVE.When someone pays $AR to upload data through ArDrive, a 15% community fee is distributed to a single token holder using a random, weighted method. A user uploads data -> An ARDRIVE token holder receives $AR -> ARDRIVE token holder can use this $AR to upload files -> cycle repeats. Hopefully this gives you a good idea of one way you could implement your own PST!Exploring PSTs Going straight to viewblock and Sonar by Redstone is most appropriate most likely. Just use links that specifically show PSTs so someone doesn’t have to navigate to find them.You can use ViewBlock for an etherscan-like experience to view PST contracts, like this one here.Another option is Sonar, an Arweave smart contract explorer built by RedStone Finance. View the same contract here.Some community members have been discussing calling PSTs “Permaweb Service Tokens”. There is still much to explore with PSTs → join the discussion here (Discord).
+
+---
+
+# 9. Querying Transactions  Cooking with the Permaweb
+
+Document Number: 9
+Source: https://cookbook.arweave.net/concepts/queryTransactions.html
+Words: 393
+Quality Score: 0.538
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Querying Transactions It isn't enough to store data permanently, for Arweave to be useful the data also needs to be discoverable and retrievable. This guide summarizes the different approaches to querying data on Arweave.GraphQL Over time, indexing services that implement a GraphQL interface have became the preferred method for querying transaction data on Arweave. An indexing service reads transaction and block headers as they are added to the network (usually from a full Arweave node which the service operates). Once read, the header info is inserted into a database where it can be indexed and efficiently queried. The indexing service uses this database to provide a GraphQL endpoint for clients to query.GraphQL has a few advantages that make it ideal for retrieving query data sets. It enables indexing services to create a single endpoint that can then be used to query all types data. The service is able to return multiple resources in a single request as opposed to making an HTTP request for each resource (like one would with a REST API). With GraphQL, clients can batch multiple requests in a single round-trip and specify exactly what data is needed which increases performance.The following GraphQL example queries all the transaction ids from a given owners wallet address that have a "Type" tag with a value of "manifest". For more information about tags, read the guide on Transaction Tags.const queryObject = {
+query:
+`{
+transactions (
+owners:["${address}"],
+tags: [
+{
+name: "Type",
+values: ["manifest"]
+}
+]
+) {
+edges {
+node {
+id
+}
+}
+}
+}`
+};
+const results = await arweave.api.post('/graphql', queryObject);Public Indexing Services https://arweave.net/graphql https://arweave-search.goldsky.com/graphql https://knn3-gateway.knn3.xyz/arseeding/graphql Inspecting the Blocks Each piece of data uploaded to Arweave has its own unique transaction id and is included in a unique block which is then added to the blockchain. The data associated with each transaction is split up into 256KB chunks and appended sequentially to Arweave's dataset. It is possible to walk back, block by block, from the current block and inspect each one for the transaction id in question. Once found, the chunks offsets can be retrieved from the block and used to request chunks directly from an Arweave peer. This is the lowest level way to locate and read data on the network. Thankfully, less labor intensive approaches like GraphQL are available.Resources Querying Arweave Guide ArDB package ar-gql package GraphQL Reference
+
+---
+
+# 10. Warp (SmartWeave) SDK - Deploying Contracts  Cooking with the Permaweb
+
+Document Number: 10
+Source: https://cookbook.arweave.net/guides/smartweave/warp/deploying-contracts.html
+Words: 726
+Quality Score: 0.527
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Warp (SmartWeave) SDK - Deploying Contracts ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.SmartWeave Contracts are created by posting two transactions to the network, a Source Transaction and a Initial State Transaction, the source transaction contains the source code the contract will use to determine the current state. The initial state transaction provides a contract identifer to reference as well as the initial seed data the contract should use as the starting point to evaluate the current state. The current state is calculated by accessing actions that are transactions written to the network that contain input parameters to execute using the evaluated and instantiated source code. Warp Contracts can be created using many different languages and can be evaluated using the Warp SDK. This guide will show the many different ways you can deploy a Warp Contract.TIP If you would like to Warp SmartWeaveContracts, checkout the Warp Academy! https://academy.warp.cc/ As of Warp version 1.3.0 you willl need a plugin to deploy contracts with Warp. This plugin will enable you to add different wallet signatures.import { DeployPlugin, InjectedArweaveSigner } from 'warp-contracts-plugin-deploy'
+import { WarpFactory } from 'warp-contracts'
+const warp = WarpFactory.forMainnet().use(new DeployPlugin())
+...
+function deploy(initState, src) {
+if (window.arweaveWallet) {
+await window.arweaveWallet.connect(['ACCESS_ADDRESS', 'SIGN_TRANSACTION', 'ACCESS_PUBLIC_KEY', 'SIGNATURE']);
+}
+const userSigner = new InjectedArweaveSigner(window.arweaveWallet);
+await userSigner.setPublicKey();
+return warp.deploy({
+wallet: userSigner,
+src,
+initState: JSON.stringify(initState)
+})
+} The Four ways to deploy a Warp SmartWeave Contract There are 4 ways you can deploy a SmartWeaveContract via the Warp SDK, these options handle different use cases that a developer may encounter.Need to deploy the contract with the source at the same time Need to deploy a contract where the source is already on the permaweb Need to deploy a contract through the sequencer and point it to some data using a path manifest Need to deploy a contract via Irys and register that contract on the sequencer TIP For more information about Warp deployments check out the github Readme for the project. https://github.com/warp-contracts/warp#deployment.WARNING This project is in rapid development, so the documentation here could be out of data quickly, if you discover it is out of date, please let us know on the Permaweb Cookbook Discord Channel.Examples TIP By default all deploy functions are published to Arweave via Irys, each option has a flag that can be set to not use Irys, but it can take many confirmations for the network to fully confirm the transaction.deploy Deploys contract plus source code to Warp Sequencer, to Irys (L2), to Arweave.const { contractTxId, srcTxId } = await warp.deploy({
+wallet,
+initState,
+data: { "Content-Type": "text/html", body: "# Hello World
+" },
+src: contractSrc,
+tags: [{ name: "AppName", value: "HelloWorld" }],
+});wallet - should be Arweave keyfile (wallet.json) parsed as a JSON object implementing the JWK Interface or the string 'use_wallet' initState - is a stringified JSON object data - is optional if you want to write data as part of your deployment src - is the string or Uint8Array value of the source code for the contract tags - is an array of name/value objects {name: string, value: string}[], deployFromSourceTx Already have the source on the permaweb? Then deployFromSourceTx is your tool of choice! With the permaweb you never have to worry about data changing so re-using source code for contracts is a no brainer.const { contractTxId, srcTxId } = await warp.deployFromSourceTx({
+wallet,
+initState,
+srcTxId: "SRC_TX_ID",
+});deployBundled Uses Warp Gateway Sequencer's endpoint to upload a raw data item to Irys and index it.import { createData } from "arbundles";
+const dataItem = createData(
+JSON.stringify({
+manifest: "arweave/paths",
+version: "0.1.0",
+index: {
+path: "index.html",
+},
+paths: {
+"index.html": {
+id: "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI",
+},
+},
+}),
+{ tags: [{ "Content-Type": "application/x.arweave-manifest+json" }] },
+);
+const { contractTxId } = await warp.deployBundled(dataItem.getRaw());register Uses Warp Gateway Sequencer's endpoint to index a contract that has been uploaded with Irys.Summary Why are there so many options to deploy contracts? These methods exist to reduce duplication, enable advanced contract interactions, and allow for flexibility for testing and usage of the smartweave protocol. The permaweb is very unique in its architecture, it provides a feature where you can deploy both digital data and the contract to manage that data generating the same transaction identifier. The result is dynamic data paired with an immutable set of data. Deploying contracts is just one piece of the Warp SDK, to learn more keep reading this guide!
+
+---
+
+# 11. Warp (SmartWeave) SDK Intro  Cooking with the Permaweb
+
+Document Number: 11
+Source: https://cookbook.arweave.net/guides/smartweave/warp/intro.html
+Words: 272
+Quality Score: 0.526
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Warp (SmartWeave) SDK Intro ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.Warp is a popular SmartWeave Protocol SDK. With Warp and Irys your SmartWeave deployments and interactions can be extremely fast.Introduction This guide is a short introduction to the Warp SDK and some of its API methods, if you want to Contracts in general visit Core Concepts: SmartWeave.TIP You can find the Warp SDK on github. For a deeper dive on Warp SmartWeave visit Warp Website To use the SDK on the server, you will need access to a wallet.json file, to use the SDK in the browser you will need to connect to an arweave supported wallet.Install To install warp in your project you can use npm or yarn or other npm clients.npm install warp-contracts yarn add warp-contracts Import When using Warp with your project there are several ways to import the sdk depending on your project setup.import { WarpFactory } from "warp-contracts";import { WarpFactory } from "warp-contracts/mjs";const { WarpFactory } = require("warp-contracts");Connecting to an environment There are several environments that you may want to interact with, you can connect to those environments using the forXXXX helpers.const warp = WarpFactory.forMainnet();const warp = WarpFactory.forTestnet();const warp = WarpFactory.forLocal();const warp = WarpFactory.custom(
+arweave, // arweave-js
+cacheOptions, // { ...defaultCacheOptions, inMemory: true}
+environment, // 'local', 'testnet', 'mainnet'
+);WARNING When using local environment, you will need to have arLocal running on port 1984.Summary This intro guide is to help you get setup with Warp, the following guides will show you how to deploy SmartWeave contracts using the Warp SDK, how to interact with those contracts and finally, how to evolve SmartWeave contracts.
+
+---
+
+# 12. Cooking with the Permaweb
+
+Document Number: 12
+Source: https://cookbook.arweave.net/guides/deploying-manifests/arseeding-js.html
+Words: 371
+Quality Score: 0.525
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Arseeding JS SDK The guide of how to easily use the Manifest feature in Arseeding.Getting Started Installing the SDK npm i arseeding-js Create a demo.js, and copy the following code into it.import {uploadFolderAndPay} from "arseeding-js/cjs/uploadFolder";
+const run = async () => {
+const path = 'Your Folder path'
+const priv = 'YOUR PRIVATE KEY'
+const arseedUrl = 'https://arseed.web3infra.dev'
+const tag = '' // everpay supported all token tag (chainType-symbol-id)
+const indexFile = ''
+const res = await uploadFolderAndPay(path,priv,arseedUrl,tag, indexFile)
+console.log(res)
+}
+// review manifest Data
+curl --location --request GET 'https://arseed.web3infra.dev/{res.maniId}' Configuration Notes:Populate your ECC key with YOUR PRIVATE KEY. Make sure that the wallet corresponding to the private key has assets in everPay.arseedUrl is the URL of the Arseeding backend service, here we use the public Arseeding service provided by permadao: https://arseed.web3infra.dev.payUrl is the URL of the everPay service that needs to be configured: https://api.everpay.io path is the path to the folder you want to upload, for example, to deploy a static website, the front-end project will generate a build or dist folder after the project is compiled, just choose the path to that folder.tag is the payment token tag you need to select, if your MetaMask address held in everPay is usdc, you can get the usdc tag via getTokenTagByEver('usdc'),If you want to pay with another token, just fill in the token name to get the specified tag.indexFile is optional,if you don't pass it, index.html (if exist) or null will be default value, if the folder is a front-end project build folder you don't need pass indexFile.After preparing the configuration, call uploadFolderAndPay (path,priv,url,payCurrency) to upload all the files under your folder to web3infra's Arseeding node by means of manifest.node demo.js return:{
+fee: '0.004218',
+maniId: 'EHeDa8b428L38b972qyHI87YELuZKue1jDI_JWC-aGE',
+everHash:[
+'0x46744320be6529c48bf18c348fa181facef3d9d6d920a24687dc9964ba3ead0a'
+]
+} Download data-Access page The maniId can be found in the returned result, the maniId above is EHeDa8b428L38b972qyHI87YELuZKue1jDI_JWC-aGE In this tutorial, we are uploading a Docusaurus front-end project, and running yarn build under that project will generate a build folder, which is the one we uploaded. Now, we can access the site via maniId!In your browser, enter:https://arseed.web3infra.dev/EHeDa8b428L38b972qyHI87YELuZKue1jDI_JWC-aGE You can now access this website, and it will be permanently available! References and Further Reading:Arseeding Documentation Follow the Arseeding Upload Manifest tutorial here 。
+
+---
+
+# 13. ArNS - Arweave Name System  Cooking with the Permaweb
+
+Document Number: 13
+Source: https://cookbook.arweave.net/concepts/arns.html
+Words: 527
+Quality Score: 0.520
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+ArNS - Arweave Name System Overview The Arweave Name System (ArNS) is the phonebook of the PermaWeb.It is a decentralized and censorship-resistant naming system that is enabled by AR.IO Gateways and used to connect friendly names to PermaWeb apps, pages and data.This system works similarly to traditional DNS, where a user can purchase a name in a registry and DNS Name servers resolve these names to IP addresses.With ArNS, the registry is decentralized, permanent and stored on Arweave and each AR.IO gateway acts as both cache and name resolver. Users can register a name within the ArNS Registry, like "my-name" and set a pointer to any Arweave Transaction ID. AR.IO Gateways will resolve that name as one of their own subdomains, eg. https://laserilla.arweave.net and proxy all requests to the associated Arweave Transaction ID. Each registered name can also have under names associated with it that each point to an Arweave Transaction ID, like https://v1_laserilla.arweave.net, giving even more flexibility and control to its owner.The ArNS Registry ArNS uses the Smartweave protocol manage its name records. Each record, or name, is leased by a user and tied to an ANT token. You can register multiple ArNS names to a single ANT, but you cannot register multiple ANTs to a single ArNS name - the gateways wouldn't know where to point the routing ID.ArNS names can be up to 32 characters, including numbers [0-9], letters [a-z], and dashes [-]. The dashes cannot be trailing dashes, e.g. -myname.ANTs (Arweave Name Tokens) ANTs are a crucial part of the ArNS ecosystem - they are the actual key to owning an ArNS name. When you register an ArNS name to an ANT, the ANT then becomes the transfer method for that name. The ArNS registry does not care who owns the ANT, it simply knows what name ANT it belongs to.Within ANTs you can build out whatever functionality you wish, within the scope ArNS registry approved source code transaction list. Up to and including NFT's, PST's, DAO's, or full on applications.Under_Names Undernames are records held and managed by your ANT (Arweave Name Token). These records can be created and managed without even owning an ARNS name, and will be transferred along with the ant when sent to a new owner. Likewise if your ArNS name expires, and you register your ANT to a new ArNS name, all your undername will remain intact.Example: you own oldName.arweave.net.then: You create the undername "my" - my_oldName.arweave.net.then: oldName.arweave.net expires, and you register newName.arweave.net to your ANT.now: my_ undername is accessable on newName - my_newName.arweave.net.Below is an example of an ANT contract State:{
+balances:{ QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ : 1 },
+controller: "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ",
+evolve: null,
+name: "ArDrive OG Logo",
+owner: "QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ",
+records:{
+@:{ transactionId: "xWQ7UmbP0ZHDY7OLCxJsuPCN3wSUk0jCTJvOG1etCRo" },
+undername1:{ transactionId: "usOLUmbP0ZHDY7OLCxJsuPCN3wSUk0jkdlvOG1etCRo" }
+},
+ticker:"ANT-ARDRIVE-OG-LOGO"
+} the base "@" record is the initial routing id for the ANT. if you registered 'my-name' to this ANT, and tried to access it via my-name.arweave.net, you would be redirected to the @ record's transactionId.if you tried to access undername1_my-name.arweave.net, you would get 'undername1's transactionId.ANT's, in theory, have an UNLIMITED number of undernames. However, how many will be served depends on which tier is used with your ArNS name.
+
+---
+
+# 14. Warp (SmartWeave) SDK - ReadState  Cooking with the Permaweb
+
+Document Number: 14
+Source: https://cookbook.arweave.net/guides/smartweave/warp/readstate.html
+Words: 275
+Quality Score: 0.520
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Warp (SmartWeave) SDK - ReadState ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.SmartWeave Contract state is calculated via lazy evaluation, which means, the state evaluation occurs on reads not writes. When reading contracts, the SDK gathers all state interactions, sorts them, and executes them against the source contract using a reduce or fold pattern.Basic Readstate const warp = WarpFactory.forMainnet()
+const CONTRACT_ID = '_z0ch80z_daDUFqC9jHjfOL8nekJcok4ZRkE_UesYsk'
+const result = await warp.contract(CONTRACT_ID).readState()
+// log current state
+console.log(result.cachedValue.state) Advanced Readstate Some contracts either read the state of other contracts, or invoke or write to other contracts, when requesting the state of these contracts it is necessary to set evaluation options.const warp = WarpFactory.forMainnet()
+const CONTRACT_ID = 'FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA'
+const result = await warp.contract(CONTRACT_ID)
+.setEvaluationOptions({
+internalWrites: true,
+allowBigInt: true
+})
+.readState()
+// log current state
+console.log(result.cachedValue.state) Common Evaluation Options Name Description internalWrites Evaluates contracts that contain internal writes to other contracts allowBigInt Evaluates contracts that use the BigInt primitive you can find out more about bigInt MDN Docs unsafeClient This value could be allow or skip or throw. You should avoid using unsafeClient in your contracts it can lead to underministic results.Readstate from specific BlockHeight or Sortkey You may want to look at a previous state, not the current state, by supplying a blockHeight you can read the state of a contract at a specific block height const { sortKey, cachedValue } = await contract.readState(1090111) Summary Reading the current state of SmartWeave Contracts performs state evaluation by pulling all interactions and processing each interaction via a fold method. This approach is unique to the permaweb and requires a unique understanding of how your SmartWeave Contract code is executed.
+
+---
+
+# 15. Posting Transactions  Cooking with the Permaweb
+
+Document Number: 15
+Source: https://cookbook.arweave.net/concepts/post-transactions.html
+Words: 634
+Quality Score: 0.519
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Posting Transactions😍 There are several ways to post transactions to Arweave. Each has its own unique affordances and constraints. The diagram below illustrates the four main approaches to posting transactions.Direct to Peer,Direct to Gateway, Bundled, and Dispatched. Guaranteed Transactions When posting a large quantity of transactions or when fast settlement time is desireable consider using a bundling service. Bundlers settle large s of transactions immediately and make the transaction data available within milliseconds. The bundling service holds onto posted transactions until they are confirmed on-chain. If the transactions are not included in the most recent block the bundling service re-posts them with each new block until they are recorded on chain with a sufficient number of confirmations.Direct Transactions Transactions posted directly to Arweave come in two varieties wallet-to-wallet transactions and data transactions. The first transfers AR tokens between wallet addresses. The second posts data to Arweave and pays the associated storage costs.Interestingly, data transactions may also transfer AR tokens to a wallet address while paying storage costs at the same time.All transactions allow the user to specify up to 2KB worth of metadata in the form of custom tags.Direct to Peer Transactions may be posted directly to an Arweave peer (mining node). This is perhaps the most decentralized means of posting a transaction as clients can choose what peer they wish to post to.This approach is not without drawbacks. Peers may come and go making it difficult to reliably post transactions from an app. While it's possible to query a list of active peers and choose one before posting it adds overhead and friction to the process. Additionally, transactions posted to peers are only queryable at the gateway after being mined in a block. This introduces a 1-2 minute delay between posting the transaction to a peer and it being available to read in a browser from a gateway.For the above reasons, developers tend to configure arweave-js to point to a gateway when posting direct transactions as the optimistic cache at the gateway makes the transaction available almost immediately.Direct to Gateway Gateways sit between clients and Arweave's network of peers. One of the primary functions of the gateway is to index transactions and optimistically cache the data posted to the network while waiting for it to be included in a block. This makes the transaction queryable in a "Pending" state almost instantly which allows applications built on top of a gateway to be more responsive. There is still a risk of transactions dropping out of the optimistic cache if they are not mined in a block by the peers.An example of how to post a direct transaction using arweave-js can be found in this guide.Bundled Transactions Services built on top of Arweave that provide additional utility for Permaweb builders are sometimes called Permaweb Services. A bundler is one such service. Bundlers take multiple individual transactions and bundle them together into a single transaction that is posted directly to Arweave. In this way a single transaction at the protocol level can contain tens of thousands of bundled transactions. There is one restriction, however, only data transactions can be included in a bundle. Wallet-to-wallet transactions (that transfer AR tokens between wallet addresses) must be done as individual transactions posted directly to Arweave.Dispatched Transactions Another way to post bundled transactions is from the browser. While browsers enforce some constraints around the size of data that can be uploaded, browser based wallets are able to post transactions to bundlers. Arweave browser wallets implement a dispatch() API method. If you are posting small transactions (100KB or less) you can use the wallets dispatch() method to take advantage of bundled transactions.An example of how to post a 100KB or less bundled transaction with an Arweave wallets dispatch() method can be found in this guide.Resources arweave-js example dispatch example arseeding-js example
+
+---
+
+# 16. Vue Starter Kits  Cooking with the Permaweb
+
+Document Number: 16
+Source: https://cookbook.arweave.net/kits/vue/index.html
+Words: 129
+Quality Score: 0.517
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Vue Starter Kits Vue.js is a progressive JavaScript framework that allows building user interfaces. Unlike other frameworks, it compiles the template into JavaScript during runtime, resulting in a smaller file size and faster performance. Vue is ideal for building performant and scalable single-page applications, making it a popular choice among front-end developers.Vue Starter Kit Guides:Note: - Since npm init vue@latest alredy uses vite, we have not included a vite guide for Vue.Create Vue App - Use Create Vue to efficiently build a Vue.js-based with TypeScript and Vite modern permaweb application Permaweb Application Constraints 100% Front-end application (No Server-Side Backend) Applications are served from a sub-path (https://[gateway]/[TX_ID]) Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 17. Svelte Starter Kits  Cooking with the Permaweb
+
+Document Number: 17
+Source: https://cookbook.arweave.net/kits/svelte/index.html
+Words: 127
+Quality Score: 0.515
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Svelte Starter Kits Svelte is a framework that compiles to a JavaScript bundle and in the process removes the framework from the distribution of the app. This results in a much smaller footprint than other frameworks. Svelte is the perfect framework for Permaweb Applications. A Permaweb Application is built on the principles of a Single Page Application, but lives on the Arweave network and is distributed by Permaweb gateways.Svelte Starter Kit Guides:Minimal - the minimum required to build a svelte permaweb app Vite - Svelte, Typescript and Vite Permaweb Application Constraints 100% Front-end application (No Server-Side Backend) Applications are served from a sub-path (https://[gateway]/[TX_ID]) Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 18. ServerSide DNS Integration  Cooking with the Permaweb
+
+Document Number: 18
+Source: https://cookbook.arweave.net/guides/dns-integration/server-side.html
+Words: 399
+Quality Score: 0.511
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+ServerSide DNS Integration So you have a permaweb application and it is on the permaweb, but you also have a specific domain that you want users to use to access this app. mydomain.com, to connect your domain to a permaweb app, you have several options, this option we will show here is a called a server-side redirect. The redirect occurs as a reverse proxy so that the user remains on mydomain.com in their browser, while behind the scenes the application is being served from the permaweb.TIP You can use any reverse proxy to setup a server-side redirect, in this guide we will be using deno and deno.com a lightweight edge hosting service.What you will need to setup a reverse proxy using deno.com A deno.com account, which at the time of this writting is free.A domain with access to the DNS Settings A permaweb application identifier and is deployed on the permaweb Create proxy on Deno.com Deno Deploy is a distributed system that runs at the edge. 35 regions worldwide. Open your browser to https://deno.com and click sign in or sign up if you do not have an account.Click on New Project and Click The deno ground will allow us to create a proxy without having to leave the browser.Copy the following code:This proxy server will receive requests from mydomain.com and proxy the request to arweave.net/APP_ID and then return the response as mydomain.com. Your APP_ID is the TX_ID identifier for you permaweb application.Click Save and Deploy Connecting to DNS In Project Settings go to the domains section and click to add a domain.Enter mydomain.com domain and follow the instructions to modify your DNS settings to point to the deno deploy edge network.It may take a few minutes to resolve to the dns, but once resolved your app will now be rendering from mydomain.com.🎉 Congrats you have published a server-side redirect to your permaweb application.WARNING Note that any changes to your application will generate a new TX_ID and you will need to modify that TX_ID to publish the new changes to your domain.Automating the Deploy If you would like to automate new deploys of your permaweb app, look into github actions and using the deno deploy github action: https://github.com/denoland/deployctl/blob/main/action/README.md Summary Server Side redirects are great for providing your users a Domain Name System URL to access your permaweb application. We hope you found this guide useful in your permaweb development journey!
+
+---
+
+# 19. Transaction Metadata (Tags)  Cooking with the Permaweb
+
+Document Number: 19
+Source: https://cookbook.arweave.net/concepts/tags.html
+Words: 559
+Quality Score: 0.510
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Arweave can be thought of as a permanent append-only hard drive where each entry on the drive is its own unique transaction. Transactions have a unique ID, signature, and owner address for the address that signed and paid for the transaction to be posted. Along with those header values, the Arweave protocol allows users to tag transactions with custom tags. These are specified as a collection name value pairs appended to the transaction. These tags make it possible to query Arweave and find all the Transactions that include a particular tag or tags. The ability to query and filter transactions is critical to supporting apps built on Arweave.What are Transaction Tags?Transaction tags are key-value pairs, where the combination of base64URL keys and values must be less than the maximum of 2048 bytes for an arweave native transaction.Some common examples of transaction tags include:Content-Type: Used to specify the MIME type of content for render on the permaweb.App-Name: This tag describes the app that is writing the data App-Version: This tag is the version of the app, paired with App-Name Unix-Time: This tag is the a unix timestamp, seconds since epoch.Title: Used to give a name or brief description of the content stored in the transaction.Description: Used to provide a longer description of the content.Transaction tags can be used for a variety of purposes, such as indexing transactions for search, organizing transactions into categories, or providing metadata about the content stored in a transaction.Some good things to know about Transaction Tags Transaction tags are encoded as Base64URL encoded strings for both the key and value. This makes it possible to post arrays of bytes as keys or values and transfer them safely over http. While it's not human readable without decoding, it shouldn't be considered encryption.The max total size of Transaction tags for transaction posted directly to Arweave is 2048 bytes. This size is determined by the concatenation of all keys and all values of the transaction tags.Transaction tags can be used in GraphQL queries to return a filtered set of transaction items.Common Tags used in the community Tag Name Description Use Cases App-Name Most commonly used to identify applications using Arweave Common uses are the project's name, sometimes also used in specific ANS transactions App-Version The version of this data, it may represent the app consuming this information E.g. 0.3.0 Content-Type MIME Type to identify the data contained in the transaction text/html, application/json, image/png Unix-Time This tag is the a unix timestamp, seconds since epoch The time the transaction is submitted Title ANS-110 Standard for describing content Providing a name for an Atomic Asset Type ANS-110 Standard for categorization of data a type can classify a permaweb asset Examples const tx = await arweave.createTransaction({ data: mydata });
+tx.addTag("Content-Type", "text/html");
+tx.addTag("Title", "My incredible post about Transaction Tags");
+tx.addTag("Description", "This is one post you do not want to miss!");
+tx.addTag("Topic:Amazing", "Amazing");
+tx.addTag("Type", "blog-post");
+await arweave.transactions.sign(tx, jwk);
+await arweave.transactions.post(tx);Summary Understanding how Transaction Tags factor into the Arweave tech stack can provide context on how to solve problems using the Permaweb as an application platform. Tags provide a tool to consume and create common data standards and patterns to encourage a non-rivalous data experience on the Permaweb. The result gives users of the ecosystem the choice of applications to consume and create content as their data is always with the user not the application.
+
+---
+
+# 20. ar-gql  Cooking with the Permaweb
+
+Document Number: 20
+Source: https://cookbook.arweave.net/guides/querying-arweave/ar-gql.html
+Words: 139
+Quality Score: 0.505
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding ar-gql This package is a minimal layer on top of GraphQL, it supports parameterized queries with query variables. It also implements management of paged results.Installation To install `ar-gql run npm i ar-gql yarn add ar-gql Example import { arGql } from "ar-gql"
+const argql = arGql()
+(async () => {
+let results = await argql.run(`query( $count: Int ){
+transactions(
+first: $count,
+tags: [
+{
+name: "App-Name",
+values: ["PublicSquare"]
+},
+{
+name: "Content-Type",
+values: ["text/plain"]
+},
+]
+) {
+edges {
+node {
+id
+owner {
+address
+}
+data {
+size
+}
+block {
+height
+timestamp
+}
+tags {
+name,
+value
+}
+}
+}
+}
+}`, {count: 1});
+console.log(results);
+})();Resources ar-gql github page open in new window Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 21. Posting Transactions using arseedingjs  Cooking with the Permaweb
+
+Document Number: 21
+Source: https://cookbook.arweave.net/guides/posting-transactions/arseeding-js.html
+Words: 235
+Quality Score: 0.504
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Posting Transactions using arseeding.js You can use the arseeding-js JavaScript SDK package to publish transactions on the Arweave network. Arseeding automatically broadcasts the transaction to all Arweave nodes in the network, ensuring that the transaction is promptly received in the pending pool of all Arweave nodes, thus increasing the transaction's packaging speed.Installing arseeding.js To install arseeding.js run:npm install arseeding-js yarn add arseeding-js Transaction for Uploading Data When using Arseeding, you must pre-fund your account on everpay open in new window. This balance can be funded with $AR tokens or other cryptocurrencies. Another distinction is that the Arseeding service ensures that your data will make it onto the blockchain.const { genNodeAPI } = require('arseeding-js')
+const run = async () => {
+const instance = genNodeAPI('YOUR PRIVATE KEY')
+const arseedUrl = 'https://arseed.web3infra.dev'
+const data = Buffer.from('........')
+const payCurrencyTag = 'ethereum-usdc-0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48' // everPay supported token tag (chainType-symbol-id)
+const options = {
+tags: [{ name: 'Content-Type', value: 'image/png' }]
+}
+const res = await instance.sendAndPay(arseedUrl, data, payCurrencyTag, options)
+console.log('res', res)
+}
+run() Resources For an overview of all methods for publishing transactions, please refer to the Publishing Transactions section in the operation manual.You can find the complete Arseeding documentation on the Arseeding website open in new window.Follow the Arseeding Upload Manifest tutorial here open in new window.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 22. Querying Arweave with GraphQL  Cooking with the Permaweb
+
+Document Number: 22
+Source: https://cookbook.arweave.net/guides/querying-arweave/queryingArweave.html
+Words: 822
+Quality Score: 0.500
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Querying Arweave with GraphQL Arweave provides a simple way of querying for transactions and filtering them by tags. Arweave GraphQL-compatible indexing services provide endpoints users can post GraphQL queries to, and also provide a ground for trying queries.GraphQL is a flexible query language that services can use to build a customized data schema for clients to query. GraphQL also allows clients to specify which elements of the available data structure they would like to see in the results.Public Indexing Services arweave.net graphql the original graphql endpoint, managed by ar.io goldsky search service a public service specifically optimized for search using a superset of the graphql syntax, managed by goldsky ar.io decentralized indexing A decentralized network for indexing services. Currently in testing with L1 transactions available.knn3 arseeding indexing, one for arseeding trading can real-time query service.Executing a GraphQL Query To query arweave we’ll need to access it through an indexing service that supports GraphQL. Use one of the GraphQL grounds listed above to get started!Copy and paste in the following query query {
+transactions(tags: [{
+name: "App-Name",
+values: ["PublicSquare"]
+}])
+{
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} If you’re not familiar with GraphQL it can seem a little overwhelming at first but once you know the structure, it’s fairly easy to read and understand.query { ( ) { } } In the example query we pasted our is transactions but we could also query for blocks. A full description of Arweave's GraphQL schema is written up in the Arweave GraphQL Guide. The guide refers to the filter criteria as “Query Structures” and the complete data structure definition of transactions and blocks as “Data Structures”.When it comes to the , the thing to note is that you can specify a subset of the complete data structure you’re interested in. For example, the complete data structure for a transactions schema is listed here.In our case we’re interested in the id and complete list of tags for any transaction matching our filter criteria.Hit the big “” button in the middle of the ground to run the query. You’ll notice we get back a list of transactions in the results data structure we specified in our original query.If you’re new to blockchains this is unexpected, we haven’t built anything, why do these results exist? It turns out, the “PublicSquare”: “App-Name” tag we’ve filtered for has been in use for a while.Arweave protocol's founder, Sam Williams, proposed the transaction format a few years ago in a github code snippet. Since then builders in the ecosystem have been building on and around it, experimenting, posting transactions with those tags.Back to querying Arweave. You’ll notice in the GraphQL results that there are no readable post messages, just tags and information about posts.This is because the GraphQL indexing service is concerned with indexing and retrieving header data for transactions and blocks but not their associated data.To get the data of a transaction we need to look it up using another HTTP endpoint.https://arweave.net/ Copy and paste one of the id’s in your query results and modify the above link, appending the id. It should look something like this… https://arweave.net/eaUAvulzZPrdh6_cHwUYV473OhvCumqT3K7eWI8tArk The result of navigating to that URL in the browser (HTTP GET) would be retrieving the content of the post (stored in the transactions data). In this example it’s… Woah that's pretty cool 😎 (For a complete listing arweave HTTP endpoints visit the HTTP API documentation.) Posting a Query From JavasScript Posting a GraphQL query from javascript isn't much different than posting it in the ground.First install the arweave-js package for easy access to a GraphQL endpoint.npm install --save arweave Then enter a slightly more advanced version of the example query from above and await the results of posting it.import Arweave from 'arweave';
+// initialize an arweave instance
+const arweave = Arweave.init({});
+// create a query that selects tx data the first 100 tx with specific tags
+const queryObject = {
+query:
+`{
+transactions(
+first:100,
+tags: [
+{
+name: "App-Name",
+values: ["PublicSquare"]
+},
+{
+name: "Content-Type",
+values: ["text/plain"]
+}
+]
+)
+{
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+}`
+};
+const results = await arweave.api.post('/graphql', queryObject);Multiple Queries It is possible to post multiple queries in a single round-trip to the GraphQL endpoint. This example queries the name transaction (each as a separate query) for two wallet addresses using the now obsolete (replaced by ar-profile) but still permanent arweave-id protocol.query {
+account1: transactions(first: 1, owners:["89tR0-C1m3_sCWCoVCChg4gFYKdiH5_ZDyZpdJ2DDRw"],
+tags: [
+{
+name: "App-Name",
+values: ["arweave-id"]
+},
+{
+name: "Type",
+values: ["name"]
+}
+]
+) {
+edges {
+node {
+id
+owner {
+address
+}
+}
+}
+}
+account2: transactions(first: 1, owners:["kLx41ALBpTVpCAgymxPaooBgMyk9hsdijSF2T-lZ_Bg"],
+tags: [
+{
+name: "App-Name",
+values: ["arweave-id"]
+},
+{
+name: "Type",
+values: ["name"]
+}
+]
+) {
+edges {
+node {
+id
+owner {
+address
+}
+}
+}
+}
+} Resources Arweave GQL Reference ArDB package ar-gql package Search Indexing Service
+
+---
+
+# 23. Bundling  Cooking with the Permaweb
+
+Document Number: 23
+Source: https://cookbook.arweave.net/references/bundling.html
+Words: 544
+Quality Score: 0.498
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Bundling Before getting started with any of the below references, make sure you've read Bundles and Bundling from Core Concepts.Setup We'll be using the arbundles library which is a JavaScript implementation of the ANS-104 specification. ArBundles comes with TypeScript support.Note: This reference assumes a NodeJS environment. Browser compatibility with ArBundles is possible but currently requires wrangling Buffer polyfills. This will be addressed in a future version of ArBundles.npm install arbundles yarn add arbundles Create a Signer In order to create Data Items, we need to first create a Signer.import { ArweaveSigner, JWKInterface } from 'arbundles'
+const jwk: JWKInterface = { /* your Arweave jwk keyfile */ }
+const signer = new ArweaveSigner(jwk) Create a DataItem To create a DataItem, we pass some data along with a Signer to the createData() utility function.Note: While the createData() utility function requires a Signer, the returned DataItem is not yet signed and contains a placeholder ID.import { createData } from 'arbundles'
+// Create a DataItem from a string
+const myStringData: string = 'Hello, Permaweb!'
+const myDataItem = createData(myStringData, signer)
+// Create a DataItem from a Buffer or Uint8Array
+const myBufferData: Buffer | Uint8Array = Buffer.from('Hello, Permaweb!')
+const myOtherDataItem = createData(myBufferData, signer)
+/* !!!WARNING!!! DATA ITEM ARE NOT YET SIGNED! */ Create a Bundle To create a Bundle, we pass our DataItem to the bundleAndSignData utility function and await the result.Note: A DataItem passed to this utility function can be pre-signed as detailed in a later section.import { bundleAndSignData } from 'arbundles'
+const dataItems = [ myDataItem, myOtherDataItem ]
+const bundle = await bundleAndSignData(dataItems, signer) Create a Transaction from a Bundle In order to post a Bundle to Arweave there ultimately needs to be a root Layer 1 Transaction containing the Bundle.import Arweave from 'Arweave'
+// Set up an Arweave client
+const arweave = new Arweave({
+protocol: 'https',
+host: 'arweave.net',
+port: 443
+})
+// Create using ArweaveJS
+const tx = await arweave.createTransaction({ data: bundle.getRaw() }, jwk)
+// OR Create from the Bundle itself
+const tx = await bundle.toTransaction({}, arweave, jwk)
+// Sign the transaction
+await arweave.transactions.sign(tx, jwk)
+// Post tx to Arweave with your preferred method!Sign a DataItem In order to get a DataItem 's ID (e.g. for use in a manifest also contained in the same bundle), we must call and await its .sign() method. If signing is successful, the DataItem will now have their unique ID and signature and are ready to be added to a Bundle.await myDataItem.sign(signer)
+await myOtherDataItem.sign(signer)
+const id1 = myDataItem.id
+const id2 = myOtherDataItem.id Tagging DataItem DataItem can themselves have tags just as Layer 1 Arweave Transactions can have tags. Once an Arweave Gateway unbundles and indexes the Bundle, these DataItem tags become queryable the same way a Layer 1 Arweave Transaction's tags are queryable.const myStringData: string = 'Hello, Permaweb!'
+const tags = [
+{ name: 'Title', value: 'Hello Permaweb' },
+{ name: 'Content-Type', value: 'text/plain' }
+]
+const myDataItem = createData(myStringData, signer, { tags }) Consuming Bundles WARNING: Be sure that the Buffer you pass to new Bundle(buffer) does contain a Bundle, otherwise, very small Buffer being passed will crash the thread. DO NOT use new Bundle(buffer) in a production environment. Instead, see the streamable interface in the ArBundles repository.const bundle = new Bundle(Buffer.from(tx.data))
+const myDataItem = bundle.get(0)
+const myOtherDataItem = bundle.get(1)
+
+---
+
+# 24. Wallets and Keys  Cooking with the Permaweb
+
+Document Number: 24
+Source: https://cookbook.arweave.net/concepts/keyfiles-and-wallets.html
+Words: 530
+Quality Score: 0.498
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Wallets and Keys Arweave Wallets On Arweave a wallet secures a unique address on the blockchain. The address is used to keep track of your $AR balance, and interact with the Arweave network - such as sending transactions, or interacting with AO Processes.Like most blockchains, the concept of a wallet on Arweave is slightly misleading.A Wallet does not "hold" any tokens itself; token balances are stored on the blockchain and linked to the wallets address. Instead a wallet holds the cryptographic public-private key pair that can be used to sign transactions to post data or transfer tokens. The wallet owner (the person with access to the wallet's private key) is the only one who can sign transactions for the address and access its funds.Keypair and Wallet Format Arweave uses 4096bit RSA-PSS key-pairs stored using the JWK (JSON Web Keys) format. The JWK format can be used to store many types of cryptographic keys, not just RSA key-pairs.Shown here is the contents of a JWK file which describes an RSA-PSS key-pair. The values are abbreviated so they are not accidentally used as the sender or recipient of an on-chain transaction. When storing RSA-PSS key-pairs the value associated with n in the JWK is your wallets public key and can be shared safely without compromising the security of your wallet.{
+"d": "cgeeu66FlfX9wVgZr5AXKlw4MxTlxSuSwMtTR7mqcnoE...",
+"dp": "DezP9yvB13s9edjhYz6Dl...",
+"dq": "SzAT5DbV7eYOZbBkkh20D...",
+"e": "AQAB",
+"ext": true,
+"kty": "RSA",
+"n": "o4FU6y61V1cBLChYgF9O37S4ftUy4newYWLApz4CXlK8...",
+"p": "5ht9nFGnpfW76CPW9IEFlw...",
+"q": "tedJwzjrsrvk7o1-KELQxw...",
+"qi": "zhL9fXSPljaVZ0WYhFGPU..."
+} Your private key is also stored in the JWK, primarily under the value associated with d but it is also partially derived from some of the other values in the JWK. The private key is like the password for your wallet - which can be used to create digital signatures (such as for signing transactions), or decrypting data.These JWKs are actual json files created and exported from a wallet app such as Arweave.app or generated through code using arweave-js.When using a wallet app to generate your key-pair your private key can also be represented as a mnemonic seed phrase, which in some cases can be used as an alternative to sign transactions and/or recover your wallet.Wallet Safety Your private key must be kept confidential at all times as it has the ability to transfer tokens from your address to someone elses. As a developer, make sure not to include your keyfile in any public GitHub repositories or host it anywhere else publicly.Wallet Addresses Interestingly the address of your wallet is derived from its public key. While it's safe to share your public key with others, a 4096bit public key is a bit large to pass around conveniently. To reduce that overhead and keep wallet addresses a little more human readable, the SHA-256 hash of the public key is Base64URL encoded and used as the wallet address. This security and deterministically links a unique 43 character wallet address to the wallets public-key and provides a convenient shorthand that anyone with the public-key can verify.Wallets Arweave.app - Arweave web wallet to deploy permanent data, connect your accounts securely to decentralized applications, and navigate the weave.Wander - Browser extension and mobile wallet for Arweave and AO Arweave Docs JSON Web Key Format (RFC 7517)
+
+---
+
+# 25. Posting Transactions using arweave-js  Cooking with the Permaweb
+
+Document Number: 25
+Source: https://cookbook.arweave.net/guides/posting-transactions/arweave-js.html
+Words: 375
+Quality Score: 0.495
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Posting Transactions using arweave-js Arweave native transactions can be posted directly to a node or gateway using the arweave-js package.Arweave scales though the use of transaction bundles. These bundles make it possible for each block to contain a nearly unlimited number of transactions. Without the use of bundles, Arweave blocks are limited 1000 transactions per block (with new blocks produced every ~2 minutes). If your use case exceeds this capacity you may experience dropped transactions. Under these circumstances please consider using irys.xyz or similar services to bundle your transactions.Installing the arweave-js Package To install arweave-js run npm install --save arweave yarn add arweave When working with NodeJS a minimum version of NodeJS 18 or higher is required.Initializing arweave-js Direct Layer 1 transactions are posted using the arweave-js library.import Arweave from 'arweave';
+import fs from "fs";
+// load the JWK wallet key file from disk
+let key = JSON.parse(fs.readFileSync("walletFile.txt").toString());
+// initialize an arweave instance
+const arweave = Arweave.init({});Posting a wallet-to-wallet Transaction A basic transaction to move AR tokens from one wallet address to another.// create a wallet-to-wallet transaction sending 10.5AR to the target address
+let transaction = await arweave.createTransaction({
+target: '1seRanklLU_1VTGkEk7P0xAwMJfA7owA1JHW5KyZKlY',
+quantity: arweave.ar.arToWinston('10.5')
+}, key);
+// you must sign the transaction with your key before posting
+await arweave.transactions.sign(transaction, key);
+// post the transaction
+const response = await arweave.transactions.post(transaction);Posting a Data Transaction This example illustrates how load a file from disk and create a transaction to store its data on the network. You can find the current price the network is charging at https://ar-fees.arweave.dev // load the data from disk
+const imageData = fs.readFileSync(`iamges/myImage.png`);
+// create a data transaction
+let transaction = await arweave.createTransaction({
+data: imageData
+}, key);
+// add a custom tag that tells the gateway how to serve this data to a browser
+transaction.addTag('Content-Type', 'image/png');
+// you must sign the transaction with your key before posting
+await arweave.transactions.sign(transaction, key);
+// create an uploader that will seed your data to the network
+let uploader = await arweave.transactions.getUploader(transaction);
+// run the uploader until it completes the upload.
+while (!uploader.isComplete) {
+await uploader.uploadChunk();
+} Resources For an overview of all the ways you can post transactions, see the Posting Transactions section of the cookbook.For a more detailed description of all arweave-js 's features see the documentation on github
+
+---
+
+# 26. React Starter Kits  Cooking with the Permaweb
+
+Document Number: 26
+Source: https://cookbook.arweave.net/kits/react/index.html
+Words: 112
+Quality Score: 0.495
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding React Starter Kits React is a popular library used for building user interfaces. Alongside other popular tools such as create-react-app, a React project can be compiled into a bundle. This bundle can be uploaded as a transaction to the permaweb where it will serve as a single page application.React Starter Kit Guides:Vite - React + Vite, publish with permaweb-deploy Create React App - utilize Create React App to build a React permaweb app Permaweb Application Constraints 100% Front-end application (No Server-Side Backend) Applications are served from a sub-path (https://[gateway]/[TX_ID]) Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 27. arkb  Cooking with the Permaweb
+
+Document Number: 27
+Source: https://cookbook.arweave.net/guides/deployment/arkb.html
+Words: 243
+Quality Score: 0.495
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+arkb Requirements An Arweave wallet is required to deploy using arkb for covering the data transaction costs.Installation To install arkb run npm install -g arkb yarn add ar-gql Deploying When uploading a directory of files or a Permaweb application, by default arkb deploys each file separately as an L1 transaction, with the option to bundle the transactions using Bundlr.Static Build Permaweb applications are statically generated, meaning that the code and content are generated ahead of time and stored on the network.Below is an example of a static site. To deploy this to the Permaweb, the build directory will be passed in as the argument for the deploy flag.|- build
+|- index.html
+|- styles.css
+|- index.js Default Deployment Deploying as an L1 transaction can take longer to confirm as it is directly uploaded to the Arweave network.arkb deploy [folder] --wallet [path to wallet] Bundled Deployment To deploy using Bundlr you will need to fund a Bundlr node.Bundlr node2 allows free transactions under 100kb.You can add custom identifiable tags to the deployment using tag-name/tag-value syntax.arkb deploy [folder] --use-bundler [bundlr node] --wallet [path to wallet] --tag-name [tag name] --tag-value [tag value] Other Commands Fund Bundlr arkb fund-bundler [amount] --use-bundler [bundlr node] * Funding a Bundlr instance can take up to 30 minutes to process Saving Keyfile arkb wallet-save [path to wallet] After saving your key you can now run commands without the --wallet-file option, like this arkb deploy [path to directory] Check Wallet Balance arkb balance
+
+---
+
+# 28. Entity Types  Cooking with the Permaweb
+
+Document Number: 28
+Source: https://cookbook.arweave.net/concepts/arfs/entity-types.html
+Words: 1168
+Quality Score: 0.491
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Entity Types Overview Arweave transactions are composed of transaction headers and data payloads.ArFS entities, therefore, have their data split between being stored as tags on their transaction header and encoded as JSON and stored as the data of a transaction. In the case of private entities, JSON data and file data payloads are always encrypted according to the protocol processes defined below.Drive entities require a single metadata transaction, with standard Drive tags and encoded JSON with secondary metadata.Folder entities require a single metadata transaction, with standard Folder tags and an encoded JSON with secondary metadata.File entities require a metadata transaction, with standard File tags and an encoded Data JSON with secondary metadata relating to the file.File entities also require a second data transaction, which includes a limited set of File tags and the actual file data itself.Snapshot entities require a single transaction. which contains a Data JSON with all of the Drive’s rolled up ArFS metadata and standard Snapshot GQL tags that identify the Snapshot.Drive A drive is the highest level logical grouping of folders and files. All folders and files must be part of a drive, and reference the Drive ID of that drive.When creating a Drive, a corresponding folder must be created as well. This will act as the root folder of the drive. This separation of drive and folder entity enables features such as folder view queries, renaming, and linking.Drive Entity Transaction Example Folder A folder is a logical grouping of other folders and files. Folder entity metadata transactions without a parent folder id are considered the Drive Root Folder of their corresponding Drives. All other Folder entities must have a parent folder id. Since folders do not have underlying data, there is no Folder data transaction required.ArFS: "0.13"
+Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>"
+Content-Type: ""
+Drive-Id: ""
+Entity-Type: "folder"
+Folder-Id: ""
+Parent-Folder-Id?: ""
+Unix-Time: ""
+Data JSON {
+"name": ""
+} Folder Entity Transaction Example File A File contains uploaded data, like a photo, document, or movie.In the Arweave File System, a single file is broken into 2 parts - its metadata and its data.In the Arweave File System, a single file is broken into 2 parts - its metadata and its data.A File entity metadata transaction does not include the actual File data. Instead, the File data must be uploaded as a separate transaction, called the File Data Transaction. The File JSON metadata transaction contains a reference to the File Data Transaction ID so that it can retrieve the actual data. This separation allows for file metadata to be updated without requiring the file itself to be reuploaded. It also ensures that private files can have their JSON Metadata Transaction encrypted as well, ensuring that no one without authorization can see either the file or its metadata.ArFS: "0.13"
+Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>"
+Content-Type: ""
+Drive-Id: ""
+Entity-Type: "file"
+File-Id: ""
+Parent-Folder-Id: ""
+Unix-Time: ""
+Data JSON {
+"name": "",
+"size": "",
+"lastModifiedDate": "",
+"dataTxId": "",
+"dataContentType": "",
+"pinnedDataOwner": "" # Optional
+} Pin Files Since the version v0.13, ArFS suports Pins. Pins are files whose data may be any transaction uploaded to Arweave, that may or may not be owned by the wallet that created the pin.When a new File Pin is created, the only created transaction is the Metadata Transaction. The dataTxId field will point it to any transaction in Arweave, and the optional pinnedDataOwner field is gonna hold the address of the wallet that owns the original copy of the data transaction.File Data Transaction Example The File Data Transaction contains limited information about the file, such as the information required to decrypt it, or the Content-Type (mime-type) needed to view in the browser.Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>"
+Content-Type: ""
+{ File Data - Encrypted if private } File Metadata Transaction Example The the File Metadata Transaction contains the GQL Tags necessary to identify the file within a drive and folder.Its data contains the JSON metadata for the file. This includes the file name, size, last modified date, data transaction id, and data content type.ArFS: "0.13"
+Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>"
+Content-Type: ""
+Drive-Id: ""
+Entity-Type: "file"
+File-Id: ""
+Parent-Folder-Id: ""
+Unix-Time: ""
+{ File JSON Metadata - Encrypted if private } Snapshot ArFS applications generate the latest state of a drive by querying for all ArFS transactions made relating to a user's particular Drive-Id. This includes both paged queries for indexed ArFS data via GQL, as well as the ArFS JSON metadata entries for each ArFS transaction.For small drives (less than 1000 files), a few thousand requests for very small s of data can be achieved relatively quickly and reliably. For larger drives, however, this results in long sync times to pull every piece of ArFS metadata when the local database cache is empty. This can also potentially trigger rate-limiting related ArWeave Gateway delays.Once a drive state has been completely, and accurately generated, in can be rolled up into a single snapshot and uploaded as an Arweave transaction. ArFS clients can use GQL to find and retrieve this snapshot in order to rapidly reconstitute the total state of the drive, or a large portion of it. They can then query individual transactions performed after the snapshot.This optional method offers convenience and resource efficiency when building the drive state, at the cost of paying for uploading the snapshot data. Using this method means a client will only have to iterate through a few snapshots instead of every transaction performed on the drive.Snapshot Entity Tags Snapshot entities require the following tags. These are queried by ArFS clients to find drive snapshots, organize them together with any other transactions not included within them, and build the latest state of the drive.ArFS: "0.13"
+Drive-Id: ""
+Entity-Type: "snapshot"
+Snapshot-Id: ""
+Content-Type: ""
+Block-Start: ""
+Block-End: ""
+Data-Start: "" Snapshot Transaction GQL tags example Snapshot Entity Data A JSON data object must also be uploaded with every ArFS Snapshot entity. THis data contains all ArFS Drive, Folder, and File metadata changes within the associated drive, as well as any previous Snapshots. The Snapshot Data contains an array txSnapshots. Each item includes both the GQL and ArFS metadata details of each transaction made for the associated drive, within the snapshot's start and end period.A tsSnapshot contains a gqlNode object which uses the same GQL tags interface returned by the Arweave Gateway. It includes all of the important block, owner, tags, and bundledIn information needed by ArFS clients. It also contains a dataJson object which stores the correlated Data JSON for that ArFS entity.For private drives, the dataJson object contains the JSON-string-escaped encrypted text of the associated file or folder. This encrypted text uses the file's existing Cipher and Cipher-IV. This ensures clients can decrypt this information quickly using the existing ArFS privacy protocols.Snapshot Transaction JSON data example Schema Diagrams The following diagrams show complete examples of Drive, Folder, and File entity Schemas.Public Drive Public Drive Schema Private Drive Private Drive Schema
+
+---
+
+# 29. Vouch  Cooking with the Permaweb
+
+Document Number: 29
+Source: https://cookbook.arweave.net/concepts/vouch.html
+Words: 313
+Quality Score: 0.484
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Vouch Overview Motivation Vouching provides a decentralized approach to Sybil resistance. A Sybil attack is when an attacker subverts the network by creating a large number of pseudonymous identities to gain a disproportionately large influence.Vouch Protocol Arweave introduced the concept of the ANS-109 Vouch (Assertion of Identity). It is a standard that uses a specific transaction format along with some tags to allows anyone on the permaweb to "vouch" for the identity and humanity of any Arweave address.Adding a standard such as the ANS-109 to the permaweb will help minimize Sybil attacks and bad actors, making it a safer experience for permaweb users.VouchDAO VouchDAO is a community led, decentralized verification layer built on top of the Vouch standard. Developers create vouch services and members of the VouchDAO community vote on which of these verification services are deemed trustworthy. How It Works Developers have the ability to create different Vouch services to attest to a user's Arweave wallet based on a given set of requirements. A current example of this is the Twitter service which is the first vouch service, which has vouched over 180 Arweave addresses so far.The VouchDAO smart contract state has an attribute vouched. This state gets updated whenever a user gets verified. The vouched object stores a list of vouched addresses in the following format:VOUCH_USER_ADDRESS:[
+{
+service:"SERVICE_ADDRESS_1"
+transaction:"TX_ID"
+},
+{
+service:"SERVICE_ADDRESS_2"
+transaction:"TX_ID"
+}
+] Users that get verified will have the ANS-109 token sent to their wallet to indicate that wallet has been vouched for by that service.ANS-109 Transaction Format Tag Name Optional?Tag Value App-Name False Vouch Vouch-For False Arweave address that is being vouched for in this transaction App-Version True 0.1 Verification-Method True Method of verification of identity for the person. Example - Twitter / In-Person / Gmail / Facebook User-Identifier True An identifier for the user based on the Verification Method. Example - abhav@arweave.org Resources VouchDAO VouchDAO Contract
+
+---
+
+# 30. Arweave peer HTTP API  Cooking with the Permaweb
+
+Document Number: 30
+Source: https://cookbook.arweave.net/references/http-api.html
+Words: 310
+Quality Score: 0.484
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Arweave peer HTTP API For a more complete reference of the Arweave peer HTTP APIs see the linked guide.The endpoints present here are for done so for convenance and/or because they were omitted from the linked guide.Permaweb gateway services are typically backed by one or more full Arweave nodes. As a result they will often expose the node endpoints under the /tx/ path and routing the request directly to an Arweave node. This means these methods can often be called on a gateway as well as directly on an arweave peer/node. Get by field Retrieves the header fields associated with a transaction directly from an Arweave node. Can be used to retrieve the transaction data as well, if the node stores the chunks, and the data is small enough for the node to serve.https://arweave.net/tx/TX_ID/FIELD Available fields: id | last_tx | owner | target | quantity | data | reward | signature const result = await fetch('https://arweave.net/tx/sHqUBKFeS42-CMCvNqPR31yEP63qSJG3ImshfwzJJF8/data')
+// fields are returned in base64url format, so we need to decode
+const base64url = await result.text()
+const jsonData = JSON.parse( Arweave.utils.b64UrlToString(base64url) )
+console.log(jsonData) Click to view example result {
+"ticker":"ANT-PENDING",
+"name":"pending",
+"owner":"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0",
+"controller":"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0",
+"evolve":null,
+"records": {
+"@":"As-g0fqvO_ALZpSI8yKfCZaFtnmuwWasY83BQ520Duw"
+},
+"balances":{"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0":1}
+} Get Wallet Balance The returned balance is in Winston. To get balance in $AR, divide the balance by 1000000000000 https://arweave.net/wallet/ADDRESS/balance const res = await axios.get(`https://arweave.net/wallet/NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0/balance`)
+console.log(res)
+console.log(res.data / 1000000000000)
+6638463438702 // Winston
+6.638463438702 // $AR Get transaction status https://arweave.net/tx/TX_ID/status TIP This endpoint only supports base Arweave transactions not bundled transactions. Transactions must be confirmed on-chain before their status will be available.const response = await fetch('https://arweave.net/tx/EiRSQExb5HvSynpn0S7_dDnwcws1AJMxoYx4x7nWoho/status')
+const result = await response.json()
+console.log(JSON.stringify(result)) Click to view example result {
+"block_height":1095552,"block_indep_hash":"hyhLEyOw5WcIhZxq-tlnxhnEFgKChKHFrMoUdgIg2Sw0WoBMbdx6uSJKjxnQWon3","number_of_confirmations":10669
+} Get network information const res = await axios.get('https://arweave.net/info')
+console.log(res.data) Click to view example result {
+"network": "arweave.N.1",
+"version": 5,
+"release": 53,
+"height": 1106211,
+"current": "bqPU_7t-TdRIxgsja0ftgEMNnlGL6OX621LPJJzYP12w-uB_PN4F7qRYD-DpIuRu",
+"blocks": 1092577,
+"peers": 13922,
+"queue_length": 0,
+"node_state_latency": 0
+}
+
+---
+
+# 31. Warp WriteInteractions  Cooking with the Permaweb
+
+Document Number: 31
+Source: https://cookbook.arweave.net/guides/smartweave/warp/write-interactions.html
+Words: 353
+Quality Score: 0.484
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+⚠️ Deprecation Notice This document is deprecated and may contain outdated information.To call a function on a SmartWeave contract, you can create a transaction known as a SmartWeave action. This action includes the function name and the necessary input parameters for the function on the SmartWeave contract. You can create a SmartWeave action using the contract.writeInteraction function.Code import { WarpFactory } from 'warp-contracts'
+const warp = WarpFactory.forMainnet()
+const STAMP_PROTOCOL = 'FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA'
+async function doStamp() {
+const result = await warp.contract(STAMP_PROTOCOL)
+.connect('use_wallet')
+.writeInteraction({
+function: 'stamp',
+timestamp: Date.now(),
+transactionId: 'zQhANphTO0DOsaWXhExylUD5cBN3a6xWvfn5ZCpmCVY'
+})
+console.log(result)
+} When calling writeInteraction, you need to pass your input parameters, these are the parameters the contract is expecting to receive.WARNING Since SmartWeave contracts are evaluated in a lazy flow, you do not know if your interaction ran successfully until you evaluate the contract to the current state. Use Warp readState to access the contract and determine if the interaction was applied successfully.Dry Write DryWrite allows you to test and verify an interaction on the current state without actually executing it on the permaweb. This feature allows you to simulate the interaction locally and ensure that it will be successful before applying it.import { WarpFactory } from 'warp-contracts'
+const warp = WarpFactory.forMainnet()
+const STAMP_PROTOCOL = 'FMRHYgSijiUNBrFy-XqyNNXenHsCV0ThR4lGAPO4chA'
+async function doStamp() {
+const result = await warp.contract(STAMP_PROTOCOL)
+.connect('use_wallet')
+.dryWrite({
+function: 'stamp',
+timestamp: Date.now(),
+transactionId: 'zQhANphTO0DOsaWXhExylUD5cBN3a6xWvfn5ZCpmCVY'
+})
+console.log(result)
+} WARNING One thing to note when using dry writes, is that the entire state needs to be evaluated locally for contacts that use readState or internalWrites. This can result in a slow performing process.Optimized for speed By default, writeInteractions are submitted to the Warp Sequencer and bundled and posted to Arweave. You can post directly to Arweave by disabling bundling.const result = await contract.writeInteraction({
+function: 'NAME_OF_YOUR_FUNCTION',
+...
+}, { disableBundling: true }) Summary The SmartWeave Protocol allows for the modification of dynamic data on an immutable, append-only storage system using writeInteractions. These interactions enable trustless and permissionless communication with SmartWeave contracts. The Warp SDK provides developers with a user-friendly API for interacting with the SmartWeave Protocol and its writeInteractions feature.For additional resources:Warp SDK https://github.com/warp-contracts/warp Warp Docs https://warp.cc
+
+---
+
+# 32. Cooking with the Permaweb  Cooking with the Permaweb
+
+Document Number: 32
+Source: https://cookbook.arweave.net/index.html
+Words: 224
+Quality Score: 0.480
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Cooking with the Permaweb The Permaweb Cookbook is a developer resource that provides the essential concepts and references for buiding applications on the Permaweb. Each concept and reference will focus on specific aspects of the Permaweb development ecosystem while providing additional details and usage examples.Developers Welcome to the Arweave development community, where the past is forever etched in the blockchain and the future is full of endless possibilities. Let's build the decentralized web together!Read More Contributing The Cookbook is designed in a way that makes it easy for new Permaweb developers to contribute. Even if you don't know how to do something, contributing to the cookbook is a great way to learn!Check out all open issues here. Contribution guidelines here. if you find the cookbook is missing a concept, guide or reference, please add an issue.Read More How to Read the Cookbook The Permaweb Cookbook is split into different sections, each aimed at a different goal.Section Description Core Concepts Building blocks of the Permaweb that are good to know for development Guides Snack-sized guides about different tools for development References References to commonly needed code snippets Starter Kits Front-end Framework Starters to get you started building on the Permaweb in no time Quick Starts These are small guides to help developers from every experience level to ship code the the permaweb.Hello World (No Code)
+
+---
+
+# 33. Permaweb Applications  Cooking with the Permaweb
+
+Document Number: 33
+Source: https://cookbook.arweave.net/concepts/permawebApplications.html
+Words: 430
+Quality Score: 0.478
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Permaweb Applications A Permaweb application refers to a web page or app built on top of Arweave. Applications built on Arweave have the properties of immutability and long-term availability, which can go for not only data, but also backend processes (smart contracts) and the frontend of websites as well.What is the permaweb?INFORMATION For a deeper dive into the permaweb check out this article on The Permaweb The permaweb is a collection of sites, apps, and SmartContracts built on top of the Arweave's Permaweb Services.The core parts of the Permaweb are the following:Gateways Bundlers Compute Networks (AO) Indexers Gateway Services Gateways are often referred to as the "front door" to the Permaweb.Gateway services are the bridge between data on Arweave and dising data in the browser. They serve transaction data, expose GraphQL endpoints for querying Arweave, and often provide indexing and caching services alongside their gateway responsibilities.AR.IO is one of the largest gateway networks in the ecosystem, and provide education and open source software for anyone to spin up their own gateway node, as well as running gateways of their own.Bundling Services Bundling services aggregate transactions into transaction bundles and make sure those bundles are posted directly to Arweave. By using a bundling service like ArDrive Turbo you can post hundreds of thousands of transactions in a single Arweave block.Compute Services AO Computer is a decentralized compute network built on top of Arweave to provide the ability to create general-purpose smart contracts (Processes).Every interaction with a process on AO is stored as an Arweave transaction.AO is built for large-scale parallel computation, and includes integrations to use Arweave data in Processes on AO.Indexing Services Indexing services listen to all the transactions on Arweave and import them into an indexed database suitable for fast querying. They then expose a GraphQL endpoint so Permaweb apps can make optimized queries for Arweave data.These services work together to form the Permaweb Services Layer and gives developers the power to build fully decentralized applications on the Permaweb.Application Development Approaching application development with the Permaweb is similar to Single Page Application development.The application consists of frontend functionality that is executed in a web browser, and uses GraphQL (Read/Query), Arweave/ArDrive Turbo (Write), and AO (decentralized computation) to make up the business logic and persistence layer of the application.By leveraging modern web application frameworks and the Path Manifest specification, developers can deploy web sites and applications to the permaweb.To and deploying Permaweb Apps, check out our starter kits in your favorite framework:React Svelte Vue Missing my framework?Can't find your framework, why don't you contribute? How to contribute to the cookbook
+
+---
+
+# 34. Cooking with the Permaweb  Cooking with the Permaweb
+
+Document Number: 34
+Source: https://cookbook.arweave.net/getting-started/index.html
+Words: 247
+Quality Score: 0.478
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Cooking with the Permaweb The Permaweb Cookbook is a developer resource that provides the essential concepts and references for building applications on Arweave. Each concept and reference will focus on specific aspects of the Permaweb development ecosystem while providing additional details and usage examples.For those interested in creating smart contracts in particular, consider checking out the AO Cookbook which covers the decentralized compute platform built on top of AO.Developers Welcome to the Arweave development community, where the past is forever etched in the blockchain and the future is full of endless possibilities. Let's build the decentralized web together!Read More Contributing The Cookbook is designed in a way that makes it easy for new Permaweb developers to contribute. Even if you don't know how to do something, contributing to the cookbook is a great way to learn!Check out all open issues here. Contribution guidelines here. If you find the cookbook is missing a concept, guide or reference, please add an issue.Read More How to Read the Cookbook The Permaweb Cookbook is split into different sections, each aimed at a different goal.Section Description Core Concepts Building blocks of the Permaweb that are good to know for development Guides Snack-sized guides about different tools for development References References to commonly needed code snippets Starter Kits Front-end Framework Starters to get you started building on the Permaweb in no time Quick Starts These are small guides to help developers from every experience level to ship code the the permaweb.Hello World (NodeJS)
+
+---
+
+# 35. Fetching Transaction Data  Cooking with the Permaweb
+
+Document Number: 35
+Source: https://cookbook.arweave.net/guides/http-api.html
+Words: 563
+Quality Score: 0.477
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Fetching Transaction Data While indexing services allow querying of transaction metadata they don't provide access to the transaction data itself. This is because caching transaction data and indexing metadata have different resource requirements. Indexing services primarily rely on compute resources to perform queries on a database while transaction data is better suited to deployment on a Content Delivery Network (CDN) to optimize storage and bandwidth.A Transaction data caching service is offered by most gateways though a set of HTTP endpoints. Any HTTP client/package can be used to request transaction data from these endpoints. For example Axios or Fetch for JavaScript, Guzzle for PHP, etc.If you wanted to bypass a transaction data caching service and get data directly from the Arweave peers/nodes you could, but it's a lot of work!Transaction data is stored on Arweave as a contiguous sequence of 256KB chunks, from the very beginning of the network until the current block. This format is optimized to support the SPoRA mining mechanism miners participate in to prove they are storing Arweave data.Retrieve a list of peers from a well known peer.Ask the peer for the chunk offsets which contain your transactions data.Ask the peer to for the chunks. If the peer provides the chunks, combine them back into their original format.(If the peer does not have the chunks) walk the peer list asking for the chunks.For each peer you visit, check their peer list and add peers not already in your list.Repeat from step 3 until you have all of the chunks.This is a fairly large amount of work to perform each time you want to retrieve data from the Arweave network. Imagine if you were trying to dis a timeline of tweets like https://public-square.g8way.io does. The user experience would be terrible with long load times and spinners. Because data on Arweave is permanent, it's safe to cache in its original form to make retrieval of transaction data much quicker and easier.The following is how to access cached transaction data in the arweave.net Transaction data caching service.Get cached TX data https://arweave.net/TX_ID const res = await axios.get(`https://arweave.net/sHqUBKFeS42-CMCvNqPR31yEP63qSJG3ImshfwzJJF8)
+console.log(res) Click to view example result Each Arweave peer/node also exposes some HTTP endpoints which are often replicated gateways. You can read more about Arweave peer's HTTP endpoints here.Get raw transaction https://arweave.net/raw/TX_ID const result = await fetch('https://arweave.net/raw/rLyni34aYMmliemI8OjqtkE_JHHbFMb24YTQHGe9geo')
+.then(res => res.json())
+console.log(JSON.stringify(result)) Click to view example result {
+"manifest": "arweave/paths",
+"version": "0.1.0",
+"index": {
+"path": "index.html"
+},
+"paths": {
+"index.html": {
+"id": "FOPrEoqqk184Bnk9KrnQ0MTZFOM1oXb0JZjJqhluv78"
+}
+}
+} Get by field https://arweave.net/tx/TX_ID/FIELD Available fields: id | last_tx | owner | target | quantity | data | reward | signature const result = await fetch('https://arweave.net/sHqUBKFeS42-CMCvNqPR31yEP63qSJG3ImshfwzJJF8/data')
+.then(res => res.json())
+console.log(JSON.stringify(result)) Click to view example result {
+"ticker":"ANT-PENDING",
+"name":"pending",
+"owner":"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0",
+"controller":"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0",
+"evolve":null,
+"records": {
+"@":"As-g0fqvO_ALZpSI8yKfCZaFtnmuwWasY83BQ520Duw"
+},
+"balances":{"NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0":1}
+} Get Wallet Balance The returned balance is in Winston. To get balance in $AR, divide the balance by 1000000000000 https://arweave.net/wallet/ADDRESS/balance const res = await axios.get(https://arweave.net/wallet/NlNd_PcajvxAkOweo7rZHJKiIJ7vW1WXt9vb6CzGmC0/balance`)
+console.log(res)
+console.log(res.data / 1000000000000)
+6638463438702 // Winston
+6.638463438702 // $AR Get transaction status https://arweave.net/tx/TX_ID/status TIP This endpoint only supports native Arweave transactions. Transactions must be confirmed before getting a successful response.const result = await fetch('https://arweave.net/tx/EiRSQExb5HvSynpn0S7_dDnwcws1AJMxoYx4x7nWoho/status').then(res => res.json())
+console.log(JSON.stringify(result)) Click to view example result {
+"block_height":1095552,"block_indep_hash":"hyhLEyOw5WcIhZxq-tlnxhnEFgKChKHFrMoUdgIg2Sw0WoBMbdx6uSJKjxnQWon3","number_of_confirmations":10669
+} Get network information const res = await axios.get('https://arweave.net/info')
+console.log(res.data) Click to view example result {
+"network": "arweave.N.1",
+"version": 5,
+"release": 53,
+"height": 1106211,
+"current": "bqPU_7t-TdRIxgsja0ftgEMNnlGL6OX621LPJJzYP12w-uB_PN4F7qRYD-DpIuRu",
+"blocks": 1092577,
+"peers": 13922,
+"queue_length": 0,
+"node_state_latency": 0
+}
+
+---
+
+# 36. Vouch  Cooking with the Permaweb
+
+Document Number: 36
+Source: https://cookbook.arweave.net/guides/vouch.html
+Words: 224
+Quality Score: 0.475
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Vouch There are a few ways to query an Arweave address to verify if it has been vouched by a service. Below is two of those approaches.VouchDAO Package The isVouched function is made available to use in your applications in a straight-forward way.Installation Add the package:npm i vouchdao yarn add vouchdao Usage Inside of an async function you can use the isVouched function which will return true if a user is vouched.import { isVouched } from 'vouchdao'
+(async () => {
+const res = await isVouched("ARWEAVE_ADDRESS") // true || undefined
+// ...
+})();Using GraphQL You can query the Arweave network using GraphQL to find out if a given Arweave address has been vouched.query {
+transactions(
+tags:{name:"Vouch-For", values:["ARWEAVE_ADDRESS"]}
+) {
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} If the address has been vouched, an array of nodes will be returned with tags pertaining to the service that issues the ANS-109. You can cross reference the owner address value with the passed community votes to ensure the service has been verified through community vote via VouchDAO."owner": {
+"address": "Ax_uXyLQBPZSQ15movzv9-O1mDo30khslqN64qD27Z8"
+},
+"tags": [
+{
+"name": "Content-Type",
+"value": "application/json"
+},
+{
+"name": "App-Name",
+"value": "Vouch"
+},
+{
+"name": "App-Version",
+"value": "0.1"
+},
+{
+"name": "Verification-Method",
+"value": "Twitter"
+},
+{
+"name": "Vouch-For",
+"value": "ARWEAVE_ADDRESS"
+}
+] Resources VouchDAO VouchDAO Contract Arweave/GraphQL ground
+
+---
+
+# 37. Privacy  Cooking with the Permaweb
+
+Document Number: 37
+Source: https://cookbook.arweave.net/concepts/arfs/privacy.html
+Words: 700
+Quality Score: 0.467
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Privacy The Arweave blockweave is inherently public. But with apps that use ArFS, like ArDrive, your private data never leaves your computer without using military grade (and quantum resistant) encryption. This privacy layer is applied at the Drive level, and users determine whether a Drive is public or private when they first create it. Private drives must follow the ArFS privacy model.Every file within a Private Drive is symmetrically encrypted using AES-256-GCM. Every Private drive has a master "Drive Key" which uses a combination of the user's Arweave wallet signature, a user defined drive password, and a unique drive identifier (uuidv4). Each file has its own "File Key" derived from the "Drive Key". This allows for single files to be shared without exposing access to the other files within the Drive.Once a file is encrypted and stored on Arweave, it is locked forever and can only be decrypted using its file key.Deriving Keys Private drives have a global drive key, D, and multiple file keys F, for encryption. This enables a drive to have as many uniquely encrypted files as needed. One key is used for all versions of a single file (since new file versions use the same File-Id) D is used for encrypting both Drive and Folder metadata, while F is used for encrypting File metadata and the actual stored data. Having these different keys, D and F, allows a user to share specific files without revealing the contents of their entire drive.D is derived using HKDF-SHA256 with an unsalted RSA-PSS signature of the drive's id and a user provided password.F is also derived using HKDF-SHA256 with the drive key and the file's id. Other wallets (like Wander) integrate with this Key Derivation protocol just exposing an API to collect a signature from a given Arweave Wallet in order to get the SHA-256 signature needed for the HKDF to derive the Drive Key.An example implementation, using Dart, is available here, with a Typescript implementation here.Private Drives Drives can store either public or private data. This is indicated by the Drive-Privacy tag in the Drive entity metadata.If a Drive entity is private, an additional tag Drive-Auth-Mode must also be used to indicate how the Drive Key is derived. ArDrive clients currently leverage a secure password along with the Arweave Wallet private key signature to derive the global Drive Key.Drive-Auth-Mode?: 'password' On every encrypted Drive Entity, a Cipher tag must be specified, along with the public parameters for decrypting the data. This is done by specifying the parameter with a Cipher-* tag. eg. Cipher-IV. If the parameter is byte data, it must be encoded as Base64 in the tag.ArDrive clients currently leverage AES256-GCM for all symmetric encryption, which requires a Cipher Initialization Vector consisting of 12 random bytes.Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>" Additionally, all encrypted transactions must have the Content-Type tag application/octet-stream as opposed to application/json Private Drive Entities and their corresponding Root Folder Entities will both use these keys and ciphers generated to symmetrically encrypt the JSON files that are included in the transaction. This ensures that only the Drive Owner (and whomever the keys have been shared with) can open the drive, discover the root folder, and continue to load the rest of the children in the drive.Private Files When a file is uploaded to a private drive, it by default also becomes private and leverages the same drive keys used for its parent drive. Each unique file in a drive will get its own set of file keys based off of that file's unique FileId. If a single file gets a new version, its File-Id will be reused, effectively leveraging the same File Key for all versions in that file's history.These file keys can be shared by the drive's owner as needed.Private File entities have both its metadata and data transactions encrypted using the same File Key, ensuring all facets of the data is truly private. As such, both the file's metadata and data transactions must both have a unique Cipher-IV and Cipher tag:Cipher?: "AES256-GCM"
+Cipher-IV?: "<12 byte initialization vector as Base64>" Just like drives, private files must have the Content-Type tag set as application/octet-stream in both its metadata and data transactions:Content-Type: "application/octet-stream"
+
+---
+
+# 38. Hello World (NodeJS)  Cooking with the Permaweb
+
+Document Number: 38
+Source: https://cookbook.arweave.net/getting-started/quick-starts/hw-nodejs.html
+Words: 256
+Quality Score: 0.466
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Hello World (NodeJS) This guide walks you through the most simple way to get data on to the permaweb using arweave-js and irys.With Arweave 2.6 only allowing 1000 items per block, directly posting to the gateway (eg. using arweave-js) will likely be uncommon.Requirements NodeJS LTS or greater Description Using a terminal/console window create a new folder called hw-nodejs.Setup cd hw-nodejs
+npm init -y
+npm install arweave ardrive-cli Generate a wallet npx -y @permaweb/wallet > ~/.demo-arweave-wallet.json Upload using Ardrive Turbo Uploads of less than 100 KiB are currently free on Irys' Node 2.import Irys from "@irys/sdk";
+import fs from "fs";
+const jwk = JSON.parse(fs.readFileSync("wallet.json").toString());
+const url = "https://node2.irys.xyz";
+const token = "arweave";
+const irys = new Irys({
+url, // URL of the node you want to connect to
+token, // Token used for payment and signing
+jwk, // Arweave wallet
+});
+const dataToUpload = "GM world.";
+try {
+const receipt = await irys.upload(dataToUpload);
+console.log(`Data uploaded ==> https://arweave.net/${receipt.id}`);
+} catch (e) {
+console.log("Error uploading data ", e);
+} Upload using ArweaveJS If you are running the latest version of nodejs this arweavejs script will work as is. For other versions you may need to use the --experimental-fetch flag.import Arweave from "arweave";
+import fs from "fs";
+// load the JWK wallet key file from disk
+const jwk = JSON.parse(fs.readFileSync('./wallet.json').toString());
+// initialize arweave
+const arweave = Arweave.init({
+host: "arweave.net",
+port: 443,
+protocol: "https",
+});
+const tx = await arweave.createTransaction(
+{
+data: "Hello world!",
+},
+jwk
+);
+await arweave.transactions.sign(tx, jwk);
+arweave.transactions.post(tx).then(console.log).catch(console.log);
+console.log(`https://arweave.net/${tx.id}`);Resources Irys SDK Arweave JS SDK Irys Docs: Free Uploads
+
+---
+
+# 39. Developing on the Permaweb  Cooking with the Permaweb
+
+Document Number: 39
+Source: https://cookbook.arweave.net/getting-started/welcome.html
+Words: 215
+Quality Score: 0.466
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Developing on the Permaweb Welcome to the Permaweb Creating applications on the permaweb, which is built on the Arweave protocol, is similar to building traditional web applications but with some key differences.One major difference is that data is stored on the permaweb permanently, as the name suggests, rather than on a centralized server. This means that once data is uploaded to the permaweb, it cannot be deleted or altered. This can be beneficial for applications that require tamper-proof data storage, such as supply chain management or voting systems.Another difference is that the permaweb is decentralized, meaning there is no central point of control or failure. This can provide increased security and reliability for applications.Additionally, the permaweb uses a unique token, called AR, to pay for the storage of data on the network. This can add a new layer of complexity to application development, as developers need to consider how to integrate AR into their applications and handle payments.Overall, the experience of creating applications on the permaweb can be challenging, but it can also be rewarding as it offers unique benefits over traditional web development.Hello Worlds Hello World (No Code) Hello World (CLI) Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 40. Gateways  Cooking with the Permaweb
+
+Document Number: 40
+Source: https://cookbook.arweave.net/concepts/gateways.html
+Words: 298
+Quality Score: 0.462
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Gateways Data uploaded to the Arweave network (or the permaweb) isn't always immediately easy to work with.What is a Gateway?Gateways are sometimes referred to as the "front door to the permaweb". They act as an interface between Arweave and end-users, making it easy to access data or use permaweb applications from your web browser.For example, accessing a HTML file stored on Arweave will be dised as a web page in your browser. The same goes for viewing images, downloading files, viewing JSON data, or any other file stored on Arweave. This makes interacting with the permaweb very similar to using the traditional web.Other Roles of Gateways Other than serving data for users to access, gateways offer other services such as:Caching frequently accessed data and transactions Indexing and querying transactions (through Arweave tags and a GraphQl interface) Seeding transactions throughout the Arweave network Content moderation (content policies to choose which data is or isn't served) Gateways and the Arweave Protocol Although gateways a large role in allowing content to be accessed on Arweave, they are not part of the core protocol.This means hosting and running gateways is separate to running a node securing the Arweave network (although are frequently done together).As gateways are not part of the core protocol, there is no built-in incentive structure like the rewards or incentives for mining. This allows gateway operators or external services to choose how they want to structure their incentive system, leading to a more decentralized and democratic model. Individual applications could even operate their own gateway to allow for better caching and performance of their permaweb applications.Some popular gateways include arweave.net ran by the Arweave team, and others like arweave.world arweave.asia arweave.live, and g8way.io. However, operating gateways is being made easier and more accessible through teams such as AR.IO.ArWiki AR.IO
+
+---
+
+# 41. Atomic Assets  Cooking with the Permaweb
+
+Document Number: 41
+Source: https://cookbook.arweave.net/guides/smartweave/atomic-assets/index.html
+Words: 143
+Quality Score: 0.459
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Atomic Assets An atomic asset is a unique package that includes data, labels (also known as tags), and a specific agreement, all under a single, unchangeable identifier. This allows applications and users to access the data, labels, and agreement by using just this one identifier.To enable trading of the Atomic Asset, we must connect it to something called a SmartWeave Token. This connection transforms the asset into what's known as an Atomic Token and allows it to be exchanged or traded.The SmartWeave Token has a special feature called a balances object that keeps track of who owns the tokens related to that particular asset. This ensures that ownership and trades are recorded and managed accurately.Deploying Atomic Assets using ArDrive CLI Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 42. ArDB  Cooking with the Permaweb
+
+Document Number: 42
+Source: https://cookbook.arweave.net/guides/querying-arweave/ardb.html
+Words: 196
+Quality Score: 0.458
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding ArDB A library built on top of GraphQL that makes it possible to query transaction and block data from arweave without having to memorize GraphQL parameter names. Just build queries using autocomplete in your favorite code editor.Installation yarn add ardb Example import Arweave from 'arweave';
+import ArDB from 'ardb';
+// initialize an arweave instance
+const arweave = Arweave.init({});
+// arweave is Arweave Client instance
+const ardb = new ArDB(arweave);
+// Get a single transaction by its id
+const tx = await ardb.search('transaction')
+.id('A235HBk5p4nEWfjBEGsAo56kYsmq7mCCyc5UZq5sgjY')
+.findOne();
+// Get an array of transactions and include only the first result
+const txs = await ardb.search('transactions')
+.appName('SmartWeaveAction')
+.findOne();
+// This is the same as doing:
+const txs = await ardb.search('transactions')
+.tag('App-Name', 'SmartWeaveAction')
+.limit(1)
+.find();
+// Search for multiple transactions from a specific owner/wallet address
+const txs = await ardb.search('transactions')
+.from('BPr7vrFduuQqqVMu_tftxsScTKUq9ke0rx4q5C9ieQU')
+.find();
+// Continue paging though the results with...
+const newTxs = await ardb.next();
+// Or you could get all results at once by doing:
+const txs = await ardb.search('blocks')
+.id('BkJ_h-GGIwfek-cJd-RaJrOXezAc0PmklItzzCLIF_aSk36FEjpOBuBDS27D2K_T')
+.findAll();Resources ArDB NPM package open in new window Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 43. Path Manifests  Cooking with the Permaweb
+
+Document Number: 43
+Source: https://cookbook.arweave.net/concepts/manifests.html
+Words: 370
+Quality Score: 0.456
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Path Manifests Overview When uploading files to Arweave each file is assigned its own unique transaction ID. By default these ID's aren't grouped or organized in any particular manner.One picture of your cat might be stored with a transaction ID of bVLEkL1SOPFCzIYi8T_QNnh17VlDp4RylU6YTwCMVRw, while another with FguFk5eSth0wO8SKfziYshkSxeIYe7oK9zoPN2PhSc0 as its transaction ID.Cat1 Cat2 bVLEkL1SOPFCzIYi8T_QNnh17VlDp4...FguFk5eSth0wO8SKfziYshkSxeIYe7oK9zoPN2PhSc0 These transaction ID's are a bit unwieldy and make it difficult to find all of your relevant files. Without a path manifest, if you uploaded 100 pictures of your cat you would need to keep track of 100 different IDs and links!Path Manifests are a way to link multiple transactions together under a single base transaction ID and give them human readable file names. In relation to the cat example, you could have one base transaction ID to remember and use it like a folder - accessing your cat pictures with more memorable filenames like {base id}/cat1.jpg, {base id}/cat2.jpg, etc.Creating grouped sets of readable file names is essential for creating practical applications on Arweave, and unlocks the ability to host websites or other file collections as explored in the examples below.What Can You Use Manifests For? Any time you need to group files in a hierarchical way, manifests can be useful. For example:Storing NFT collections:https://arweave.net/X8Qm…AOhA/0.png https://arweave.net/X8Qm…AOhA/1.png This mirrors the common base path approach used by NFT collections when linking to NFT images and metadata on a storage API or IPFS.Hosting websites:https://arweave.net/X8Qm…AOhA/index.html https://arweave.net/X8Qm…AOhA/styles.css https://arweave.net/X8Qm…AOhA/public/favicon.png Manifest Structure Path Manifests are a special format of transaction created and posted to Arweave using the Tags:{ name: "Content-type", value: "application/x.arweave-manifest+json" } and having JSON formatted transaction data that matches the example below.{
+"manifest": "arweave/paths",
+"version": "0.2.0",
+"index": {
+"path": "index.html"
+},
+"fallback": {
+"id": "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI"
+},
+"paths": {
+"index.html": {
+"id": "cG7Hdi_iTQPoEYgQJFqJ8NMpN4KoZ-vH_j7pG4iP7NI"
+},
+"js/style.css": {
+"id": "fZ4d7bkCAUiXSfo3zFsPiQvpLVKVtXUKB6kiLNt2XVQ"
+},
+"css/style.css": {
+"id": "fZ4d7bkCAUiXSfo3zFsPiQvpLVKVtXUKB6kiLNt2XVQ"
+},
+"css/mobile.css": {
+"id": "fZ4d7bkCAUiXSfo3zFsPiQvpLVKVtXUKB6kiLNt2XVQ"
+},
+"assets/img/logo.png": {
+"id": "QYWh-QsozsYu2wor0ZygI5Zoa_fRYFc8_X1RkYmw_fU"
+},
+"assets/img/icon.png": {
+"id": "0543SMRGYuGKTaqLzmpOyK4AxAB96Fra2guHzYxjRGo"
+}
+}
+} fallback:Manifest version 0.2.0 introduced the fallback attribute. fallback is an object that accepts the sub attribute id, which defines an Arweave data item transaction id for the resolver to fall back to if it fails to correctly resolve a requested path.Source and Further Reading in the official Arweave Path Manifest docs: Arweave Docs
+
+---
+
+# 44. Welcome to the Permaweb  Cooking with the Permaweb
+
+Document Number: 44
+Source: https://cookbook.arweave.net/concepts/permaweb.html
+Words: 151
+Quality Score: 0.455
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Welcome to the Permaweb The permaweb is like the web, but permanent. Developers build on top of permaweb services to create apps and sites that will exist forever on Arweave. Benefits of the permaweb.Sites and apps are permanent, you never have to worry about them going away (even if the team supporting them moves on) App developers have to make sure every new version of the app actually adds value, otherwise, why would you switch off the old one.Because all Permaweb apps share a common storage layer, Arweave, they can all compose with one anther's data.Your data is owned by your wallet and can follow you from app to app.Compare Traditional Web vs Permaweb For more information about the permaweb check out the medium post open in new window.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 45. Permaweb Cookbook - Guides  Cooking with the Permaweb
+
+Document Number: 45
+Source: https://cookbook.arweave.net/guides/index.html
+Words: 75
+Quality Score: 0.454
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Guides Snack-sized guides for the building blocks of the Permaweb ArProfile DNS Integration Server Side Spheron Deploying Apps arkb github-action Deploying PathManifests arweave.app ardrive Deploying PSTs GraphQL ArDB ar-gql Search Service Testing Do you think a permaweb guide is missing? Create a issue at Github open in new window or consider contributing Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 46. Creating and Deploying Manifests  Cooking with the Permaweb
+
+Document Number: 46
+Source: https://cookbook.arweave.net/guides/deploying-manifests/deployingManifests.html
+Words: 88
+Quality Score: 0.452
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Creating and Deploying Manifests This guide lays out how to create and deploy a path manifest manually.The path manifests core concepts page has more information on what manifests are, and why they might be useful for your project.If you follow this guide to deploy a path manifest, it will need to follow the manifest structure laid out in the core concepts open in new window page.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 47. Permaweb Cookbook - Core Concepts  Cooking with the Permaweb
+
+Document Number: 47
+Source: https://cookbook.arweave.net/concepts/index.html
+Words: 86
+Quality Score: 0.450
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Core Concepts Foundations of Arweave and the Permaweb.Posting Transactions Metadata (Tags) Querying Fetching Data Transaction Types Bundles Path Manifests Wallets and Keys Permaweb Permaweb Applications Gateway Services Bundling Services Arweave File System (ArFS) Data model Entity Types Content Types Privacy Schema Diagrams Do you think a permaweb core concept is missing? Create a issue at Github open in new window or consider contributing Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 48. Bundling Services  Cooking with the Permaweb
+
+Document Number: 48
+Source: https://cookbook.arweave.net/concepts/bundlers.html
+Words: 188
+Quality Score: 0.449
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Bundling Services With bundling services users can post their data transactions to a bundling service to have it "bundled" together with other users transactions and posted as a single Arweave transaction in an upcoming Arweave block. What is a bundle? A description of transaction bundles and their benefits can be found here.What is a Bundler node? A bundler is a node which is responsible for accepting transactions or data items from users, bundling them, and posting them to the Arweave network (with a guarantee they will be uploaded with a specific transaction ID).Services:Turbo open in new window Which make sure the data is persisted until it is uploaded to Arweave.Supporting multiple currencies A key feature of bundling services is that because they pay for the base Arweave transaction to be posted (using AR tokens) they can choose to enable payments of storage fees on a variety of different tokens. This is the main entry point for other chains to enable Arweave's permanent storage for their users.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 49. ArFS Protocol A Decentralized File System on Arweave  Cooking with the Permaweb
+
+Document Number: 49
+Source: https://cookbook.arweave.net/concepts/arfs/arfs.html
+Words: 404
+Quality Score: 0.446
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+ArFS Protocol: A Decentralized File System on Arweave Arweave File System, or “ArFS” is a data modeling, storage, and retrieval protocol designed to emulate common file system operations and to provide aspects of mutability to your data hierarchy on Arweave 's otherwise permanent, immutable data storage blockweave.Due to Arweave's permanent, immutable and public nature traditional file system operations such as permissions, file/folder renaming and moving, and file updates cannot be done by simply updating the on-chain data model.ArFS works around this by implementing a privacy and encryption pattern and defining an append-only transaction data model using tags within Arweave Transaction headers.Key Features File Structure ArFS organizes files and folders using a hierarchical structure. Files are stored as individual transactions on the Arweave blockchain, while folders are metadata that reference these file transactions.Each file and folder has associated metadata, such as the name, type, size, and modification timestamp. ArFS leverages Arweave's tagging system to store this metadata in a standardized format, which allows for easy querying and organization.File Permissions ArFS supports public and private file permissions. Public files can be accessed by anyone on the network, while private files are encrypted using the owner's private key, ensuring only they can decrypt and access the content.File Versioning ArFS supports versioning of files, allowing users to store multiple versions of a file and access previous versions at any time. This is achieved by linking new file transactions to previous versions through the use of metadata tags.Data Deduplication To minimize storage redundancy and costs, ArFS employs data deduplication techniques. If a user tries to store a file that already exists on the network, the protocol will simply create a new reference to the existing file instead of storing a duplicate copy.Search and Discovery ArFS enables users to search and discover files based on their metadata, such as file names, types, and tags. This is made possible by indexing the metadata stored within the Arweave blockchain.Interoperability ArFS is designed to be interoperable with other decentralized applications and services built on the Arweave network. This allows for seamless integration and collaboration between different applications and users.Getting Started To start using ArFS, you'll need to familiarize yourself with the Arweave ecosystem, acquire AR tokens to cover storage costs, and choose a compatible client or library to interact with the ArFS protocol.Resources For more information, documentation, and community support, refer to the following resources:Arweave Official Website Arweave Developer Documentation Arweave Community Forums
+
+---
+
+# 50. Cooking with the Permaweb
+
+Document Number: 50
+Source: https://cookbook.arweave.net/guides/deploying-manifests/ardrive.html
+Words: 81
+Quality Score: 0.444
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding ArDrive You can create a manifest for a folder or group of folders with ardrive create-manifest using the ArDrive CLI open in new window.Further Reading: ArDrive CLI Docs open in new window Alternatively, you can create a manifest using the ArDrive open in new window web app by selecting New → Create manifest while inside of a drive. Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 51. Contributing Workflow  Cooking with the Permaweb
+
+Document Number: 51
+Source: https://cookbook.arweave.net/getting-started/contributing.html
+Words: 323
+Quality Score: 0.443
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Contributing Workflow Anyone in the community is welcome to contribute to the Permaweb Cookbook, as community members we want a high quality reference guide of little snack bite sized nuggets of information. Below is a step by step workflow of how anyone can contribute to this project.What do you need to know?Git and Github - publishes content to github.com.Markdown - Markdown is a text based markup language that can be transformed into HTML Arweave and the Permaweb - Have some knowledge about the Permaweb that should be shared Steps to Contribute Need Help?Join our discord channel and post a note.Commiting work We are using conventional commits for this repository.General flow for making a contribution:Fork the repo on GitHub Clone the project to your own machine Commit changes to your own branch Push your work back up to your fork Submit a Pull request so that we can review your changes NOTE: Be sure to merge the latest from "upstream" before making a pull request!Style Here are some suggestions on tone and style from some contributors:TIP In writing them, I'm getting a feeling for the tone that's appropriate for each. CoreConcepts should be rather textbook like, neutral voice, objective. "This is how Arweave works" For Guides, I think it's ok to have a more personal voice. Refer to the reader as "you" and speak in the collaborative voice "next we'll take a look at..." This may just be personal preference, but in general I feel this tone much more supportive and accessible when following a longer form guide. Indeed, its the voice that most popular tutorials from other ecosystems are written in. For Resources, I think it shares the same voice as core concepts, with a preference for brevity.dmac TIP Conceptual and referencial data should have a more cold scientific tone and guides should be a supportive or even humorous tone. Longer form content needs to pull readers in without them zoning out.Arch_Druid CONTRIBUTING
+
+---
+
+# 52. Permaweb Cookbook - Community  Cooking with the Permaweb
+
+Document Number: 52
+Source: https://cookbook.arweave.net/community/index.html
+Words: 52
+Quality Score: 0.443
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Community If you've created something on the Permaweb, and would like to add documentation to this cookbook, consider contributing!Community Contributions Arweave Name System (ArNS) Atomic Assets using ArDrive CLI Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 53. Posting Transactions using Ardrive Turbo  Cooking with the Permaweb
+
+Document Number: 53
+Source: https://cookbook.arweave.net/guides/posting-transactions/turbo.html
+Words: 329
+Quality Score: 0.440
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Posting Transactions using Ardrive Turbo Posting transactions using Turbo can be accomplished using the @ardrive/turbo-sdk JavaScript package.Installing the @ardrive/turbo-sdk To install @ardrive/turbo-sdk run npm install @ardrive/turbo-sdk yarn add @ardrive/turbo-sdk Initializing Turbo Client There are multiple ways to upload data using the turbo sdk. You can:upload a file upload a data-item When uploading a data-item with the turbo sdk, you will use ar-bundles to create the data-item and add tags.import fs from 'node:fs'
+import { TurboFactory } from '@ardrive/turbo-sdk/node';
+import { ArweaveSigner, createData } from 'arbundles';
+if (!process.env.PATH_TO_WALLET) {
+console.error("Please set PATH_TO_WALLET in your env.")
+process.exit()
+}
+const JWK = JSON.parse(fs.readFileSync(process.env.PATH_TO_WALLET).toString());
+const turbo = TurboFactory.authenticated({ privateKey: JWK, });
+const signer = new ArweaveSigner(JWK);File import { TurboFactory } from '@ardrive/turbo-sdk/node';
+import fs from 'fs';
+if (!process.env.PATH_TO_WALLET) {
+console.error("Please set PATH_TO_WALLET in your env.")
+process.exit()
+}
+const JWK = JSON.parse(fs.readFileSync(process.env.PATH_TO_WALLET).toString());
+const turbo = TurboFactory.authenticated({ privateKey: JWK });
+const filePath = new URL('path/to/file', import.meta.url).pathname;
+const fileSize = fs.statSync(filePath).size;
+const dataItemOpts = {
+//target: ,
+// anchor: ,
+tags: [{name: 'test', value: 'test'}] // add tags
+}
+const uploadResult = await turbo.uploadFile({
+fileStreamFactory: () => fs.createReadStream(filePath),
+fileSizeFactory: () => fileSize,
+signal: AbortSignal.timeout(10_000), // Optional: cancel the upload after 10 seconds
+dataItemOpts // Optional
+});
+console.log(JSON.stringify(uploadResult, null, 2));Example Output:const signer = new ArweaveSigner(JWK);
+const signedDataItem = createData(JSON.stringify({ "some": "data" }), signer, {
+tags: [{ name: 'test', value: 'test' }] // add tags
+});
+await signedDataItem.sign(signer);
+const uploadResult = await turbo.uploadSignedDataItem({
+dataItemStreamFactory: () => signedDataItem.getRaw(),
+dataItemSizeFactory: () => signedDataItem.getRaw().length,
+signal: AbortSignal.timeout(10_000), // Optional: cancel the upload after 10 seconds
+});
+console.log(JSON.stringify(uploadResult, null, 2));Example Output:Posting a File const filePath = new URL('path/to/file', import.meta.url).pathname;
+const fileSize = fs.statSync(filePath).size;
+const dataItemOpts = {
+//target: 'string',
+// anchor: 'string',
+tags: [{name: 'test', value: 'test'}] // add tags
+}
+const uploadResult = await turbo.uploadFile({
+fileStreamFactory: () => fs.createReadStream(filePath),
+fileSizeFactory: () => fileSize,
+signal: AbortSignal.timeout(10_000), // Optional: cancel the upload after 10 seconds
+dataItemOpts // Optional
+});
+console.log(JSON.stringify(uploadResult, null, 2));Example Output:Resources Dive into the Code Join the discussion in the ArDrive Discord
+
+---
+
+# 54. Permaweb Cookbook - References  Cooking with the Permaweb
+
+Document Number: 54
+Source: https://cookbook.arweave.net/references/index.html
+Words: 61
+Quality Score: 0.438
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding References References for learning in depth about various topics like Bundling, GraphQL, and HTTP APIs.Bundling GraphQL HTTP API Do you think a permaweb guide is missing? Create a issue at Github open in new window or consider contributing Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 55. Posting a Transaction using Dispatch  Cooking with the Permaweb
+
+Document Number: 55
+Source: https://cookbook.arweave.net/guides/posting-transactions/dispatch.html
+Words: 163
+Quality Score: 0.432
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Posting a Transaction using Dispatch Arweave Browser wallets have the concept of dispatching transactions. If the transaction is under 100KB in size it can be posted for free!Dispatching a Transaction This can be done without any package dependencies for the client app. As long as the user has a browser wallet active and the data is less than 100KB, dispatched transactions are free and guaranteed to be confirmed on the network.// use arweave-js to create a transaction
+let tx = await arweave.createTransaction({ data:"Hello World!" })
+// add some custom tags to the transaction
+tx.addTag('App-Name', 'PublicSquare')
+tx.addTag('Content-Type', 'text/plain')
+tx.addTag('Version', '1.0.1')
+tx.addTag('Type', 'post')
+// use the browser wallet to dispatch() the transaction
+let result = await window.arweaveWallet.dispatch(tx);
+// log out the transactino id
+console.log(result.id);Resources For an overview of all the ways you can post transactions, see the Posting Transactions section of the cookbook.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 56. Complete GraphQL Structure for Transactions  Cooking with the Permaweb
+
+Document Number: 56
+Source: https://cookbook.arweave.net/references/gql.html
+Words: 407
+Quality Score: 0.426
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Complete GraphQL Structure for Transactions The following GraphQL query returns all of the properties of a transaction captured by the indexing service.query {
+transactions {
+
+pageInfo {
+hasNextPage
+}
+edges {
+cursor
+node {
+id
+anchor
+signature
+recipient
+owner {
+address
+key
+}
+fee {
+winston
+ar
+}
+quantity {
+winston
+ar
+}
+data {
+size
+type
+}
+tags {
+name
+value
+}
+block {
+id
+timestamp
+height
+previous
+}
+parent {
+id
+}
+}
+}
+}
+} Pagination By default, GraphQL queries return the first 10 results. Larger result sets can be requested by adding the first: X option (where X is a value from 1 to 100) to the transactions query.query
+{
+transactions(
+first:100,
+tags: [
+{
+name: "App-Name",
+values: ["PublicSquare"]
+}
+]
+)
+{
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} If there are more than 100 items in the result set, subsequent pages of results can be retrieved by using a cursor.query
+{
+transactions(
+first:100,
+tags: [
+{
+name: "App-Name",
+values: ["PublicSquare"]
+}
+]
+)
+{
+pageInfo {
+hasNextPage
+}
+edges {
+cursor
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} If there are subsequent result pages hasNextPage will have a value of true. Take the cursor value of the last item in the result set and use it as the value for the after query parameter.query
+{
+transactions(
+first:100,
+after: "WyIyMDIyLTEyLTMwVDE2OjQ0OjIzLjc0OVoiLDEwMF0=",
+tags: [
+{
+name: "App-Name",
+values: ["PublicSquare"]
+}
+]
+)
+{
+pageInfo {
+hasNextPage
+}
+edges {
+cursor
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} To retrieve the entire results set, repeat the after query with an updated cursor value from the last item of each page until hasNextPage is false.Rate Limiting Indexing services will implement rate limiting to prevent attacks and abuse of their services. The arweave.net/graphql service limits GraphQL queries to 600 queries every 5 minutes (per IP address). Always check the results of your queries to see if they have a status code in the 200s before parsing the response. A HTTP Status code of 429 will indicate rate limiting is being enforced. A HTTP Status code of 503 usually indicates that the query result set is too large for arweave.net/graphql.Resources For a more complete listing of the Arweave GraphQL schema see the Arweave GraphQL Guide ArDB package ar-gql package For a general guide to graphql graphql.org/learn is a good starting point
+
+---
+
+# 57. Cooking with the Permaweb
+
+Document Number: 57
+Source: https://cookbook.arweave.net/concepts/arfs/schema-diagrams.html
+Words: 74
+Quality Score: 0.422
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Schema Diagrams The following diagrams show complete examples of Drive, Folder, and File entity Schemas.Public Drive Public Drive Schema Private Drive Private Drive Schema Arweave GQL Tag Byte Limit is restricted to 2048. There is no determined limit on Data JSON custom metadata, though more data results in a higher upload cost.Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 58. Hello World (No Code)  Cooking with the Permaweb
+
+Document Number: 58
+Source: https://cookbook.arweave.net/getting-started/quick-starts/hw-no-code.html
+Words: 102
+Quality Score: 0.421
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Hello World (No Code) In this quick start we are going to upload an image to the permaweb with no code!Requirements Computer Internet Modern web browser Create a wallet https://arweave.app/add open in new window or https://wander.app open in new window Send some data to arweave Go to https://hello_cookbook.arweave.dev open in new window Enter some data and click publish, connect your wallet and "BAM" Congrats!!You just published some data on Arweave using zero code.To check out the project -> https://github.com/twilson63/pw-no-code-hello Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 59. Content Types  Cooking with the Permaweb
+
+Document Number: 59
+Source: https://cookbook.arweave.net/concepts/arfs/content-types.html
+Words: 171
+Quality Score: 0.405
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Content Types All transaction types in ArFS leverage a specific metadata tag for the Content-Type (also known as mime-type) of the data that is included in the transaction. ArFS clients must determine what the mime-type of the data is, in order for Arweave gateways and browswers to render this content appropriately.All public drive, folder, and file (metadata only) entity transactions all use a JSON standard, therefore they must have the following content type tag:Content-Type: '' However, a file's data transaction must have its mime-type determined. This is stored in the file's corresponding metadata transaction JSON's dataContentType as well as the content type tag in the data transaction itself.Content-Type: "" All private drive, folder, and file entity transactions must have the following content type, since they are encrypted:Content-Type: '' ArDrive-Core open in new window includes methods to determine a file's content type.Other Tags ArFS enabled clients should include the following tags on their transactions to identify their application App-Name: "
+
+---
+
+# 60. Warp (SmartWeave) SDK - Evolve  Cooking with the Permaweb
+
+Document Number: 60
+Source: https://cookbook.arweave.net/guides/smartweave/warp/evolve.html
+Words: 419
+Quality Score: 0.401
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Warp (SmartWeave) SDK - Evolve ⚠️ Deprecation Notice This document is deprecated and may contain outdated information.Evolve is a feature that allows developers to update the source code of a smart contract without deploying a new contract. To use this feature, you must first submit the new source code using the save function. Once the updated code has been confirmed on the Permaweb, you can use the evolve function to point the contract to the new source code ID. This allows you to update the contract's behavior without creating a new contract instance.Why?Writing SmartWeave contracts can be difficult and sometimes requires updates or new features to be added over time. Evolve allows you to make changes to your contract without having to create a new contract instance from scratch. To use this feature, your contract state object must include an evolve property that is set to the new contract source transaction identifier. This enables you to modify and improve your existing contract without starting from scratch.{
+...
+"evolve": "YOUR SOURCE CODE TX_ID"
+} Post your new source to the permaweb Before you can evolve your existing contract, you need to post the new source code to the permaweb, you can do this with the save function.import { WarpFactory } from 'warp-contracts'
+import fs from 'fs'
+const src = fs.readFileSync('./dist/contract.js', 'utf-8')
+const jwk = JSON.parse(fs.readFileSync('./wallet.json', 'utf-8'))
+const TX_ID = 'VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA'
+const warp = WarpFactory.forMainnet()
+async function main() {
+const newSrcTxId = await warp.contract(TX_ID).connect(jwk).save({src })
+console.log('NEW SRC ID', newSrcTxId)
+}
+main() Evolve your contract WARNING Verify your new Source TX_ID is confirmed, go to Sonar to make sure the TX_ID is confirmed.import { WarpFactory } from 'warp-contracts'
+import fs from 'fs'
+const src = fs.readFileSync('./dist/contract.js', 'utf-8')
+const jwk = JSON.parse(fs.readFileSync('./wallet.json', 'utf-8'))
+const TX_ID = 'VFr3Bk-uM-motpNNkkFg4lNW1BMmSfzqsVO551Ho4hA'
+const warp = WarpFactory.forMainnet()
+async function main() {
+const newSrcTxId = await warp.contract(TX_ID).connect(jwk).evolve('SRC TX ID')
+console.log(result)
+}
+main() TIP It's worth noting that the evolve feature is only applicable to future actions, meaning you cannot use it to apply new source code to actions that occurred before the contract was evolved.Summary Evolve is a powerful feature and can provide extensibility for your contracts, it can also be an attack vector, so make sure you fully understand what you are doing when using it. Below is a common snippet of what an evolve function may look like in your contract.export async function handle(state, action) {
+...
+if (action.input.function === 'evolve') {
+if (action.caller === state.creator) {
+state.evolve = action.input.value
+}
+return { state }
+}
+...
+}
+
+---
+
+# 61. Transaction Bundles  Cooking with the Permaweb
+
+Document Number: 61
+Source: https://cookbook.arweave.net/concepts/bundles.html
+Words: 296
+Quality Score: 0.400
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Transaction Bundles What is a Bundle? A transaction bundle is a special type of Arweave transaction. It enables multiple other transactions and/or data items to be bundled inside it. Because transaction bundles contain many nested transactions they are key to Arweave's ability to scale to thousands of transactions per second.Users submit transactions to a bundling service, such as turbo, which combines them into a 'bundle' with other transactions and posts them to the network.How Do Bundles Help Arweave? Availability Bundling services guarantee that bundled transactions are reliably posted to Arweave without dropping.Transaction IDs of the bundled transactions are immediately made available, meaning the data can instantly be accessed as if it was already on the Arweave network.Reliability Transactions posted to Arweave can occasionally fail to confirm (resulting in a dropped transaction) due to a number of reasons, such as high network activity. In these instances transactions can become orphaned, i.e. stuck in the mempool and eventually removed.Bundlers solve this problem by continually attempting to post bundled data to Arweave, assuring that it does not fail or get stuck in the mempool.Scalability Bundles can store up to 2 256 transactions, each of which are settled as a single transaction on Arweave. This makes Arweave blockspace scale to support almost any use case.What are Nested Bundles? Bundles can include data items for uploading to Arweave and those data item can themselves be a bundle.This means it is possible to upload a bundle of bundles, or in other words nested bundles.Nested bundles have no theoretical limit on nesting depth, meaning that transaction throughput can be increased drastically.Nested bundles might be useful for when you have different groups of bundled data that you want to guarantee reach Arweave altogether, and at the same time.Sources and Further Reading:Ardrive Turbo ANS-104 Standard
+
+---
+
+# 62. Search Indexing Service  Cooking with the Permaweb
+
+Document Number: 62
+Source: https://cookbook.arweave.net/guides/querying-arweave/search-indexing-service.html
+Words: 595
+Quality Score: 0.382
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Search Indexing Service tl;dr Backwards compatible syntax with Arweave GraphQL Faster response times for complex queries (ie multi-tag search) More query options Goldsky 's free search service uses an optimized backend that allows for faster searches for complex queries across arweave blocks and transactions, and also introduces additional querying syntax for fuzzy and wildcard search use-cases.The Search GraphQL syntax is a superset of the Arweave GraphQL syntax. It's fully backwards compatible and will return the same results for the same queries, but has some additional modifiers that can be useful.Flexible tag filters Search for just a tag name or value Advanced tag filters Fuzzy search Wildcard search Filter for L1 transactions only Result set total counts For any custom needs or feature ideas, feel free to contact the Goldsky team through email or on discord!Search Gateway Endpoints Currently, the only service with this syntax is hosted Goldsky. If anybody is interested in hosting their own gateway with the same syntax, feel free to contact the Goldsky for help.Goldsky Search Service Features Flexible Tag Filters The Search Gateway Syntax is less strict, and allows for searching just for the Tag name or value Examples Search for transactions with the tag value 'cat' query just_values {
+transactions(
+first: 10,
+tags: [
+{
+values: ["cat"]
+}
+]
+)
+{
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} Search for transactions that have an In-Response-To-ID query just_name {
+transactions(
+first: 10,
+tags: [
+{
+name: "In-Response-To-ID"
+}
+]
+)
+{
+edges {
+node {
+id
+tags {
+name
+value
+}
+}
+}
+}
+} Advanced tag filters The Search Gateway Syntax offers an additional parameter to the tag filter, match.Match value Description EXACT (default) exact matches only.WILDCARD Enables * to match any amount of characters, ie. text/* FUZZY_AND Fuzzy match containing all search terms FUZZY_OR Fuzzy match containing at least one search term Open up the ground and try some of the following queries!Searching all transactions with an image content type using a wildcard {
+transactions(
+tags: [
+{ name: "Content-Type", values: "image/*", match: WILDCARD}
+]
+first: 10
+) {
+edges {
+cursor
+node {
+id
+tags {
+name
+value
+}
+block { height }
+bundledIn {id}
+}
+}
+}
+} Fuzzy search is very powerful, and can search for 'similar' text with many variations.Searching all transactions with 'cat' OR 'dog' (or CAT or doG or cAts or CAAts etcs). So the tag could contain at least of cat-like or dog-like term.{
+transactions(
+tags: [
+{ name: "Content-Type", values: ["cat", "dog"], match: "FUZZY_OR"}
+]
+first: 10
+) {
+edges {
+cursor
+node {
+id
+tags {
+name
+value
+}
+block { height }
+bundledIn {id}
+}
+}
+}
+} Search for transactions that have cat-like AND dog-like tag values {
+transactions(
+tags: [
+{ name: "Content-Type", values: ["cat", "dog"], match: "FUZZY_AND"}
+]
+first: 10
+) {
+edges {
+cursor
+node {
+id
+tags {
+name
+value
+}
+block { height }
+bundledIn {id}
+}
+}
+}
+} Exclude Bundled (L2) Transactions Simply set bundledIn: NULL query just_l1 {
+transactions(
+first: 10,
+bundledIn: null
+)
+{
+edges {
+node {
+id
+signature
+owner {
+address
+}
+block {
+height
+}
+}
+}
+}
+} Getting total counts given a query If you'd like to understand how many transactions fit a certain set of filters, just use the count field. This will trigger an additional optimized count operation. This will likely double the time it would take to return the query, so use only when needed.query count_mirror {
+{
+transactions(tags:{values:["MirrorXYZ"]})
+{
+count
+}
+}
+}
+
+---
+
+# 63. Cooking with the Permaweb
+
+Document Number: 63
+Source: https://cookbook.arweave.net/guides/deploying-manifests/arweave-app.html
+Words: 63
+Quality Score: 0.286
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Arweave.app Uploading a directory through Arweave.app open in new window will automatically create a manifest for all of the files in the directory. Alternatively, you can upload your own manifest file manually, add the following tag, and submit the transaction. Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 64. Permaweb Cookbook - Legacy  Cooking with the Permaweb
+
+Document Number: 64
+Source: https://cookbook.arweave.net/legacy/index.html
+Words: 35
+Quality Score: 0.285
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Legacy The following concepts and guides have been deprecated.Concepts Smartweave Guides Smartweave Built with ❤️ by the Arweave community. Learn more at Arweave.org
+
+---
+
+# 65. Starter Kits  Cooking with the Permaweb
+
+Document Number: 65
+Source: https://cookbook.arweave.net/kits/index.html
+Words: 23
+Quality Score: 0.264
+Extraction Method: defuddle_semantic
+Extraction Reason: defuddle_returned_html_semantic_extracted
+
+Join the first Arweave Fullstack Hack for up to $50k in funding Built with ❤️ by the Arweave community. Learn more at Arweave.org

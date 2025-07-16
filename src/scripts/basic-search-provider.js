@@ -1,8 +1,9 @@
+import { Document } from 'flexsearch';
 import { SearchProvider } from './search-provider.js';
 import { searchConfig } from './search-config.js';
 
 // Constants for the application, can be moved to config
-const GLOSSARY_URL = '../src/data/glossary.json';
+const GLOSSARY_URL = '/data/glossary.json';
 
 export class BasicSearchProvider extends SearchProvider {
     constructor() {
@@ -22,9 +23,7 @@ export class BasicSearchProvider extends SearchProvider {
         this.glossaryData = data.terms || data;
 
         // Initialize FlexSearch index
-        // This seems to require FlexSearch to be loaded. I need to make sure it is.
-        // It's probably loaded via a script tag in index.html. I should assume it's available on `window`.
-        this.searchIndex = new FlexSearch.Document({
+        this.searchIndex = new Document({
             document: {
                 id: "id",
                 index: ["term", "definition", "aliases", "category"],

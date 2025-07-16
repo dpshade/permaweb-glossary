@@ -1,0 +1,31 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Permaweb Glossary Search - Find and explore glossary terms" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#3498db" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+		<!-- Favicon references -->
+		<link rel="icon" href="/assets/favicons/favicon.ico" sizes="any" />
+		<link rel="icon" href="/assets/favicons/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/assets/favicons/apple-touch-icon.png" />
+		<link rel="manifest" href="/assets/favicons/site.webmanifest" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@import '../styles/style.css';
+</style> 

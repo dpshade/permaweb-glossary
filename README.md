@@ -25,7 +25,7 @@ permaweb-glossary-search/
 │   │   └── keyboard-nav.js # Keyboard navigation functionality
 │   └── data/             # Data files
 │       └── glossary.json # Glossary data
-├── server.js             # Development server
+├── astro.config.mjs      # Astro configuration
 ├── package.json          # Project configuration
 └── README.md             # Project documentation
 ```
@@ -69,21 +69,20 @@ This will create a `dist` directory with all the necessary files for deployment.
 
 ### Build Process
 
-The build system has been streamlined for simplicity and maintainability:
+The build system uses Astro's optimized static site generation:
 
-1. **Clean**: Removes previous build artifacts
-2. **Copy**: Copies static assets from `public/` and source files
-3. **Minify**: Bundles and minifies JavaScript/CSS using Bun's built-in bundler
-4. **Post-process**: Runs optimizations including:
-   - Generates `glossary.txt` from `glossary.json` 
-   - Minifies JSON data
-   - Compresses all assets with gzip
+1. **Build**: Astro processes source files and generates optimized static assets
+2. **Bundle**: Automatic bundling and minification of JavaScript/CSS
+3. **Optimize**: Built-in optimizations including:
+   - Code splitting and tree shaking
+   - Asset optimization and compression
+   - Static HTML generation for better performance
 
 ### Available Scripts
 
-- `bun run dev` - Development server with hot reload (via preview-server.js)
-- `bun run build` - Production build
-- `bun run preview` - Preview production build locally (via preview-server.js)
+- `bun run dev` - Development server with hot reload (via Astro)
+- `bun run build` - Production build (via Astro)
+- `bun run preview` - Preview production build locally (via Astro)
 - `bun run clean` - Clean build artifacts
 - `bun run deploy` - Deploy to production (via GitHub Actions)
 - `bun run deploy:preview` - Create preview deployment

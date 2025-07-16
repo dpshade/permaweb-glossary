@@ -1,3 +1,4 @@
+import { Document } from 'flexsearch';
 import { SearchProvider } from './search-provider.js';
 import { searchConfig } from './search-config.js';
 import { permawebConfig, getDocsIndexUrls, getLLMTextFileUrls, debugLog } from './permaweb-config.js';
@@ -69,6 +70,14 @@ export class EnhancedSearchProvider extends SearchProvider {
         });
         
         return this._processDocumentationResults(results, query);
+    }
+
+    destroy() {
+        this.docsData = [];
+        this.docsIndex = null;
+        this.docsUnavailable = false;
+        this.contentCache.clear();
+        this.initialized = false;
     }
 
     async _loadDocsData() {
@@ -151,42 +160,50 @@ export class EnhancedSearchProvider extends SearchProvider {
 
     async _loadLLMTextFiles() {
         const siteContents = new Map();
-        const llmTextUrls = getLLMTextFileUrls();
         
-        debugLog('network', 'Loading LLM text files for sites:', Object.keys(llmTextUrls));
-        
-        // Load LLM text files in parallel
-        const loadPromises = Object.entries(llmTextUrls).map(async ([siteKey, urls]) => {
-            try {
-                let response;
+        try {
+            const llmTextUrls = await getLLMTextFileUrls();
+            
+            debugLog('network', 'Loading LLM text files for sites:', Object.keys(llmTextUrls));
+            
+            // Load LLM text files in parallel
+            const loadPromises = Object.entries(llmTextUrls).map(async ([siteKey, urls]) => {
                 try {
-                    debugLog('network', `Loading ${siteKey} from:`, urls.primary);
-                    response = await fetchWithTimeout(urls.primary, { 
-                        timeout: permawebConfig.network.timeout,
-                        headers: { 'User-Agent': permawebConfig.network.userAgent }
-                    });
-                    if (!response.ok) throw new Error(`Primary LLM file failed: ${response.status}`);
-                } catch (primaryError) {
-                    debugLog('network', `Primary LLM file failed for ${siteKey}, trying fallback...`);
-                    response = await fetchWithTimeout(urls.fallback, { 
-                        timeout: permawebConfig.network.timeout,
-                        headers: { 'User-Agent': permawebConfig.network.userAgent }
-                    });
-                    if (!response.ok) throw new Error(`Fallback LLM file also failed: ${response.status}`);
+                    let response;
+                    try {
+                        debugLog('network', `Loading ${siteKey} from:`, urls.primary);
+                        response = await fetchWithTimeout(urls.primary, { 
+                            timeout: permawebConfig.network.timeout,
+                            headers: { 'User-Agent': permawebConfig.network.userAgent }
+                        });
+                        if (!response.ok) throw new Error(`Primary LLM file failed: ${response.status}`);
+                    } catch (primaryError) {
+                        debugLog('network', `Primary LLM file failed for ${siteKey}, trying fallback...`);
+                        response = await fetchWithTimeout(urls.fallback, { 
+                            timeout: permawebConfig.network.timeout,
+                            headers: { 'User-Agent': permawebConfig.network.userAgent }
+                        });
+                        if (!response.ok) throw new Error(`Fallback LLM file also failed: ${response.status}`);
+                    }
+                    
+                    const text = await response.text();
+                    const contentMap = this._parseLLMTextFile(text);
+                    siteContents.set(siteKey, contentMap);
+                    debugLog('content', `Loaded ${contentMap.size} documents from ${siteKey} LLM text file`);
+                    
+                } catch (error) {
+                    console.warn(`Failed to load LLM text file for ${siteKey}:`, error.message);
+                    siteContents.set(siteKey, new Map());
                 }
-                
-                const text = await response.text();
-                const contentMap = this._parseLLMTextFile(text);
-                siteContents.set(siteKey, contentMap);
-                debugLog('content', `Loaded ${contentMap.size} documents from ${siteKey} LLM text file`);
-                
-            } catch (error) {
-                console.warn(`Failed to load LLM text file for ${siteKey}:`, error.message);
-                siteContents.set(siteKey, new Map());
-            }
-        });
+            });
+            
+            await Promise.allSettled(loadPromises);
+            
+        } catch (error) {
+            console.warn('Failed to get LLM text file URLs, falling back to empty content:', error.message);
+            debugLog('network', 'Site discovery failed completely:', error);
+        }
         
-        await Promise.allSettled(loadPromises);
         return siteContents;
     }
 
@@ -230,7 +247,7 @@ export class EnhancedSearchProvider extends SearchProvider {
     }
 
     _createDocumentationIndex() {
-        this.docsIndex = new FlexSearch.Document({
+        this.docsIndex = new Document({
             document: {
                 id: "url",
                 index: [

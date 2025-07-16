@@ -2,17 +2,11 @@
   "name": "permaweb-glossary-search",
   "version": "1.0.0",
   "description": "A lightweight client-side search for the Permaweb Glossary using FlexSearch",
-  "main": "preview-server.js",
   "type": "module",
   "scripts": {
-    "dev": "bun --watch run preview-server.js",
-    "build": "bun run build:clean && bun run build:copy && bun run build:minify && bun run build:post-process",
-    "build:clean": "rm -rf dist",
-    "build:copy": "mkdir -p dist && rsync -av --exclude='.DS_Store' public/ dist/ && mkdir -p dist/src && rsync -av --exclude='*.js' --exclude='.DS_Store' src/ dist/src/",
-    "build:minify": "bun build src/js/main.js --outdir dist/src/js --minify && bun build src/css/style.css --outdir dist/src/css --minify && bun build src/js/service-worker.js --outdir dist/ --minify",
-    "build:post-process": "bun run scripts/post-build.js",
-    "preview": "bun run preview-server.js",
-    "clean": "rm -rf dist",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "deploy": "./scripts/deploy-production.sh",
     "deploy:preview": "./scripts/deploy-preview.sh",
     "sync": "bun run scripts/sync-permaweb-llm-data.js",
@@ -40,7 +34,9 @@
     "url": "https://github.com/dpshade/permaweb-glossary"
   },
   "dependencies": {
-    "dotenv": "^16.4.7"
+    "astro": "^5.11.1",
+    "dotenv": "^16.4.7",
+    "flexsearch": "^0.8.205"
   },
   "jest": {
     "testEnvironment": "jsdom",

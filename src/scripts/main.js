@@ -50,7 +50,9 @@ async function init() {
         
         searchManager.state.subscribe(handleStateChange);
         
-        await searchManager.initialize('basic');
+        // Get initial mode from URL parameter
+        const initialMode = getModeFromURL() || 'basic';
+        await searchManager.initialize(initialMode);
         
         // Expose glossary data for UI functions
         glossaryDataForUI = basicProvider.glossaryData;
@@ -70,10 +72,46 @@ async function init() {
         }
         updateLoadingStatus('');
 
+        // Add browser navigation support
+        setupBrowserNavigation();
+
     } catch (error) {
         console.error('Initialization error:', error);
         updateLoadingStatus('Failed to load application.', true);
     }
+}
+
+function setupBrowserNavigation() {
+    // Handle browser back/forward navigation
+    window.addEventListener('popstate', async () => {
+        const urlMode = getModeFromURL();
+        const urlQuery = getSearchQueryFromURL();
+        const currentMode = searchManager?.state?.mode;
+        
+        // If URL mode differs from current mode, switch modes
+        if (urlMode && urlMode !== currentMode && searchManager?.searchProviders?.has(urlMode)) {
+            try {
+                await searchManager.switchMode(urlMode);
+            } catch (error) {
+                console.warn('Failed to switch mode on navigation:', error);
+                // URL will be corrected by syncURLWithCurrentState
+            }
+        }
+        
+        // Update search input and perform search if needed
+        if (urlQuery !== searchInput.value) {
+            searchInput.value = urlQuery || '';
+            if (urlQuery) {
+                searchManager.performSearch(urlQuery);
+            } else {
+                // Clear results and show random tags
+                resultsContainer.innerHTML = '';
+                resultsContainer.classList.remove('has-results');
+                document.querySelector('.search-container').classList.remove('has-results');
+                createRandomTermTags();
+            }
+        }
+    });
 }
 
 function initializeUIHandlers() {
@@ -109,6 +147,12 @@ function initializeUIHandlers() {
                     document.querySelector('.search-container').classList.remove('has-results');
                     createRandomTermTags();
                 }
+                
+                // Auto-refocus the search input after mode toggle
+                if (!isIframeEmbed()) {
+                    searchInput.focus();
+                }
+                updateURLWithMode(newMode);
             });
         } else {
             console.warn(`Provider for mode "${newMode}" not available yet.`);
@@ -179,6 +223,75 @@ function handleStateChange(state) {
     searchInput.placeholder = state.mode === 'enhanced' 
         ? 'Search Permaweb documentation...'
         : 'Search glossary terms...';
+        
+    // Check for fallback before syncing URL (so we can detect the mismatch)
+    const urlMode = getModeFromURL();
+    const hadFallback = urlMode === 'enhanced' && state.mode === 'basic' && state.isInitialized;
+    
+    // Always sync URL with actual state mode
+    syncURLWithCurrentState(state);
+        
+    // Show notification if enhanced mode was requested but fell back to basic
+    if (hadFallback) {
+        showModeUnavailableNotification();
+    }
+}
+
+function syncURLWithCurrentState(state) {
+    if (!state.isInitialized) return; // Don't sync during initialization
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentURLMode = urlParams.get('mode');
+    
+    // Convert state mode to URL mode
+    let expectedURLMode = null;
+    if (state.mode === 'enhanced') {
+        expectedURLMode = 'docs';
+    } else if (state.mode === 'basic') {
+        expectedURLMode = 'glossary';
+    }
+    
+    // Only update URL if it doesn't match current state
+    if (currentURLMode !== expectedURLMode) {
+        if (expectedURLMode) {
+            urlParams.set('mode', expectedURLMode);
+        } else {
+            urlParams.delete('mode');
+        }
+        
+        const newUrl = urlParams.toString() 
+            ? `${window.location.pathname}?${urlParams.toString()}`
+            : window.location.pathname;
+        
+        // Update title based on current state
+        const query = getSearchQueryFromURL();
+        const modeText = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
+        document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
+        
+        window.history.replaceState({}, '', newUrl);
+    }
+}
+
+function showModeUnavailableNotification() {
+    // Only show once per session
+    if (window.docsUnavailableNotificationShown) return;
+    window.docsUnavailableNotificationShown = true;
+    
+    const notification = document.createElement('div');
+    notification.className = 'mode-notification';
+    notification.innerHTML = `
+        <p>📚 Documentation search is temporarily unavailable. Showing glossary results instead.</p>
+        <button onclick="this.parentElement.remove()">×</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 5000);
 }
 
 // Keyboard navigation variables and functions
@@ -399,10 +512,10 @@ function createDocumentationResultHTML(result, query) {
         lastModified ? `Updated ${lastModified}` : ''
     ].filter(Boolean).join(' • ');
 
-    // Use the source URL as the label (hostname as link text)
+    // Use the source URL as the label (hostname as plain text)
     const sourceUrl = result.url;
     const sourceHost = new URL(sourceUrl).hostname;
-    const sourceLabel = `<a href="${sourceUrl}" target="_blank" rel="noopener noreferrer" class="doc-source-url">${sourceHost}</a>`;
+    const sourceLabel = sourceHost;
 
     return `
         <div class="result-item" data-url="${sourceUrl}" tabindex="0" aria-label="Open ${result.title}">
@@ -481,6 +594,17 @@ function createShareButton(term) {
         e.stopPropagation();
         const url = new URL(window.location.href);
         url.searchParams.set('q', term);
+        
+        // Include current mode in shared URL
+        if (searchManager?.state?.isInitialized) {
+            const currentMode = searchManager.state.mode;
+            if (currentMode === 'enhanced') {
+                url.searchParams.set('mode', 'docs');
+            } else if (currentMode === 'basic') {
+                url.searchParams.set('mode', 'glossary');
+            }
+        }
+        
         try {
             await navigator.clipboard.writeText(url.toString());
             button.classList.add('copied');
@@ -527,11 +651,70 @@ function getSearchQueryFromURL() {
     return urlParams.get('q');
 }
 
+function getModeFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const mode = urlParams.get('mode');
+    // Convert URL mode values to internal mode values
+    if (mode === 'docs' || mode === 'documentation') {
+        return 'enhanced';
+    } else if (mode === 'glossary') {
+        return 'basic';
+    }
+    return null; // No mode specified, will use default
+}
+
 function updateURLWithSearch(query) {
-    const newUrl = query 
-        ? `${window.location.pathname}?q=${encodeURIComponent(query)}`
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Update or remove query parameter
+    if (query) {
+        urlParams.set('q', query);
+    } else {
+        urlParams.delete('q');
+    }
+    
+    // Ensure mode parameter matches current application state
+    if (searchManager?.state?.isInitialized) {
+        const currentMode = searchManager.state.mode;
+        if (currentMode === 'enhanced') {
+            urlParams.set('mode', 'docs');
+        } else if (currentMode === 'basic') {
+            urlParams.set('mode', 'glossary');
+        }
+    }
+    
+    const newUrl = urlParams.toString() 
+        ? `${window.location.pathname}?${urlParams.toString()}`
         : window.location.pathname;
-    document.title = query ? `${query} - Permaweb Glossary` : 'Permaweb Glossary';
+    
+    // Update title based on current state
+    const currentMode = searchManager?.state?.mode || 'basic';
+    const modeText = currentMode === 'enhanced' ? 'Documentation' : 'Glossary';
+    document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
+    window.history.pushState({}, '', newUrl);
+}
+
+function updateURLWithMode(mode) {
+    const urlParams = new URLSearchParams(window.location.search);
+    
+    // Convert internal mode values to URL-friendly values
+    if (mode === 'enhanced') {
+        urlParams.set('mode', 'docs');
+    } else if (mode === 'basic') {
+        urlParams.set('mode', 'glossary');
+    } else {
+        urlParams.delete('mode');
+    }
+    
+    const newUrl = urlParams.toString() 
+        ? `${window.location.pathname}?${urlParams.toString()}`
+        : window.location.pathname;
+    
+    // Update title based on new mode
+    const query = getSearchQueryFromURL();
+    const modeText = mode === 'enhanced' ? 'Documentation' : 'Glossary';
+    document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
+    
     window.history.pushState({}, '', newUrl);
 }
 

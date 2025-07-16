@@ -56,7 +56,6 @@ The Permaweb Glossary is a functional search application with dual-mode capabili
 ## Technical Debt & Infrastructure
 
 ### 🏗️ Architecture Improvements
-- **Migrate to Astro Framework** - Transition from the current vanilla JS architecture to the Astro framework to leverage its component-based architecture, automatic optimization (bundling, minification), and improved developer experience (HMR, TypeScript support). This will solve current build system and module management pain points and provide a more scalable foundation.
 - **State Management** - Implement centralized state management (Redux/Zustand).
 - **Testing Framework** - Comprehensive unit and integration test suite.
 - **Documentation** - Complete API documentation and developer guides.
@@ -68,6 +67,7 @@ The Permaweb Glossary is a functional search application with dual-mode capabili
 - **Code Quality** - ESLint, Prettier, and TypeScript migration.
 
 ## Recently Completed ✅
+- **Astro Framework Migration**: Successfully transitioned from vanilla JS architecture to Astro framework, providing component-based architecture, automatic optimization, and improved developer experience.
 - **Documentation Search**: The search system was refactored to fully support documentation search using a dedicated FlexSearch index.
 - **Mobile Responsive Design**: The UI has been significantly improved for better usability on mobile devices.
 

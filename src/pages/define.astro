@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Permaweb Glossary Search">
+	<main>
+		<div id="app">
+			<div class="search-container">
+				<h1><a href="/" style="text-decoration: none; color: var(--ao-heading-color);">Permaweb Glossary</a></h1>
+				<div class="search-input">
+					<input 
+						type="text" 
+						id="searchInput" 
+						placeholder="Search glossary terms..." 
+						autocomplete="off"
+						aria-autocomplete="list"
+						aria-controls="results"
+						role="combobox"
+						aria-expanded="false"
+					>
+					<div id="results" role="listbox"></div>
+				</div>
+				<div id="loading-status">
+					<p>Loading glossary data...</p>
+					<div class="loader"></div>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<script is:inline>
+	// Analytics initialization
+	(function() {
+	  // Configuration
+	  const ANALYTICS_CONFIG = {
+		src: 'https://analytics_arlink.ar.io/browser.js',
+		processId: 'E3rrhh4WGl-XmjaEFA8QVnVUte9xh0R-tY78JuWw3BU',
+		trackUrlHashes: true,
+		debug: false
+	  };
+
+	  // Wait for DOM to be ready
+	  function init() {
+		const script = document.createElement('script');
+		script.type = 'module';
+		script.src = ANALYTICS_CONFIG.src;
+		script.setAttribute('data-process-id', ANALYTICS_CONFIG.processId);
+		script.setAttribute('data-track-url-hashes', ANALYTICS_CONFIG.trackUrlHashes.toString());
+		script.setAttribute('data-debug', ANALYTICS_CONFIG.debug.toString());
+		document.body.appendChild(script);
+	  }
+
+	  // Handle different loading states
+	  if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	  } else {
+		init();
+	  }
+	})();
+</script>
+<script type="module" src="/src/scripts/main.js"></script> 

@@ -2,11 +2,8 @@ const CACHE_NAME = 'permaweb-glossary-v1';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
-    '/define.html',
-    '/src/css/style.css',
-    '/src/js/main.js',
-    '/src/js/keyboard-nav.js',
-    '/src/data/glossary.json',
+    '/define/index.html',
+    '/data/glossary.json',
     '/assets/favicons/favicon.ico',
     '/assets/favicons/favicon.svg',
     '/assets/favicons/apple-touch-icon.png',

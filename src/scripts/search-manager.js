@@ -24,12 +24,43 @@ export class SearchManager {
 
     this.activeProvider = provider;
     try {
-        await this.activeProvider.initialize();
+        const initResult = await this.activeProvider.initialize();
+        
+        // Check if initialization actually succeeded
+        if (initResult === false) {
+            throw new Error(`Provider ${defaultMode} initialization returned false`);
+        }
+        
         this.state.setState({ isInitialized: true, mode: defaultMode });
     } catch (error) {
         console.error(`Failed to initialize default provider ${defaultMode}.`, error);
-        this.state.setState({ isInitialized: false }); // Indicate error state
-        throw error; // Re-throw to be caught by top-level init
+        
+        // If we failed to initialize the enhanced provider, fall back to basic
+        if (defaultMode !== 'basic') {
+            console.log('Falling back to basic provider...');
+            
+            // Destroy the failed provider
+            if (this.activeProvider) {
+                this.activeProvider.destroy();
+            }
+            
+            // Switch to basic provider
+            const fallbackProvider = this.searchProviders.get('basic');
+            this.activeProvider = fallbackProvider;
+            
+            try {
+                await this.activeProvider.initialize();
+                this.state.setState({ isInitialized: true, mode: 'basic' });
+            } catch (fallbackError) {
+                console.error('Even basic provider failed:', fallbackError);
+                this.state.setState({ isInitialized: false });
+                throw fallbackError;
+            }
+        } else {
+            // Basic provider failed, nothing else to try
+            this.state.setState({ isInitialized: false });
+            throw error;
+        }
     }
   }
 
@@ -47,7 +78,13 @@ export class SearchManager {
     this.state.setState({ isInitialized: false, mode: mode, currentResults: [] });
 
     try {
-        await this.activeProvider.initialize();
+        const initResult = await this.activeProvider.initialize();
+        
+        // Check if initialization actually succeeded
+        if (initResult === false) {
+            throw new Error(`Provider ${mode} initialization returned false`);
+        }
+        
         this.state.setState({ isInitialized: true });
     } catch (error) {
         console.error(`Failed to switch to mode '${mode}'. Falling back to basic search.`, error);
