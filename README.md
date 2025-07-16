@@ -24,7 +24,7 @@ A modern, lightning-fast search application for the Permaweb Glossary built with
 
 ### 🌐 **Integration Ready**
 - **Embeddable**: Easy iframe integration for other Permaweb sites
-- **JSON API**: Programmatic access at `/json?q=query&mode=docs`
+- **JSON API**: ~~Programmatic access at `/json?q=query&mode=docs`~~ (Temporarily disabled - see docs/DECENTRALIZED_SEARCH_ANALYSIS.md)
 - **URL Parameters**: Deep linking and shareable search results
 - **Color Customization**: Theme integration for different websites
 
@@ -80,7 +80,8 @@ permaweb-glossary/
 │   ├── pages/                      # Astro pages
 │   │   ├── index.astro             # Main search interface
 │   │   ├── define.astro            # Term definition page
-│   │   └── json.astro              # JSON API endpoint
+│   │   └── unused/                 # Disabled components
+│   │       └── json.astro          # JSON API endpoint (disabled)
 │   ├── layouts/
 │   │   └── Layout.astro            # Base layout component
 │   └── styles/
@@ -138,14 +139,16 @@ The application uses a modular search provider system:
 - `?mode=basic` - Start in Glossary mode (default)
 
 ### **JSON API**
-Access programmatic search at `/json`:
+~~Access programmatic search at `/json`:~~ (Temporarily disabled)
 ```bash
-# Search glossary
-curl "https://your-domain.com/json?q=arweave&mode=glossary"
+# Search glossary (DISABLED)
+# curl "https://your-domain.com/json?q=arweave&mode=glossary"
 
-# Search documentation  
-curl "https://your-domain.com/json?q=ao+computer&mode=docs"
+# Search documentation (DISABLED)
+# curl "https://your-domain.com/json?q=ao+computer&mode=docs"
 ```
+
+**Note**: The JSON API endpoint has been temporarily disabled due to technical limitations with non-browser environments. See `docs/DECENTRALIZED_SEARCH_ANALYSIS.md` for details on potential future decentralized search implementation using AO processes.
 
 ## 🎨 Customization
 

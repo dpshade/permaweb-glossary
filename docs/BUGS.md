@@ -177,22 +177,21 @@ While the new architecture has better error handling, user-facing error messages
 
 ---
 
-### 5. JSON API Endpoint Inconsistencies
-**Status:** Open  
-**Priority:** Low  
-**Component:** JSON API (`src/pages/json.astro`)
+### ~~5. JSON API Endpoint Inconsistencies~~
+**Status:** Disabled  
+**Priority:** ~~Low~~ **Resolved by removal**  
+**Component:** ~~JSON API (`src/pages/json.astro`)~~ **Moved to `src/pages/unused/json.astro`**
 
 **Description:**  
-The JSON API endpoint at `/json?q=query&mode=docs` sometimes has initialization race conditions.
+~~The JSON API endpoint at `/json?q=query&mode=docs` sometimes has initialization race conditions.~~
 
-**Current Behavior:**  
-- May return incomplete results if search providers aren't fully initialized
-- Mode switching might not work reliably in headless API calls
+**Resolution:**  
+The JSON API endpoint has been **disabled and moved to unused folder** due to fundamental incompatibility with non-browser environments. The endpoint relied on browser APIs (window, document, URLSearchParams) that don't exist in server-side or headless environments.
 
-**Fix Required:**  
-- Ensure proper provider initialization in JSON endpoint
-- Add timeout handling for API requests
-- Standardize response format across all modes
+**Current Status:**  
+- Endpoint moved to `src/pages/unused/json.astro`
+- All documentation references updated to reflect disabled status
+- See `docs/DECENTRALIZED_SEARCH_ANALYSIS.md` for future AO-based implementation plans
 
 ---
 

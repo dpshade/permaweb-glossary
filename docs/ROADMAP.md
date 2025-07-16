@@ -8,7 +8,7 @@ The Permaweb Glossary is a functional search application with dual-mode capabili
 ### 🔧 Bug Fixes & Stability
 - **Fix Wayfinder URL Integration** - Resolve broken wayfinder URLs that are not working as intended. While recent optimizations have improved performance, the core issue remains.
 - **Enhanced Error Handling** - Build upon the new error styling to implement user-friendly error messages and retry logic for network failures.
-- **JSON API Improvements** - Fix initialization race conditions in the `/json` endpoint for better API reliability.
+- **~~JSON API Improvements~~** - ~~Fix initialization race conditions in the `/json` endpoint for better API reliability.~~ (Disabled - see DECENTRALIZED_SEARCH_ANALYSIS.md for future AO-based implementation)
 - **Iframe UI Validation** - Ensure proper iframe embedding behavior, validate UI elements don't break when embedded, test responsive behavior within iframe constraints, and verify all interactive elements work correctly in embedded mode.
 
 ### 🚀 Feature Enhancements  
@@ -107,7 +107,7 @@ The Permaweb Glossary is a functional search application with dual-mode capabili
 
 ### ✅ **Integration & Connectivity (January 2025)**
 - **Permaweb-LLM-Fuel Integration**: Seamless integration for fast documentation search
-- **JSON API**: Programmatic access endpoint at `/json?q=query&mode=docs`
+- **~~JSON API~~**: ~~Programmatic access endpoint at `/json?q=query&mode=docs`~~ (Disabled - moved to unused/)
 - **URL Parameter Support**: Support for mode and query parameters in URLs
 - **Theme System**: Complete light/dark theme implementation
 
