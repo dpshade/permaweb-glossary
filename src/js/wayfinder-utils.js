@@ -17,14 +17,14 @@ const WAYFINDER_CONFIG = {
         'arweave.live'
     ],
     // Request timeout in milliseconds
-    timeout: 10000,
+    timeout: 3000,
     // Enable gateway verification
-    verifyGateways: true,
+    verifyGateways: false, // Disable to prevent blocking initialization
     // Debug mode
     debug: false,
     // FastestPing routing strategy configuration
     fastestPing: {
-        timeoutMs: 500,
+        timeoutMs: 300, // Shorter timeout to prevent hanging
         pingPath: '/ar-io/info',
         cacheResultsMs: 30000
     }
@@ -45,7 +45,8 @@ async function pingGateway(gateway, path = '/ar-io/info', timeout = 500) {
     try {
         const response = await fetch(`https://${gateway}${path}`, {
             method: 'HEAD',
-            signal: controller.signal
+            signal: controller.signal,
+            cache: 'no-cache'
         });
         
         clearTimeout(timeoutId);
@@ -57,6 +58,10 @@ async function pingGateway(gateway, path = '/ar-io/info', timeout = 500) {
         }
     } catch (error) {
         clearTimeout(timeoutId);
+        // Don't log every failed ping as it's expected
+        if (WAYFINDER_CONFIG.debug) {
+            console.debug(`Gateway ${gateway} ping failed:`, error.message);
+        }
         return Infinity;
     }
 }
@@ -83,11 +88,19 @@ async function findFastestGateway(gateways, config = {}) {
     });
     
     try {
-        const results = await Promise.all(pingPromises);
+        // Add timeout to the entire ping operation
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('Gateway ping timeout')), 2000)
+        );
+        
+        const results = await Promise.race([
+            Promise.all(pingPromises),
+            timeoutPromise
+        ]);
         
         // Sort by latency and pick the fastest
         results.sort((a, b) => a.latency - b.latency);
-        const fastest = results[0]?.gateway || gateways[0];
+        const fastest = results.find(r => r.latency < Infinity)?.gateway || gateways[0];
         
         // Cache the result
         gatewayCache.set('fastest', fastest);
@@ -100,7 +113,9 @@ async function findFastestGateway(gateways, config = {}) {
         
         return fastest;
     } catch (error) {
-        console.warn('Failed to ping gateways, using default:', error);
+        if (WAYFINDER_CONFIG.debug) {
+            console.warn('Failed to ping gateways, using default:', error);
+        }
         return gateways[0];
     }
 }

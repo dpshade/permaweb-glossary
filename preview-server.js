@@ -4,7 +4,7 @@ import { existsSync } from "fs";
 
 // Local preview server for testing built files
 const server = serve({
-  port: 3000,
+  port: process.env.PORT || 3000,
   fetch(req) {
     const url = new URL(req.url);
     let path = url.pathname;

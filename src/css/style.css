@@ -20,6 +20,10 @@
   --ao-secondary-text: #666;
   --ao-section-bg: #f5f5f5;
   --ao-section-color: #111;
+  --ao-button-hover-bg: #333;
+  --ao-button-hover-border: #333;
+  --ao-focus-color: #007acc;
+  --ao-section-bg-rgb: 245, 245, 245;
 
   /* Layout variables */
   --container-padding: 32px;
@@ -56,6 +60,10 @@
   --ao-secondary-text: #a0a0a0;
   --ao-section-bg: #1a1a1a;
   --ao-section-color: #ffffff;
+  --ao-button-hover-bg: #333;
+  --ao-button-hover-border: #444;
+  --ao-focus-color: #34d399;
+  --ao-section-bg-rgb: 26, 26, 26;
 }
 
 /* Theme toggle button */
@@ -150,15 +158,17 @@ body {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  z-index: 1;
+  z-index: 10;
 }
 
 .search-container.has-results {
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, 10%);
+  position: fixed;
+  top: 10vh;
+  left: 50%;
+  transform: translateX(-50%);
   transition: none;
-  height: 80%;
+  height: 80vh;
+  max-height: 80vh;
 }
 
 h1 {
@@ -187,6 +197,7 @@ h1 {
 .search-input {
   position: relative;
   width: 100%;
+  flex-shrink: 0;
 }
 
 .search-input input {
@@ -217,7 +228,7 @@ h1 {
 
 #results {
   width: 100%;
-  max-height: 500px;
+  flex: 1;
   overflow-y: auto;
   background: var(--ao-bg-color);
   border: 2px solid var(--ao-border-color);
@@ -232,7 +243,23 @@ h1 {
   position: absolute;
   top: 100%;
   left: 0;
+  right: 0;
 }
+
+/* When results are shown, make results container take remaining space */
+.search-container.has-results #results {
+  position: relative;
+  top: 0;
+  flex: 1;
+  max-height: 60vh; /* Constrain to 60% of viewport height */
+}
+
+/* Hide random terms when showing search results */
+.search-container.has-results .random-terms-container {
+  display: none;
+}
+
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 #results::-webkit-scrollbar {
@@ -407,26 +434,40 @@ h1 {
 
 @media (max-width: 768px) {
   .search-container {
-    margin: 0;
-    border-radius: 0;
-    border-width: 0;
-    border-top-width: 2px;
-    box-shadow: none;
-    width: 100%;
-    max-width: 100%;
-    min-height: 100vh;
-    position: relative;
-    top: 0;
-    left: 0;
+    padding: 16px 8px;
+    height: 90vh;
+    height: -webkit-fill-available;
+    /* Fallback for browsers that do not support -webkit-fill-available */
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    right: 5vw;
+    width: 90vw;
     transform: none;
+    max-width: none;
+    bottom: 5vh;
+  }
+
+  .error-state {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .retry-button {
+    padding: 10px 20px;
+    font-size: 1em;
   }
 
   .search-container.has-results {
-    position: relative;
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    right: 5vw;
+    width: 90vw;
     transform: none;
-    left: 0;
-    margin: 0;
-    min-height: auto;
+    max-width: none;
+    height: 90vh;
+    bottom: auto;
   }
 
   .search-input {
@@ -1263,12 +1304,67 @@ html.translucent-bg .search-container {
   overflow: visible;
 }
 
+/* Error state styling */
+.error-state {
+  text-align: center;
+  padding: 24px;
+  background-color: var(--ao-section-bg);
+  border: 2px solid var(--ao-border-color);
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.error-state p {
+  margin: 8px 0;
+  color: var(--ao-text-color);
+  font-size: 0.95em;
+}
+
+.retry-button {
+  background-color: var(--ao-button-bg);
+  color: var(--ao-button-text);
+  border: 2px solid var(--ao-border-color);
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9em;
+  transition: all 0.2s ease; /* Smooth all properties */
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  background-color: var(--ao-button-hover-bg, var(--ao-button-bg));
+  border-color: var(--ao-button-hover-border, var(--ao-border-color));
+}
+
+.retry-button:focus {
+  outline: 2px solid var(--ao-focus-color, #007acc);
+  outline-offset: 2px;
+}
+
+.retry-button:active {
+  transform: translateY(0);
+}
+
 .random-terms {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
   margin: 0;
   justify-content: center;
+}
+
+/* Make sure error states work with translucent background */
+html.translucent-bg .error-state {
+  background-color: rgba(var(--ao-section-bg-rgb), 0.9);
+  backdrop-filter: blur(10px);
+}
+
+/* Ensure proper spacing in search results */
+.search-results .error-state {
+  margin: 8px 0;
 }
 
 .random-terms .related-tag {

@@ -32,8 +32,9 @@ Wayfinder URLs are broken and not working as intended. The wayfinder utility fun
 
 ---
 
-### 2. Documentation Search Not Using FlexSearch Index
-**Status:** Open  
+### ~~2. Documentation Search Not Using FlexSearch Index~~
+**Status:** Fixed  
+**Fixed in:** Latest release  
 **Priority:** High  
 **Component:** Enhanced Search (`src/js/enhanced-search.js`)
 
@@ -46,29 +47,33 @@ When toggling to "Documentation" mode (previously "Dictionary"), the application
 - Search results should show Permaweb documentation pages
 - Search should be fast and relevant using the pre-built index
 
-**Current Behavior:**  
-- Title toggle works (Glossary ↔ Documentation)
-- Documentation search mode is not implemented
-- Only glossary search is functional
-- `docs-index.json` FlexSearch index is not being utilized
+**Solution:**  
+- Integrated `enhanced-search.js` into the main application
+- Added proper module imports in `index.html` for enhanced search functionality
+- Modified `main.js` to detect and initialize `EnhancedPermwebSearch` when available
+- Enhanced title toggle to properly switch between glossary and documentation search modes
+- Updated search placeholder text and behavior based on current mode
+- Documentation search now loads from remote `docs-index.json` with fallback URLs
+- Results display adapted for both glossary terms and documentation pages
 
-**Reproduction Steps:**  
-1. Load the application (shows "Glossary" mode)
-2. Click on "Glossary" to toggle to "Documentation"
-3. Observe that search still uses glossary data
-4. No documentation search functionality available
+**Technical Changes:**
+- **Files modified:**
+  - `public/index.html` - Added enhanced-search.js and wayfinder-utils.js imports
+  - `src/js/main.js` - Added enhanced search integration and mode switching
+  - `src/js/enhanced-search.js` - Removed auto-initialization, made globally available
+  - `package.json` - Added enhanced search files to build process
+- **Implementation completed:**
+  - Mode switching logic between glossary and documentation search
+  - FlexSearch index loading for documentation from remote sources
+  - Proper results display for documentation format with metadata
+  - Seamless fallback to basic search when enhanced search unavailable
 
-**Technical Details:**  
-- **Files affected:**
-  - `src/js/enhanced-search.js` (contains docs search framework)
-  - `src/js/main.js` (needs integration with enhanced-search)
-- **Missing implementation:**
-  - Mode switching logic in main.js
-  - FlexSearch index loading for documentation
-  - Results display for documentation format
-- **Available resources:**
-  - `docs-index.json` contains pre-indexed documentation
-  - Enhanced search class has docs search methods ready
+**Critical Bug Fixes Applied:**
+- **Fixed Race Conditions**: Moved search input handler initialization to occur AFTER data loading to prevent "Search index not initialized" errors
+- **Resolved Event Handler Conflicts**: Eliminated duplicate event handlers between main.js and enhanced-search.js
+- **Standardized Results Styling**: Documentation results now use identical HTML structure and CSS classes as glossary results
+- **Improved Error Handling**: Added graceful degradation when docs-index.json fails to load, with user-friendly error messages
+- **Enhanced Initialization Logic**: Added proper try-catch blocks and fallback mechanisms for robust initialization
 
 ---
 
