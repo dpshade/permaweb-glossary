@@ -47,9 +47,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Try to load search functionality
         if (typeof window.searchManager === 'undefined') {
             // Import and initialize search providers directly
-            const { SearchManager } = await import('/src/scripts/search-manager.js');
-            const { BasicSearchProvider } = await import('/src/scripts/basic-search-provider.js');
-            const { EnhancedSearchProvider } = await import('/src/scripts/enhanced-search-provider.js');
+            const { SearchManager } = await import('../scripts/search-manager.js');
+            const { BasicSearchProvider } = await import('../scripts/basic-search-provider.js');
+            const { EnhancedSearchProvider } = await import('../scripts/enhanced-search-provider.js');
             
             const searchManager = new SearchManager();
             const basicProvider = new BasicSearchProvider();
