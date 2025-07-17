@@ -572,7 +572,16 @@ function displayGlossaryResults(results, query) {
 }
 
 function displayDocumentationResults(results, query) {
-    resultsContainer.innerHTML = results.map((result, index) => 
+    // Deduplicate by URL
+    const seenUrls = new Set();
+    const dedupedResults = results.filter(result => {
+        if (!result.url) return true;
+        if (seenUrls.has(result.url)) return false;
+        seenUrls.add(result.url);
+        return true;
+    });
+
+    resultsContainer.innerHTML = dedupedResults.map((result, index) => 
         createDocumentationResultHTML(result, query, index)
     ).join('');
     
