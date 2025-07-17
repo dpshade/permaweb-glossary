@@ -25,6 +25,7 @@ let themeToggle;
 let searchManager;
 let glossaryDataForUI = null; // To help with rendering clickable terms
 let currentRandomTermsMode = null; // Track the current mode for random terms
+let randomTermsDisplayed = false; // Track if random terms have been displayed
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', init);
@@ -70,6 +71,11 @@ async function init() {
         } catch (error) {
             console.error('SearchManager initialization failed:', error);
         }
+        
+        // Pre-initialize other providers in background for faster mode switching
+        setTimeout(() => {
+            searchManager.preInitializeProviders();
+        }, 1000); // Wait 1 second after main initialization
         
         // Expose searchManager globally for JSON API access
         window.searchManager = searchManager;
@@ -134,6 +140,7 @@ function setupBrowserNavigation() {
                 resultsContainer.innerHTML = '';
                 resultsContainer.classList.remove('has-results');
                 document.querySelector('.search-container').classList.remove('has-results');
+                randomTermsDisplayed = false; // Reset flag when navigating to empty search
                 updateRandomTermsIfNeeded(searchManager?.state?.mode || 'glossary');
             }
         }
@@ -147,6 +154,12 @@ function initializeUIHandlers() {
         clearTimeout(searchTimeout);
         const query = e.target.value;
         updateURLWithSearch(query);
+        
+        // Reset random terms display flag when user starts typing
+        if (query && randomTermsDisplayed) {
+            randomTermsDisplayed = false;
+        }
+        
         searchTimeout = setTimeout(() => {
             searchManager.performSearch(query);
         }, 200);
@@ -164,7 +177,11 @@ function initializeUIHandlers() {
             // Update URL immediately to prevent race conditions
             updateURLWithMode(newMode);
             
-            searchManager.switchMode(newMode).then(() => {
+            // Show loading state
+            clickableTitle.textContent = 'Switching...';
+            clickableTitle.style.opacity = '0.7';
+            
+            searchManager.switchMode(newMode, searchInput.value).then(() => {
                 // Ensure glossaryDataForUI is available for glossary mode
                 if (newMode === 'glossary') {
                     const glossaryProvider = searchManager.searchProviders.get('glossary');
@@ -173,15 +190,12 @@ function initializeUIHandlers() {
                     }
                 }
                 
-                // Instantly update results after mode switch
-                const query = searchInput.value;
-                if (query) {
-                    searchManager.performSearch(query);
-                } else {
-                    // If input is empty, clear results and show random tags
+                // If no query, clear results and show random tags
+                if (!searchInput.value) {
                     resultsContainer.innerHTML = '';
                     resultsContainer.classList.remove('has-results');
                     document.querySelector('.search-container').classList.remove('has-results');
+                    randomTermsDisplayed = false; // Reset flag when switching modes
                     updateRandomTermsIfNeeded(newMode);
                 }
                 
@@ -193,9 +207,16 @@ function initializeUIHandlers() {
                 console.error('Mode switch failed:', error);
                 // Revert URL if mode switch failed
                 updateURLWithMode(currentMode);
+                
+                // Show error feedback to user
+                showTemporaryError('Failed to switch modes. Please try again.');
+            }).finally(() => {
+                // Restore normal state
+                clickableTitle.style.opacity = '1';
             });
         } else {
             console.warn(`Provider for mode "${newMode}" not available yet.`);
+            showTemporaryError(`Mode "${newMode}" is not available.`);
         }
     });
 
@@ -221,6 +242,7 @@ function initializeUIHandlers() {
             selectedResultIndex = -1;
             isKeyboardActive = false;
             document.body.classList.remove('keyboard-active');
+            randomTermsDisplayed = false; // Reset flag when clicking outside
         }
     });
 
@@ -247,17 +269,23 @@ function handleStateChange(state) {
         searchInput.placeholder = state.mode === 'documentation' ? 'Search permaweb documentation' : 'Search permaweb glossary';
     }
 
-    if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
-        displayResults(state.currentResults, searchInput.value, state.mode);
-        // Reset keyboard navigation after displaying results
-        selectedResultIndex = -1; // Start with no selection until user presses arrow key
-    } else {
-        resultsContainer.innerHTML = '';
-        resultsContainer.classList.remove('has-results');
-        document.querySelector('.search-container').classList.remove('has-results');
-        selectedResultIndex = -1;
-        updateRandomTermsIfNeeded(state.mode);
-    }
+            if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
+            displayResults(state.currentResults, searchInput.value, state.mode);
+            // Reset keyboard navigation after displaying results
+            selectedResultIndex = -1; // Start with no selection until user presses arrow key
+        } else {
+            resultsContainer.innerHTML = '';
+            resultsContainer.classList.remove('has-results');
+            document.querySelector('.search-container').classList.remove('has-results');
+            selectedResultIndex = -1;
+            
+            // Reset random terms display flag when search is cleared
+            if (!searchInput.value) {
+                randomTermsDisplayed = false;
+            }
+            
+            updateRandomTermsIfNeeded(state.mode);
+        }
     
     clickableTitle.textContent = state.mode === 'documentation' ? 'Documentation' : 'Glossary';
     // Placeholder is set above based on initialization state
@@ -332,7 +360,8 @@ function handleKeyboardNavigation(event) {
             if (selectedResultIndex === -1) {
                 selectedResultIndex = 0;
             } else {
-                selectedResultIndex = Math.min(selectedResultIndex + 1, resultItems.length - 1);
+                // Snake back to top when reaching the bottom
+                selectedResultIndex = (selectedResultIndex + 1) % resultItems.length;
             }
             updateKeyboardSelection();
             break;
@@ -346,7 +375,8 @@ function handleKeyboardNavigation(event) {
             if (selectedResultIndex === -1) {
                 selectedResultIndex = resultItems.length - 1;
             } else {
-                selectedResultIndex = Math.max(selectedResultIndex - 1, 0);
+                // Snake to bottom when reaching the top
+                selectedResultIndex = selectedResultIndex === 0 ? resultItems.length - 1 : selectedResultIndex - 1;
             }
             updateKeyboardSelection();
             break;
@@ -371,6 +401,7 @@ function handleKeyboardNavigation(event) {
             selectedResultIndex = -1;
             isKeyboardActive = false;
             document.body.classList.remove('keyboard-active');
+            randomTermsDisplayed = false; // Reset flag when clearing with Escape
             updateRandomTermsIfNeeded(searchManager?.state?.mode || 'glossary');
             break;
     }
@@ -398,6 +429,53 @@ function updateLoadingStatus(message, isError = false) {
     loadingStatus.textContent = message;
     loadingStatus.style.display = message ? 'block' : 'none';
     loadingStatus.classList.toggle('error', isError);
+}
+
+function showTemporaryError(message, duration = 3000) {
+    // Create temporary error element
+    const errorElement = document.createElement('div');
+    errorElement.className = 'temporary-error';
+    errorElement.textContent = message;
+    errorElement.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ef4444;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 1000;
+        font-size: 14px;
+        max-width: 300px;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    // Add animation styles
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(errorElement);
+    
+    // Remove after duration
+    setTimeout(() => {
+        errorElement.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => {
+            if (errorElement.parentNode) {
+                errorElement.parentNode.removeChild(errorElement);
+            }
+        }, 300);
+    }, duration);
 }
 
 // --- All UI rendering functions will live below ---
@@ -638,10 +716,19 @@ function createShareButton(term) {
 }
 
 function updateRandomTermsIfNeeded(mode = 'glossary') {
-    // Only update random terms if the mode has changed
-    if (currentRandomTermsMode !== mode) {
+    // Update random terms if:
+    // 1. Mode has changed, OR
+    // 2. We're in glossary mode, have data, and haven't displayed terms yet
+    const shouldUpdate = currentRandomTermsMode !== mode || 
+                        (mode === 'glossary' && glossaryDataForUI && !randomTermsDisplayed);
+    
+    if (shouldUpdate) {
         currentRandomTermsMode = mode;
-        createRandomTermTags(mode);
+        // Only create random terms if we have data or it's documentation mode
+        if (mode === 'documentation' || glossaryDataForUI) {
+            createRandomTermTags(mode);
+            randomTermsDisplayed = true;
+        }
     }
 }
 
@@ -858,6 +945,14 @@ function applyColorTheme(urlParams) {
         return;
     }
     
+    // Check if user has explicitly set a theme preference via toggle
+    // If so, respect their choice and don't override with URL parameters
+    const userThemePreference = localStorage.getItem('theme');
+    if (userThemePreference && !urlParams.get('force-theme')) {
+        console.log('User has theme preference, URL color parameters ignored. Use ?force-theme=1 to override.');
+        return;
+    }
+    
     let derivedColors = {};
     
     // ===== BACKWARDS COMPATIBILITY: OLD SYSTEM =====
@@ -1070,5 +1165,33 @@ function initializeTheme() {
         const newTheme = current === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
+        
+        // Clear URL-based color overrides when theme toggle is used
+        clearUrlColorOverrides();
     });
+}
+
+function clearUrlColorOverrides() {
+    const root = document.documentElement;
+    
+    // List of all CSS custom properties that might be set by URL parameters
+    const colorProperties = [
+        '--ao-bg-color', '--ao-text-color', '--ao-border-color', '--ao-input-bg',
+        '--ao-hover-bg', '--ao-category-bg', '--ao-category-text', '--ao-link-color',
+        '--ao-result-bg', '--ao-result-hover', '--ao-heading-color', '--ao-tag-bg',
+        '--ao-tag-text', '--ao-button-bg', '--ao-button-text', '--ao-accent-color',
+        '--ao-secondary-text', '--ao-section-bg', '--ao-section-color',
+        '--ao-button-hover-bg', '--ao-button-hover-border', '--ao-focus-color',
+        '--translucent-bg-color'
+    ];
+    
+    // Remove all URL-based color overrides
+    colorProperties.forEach(property => {
+        root.style.removeProperty(property);
+    });
+    
+    // Also remove translucent background class if it was set by URL
+    if (document.documentElement.classList.contains('translucent-bg')) {
+        document.documentElement.classList.remove('translucent-bg');
+    }
 } 

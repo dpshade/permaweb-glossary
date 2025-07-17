@@ -296,3 +296,34 @@ When reporting new bugs, please include:
 ---
 
 *Last Updated: July 15*
+
+# Known Bugs
+
+## Theme Toggle Not Working When URL Parameters Present
+
+**Status**: ✅ FIXED  
+**Date**: 2024-12-19  
+**Priority**: High  
+
+### Description
+The dark mode/theme toggle button was not working when URL color parameters were present. Users could not switch between light and dark themes if the page was loaded with custom color parameters like `?bg-color=#RRGGBB`.
+
+### Root Cause
+The `applyQueryParameters()` function was running before `initializeTheme()` in the initialization sequence. This caused URL-based color overrides to be applied directly to CSS custom properties, which took precedence over the theme toggle's `data-theme` attribute system.
+
+### Solution
+1. **Added `clearUrlColorOverrides()` function** that removes all URL-based color overrides when the theme toggle is clicked
+2. **Added user preference protection** that prevents URL parameters from overriding user's theme choice unless `?force-theme=1` is specified
+3. **Modified theme toggle click handler** to clear URL overrides when switching themes
+
+### Files Modified
+- `src/scripts/main.js`: Added `clearUrlColorOverrides()` function and user preference protection logic
+
+### Testing
+- Created `test/theme-toggle.test.js` to verify functionality
+- All tests pass, confirming the fix works correctly
+
+### User Impact
+- ✅ Theme toggle now works correctly regardless of URL parameters
+- ✅ User theme preferences are respected and protected from URL overrides
+- ✅ URL parameters can still override user preferences when explicitly requested with `?force-theme=1`

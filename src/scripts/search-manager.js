@@ -102,7 +102,7 @@ export class SearchManager {
     }
   }
 
-  async switchMode(mode) {
+  async switchMode(mode, query = null) {
     if (this.state.mode === mode || !this.searchProviders.has(mode)) {
       return;
     }
@@ -134,6 +134,12 @@ export class SearchManager {
         
         this.state.setState({ isInitialized: true });
         console.log(`${mode} provider initialized successfully`);
+        
+        // Auto-perform search if query provided
+        if (query && query.trim()) {
+            console.log(`Auto-performing search for: "${query}"`);
+            await this.performSearch(query);
+        }
         
     } catch (error) {
         console.error(`Failed to switch to mode '${mode}'. Falling back to glossary search.`, error);
@@ -179,6 +185,12 @@ export class SearchManager {
         });
         
         console.log(`Successfully switched to fallback provider: ${searchConfig.fallback.provider}`);
+        
+        // Auto-perform search with fallback provider if query provided
+        if (query && query.trim()) {
+            console.log(`Auto-performing search with fallback provider for: "${query}"`);
+            await this.performSearch(query);
+        }
     }
   }
 
@@ -250,5 +262,92 @@ export class SearchManager {
       error: status.error,
       provider: this.activeProvider
     };
+  }
+
+  // Pre-initialize providers in background for faster mode switching
+  async preInitializeProviders() {
+    const providersToInit = Array.from(this.searchProviders.entries())
+      .filter(([name, provider]) => {
+        const status = this.providerStatus.get(name);
+        return !status?.isInitialized && name !== this.state.mode;
+      });
+
+    if (providersToInit.length === 0) {
+      return;
+    }
+
+    console.log(`Pre-initializing ${providersToInit.length} providers in background...`);
+    
+    const initPromises = providersToInit.map(async ([name, provider]) => {
+      try {
+        const initResult = await provider.initialize();
+        this.providerStatus.set(name, { 
+          isInitialized: initResult, 
+          error: initResult ? null : 'Pre-initialization failed'
+        });
+        
+        if (initResult) {
+          console.log(`Pre-initialized provider: ${name}`);
+        }
+      } catch (error) {
+        console.warn(`Failed to pre-initialize provider ${name}:`, error.message);
+        this.providerStatus.set(name, { 
+          isInitialized: false, 
+          error: error.message 
+        });
+      }
+    });
+
+    // Don't await - let this run in background
+    Promise.allSettled(initPromises).then(() => {
+      console.log('Provider pre-initialization completed');
+    });
+  }
+
+  // Retry failed provider initialization
+  async retryProviderInitialization(providerName, maxRetries = 3) {
+    const provider = this.searchProviders.get(providerName);
+    if (!provider) {
+      throw new Error(`Provider ${providerName} not found`);
+    }
+
+    const status = this.providerStatus.get(providerName);
+    if (status?.isInitialized) {
+      return true; // Already initialized
+    }
+
+    console.log(`Retrying initialization for provider: ${providerName}`);
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        console.log(`Attempt ${attempt}/${maxRetries} for ${providerName}...`);
+        const initResult = await provider.initialize();
+        
+        this.providerStatus.set(providerName, { 
+          isInitialized: initResult, 
+          error: initResult ? null : `Initialization failed on attempt ${attempt}`
+        });
+        
+        if (initResult) {
+          console.log(`Successfully initialized ${providerName} on attempt ${attempt}`);
+          return true;
+        }
+      } catch (error) {
+        console.warn(`Attempt ${attempt} failed for ${providerName}:`, error.message);
+        
+        if (attempt === maxRetries) {
+          this.providerStatus.set(providerName, { 
+            isInitialized: false, 
+            error: `Failed after ${maxRetries} attempts: ${error.message}`
+          });
+          throw error;
+        }
+        
+        // Wait before retry (exponential backoff)
+        await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
+      }
+    }
+    
+    return false;
   }
 } 
