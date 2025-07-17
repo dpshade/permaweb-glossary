@@ -419,7 +419,7 @@ function updateKeyboardSelection() {
         selectedItem.classList.add('selected');
         selectedItem.scrollIntoView({
             behavior: 'auto',
-            block: 'start'
+            block: 'nearest'
         });
     }
 }
