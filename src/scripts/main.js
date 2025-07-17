@@ -2,6 +2,12 @@ import { SearchManager } from './search-manager.js';
 import { BasicSearchProvider } from './basic-search-provider.js';
 import { EnhancedSearchProvider } from './enhanced-search-provider.js';
 
+console.log('=== MAIN.JS LOADED ===');
+// This should change the title immediately if the script loads
+setTimeout(() => {
+    document.title = 'MAIN.JS LOADED';
+}, 100);
+
 // --- Constants ---
 const DEBUG = false;
 const NUM_RANDOM_TAGS = 5;
@@ -16,23 +22,39 @@ if ('serviceWorker' in navigator) {
 }
 
 // --- DOM Elements ---
-const searchInput = document.getElementById('searchInput');
-const resultsContainer = document.getElementById('results');
-const loadingStatus = document.getElementById('loading-status');
-const clickableTitle = document.getElementById('clickableTitle');
-const themeToggle = document.querySelector('.theme-toggle');
+let searchInput;
+let resultsContainer;
+let loadingStatus;
+let clickableTitle;
+let themeToggle;
 
 // --- State ---
 let searchManager;
 let glossaryDataForUI = null; // To help with rendering clickable terms
+let currentRandomTermsMode = null; // Track the current mode for random terms
 
 // --- Initialization ---
 document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
+    console.log('=== INIT FUNCTION CALLED ===');
+    console.log('Document ready state:', document.readyState);
+    
     try {
-        updateLoadingStatus('Initializing application...');
-
+        // Initialize DOM elements
+        searchInput = document.getElementById('searchInput');
+        resultsContainer = document.getElementById('results');
+        loadingStatus = document.getElementById('loading-status');
+        clickableTitle = document.getElementById('clickableTitle');
+        themeToggle = document.querySelector('.theme-toggle');
+        
+        console.log('DOM elements initialized:');
+        console.log('- searchInput:', searchInput);
+        console.log('- resultsContainer:', resultsContainer);
+        console.log('- loadingStatus:', loadingStatus);
+        console.log('- clickableTitle:', clickableTitle);
+        console.log('- themeToggle:', themeToggle);
+        
         applyQueryParameters();
         initializeTheme();
 
@@ -59,13 +81,27 @@ async function init() {
             updateURLWithMode('basic');
         }
         
-        await searchManager.initialize(initialMode);
+        try {
+            await searchManager.initialize(initialMode);
+            console.log('SearchManager initialized successfully in mode:', initialMode);
+        } catch (error) {
+            console.error('SearchManager initialization failed:', error);
+        }
         
         // Expose searchManager globally for JSON API access
         window.searchManager = searchManager;
         
-        // Expose glossary data for UI functions
+        // Expose glossary data for UI functions - must be after initialize
+        // Use the original basicProvider reference since it should be the same instance
+        
+        // In basic mode, the provider should already be initialized
+        // In enhanced mode, we need to ensure basic provider is initialized for random terms
+        if (initialMode === 'enhanced' && !basicProvider.glossaryData) {
+            await basicProvider.initialize();
+        }
+        
         glossaryDataForUI = basicProvider.glossaryData;
+        console.log('Assigned glossaryDataForUI:', glossaryDataForUI?.length);
 
         initializeUIHandlers();
 
@@ -74,20 +110,18 @@ async function init() {
             searchInput.value = initialQuery;
             searchManager.performSearch(initialQuery);
         } else {
-            createRandomTermTags();
+            updateRandomTermsIfNeeded(initialMode);
         }
 
         if (!isIframeEmbed()) {
             searchInput.focus();
         }
-        updateLoadingStatus('');
 
         // Add browser navigation support
         setupBrowserNavigation();
 
     } catch (error) {
         console.error('Initialization error:', error);
-        updateLoadingStatus('Failed to load application.', true);
     }
 }
 
@@ -118,7 +152,7 @@ function setupBrowserNavigation() {
                 resultsContainer.innerHTML = '';
                 resultsContainer.classList.remove('has-results');
                 document.querySelector('.search-container').classList.remove('has-results');
-                createRandomTermTags();
+                updateRandomTermsIfNeeded(searchManager?.state?.mode || 'basic');
             }
         }
     });
@@ -146,6 +180,14 @@ function initializeUIHandlers() {
         const newMode = currentMode === 'basic' ? 'enhanced' : 'basic';
         if (searchManager.searchProviders.has(newMode)) {
             searchManager.switchMode(newMode).then(() => {
+                // Ensure glossaryDataForUI is available for basic mode
+                if (newMode === 'basic') {
+                    const basicProvider = searchManager.searchProviders.get('basic');
+                    if (basicProvider && basicProvider.glossaryData) {
+                        glossaryDataForUI = basicProvider.glossaryData;
+                    }
+                }
+                
                 // Instantly update results after mode switch
                 const query = searchInput.value;
                 if (query) {
@@ -155,7 +197,7 @@ function initializeUIHandlers() {
                     resultsContainer.innerHTML = '';
                     resultsContainer.classList.remove('has-results');
                     document.querySelector('.search-container').classList.remove('has-results');
-                    createRandomTermTags();
+                    updateRandomTermsIfNeeded(newMode);
                 }
                 
                 // Auto-refocus the search input after mode toggle
@@ -214,8 +256,7 @@ function handleStateChange(state) {
         resultsContainer.classList.remove('has-results');
         searchInput.placeholder = 'Initializing...';
     } else {
-        updateLoadingStatus('');
-        searchInput.placeholder = state.mode === 'enhanced' ? 'Search permaweb documentation' : 'search permaweb glossary';
+        searchInput.placeholder = state.mode === 'enhanced' ? 'Search permaweb documentation' : 'Search permaweb glossary';
     }
 
     if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
@@ -227,7 +268,7 @@ function handleStateChange(state) {
         resultsContainer.classList.remove('has-results');
         document.querySelector('.search-container').classList.remove('has-results');
         selectedResultIndex = -1;
-        createRandomTermTags(state.mode);
+        updateRandomTermsIfNeeded(state.mode);
     }
     
     clickableTitle.textContent = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
@@ -338,7 +379,7 @@ function handleKeyboardNavigation(event) {
             selectedResultIndex = -1;
             isKeyboardActive = false;
             document.body.classList.remove('keyboard-active');
-            createRandomTermTags();
+            updateRandomTermsIfNeeded(searchManager?.state?.mode || 'basic');
             break;
     }
 }
@@ -603,14 +644,41 @@ function createShareButton(term) {
     return button;
 }
 
+function updateRandomTermsIfNeeded(mode = 'basic') {
+    console.log('updateRandomTermsIfNeeded called with mode:', mode);
+    console.log('currentRandomTermsMode:', currentRandomTermsMode);
+    
+    // Only update random terms if the mode has changed
+    if (currentRandomTermsMode !== mode) {
+        console.log('Mode changed, updating random terms');
+        currentRandomTermsMode = mode;
+        createRandomTermTags(mode);
+    } else {
+        console.log('Mode unchanged, not updating random terms');
+    }
+}
+
 function createRandomTermTags(mode = 'basic') {
+    console.log('createRandomTermTags called with mode:', mode);
+    console.log('searchInput:', searchInput);
+    console.log('glossaryDataForUI:', glossaryDataForUI?.length);
+    
     let container = document.querySelector('.random-terms-container');
     if (!container) {
+        console.log('Creating new random-terms-container');
         container = document.createElement('div');
         container.className = 'random-terms-container';
         // Insert after the search-input div, not inside it
         const searchInputDiv = searchInput.parentNode;
-        searchInputDiv.parentNode.insertBefore(container, searchInputDiv.nextSibling);
+        if (searchInputDiv) {
+            searchInputDiv.parentNode.insertBefore(container, searchInputDiv.nextSibling);
+            console.log('Inserted random-terms-container into DOM');
+        } else {
+            console.error('searchInput.parentNode is null, cannot insert random terms container');
+            return;
+        }
+    } else {
+        console.log('Using existing random-terms-container');
     }
 
     const termsContainer = document.createElement('div');
@@ -623,14 +691,13 @@ function createRandomTermTags(mode = 'basic') {
             { name: 'Processes', description: 'AO compute processes' },
             { name: 'Gateway Setup', description: 'AR.IO gateway configuration' },
             { name: 'Data Storage', description: 'Permanent data storage' },
-            { name: 'Smart Contracts', description: 'AO smart contract development' },
+            { name: 'AO Processes', description: 'AO smart contract development' },
             { name: 'Wallet Integration', description: 'Connecting wallets' },
             { name: 'File Upload', description: 'Uploading to Arweave' },
             { name: 'GraphQL API', description: 'Querying Arweave data' },
             { name: 'Tokens', description: 'AO token standards' },
             { name: 'Bundling', description: 'Data bundling concepts' },
-            { name: 'Gateways', description: 'AR.IO gateway network' },
-            { name: 'Compute Units', description: 'HyperBEAM processing' }
+            { name: 'Gateways', description: 'AR.IO gateway network' }
         ];
         
         const shuffled = [...docPages].sort(() => 0.5 - Math.random());
@@ -651,11 +718,16 @@ function createRandomTermTags(mode = 'basic') {
             termsContainer.appendChild(tag);
         });
     } else {
+        console.log('Basic mode: creating glossary terms');
         // Show random glossary terms (original behavior)
-        if (!glossaryDataForUI) return;
+        if (!glossaryDataForUI) {
+            console.log('No glossaryDataForUI, returning early');
+            return;
+        }
         
         const shuffled = [...glossaryDataForUI].sort(() => 0.5 - Math.random());
         const termsToShow = shuffled.slice(0, NUM_RANDOM_TAGS);
+        console.log('Creating', termsToShow.length, 'random terms:', termsToShow.map(t => t.term));
 
         termsToShow.forEach(term => {
             const tag = document.createElement('span');
@@ -668,6 +740,15 @@ function createRandomTermTags(mode = 'basic') {
     
     container.innerHTML = '';
     container.appendChild(termsContainer);
+    
+    // Visual debug: add a red border to the container
+    container.style.border = '2px solid red';
+    container.style.padding = '10px';
+    container.style.margin = '10px 0';
+    
+    console.log('Final container:', container);
+    console.log('Container children:', container.children.length);
+    console.log('Terms container children:', termsContainer.children.length);
 }
 
 // --- Theme & UI Param Functions ---

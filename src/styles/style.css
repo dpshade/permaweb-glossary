@@ -205,7 +205,7 @@ h1 {
   padding: var(--input-padding);
   font-size: 18px;
   border: var(--container-border-width) solid var(--ao-border-color);
-  border-radius: 0;
+  border-radius: 4px;
   margin: 0;
   box-sizing: border-box;
   transition: none;
@@ -222,8 +222,6 @@ h1 {
 
 .search-input input:focus:not(.has-results .search-input input) {
   outline: none;
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 var(--ao-shadow-color);
 }
 
 #results {
