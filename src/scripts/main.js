@@ -745,19 +745,272 @@ function applyQueryParameters() {
     const urlParams = new URLSearchParams(window.location.search);
     if (DEBUG) console.log('URL search params:', window.location.search);
     
+    // ===== UI VISIBILITY PARAMETERS =====
     const hideHeader = urlParams.get('hide-header');
     if (hideHeader === 'true' || hideHeader === '1') {
         document.documentElement.classList.add('hide-header');
-        window.randomTermsJustification = 'center';
-    } else {
-        window.randomTermsJustification = 'flex-start';
+        if (DEBUG) console.log('Header hidden based on URL parameter');
     }
     
-    if (urlParams.get('hide-recommendations') === 'true' || urlParams.get('hide-recommendations') === '1') {
+    // Random terms should always be centered
+    window.randomTermsJustification = 'center';
+    
+    const hideRecommendations = urlParams.get('hide-recommendations');
+    if (hideRecommendations === 'true' || hideRecommendations === '1') {
         document.documentElement.classList.add('hide-recommendations');
+        if (DEBUG) console.log('Recommendations hidden based on URL parameter');
     }
     
-    // ... rest of the param handling ...
+    // Handle translucent background parameter
+    const translucent = urlParams.get('translucent');
+    if (translucent) {
+        document.documentElement.classList.add('translucent-bg');
+        
+        // Apply custom opacity if numeric value is provided
+        const opacity = parseFloat(translucent);
+        if (!isNaN(opacity) && opacity >= 0 && opacity <= 1) {
+            document.documentElement.style.setProperty('--translucent-opacity', opacity);
+            if (DEBUG) console.log(`Translucent background applied with opacity: ${opacity}`);
+        }
+    }
+    
+    // ===== SIMPLIFIED COLOR SYSTEM =====
+    applyColorTheme(urlParams);
+}
+
+function applyColorTheme(urlParams) {
+    const root = document.documentElement;
+    
+    // ===== BACKWARDS COMPATIBILITY DETECTION =====
+    // Check if user is using the old detailed parameter system
+    const oldSystemParams = [
+        'input-bg', 'hover-bg', 'category-bg', 'category-text', 'link-color',
+        'result-bg', 'result-hover', 'heading-color', 'tag-bg', 'tag-text',
+        'button-bg', 'button-text', 'accent-color', 'secondary-text', 'border-color'
+    ];
+    
+    const newSystemParams = ['theme-color', 'mode'];
+    
+    // Check if any old system specific params are provided
+    const hasOldSystemParams = oldSystemParams.some(param => urlParams.get(param));
+    const hasNewSystemParams = newSystemParams.some(param => urlParams.get(param));
+    
+    // Core parameters (can be used in both systems)
+    const bgColor = urlParams.get('bg-color');
+    const textColor = urlParams.get('text-color');
+    const themeColor = urlParams.get('theme-color');
+    const mode = urlParams.get('mode');
+    
+    // Skip if no theme parameters provided
+    if (!themeColor && !bgColor && !textColor && !mode && !hasOldSystemParams) {
+        return;
+    }
+    
+    let derivedColors = {};
+    
+    // ===== BACKWARDS COMPATIBILITY: OLD SYSTEM =====
+    if (hasOldSystemParams && !hasNewSystemParams) {
+        // User is using old system - apply explicit mapping only
+        if (DEBUG) console.log('Using old detailed parameter system');
+        
+        // In old system, bg-color and text-color were explicit, not smart
+        if (bgColor && isValidHexColor(bgColor)) {
+            derivedColors['--ao-bg-color'] = bgColor;
+            // Don't auto-derive other colors in old system
+        }
+        
+        if (textColor && isValidHexColor(textColor)) {
+            derivedColors['--ao-text-color'] = textColor;
+            // Don't auto-derive other colors in old system
+        }
+        
+        // Apply all old system specific parameters
+        const oldSystemMapping = {
+            'input-bg': '--ao-input-bg',
+            'hover-bg': '--ao-hover-bg',
+            'category-bg': '--ao-category-bg',
+            'category-text': '--ao-category-text',
+            'link-color': '--ao-link-color',
+            'result-bg': '--ao-result-bg',
+            'result-hover': '--ao-result-hover',
+            'heading-color': '--ao-heading-color',
+            'tag-bg': '--ao-tag-bg',
+            'tag-text': '--ao-tag-text',
+            'button-bg': '--ao-button-bg',
+            'button-text': '--ao-button-text',
+            'accent-color': '--ao-accent-color',
+            'secondary-text': '--ao-secondary-text',
+            'border-color': '--ao-border-color'
+        };
+        
+        Object.entries(oldSystemMapping).forEach(([param, cssVar]) => {
+            const value = urlParams.get(param);
+            if (value && isValidHexColor(value)) {
+                derivedColors[cssVar] = value;
+            }
+        });
+    }
+    
+    // ===== NEW SYSTEM: SMART DERIVATION =====
+    else if (hasNewSystemParams || (!hasOldSystemParams && (bgColor || textColor))) {
+        // User is using new system or basic bg/text colors - apply smart derivation
+        if (DEBUG) console.log('Using new smart derivation system');
+        
+        // Determine base colors with smart defaults
+        let baseBg = bgColor;
+        let baseText = textColor;
+        let baseTheme = themeColor;
+        
+        // Auto-detect mode if not specified
+        if (!baseBg && !baseText && mode) {
+            if (mode === 'dark') {
+                baseBg = '#121212';
+                baseText = '#e0e0e0';
+                baseTheme = baseTheme || '#34d399';
+            } else {
+                baseBg = '#ffffff';
+                baseText = '#000000';
+                baseTheme = baseTheme || '#29a879';
+            }
+        }
+        
+        // Derive comprehensive color scheme from base colors
+        if (baseBg && isValidHexColor(baseBg)) {
+            derivedColors['--ao-bg-color'] = baseBg;
+            derivedColors['--ao-input-bg'] = baseBg;
+            derivedColors['--ao-result-bg'] = baseBg;
+            derivedColors['--ao-hover-bg'] = adjustColorBrightness(baseBg, 0.03);
+            derivedColors['--ao-result-hover'] = adjustColorBrightness(baseBg, 0.05);
+            derivedColors['--ao-section-bg'] = adjustColorBrightness(baseBg, 0.02);
+            derivedColors['--ao-border-color'] = adjustColorBrightness(baseBg, -0.1);
+            derivedColors['--ao-category-bg'] = adjustColorBrightness(baseBg, -0.03);
+            
+            // Update translucent background if enabled
+            if (urlParams.get('translucent')) {
+                const rgb = hexToRgb(baseBg);
+                const opacity = root.style.getPropertyValue('--translucent-opacity') || 0.92;
+                derivedColors['--translucent-bg-color'] = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+            }
+        }
+        
+        if (baseText && isValidHexColor(baseText)) {
+            derivedColors['--ao-text-color'] = baseText;
+            derivedColors['--ao-heading-color'] = baseText;
+            derivedColors['--ao-section-color'] = baseText;
+            derivedColors['--ao-secondary-text'] = addOpacity(baseText, 0.6);
+            derivedColors['--ao-category-text'] = addOpacity(baseText, 0.7);
+        }
+        
+        if (baseTheme && isValidHexColor(baseTheme)) {
+            derivedColors['--ao-accent-color'] = baseTheme;
+            derivedColors['--ao-link-color'] = baseTheme;
+            derivedColors['--ao-focus-color'] = baseTheme;
+            derivedColors['--ao-tag-bg'] = baseTheme;
+            derivedColors['--ao-button-bg'] = baseTheme;
+            
+            // Auto-contrast for text on theme color
+            const contrastText = getContrastColor(baseTheme);
+            derivedColors['--ao-tag-text'] = contrastText;
+            derivedColors['--ao-button-text'] = contrastText;
+            
+            // Hover states
+            derivedColors['--ao-button-hover-bg'] = adjustColorBrightness(baseTheme, -0.1);
+            derivedColors['--ao-button-hover-border'] = adjustColorBrightness(baseTheme, -0.1);
+        }
+    }
+    
+    // ===== HYBRID SYSTEM: SPECIFIC OVERRIDES =====
+    // Always allow specific parameter overrides to take precedence
+    // This enables mixing old and new systems
+    const specificOverrides = {
+        'input-bg': '--ao-input-bg',
+        'hover-bg': '--ao-hover-bg',
+        'category-bg': '--ao-category-bg',
+        'category-text': '--ao-category-text',
+        'link-color': '--ao-link-color',
+        'result-bg': '--ao-result-bg',
+        'result-hover': '--ao-result-hover',
+        'heading-color': '--ao-heading-color',
+        'tag-bg': '--ao-tag-bg',
+        'tag-text': '--ao-tag-text',
+        'button-bg': '--ao-button-bg',
+        'button-text': '--ao-button-text',
+        'accent-color': '--ao-accent-color',
+        'secondary-text': '--ao-secondary-text',
+        'border-color': '--ao-border-color'
+    };
+    
+    Object.entries(specificOverrides).forEach(([param, cssVar]) => {
+        const value = urlParams.get(param);
+        if (value && isValidHexColor(value)) {
+            derivedColors[cssVar] = value; // This will override any smart-derived values
+        }
+    });
+    
+    // Apply all derived colors
+    let colorsApplied = false;
+    Object.entries(derivedColors).forEach(([cssVar, value]) => {
+        if (value) {
+            root.style.setProperty(cssVar, value);
+            colorsApplied = true;
+        }
+    });
+    
+    if (DEBUG && colorsApplied) {
+        console.log('Applied color theme:', derivedColors);
+        console.log('System used:', hasOldSystemParams ? 'Old detailed system' : 'New smart derivation');
+    }
+}
+
+// ===== COLOR UTILITY FUNCTIONS =====
+
+function isValidHexColor(hex) {
+    return /^#([0-9A-F]{3}){1,2}$/i.test(hex);
+}
+
+function hexToRgb(hex) {
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+function adjustColorBrightness(hexColor, percent) {
+    const rgb = hexToRgb(hexColor);
+    if (!rgb) return hexColor;
+    
+    const { r, g, b } = rgb;
+    const factor = percent > 0 ? 1 + percent : 1 + percent;
+    
+    const newR = Math.round(Math.min(255, Math.max(0, r * factor)));
+    const newG = Math.round(Math.min(255, Math.max(0, g * factor)));
+    const newB = Math.round(Math.min(255, Math.max(0, b * factor)));
+    
+    return rgbToHex(newR, newG, newB);
+}
+
+function addOpacity(hexColor, opacity) {
+    const rgb = hexToRgb(hexColor);
+    if (!rgb) return hexColor;
+    
+    return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity})`;
+}
+
+function getContrastColor(hexColor) {
+    const rgb = hexToRgb(hexColor);
+    if (!rgb) return '#000000';
+    
+    // Calculate luminance using WCAG formula
+    const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
+    
+    // Return white for dark colors, black for light colors
+    return luminance > 0.5 ? '#000000' : '#ffffff';
 }
 
 function initializeTheme() {
