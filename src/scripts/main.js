@@ -208,7 +208,7 @@ function handleStateChange(state) {
         searchInput.placeholder = 'Initializing...';
     } else {
         updateLoadingStatus('');
-        searchInput.placeholder = 'Search Permaweb glossary...';
+        searchInput.placeholder = state.mode === 'enhanced' ? 'Search permaweb documentation' : 'search permaweb glossary';
     }
 
     if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
@@ -220,7 +220,7 @@ function handleStateChange(state) {
         resultsContainer.classList.remove('has-results');
         document.querySelector('.search-container').classList.remove('has-results');
         selectedResultIndex = -1;
-        createRandomTermTags();
+        createRandomTermTags(state.mode);
     }
     
     clickableTitle.textContent = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
@@ -596,8 +596,7 @@ function createShareButton(term) {
     return button;
 }
 
-function createRandomTermTags() {
-    if (!glossaryDataForUI) return;
+function createRandomTermTags(mode = 'basic') {
     let container = document.querySelector('.random-terms-container');
     if (!container) {
         container = document.createElement('div');
@@ -610,16 +609,56 @@ function createRandomTermTags() {
     const termsContainer = document.createElement('div');
     termsContainer.className = 'related-terms random-terms';
     
-    const shuffled = [...glossaryDataForUI].sort(() => 0.5 - Math.random());
-    const termsToShow = shuffled.slice(0, NUM_RANDOM_TAGS);
+    if (mode === 'enhanced') {
+        // Show 3 random documentation pages
+        const docPages = [
+            { name: 'Getting Started', description: 'Arweave basics' },
+            { name: 'Processes', description: 'AO compute processes' },
+            { name: 'Gateway Setup', description: 'AR.IO gateway configuration' },
+            { name: 'Data Storage', description: 'Permanent data storage' },
+            { name: 'Smart Contracts', description: 'AO smart contract development' },
+            { name: 'Wallet Integration', description: 'Connecting wallets' },
+            { name: 'File Upload', description: 'Uploading to Arweave' },
+            { name: 'GraphQL API', description: 'Querying Arweave data' },
+            { name: 'Tokens', description: 'AO token standards' },
+            { name: 'Bundling', description: 'Data bundling concepts' },
+            { name: 'Gateways', description: 'AR.IO gateway network' },
+            { name: 'Compute Units', description: 'HyperBEAM processing' }
+        ];
+        
+        const shuffled = [...docPages].sort(() => 0.5 - Math.random());
+        const pagesToShow = shuffled.slice(0, 3);
 
-    termsToShow.forEach(term => {
-        const tag = document.createElement('span');
-        tag.className = 'related-tag';
-        tag.textContent = term.term;
-        tag.setAttribute('data-term', term.term);
-        termsContainer.appendChild(tag);
-    });
+        pagesToShow.forEach(page => {
+            const tag = document.createElement('span');
+            tag.className = 'related-tag doc-page-tag';
+            tag.textContent = page.name;
+            tag.setAttribute('data-doc-page', page.name.toLowerCase());
+            tag.setAttribute('title', page.description);
+            tag.style.cursor = 'pointer';
+            tag.addEventListener('click', () => {
+                searchInput.value = page.name;
+                searchManager.performSearch(page.name);
+                searchInput.focus();
+            });
+            termsContainer.appendChild(tag);
+        });
+    } else {
+        // Show random glossary terms (original behavior)
+        if (!glossaryDataForUI) return;
+        
+        const shuffled = [...glossaryDataForUI].sort(() => 0.5 - Math.random());
+        const termsToShow = shuffled.slice(0, NUM_RANDOM_TAGS);
+
+        termsToShow.forEach(term => {
+            const tag = document.createElement('span');
+            tag.className = 'related-tag';
+            tag.textContent = term.term;
+            tag.setAttribute('data-term', term.term);
+            termsContainer.appendChild(tag);
+        });
+    }
+    
     container.innerHTML = '';
     container.appendChild(termsContainer);
 }
