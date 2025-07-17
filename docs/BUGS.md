@@ -142,7 +142,45 @@ Layout issues on very small mobile devices (<350px width).
 
 ## Minor Issues 🟡
 
-### 3. Theme Toggle Accessibility
+### 3. Keyboard Navigation Inconsistencies
+**Status:** Open  
+**Priority:** Medium  
+**Component:** Keyboard Navigation (`src/scripts/main.js`)
+
+**Description:**  
+Keyboard navigation sometimes requires two up/down arrow key presses to move between results, and overall feels buggy and inconsistent.
+
+**Symptoms:**
+- Arrow keys sometimes don't respond on first press
+- Selection state gets confused between mouse and keyboard interactions
+- `selectedResultIndex` can become out of sync with visual selection
+- Mouse hover can interfere with keyboard navigation state
+
+**Root Causes Identified:**
+1. **Mouse/Keyboard State Conflicts**: The `mouseover` event handler disables keyboard mode when hovering over results, but doesn't properly restore keyboard state
+2. **Selection Reset Issues**: `selectedResultIndex` is reset to -1 in `handleStateChange()` after displaying results, requiring first arrow press to "activate" navigation
+3. **State Synchronization**: The `isKeyboardActive` flag and `selectedResultIndex` can become desynchronized
+
+**Technical Details:**
+- Affects: `handleKeyboardNavigation()`, `updateKeyboardSelection()`, mouse event handlers
+- Related variables: `selectedResultIndex`, `isKeyboardActive`
+- Mouse hover handler at lines 225-232 interferes with keyboard state
+
+**Reproduction Steps:**
+1. Perform a search to get results
+2. Press arrow down key - may not respond on first press
+3. Move mouse over results - keyboard navigation becomes unresponsive
+4. Try arrow keys again - requires multiple presses to work
+
+**Proposed Solutions:**
+- Fix mouse/keyboard state conflicts by improving state management
+- Ensure keyboard navigation is immediately available after results display
+- Add proper state synchronization between mouse and keyboard interactions
+- Consider removing automatic keyboard mode disable on mouse hover
+
+---
+
+### 4. Theme Toggle Accessibility
 **Status:** Open  
 **Priority:** Medium  
 **Component:** Theme System
@@ -157,7 +195,7 @@ Theme toggle button lacks proper ARIA labels and keyboard navigation support.
 
 ---
 
-### 4. Error Message Improvements
+### 5. Error Message Improvements
 **Status:** In Progress  
 **Priority:** Low  
 **Component:** Error Handling & CSS
@@ -177,7 +215,7 @@ While the new architecture has better error handling, user-facing error messages
 
 ---
 
-### ~~5. JSON API Endpoint Inconsistencies~~
+### ~~6. JSON API Endpoint Inconsistencies~~
 **Status:** Disabled  
 **Priority:** ~~Low~~ **Resolved by removal**  
 **Component:** ~~JSON API (`src/pages/json.astro`)~~ **Moved to `src/pages/unused/json.astro`**
