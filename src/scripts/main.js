@@ -203,11 +203,12 @@ function initializeUIHandlers() {
 
 function handleStateChange(state) {
     if (!state.isInitialized) {
-        updateLoadingStatus('Initializing...');
         resultsContainer.innerHTML = '';
         resultsContainer.classList.remove('has-results');
+        searchInput.placeholder = 'Initializing...';
     } else {
         updateLoadingStatus('');
+        searchInput.placeholder = 'Search Permaweb glossary...';
     }
 
     if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
@@ -223,9 +224,7 @@ function handleStateChange(state) {
     }
     
     clickableTitle.textContent = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
-    searchInput.placeholder = state.mode === 'enhanced' 
-        ? 'Search Permaweb documentation...'
-        : 'Search glossary terms...';
+    // Placeholder is set above based on initialization state
         
     // Check for fallback before syncing URL (so we can detect the mismatch)
     const urlMode = getModeFromURL();

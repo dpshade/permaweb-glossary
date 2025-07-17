@@ -1,17 +1,7 @@
 import { SearchProvider } from './search-provider.js';
 import { searchConfig } from './search-config.js';
 import { permawebConfig, getDocsIndexUrls, getLLMTextFileUrls, debugLog } from './permaweb-config.js';
-
-// Always use bundled FlexSearch for consistency across all environments
-async function getFlexSearch() {
-    if (typeof window !== 'undefined' && window.FlexSearch) {
-        return { Document: window.FlexSearch.Document };
-    } else {
-        // Load the bundled version
-        await import('./flexsearch.bundle.min.js');
-        return { Document: window.FlexSearch.Document };
-    }
-}
+import { Document } from 'flexsearch';
 
 function fetchWithTimeout(url, options = {}) {
     const { timeout = permawebConfig.network.timeout, ...fetchOptions } = options;
@@ -258,7 +248,7 @@ export class EnhancedSearchProvider extends SearchProvider {
 
     async _createDocumentationIndex() {
         // Get FlexSearch Document class (handles dev/prod environments)
-        const { Document } = await getFlexSearch();
+        // Use the imported Document class directly
         
         this.docsIndex = new Document({
             document: {
