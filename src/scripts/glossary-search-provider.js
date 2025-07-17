@@ -5,7 +5,7 @@ import { Document } from 'flexsearch';
 // Constants for the application, can be moved to config
 const GLOSSARY_URL = '/data/glossary.json';
 
-export class BasicSearchProvider extends SearchProvider {
+export class GlossarySearchProvider extends SearchProvider {
     constructor() {
         super();
         this.searchIndex = null;
@@ -22,15 +22,26 @@ export class BasicSearchProvider extends SearchProvider {
         const data = await response.json();
         this.glossaryData = data.terms || data;
 
-        // Initialize FlexSearch index
+        // Initialize FlexSearch index with optimized configuration
         this.searchIndex = new Document({
             document: {
                 id: "id",
-                index: ["term", "definition", "aliases", "category"],
+                index: [
+                    { field: "term", tokenize: "forward", resolution: 9 },
+                    { field: "definition", tokenize: "forward", resolution: 5 },
+                    { field: "aliases", tokenize: "forward", resolution: 7 },
+                    { field: "category", tokenize: "strict", resolution: 3 }
+                ],
                 store: true
             },
+            preset: "score",
             tokenize: "forward",
-            cache: 100
+            cache: 100,
+            context: {
+                resolution: 3,
+                depth: 2,
+                bidirectional: true
+            }
         });
 
         const contextMap = this._buildContextMap(this.glossaryData);
@@ -67,7 +78,9 @@ export class BasicSearchProvider extends SearchProvider {
         
         const mainResults = this.searchIndex.search(cleanQuery, {
             enrich: true,
-            limit: 10
+            limit: 10,
+            suggest: true,
+            cache: true
         });
         allResults = [...mainResults];
         
@@ -75,7 +88,9 @@ export class BasicSearchProvider extends SearchProvider {
             if (variation !== cleanQuery) {
                 const variationResults = this.searchIndex.search(variation, {
                     enrich: true,
-                    limit: 5
+                    limit: 5,
+                    suggest: true,
+                    cache: true
                 });
                 allResults = [...allResults, ...variationResults];
             }

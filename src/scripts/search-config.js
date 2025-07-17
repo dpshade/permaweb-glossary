@@ -6,7 +6,7 @@ export const searchConfig = {
   },
   fallback: {
     enabled: true,
-    provider: 'basic'
+    provider: 'glossary'
   },
   features: {
     documentationSearch: true,

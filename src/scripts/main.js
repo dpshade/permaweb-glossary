@@ -1,23 +1,16 @@
 import { SearchManager } from './search-manager.js';
-import { BasicSearchProvider } from './basic-search-provider.js';
-import { EnhancedSearchProvider } from './enhanced-search-provider.js';
-
-console.log('=== MAIN.JS LOADED ===');
-// This should change the title immediately if the script loads
-setTimeout(() => {
-    document.title = 'MAIN.JS LOADED';
-}, 100);
+import { GlossarySearchProvider } from './glossary-search-provider.js';
+import { DocumentationSearchProvider } from './documentation-search-provider.js';
 
 // --- Constants ---
-const DEBUG = false;
 const NUM_RANDOM_TAGS = 5;
 
 // --- Service Worker ---
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
-            .then(registration => { if (DEBUG) console.log('SW registered'); })
-            .catch(err => { if (DEBUG) console.log('SW registration failed: ', err); });
+            .then(registration => { })
+            .catch(err => { });
     });
 }
 
@@ -37,9 +30,6 @@ let currentRandomTermsMode = null; // Track the current mode for random terms
 document.addEventListener('DOMContentLoaded', init);
 
 async function init() {
-    console.log('=== INIT FUNCTION CALLED ===');
-    console.log('Document ready state:', document.readyState);
-    
     try {
         // Initialize DOM elements
         searchInput = document.getElementById('searchInput');
@@ -47,13 +37,6 @@ async function init() {
         loadingStatus = document.getElementById('loading-status');
         clickableTitle = document.getElementById('clickableTitle');
         themeToggle = document.querySelector('.theme-toggle');
-        
-        console.log('DOM elements initialized:');
-        console.log('- searchInput:', searchInput);
-        console.log('- resultsContainer:', resultsContainer);
-        console.log('- loadingStatus:', loadingStatus);
-        console.log('- clickableTitle:', clickableTitle);
-        console.log('- themeToggle:', themeToggle);
         
         applyQueryParameters();
         initializeTheme();
@@ -64,26 +47,26 @@ async function init() {
 
         searchManager = new SearchManager();
         
-        const basicProvider = new BasicSearchProvider();
-        searchManager.registerProvider('basic', basicProvider);
+        const glossaryProvider = new GlossarySearchProvider();
+        searchManager.registerProvider('glossary', glossaryProvider);
 
-        const enhancedProvider = new EnhancedSearchProvider();
-        searchManager.registerProvider('enhanced', enhancedProvider);
+        const documentationProvider = new DocumentationSearchProvider();
+        searchManager.registerProvider('documentation', documentationProvider);
         
         searchManager.state.subscribe(handleStateChange);
         
         // Get initial mode from URL parameter
         const urlMode = getModeFromURL();
-        const initialMode = urlMode || 'basic';
+        const initialMode = urlMode || 'glossary';
         
-        // Force ?mode=glossary in URL if no mode is specified
-        if (!urlMode) {
-            updateURLWithMode('basic');
+        // Only update URL if we have a specific mode from URL
+        // Don't force ?mode=glossary if no mode is specified
+        if (urlMode) {
+            updateURLWithMode(initialMode);
         }
         
         try {
             await searchManager.initialize(initialMode);
-            console.log('SearchManager initialized successfully in mode:', initialMode);
         } catch (error) {
             console.error('SearchManager initialization failed:', error);
         }
@@ -92,16 +75,15 @@ async function init() {
         window.searchManager = searchManager;
         
         // Expose glossary data for UI functions - must be after initialize
-        // Use the original basicProvider reference since it should be the same instance
+        // Use the original glossaryProvider reference since it should be the same instance
         
-        // In basic mode, the provider should already be initialized
-        // In enhanced mode, we need to ensure basic provider is initialized for random terms
-        if (initialMode === 'enhanced' && !basicProvider.glossaryData) {
-            await basicProvider.initialize();
+        // In glossary mode, the provider should already be initialized
+        // In documentation mode, we need to ensure glossary provider is initialized for random terms
+        if (initialMode === 'documentation' && !glossaryProvider.glossaryData) {
+            await glossaryProvider.initialize();
         }
         
-        glossaryDataForUI = basicProvider.glossaryData;
-        console.log('Assigned glossaryDataForUI:', glossaryDataForUI?.length);
+        glossaryDataForUI = glossaryProvider.glossaryData;
 
         initializeUIHandlers();
 
@@ -152,7 +134,7 @@ function setupBrowserNavigation() {
                 resultsContainer.innerHTML = '';
                 resultsContainer.classList.remove('has-results');
                 document.querySelector('.search-container').classList.remove('has-results');
-                updateRandomTermsIfNeeded(searchManager?.state?.mode || 'basic');
+                updateRandomTermsIfNeeded(searchManager?.state?.mode || 'glossary');
             }
         }
     });
@@ -177,14 +159,17 @@ function initializeUIHandlers() {
 
     clickableTitle.addEventListener('click', () => {
         const currentMode = searchManager.state.mode;
-        const newMode = currentMode === 'basic' ? 'enhanced' : 'basic';
+        const newMode = currentMode === 'glossary' ? 'documentation' : 'glossary';
         if (searchManager.searchProviders.has(newMode)) {
+            // Update URL immediately to prevent race conditions
+            updateURLWithMode(newMode);
+            
             searchManager.switchMode(newMode).then(() => {
-                // Ensure glossaryDataForUI is available for basic mode
-                if (newMode === 'basic') {
-                    const basicProvider = searchManager.searchProviders.get('basic');
-                    if (basicProvider && basicProvider.glossaryData) {
-                        glossaryDataForUI = basicProvider.glossaryData;
+                // Ensure glossaryDataForUI is available for glossary mode
+                if (newMode === 'glossary') {
+                    const glossaryProvider = searchManager.searchProviders.get('glossary');
+                    if (glossaryProvider && glossaryProvider.glossaryData) {
+                        glossaryDataForUI = glossaryProvider.glossaryData;
                     }
                 }
                 
@@ -204,7 +189,10 @@ function initializeUIHandlers() {
                 if (!isIframeEmbed()) {
                     searchInput.focus();
                 }
-                updateURLWithMode(newMode);
+            }).catch((error) => {
+                console.error('Mode switch failed:', error);
+                // Revert URL if mode switch failed
+                updateURLWithMode(currentMode);
             });
         } else {
             console.warn(`Provider for mode "${newMode}" not available yet.`);
@@ -256,7 +244,7 @@ function handleStateChange(state) {
         resultsContainer.classList.remove('has-results');
         searchInput.placeholder = 'Initializing...';
     } else {
-        searchInput.placeholder = state.mode === 'enhanced' ? 'Search permaweb documentation' : 'Search permaweb glossary';
+        searchInput.placeholder = state.mode === 'documentation' ? 'Search permaweb documentation' : 'Search permaweb glossary';
     }
 
     if (state.currentResults && (state.currentResults.length > 0 || searchInput.value)) {
@@ -271,16 +259,20 @@ function handleStateChange(state) {
         updateRandomTermsIfNeeded(state.mode);
     }
     
-    clickableTitle.textContent = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
+    clickableTitle.textContent = state.mode === 'documentation' ? 'Documentation' : 'Glossary';
     // Placeholder is set above based on initialization state
         
-    // Check for fallback before syncing URL (so we can detect the mismatch)
-    const urlMode = getModeFromURL();
-    const hadFallback = urlMode === 'enhanced' && state.mode === 'basic' && state.isInitialized;
-    
-    // Always sync URL with actual state mode
-    syncURLWithCurrentState(state);
+    // Only sync URL if we're initialized and there's a clear mismatch
+    // Don't sync during mode transitions to avoid conflicts
+    if (state.isInitialized) {
+        const urlMode = getModeFromURL();
+        const expectedURLMode = state.mode === 'documentation' ? 'docs' : 'glossary';
         
+        // Only sync if there's a clear mismatch and we're not in a transition
+        if (urlMode !== expectedURLMode && urlMode !== null) {
+            syncURLWithCurrentState(state);
+        }
+    }
 }
 
 function syncURLWithCurrentState(state) {
@@ -291,9 +283,9 @@ function syncURLWithCurrentState(state) {
     
     // Convert state mode to URL mode
     let expectedURLMode = null;
-    if (state.mode === 'enhanced') {
+    if (state.mode === 'documentation') {
         expectedURLMode = 'docs';
-    } else if (state.mode === 'basic') {
+    } else if (state.mode === 'glossary') {
         expectedURLMode = 'glossary';
     }
     
@@ -311,7 +303,7 @@ function syncURLWithCurrentState(state) {
         
         // Update title based on current state
         const query = getSearchQueryFromURL();
-        const modeText = state.mode === 'enhanced' ? 'Documentation' : 'Glossary';
+        const modeText = state.mode === 'documentation' ? 'Documentation' : 'Glossary';
         document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
         
         window.history.replaceState({}, '', newUrl);
@@ -379,7 +371,7 @@ function handleKeyboardNavigation(event) {
             selectedResultIndex = -1;
             isKeyboardActive = false;
             document.body.classList.remove('keyboard-active');
-            updateRandomTermsIfNeeded(searchManager?.state?.mode || 'basic');
+            updateRandomTermsIfNeeded(searchManager?.state?.mode || 'glossary');
             break;
     }
 }
@@ -395,8 +387,8 @@ function updateKeyboardSelection() {
         const selectedItem = resultItems[selectedResultIndex];
         selectedItem.classList.add('selected');
         selectedItem.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
+            behavior: 'auto',
+            block: 'start'
         });
     }
 }
@@ -426,7 +418,7 @@ function displayResults(results, query, mode) {
         return;
     }
     
-    if (mode === 'enhanced') {
+    if (mode === 'documentation') {
         displayDocumentationResults(results, query);
     } else {
         displayGlossaryResults(results, query);
@@ -502,8 +494,8 @@ function displayGlossaryResults(results, query) {
 }
 
 function displayDocumentationResults(results, query) {
-    resultsContainer.innerHTML = results.map(result => 
-        createDocumentationResultHTML(result, query)
+    resultsContainer.innerHTML = results.map((result, index) => 
+        createDocumentationResultHTML(result, query, index)
     ).join('');
     
     // Add click handlers for documentation results
@@ -521,7 +513,7 @@ function displayDocumentationResults(results, query) {
     document.querySelector('.search-container').classList.add('has-results');
 }
 
-function createDocumentationResultHTML(result, query) {
+function createDocumentationResultHTML(result, query, index) {
     const breadcrumbs = result.breadcrumbs?.join(' › ') || result.siteName;
     const lastModified = result.lastModified 
         ? new Date(result.lastModified).toLocaleDateString()
@@ -549,8 +541,9 @@ function createDocumentationResultHTML(result, query) {
             <div class="definition">${highlightQuery(result.snippet, query)}</div>
             ${metaInfo ? `<div class="aliases"><strong>Source:</strong> ${metaInfo}</div>` : ''}
             <div class="docs-link">
-                <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">Read more →</a>
+                <a href="${sourceUrl}" target="_blank" rel="noopener noreferrer">View page →</a>
             </div>
+            <div class="result-number">${index + 1}</div>
         </div>
     `;
 }
@@ -626,9 +619,9 @@ function createShareButton(term) {
         // Include current mode in shared URL
         if (searchManager?.state?.isInitialized) {
             const currentMode = searchManager.state.mode;
-            if (currentMode === 'enhanced') {
+            if (currentMode === 'documentation') {
                 url.searchParams.set('mode', 'docs');
-            } else if (currentMode === 'basic') {
+            } else if (currentMode === 'glossary') {
                 url.searchParams.set('mode', 'glossary');
             }
         }
@@ -644,47 +637,33 @@ function createShareButton(term) {
     return button;
 }
 
-function updateRandomTermsIfNeeded(mode = 'basic') {
-    console.log('updateRandomTermsIfNeeded called with mode:', mode);
-    console.log('currentRandomTermsMode:', currentRandomTermsMode);
-    
+function updateRandomTermsIfNeeded(mode = 'glossary') {
     // Only update random terms if the mode has changed
     if (currentRandomTermsMode !== mode) {
-        console.log('Mode changed, updating random terms');
         currentRandomTermsMode = mode;
         createRandomTermTags(mode);
-    } else {
-        console.log('Mode unchanged, not updating random terms');
     }
 }
 
-function createRandomTermTags(mode = 'basic') {
-    console.log('createRandomTermTags called with mode:', mode);
-    console.log('searchInput:', searchInput);
-    console.log('glossaryDataForUI:', glossaryDataForUI?.length);
-    
+function createRandomTermTags(mode = 'glossary') {
     let container = document.querySelector('.random-terms-container');
     if (!container) {
-        console.log('Creating new random-terms-container');
         container = document.createElement('div');
         container.className = 'random-terms-container';
         // Insert after the search-input div, not inside it
         const searchInputDiv = searchInput.parentNode;
         if (searchInputDiv) {
             searchInputDiv.parentNode.insertBefore(container, searchInputDiv.nextSibling);
-            console.log('Inserted random-terms-container into DOM');
         } else {
             console.error('searchInput.parentNode is null, cannot insert random terms container');
             return;
         }
-    } else {
-        console.log('Using existing random-terms-container');
     }
 
     const termsContainer = document.createElement('div');
     termsContainer.className = 'related-terms random-terms';
     
-    if (mode === 'enhanced') {
+    if (mode === 'documentation') {
         // Show 3 random documentation pages
         const docPages = [
             { name: 'Getting Started', description: 'Arweave basics' },
@@ -718,16 +697,13 @@ function createRandomTermTags(mode = 'basic') {
             termsContainer.appendChild(tag);
         });
     } else {
-        console.log('Basic mode: creating glossary terms');
         // Show random glossary terms (original behavior)
         if (!glossaryDataForUI) {
-            console.log('No glossaryDataForUI, returning early');
             return;
         }
         
         const shuffled = [...glossaryDataForUI].sort(() => 0.5 - Math.random());
         const termsToShow = shuffled.slice(0, NUM_RANDOM_TAGS);
-        console.log('Creating', termsToShow.length, 'random terms:', termsToShow.map(t => t.term));
 
         termsToShow.forEach(term => {
             const tag = document.createElement('span');
@@ -741,14 +717,6 @@ function createRandomTermTags(mode = 'basic') {
     container.innerHTML = '';
     container.appendChild(termsContainer);
     
-    // Visual debug: add a red border to the container
-    container.style.border = '2px solid red';
-    container.style.padding = '10px';
-    container.style.margin = '10px 0';
-    
-    console.log('Final container:', container);
-    console.log('Container children:', container.children.length);
-    console.log('Terms container children:', termsContainer.children.length);
 }
 
 // --- Theme & UI Param Functions ---
@@ -762,10 +730,10 @@ function getModeFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const mode = urlParams.get('mode');
     // Convert URL mode values to internal mode values
-    if (mode === 'docs' || mode === 'documentation') {
-        return 'enhanced';
+    if (mode === 'docs') {
+        return 'documentation';
     } else if (mode === 'glossary') {
-        return 'basic';
+        return 'glossary';
     }
     return null; // No mode specified, will use default
 }
@@ -783,9 +751,9 @@ function updateURLWithSearch(query) {
     // Ensure mode parameter matches current application state
     if (searchManager?.state?.isInitialized) {
         const currentMode = searchManager.state.mode;
-        if (currentMode === 'enhanced') {
+        if (currentMode === 'documentation') {
             urlParams.set('mode', 'docs');
-        } else if (currentMode === 'basic') {
+        } else if (currentMode === 'glossary') {
             urlParams.set('mode', 'glossary');
         }
     }
@@ -795,8 +763,8 @@ function updateURLWithSearch(query) {
         : window.location.pathname;
     
     // Update title based on current state
-    const currentMode = searchManager?.state?.mode || 'basic';
-    const modeText = currentMode === 'enhanced' ? 'Documentation' : 'Glossary';
+    const currentMode = searchManager?.state?.mode || 'glossary';
+    const modeText = currentMode === 'documentation' ? 'Documentation' : 'Glossary';
     document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
     window.history.pushState({}, '', newUrl);
 }
@@ -805,9 +773,9 @@ function updateURLWithMode(mode) {
     const urlParams = new URLSearchParams(window.location.search);
     
     // Convert internal mode values to URL-friendly values
-    if (mode === 'enhanced') {
+    if (mode === 'documentation') {
         urlParams.set('mode', 'docs');
-    } else if (mode === 'basic') {
+    } else if (mode === 'glossary') {
         urlParams.set('mode', 'glossary');
     } else {
         urlParams.delete('mode');
@@ -819,7 +787,7 @@ function updateURLWithMode(mode) {
     
     // Update title based on new mode
     const query = getSearchQueryFromURL();
-    const modeText = mode === 'enhanced' ? 'Documentation' : 'Glossary';
+    const modeText = mode === 'documentation' ? 'Documentation' : 'Glossary';
     document.title = query ? `${query} - Permaweb ${modeText}` : `Permaweb ${modeText} Search`;
     
     window.history.pushState({}, '', newUrl);
@@ -831,13 +799,11 @@ function isIframeEmbed() {
 
 function applyQueryParameters() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (DEBUG) console.log('URL search params:', window.location.search);
     
     // ===== UI VISIBILITY PARAMETERS =====
     const hideHeader = urlParams.get('hide-header');
     if (hideHeader === 'true' || hideHeader === '1') {
         document.documentElement.classList.add('hide-header');
-        if (DEBUG) console.log('Header hidden based on URL parameter');
     }
     
     // Random terms should always be centered
@@ -846,7 +812,6 @@ function applyQueryParameters() {
     const hideRecommendations = urlParams.get('hide-recommendations');
     if (hideRecommendations === 'true' || hideRecommendations === '1') {
         document.documentElement.classList.add('hide-recommendations');
-        if (DEBUG) console.log('Recommendations hidden based on URL parameter');
     }
     
     // Handle translucent background parameter
@@ -858,7 +823,6 @@ function applyQueryParameters() {
         const opacity = parseFloat(translucent);
         if (!isNaN(opacity) && opacity >= 0 && opacity <= 1) {
             document.documentElement.style.setProperty('--translucent-opacity', opacity);
-            if (DEBUG) console.log(`Translucent background applied with opacity: ${opacity}`);
         }
     }
     
@@ -899,7 +863,6 @@ function applyColorTheme(urlParams) {
     // ===== BACKWARDS COMPATIBILITY: OLD SYSTEM =====
     if (hasOldSystemParams && !hasNewSystemParams) {
         // User is using old system - apply explicit mapping only
-        if (DEBUG) console.log('Using old detailed parameter system');
         
         // In old system, bg-color and text-color were explicit, not smart
         if (bgColor && isValidHexColor(bgColor)) {
@@ -941,8 +904,7 @@ function applyColorTheme(urlParams) {
     
     // ===== NEW SYSTEM: SMART DERIVATION =====
     else if (hasNewSystemParams || (!hasOldSystemParams && (bgColor || textColor))) {
-        // User is using new system or basic bg/text colors - apply smart derivation
-        if (DEBUG) console.log('Using new smart derivation system');
+        // User is using new system or glossary bg/text colors - apply smart derivation
         
         // Determine base colors with smart defaults
         let baseBg = bgColor;
@@ -970,7 +932,7 @@ function applyColorTheme(urlParams) {
             derivedColors['--ao-hover-bg'] = adjustColorBrightness(baseBg, 0.03);
             derivedColors['--ao-result-hover'] = adjustColorBrightness(baseBg, 0.05);
             derivedColors['--ao-section-bg'] = adjustColorBrightness(baseBg, 0.02);
-            derivedColors['--ao-border-color'] = adjustColorBrightness(baseBg, -0.1);
+            derivedColors['--ao-border-color'] = adjustColorBrightness(baseBg, -0.9);
             derivedColors['--ao-category-bg'] = adjustColorBrightness(baseBg, -0.03);
             
             // Update translucent background if enabled
@@ -993,12 +955,13 @@ function applyColorTheme(urlParams) {
             derivedColors['--ao-accent-color'] = baseTheme;
             derivedColors['--ao-link-color'] = baseTheme;
             derivedColors['--ao-focus-color'] = baseTheme;
-            derivedColors['--ao-tag-bg'] = baseTheme;
+            derivedColors['--ao-tag-bg'] = derivedColors['--ao-border-color'] || adjustColorBrightness(baseBg, -0.85);
             derivedColors['--ao-button-bg'] = baseTheme;
             
             // Auto-contrast for text on theme color
             const contrastText = getContrastColor(baseTheme);
-            derivedColors['--ao-tag-text'] = contrastText;
+            const borderColor = derivedColors['--ao-border-color'] || adjustColorBrightness(baseBg, -0.85);
+            derivedColors['--ao-tag-text'] = getContrastColor(borderColor);
             derivedColors['--ao-button-text'] = contrastText;
             
             // Hover states
@@ -1043,11 +1006,6 @@ function applyColorTheme(urlParams) {
             colorsApplied = true;
         }
     });
-    
-    if (DEBUG && colorsApplied) {
-        console.log('Applied color theme:', derivedColors);
-        console.log('System used:', hasOldSystemParams ? 'Old detailed system' : 'New smart derivation');
-    }
 }
 
 // ===== COLOR UTILITY FUNCTIONS =====

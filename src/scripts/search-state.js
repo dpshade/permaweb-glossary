@@ -1,6 +1,6 @@
 export class SearchState {
   constructor() {
-    this.mode = 'basic';
+    this.mode = 'glossary';
     this.isInitialized = false;
     this.currentResults = [];
     this.subscribers = new Set();

@@ -205,7 +205,7 @@ h1 {
   padding: var(--input-padding);
   font-size: 18px;
   border: var(--container-border-width) solid var(--ao-border-color);
-  border-radius: 4px;
+  border-radius: 2px;
   margin: 0;
   box-sizing: border-box;
   transition: none;

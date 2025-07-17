@@ -34,8 +34,7 @@ export const permawebConfig = {
     // URLs for documentation index
     docsIndex: {
         primary: `${getBaseUrl()}/docs-index.json`,
-        fallback: `${PERMAWEB_LLM_FUEL_URLS.fallback}/docs-index.json`,
-        enhanced: `${getBaseUrl()}/enhanced-docs-index.json` // If using sync script
+        fallback: `${PERMAWEB_LLM_FUEL_URLS.fallback}/docs-index.json`
     },
 
     // Network configuration
@@ -53,19 +52,8 @@ export const permawebConfig = {
 
     // Feature flags
     features: {
-        usePreExtractedContent: true, // Use LLM text files instead of fetching pages
-        fallbackToLive: false, // Fallback to live page fetching if LLM files fail
-        cacheResults: true, // Cache LLM text file contents
-        enableQualityScoring: true, // Use quality scores from LLM extraction
+        usePreExtractedContent: true, // Use pre-extracted content from LLM text files
         useDynamicSiteDiscovery: true // Enable dynamic site discovery from docs-index.json
-    },
-
-    // Debug settings
-    debug: {
-        enabled: isLocal, // Enable debug logging in local environment
-        logNetworkRequests: isLocal,
-        logContentParsing: false,
-        logSearchPerformance: false
     }
 };
 
@@ -113,7 +101,6 @@ async function discoverAvailableSites() {
     _siteDiscoveryPromise = (async () => {
         try {
             const indexUrls = getDocsIndexUrls();
-            debugLog('network', 'Discovering available sites from:', indexUrls.primary);
             
             let response;
             let docsIndex;
@@ -125,7 +112,6 @@ async function discoverAvailableSites() {
                 if (!response.ok) throw new Error(`Primary source failed: ${response.status}`);
                 docsIndex = await response.json();
             } catch (primaryError) {
-                debugLog('network', 'Primary docs index failed, trying fallback...', primaryError);
                 response = await fetchWithTimeout(indexUrls.fallback, {
                     headers: { 'User-Agent': permawebConfig.network.userAgent }
                 });
@@ -137,15 +123,11 @@ async function discoverAvailableSites() {
             const sites = docsIndex.sites || {};
             const siteKeys = Object.keys(sites);
             
-            debugLog('network', `Discovered ${siteKeys.length} available sites:`, siteKeys);
-            
             // Cache the result
             _availableSitesCache = siteKeys;
             return siteKeys;
             
         } catch (error) {
-            debugLog('network', 'Failed to discover sites, falling back to static list:', error);
-            
             // Fallback to known sites if discovery fails
             const fallbackSites = ['hyperbeam', 'ao', 'ario', 'arweave', 'permaweb-glossary'];
             _availableSitesCache = fallbackSites;
@@ -193,11 +175,9 @@ export async function getLLMTextFileUrls() {
             llmTextUrls[siteKey] = generateLLMTextFileUrls(siteKey);
         }
         
-        debugLog('network', `Generated LLM URLs for ${availableSites.length} sites`);
         return llmTextUrls;
         
     } catch (error) {
-        debugLog('network', 'Dynamic site discovery failed, falling back to static URLs:', error);
         return getStaticLLMTextFileUrls();
     }
 }
@@ -235,28 +215,11 @@ function getStaticLLMTextFileUrls() {
 }
 
 /**
- * Clear the available sites cache (for testing/debugging)
- */
-export function clearSitesCache() {
-    _availableSitesCache = null;
-    _siteDiscoveryPromise = null;
-    debugLog('network', 'Cleared sites cache');
-}
-
-/**
  * Get the appropriate docs index URL
- * @param {boolean} useEnhanced - Whether to use enhanced index if available
  * @returns {Object} Primary and fallback URLs
  */
-export function getDocsIndexUrls(useEnhanced = false) {
+export function getDocsIndexUrls() {
     const urls = permawebConfig.docsIndex;
-    
-    if (useEnhanced) {
-        return {
-            primary: urls.enhanced,
-            fallback: urls.primary // Fallback to regular index if enhanced not available
-        };
-    }
     
     return {
         primary: urls.primary,
@@ -270,25 +233,6 @@ export function getDocsIndexUrls(useEnhanced = false) {
  */
 export function shouldUsePreExtractedContent() {
     return permawebConfig.features.usePreExtractedContent;
-}
-
-/**
- * Log debug message if debugging is enabled
- * @param {string} category - Debug category
- * @param {...any} args - Arguments to log
- */
-export function debugLog(category, ...args) {
-    if (permawebConfig.debug.enabled) {
-        const categoryMap = {
-            network: permawebConfig.debug.logNetworkRequests,
-            content: permawebConfig.debug.logContentParsing,
-            search: permawebConfig.debug.logSearchPerformance
-        };
-        
-        if (categoryMap[category] !== false) {
-            console.log(`[Permaweb-${category}]`, ...args);
-        }
-    }
 }
 
 /**
