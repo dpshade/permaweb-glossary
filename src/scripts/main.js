@@ -51,7 +51,14 @@ async function init() {
         searchManager.state.subscribe(handleStateChange);
         
         // Get initial mode from URL parameter
-        const initialMode = getModeFromURL() || 'basic';
+        const urlMode = getModeFromURL();
+        const initialMode = urlMode || 'basic';
+        
+        // Force ?mode=glossary in URL if no mode is specified
+        if (!urlMode) {
+            updateURLWithMode('basic');
+        }
+        
         await searchManager.initialize(initialMode);
         
         // Expose searchManager globally for JSON API access
